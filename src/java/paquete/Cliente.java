@@ -10,5 +10,6 @@ package paquete;
  * @author JP
  */
 public class Cliente {
+    String hola;
     
 }
