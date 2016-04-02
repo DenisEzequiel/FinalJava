@@ -12,5 +12,6 @@ package paquete;
 public class Ligia {
     String dureza="alta";
     Integer edad=21;
+    String hola;
     
 }
