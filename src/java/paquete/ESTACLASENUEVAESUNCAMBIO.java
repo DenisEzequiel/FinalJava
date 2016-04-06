@@ -11,4 +11,5 @@ package paquete;
  */
 public class ESTACLASENUEVAESUNCAMBIO {
     String saludo="OLA K ASÉ";
+    String respuesta= "aca andamo";
 }
