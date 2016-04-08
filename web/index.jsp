@@ -89,7 +89,7 @@
 								<li><a href="http://themifycloud.com/demos/templates/eshop/#"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="http://themifycloud.com/demos/templates/eshop/#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="http://themifycloud.com/demos/templates/eshop/checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="carro.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
@@ -115,21 +115,21 @@
 								<li><a href="http://themifycloud.com/demos/templates/eshop/index.html" class="active">Home</a></li>
 								<li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="http://themifycloud.com/demos/templates/eshop/shop.html">Products</a></li>
-										<li><a href="http://themifycloud.com/demos/templates/eshop/product-details.html">Product Details</a></li> 
+                                        <li><a href="cartelera.jsp">Cartelera</a></li>
+										<li><a href="pelicula.jsp">Product Details</a></li> 
 										<li><a href="http://themifycloud.com/demos/templates/eshop/checkout.html">Checkout</a></li> 
-										<li><a href="http://themifycloud.com/demos/templates/eshop/cart.html">Cart</a></li> 
-										<li><a href="http://themifycloud.com/demos/templates/eshop/login.html">Login</a></li> 
+										<li><a href="carro.jsp">Cart</a></li> 
+										<li><a href="login.jsp">Login</a></li> 
                                     </ul>
                                 </li> 
 								<li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="http://themifycloud.com/demos/templates/eshop/blog.html">Blog List</a></li>
+                                        <li><a href="estrenos.jsp">Blog List</a></li>
 										<li><a href="http://themifycloud.com/demos/templates/eshop/blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li> 
-								<li><a href="http://themifycloud.com/demos/templates/eshop/404.html">404</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/contact-us.html">Contact</a></li>
+								<li><a href="error.jsp">404</a></li>
+								<li><a href="contacto.jsp">Contact</a></li>
 							</ul>
 						</div>
 					</div>
