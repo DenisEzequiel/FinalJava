@@ -89,8 +89,8 @@
 								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="http://themifycloud.com/demos/templates/eshop/checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="carro.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -112,13 +112,13 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="http://themifycloud.com/demos/templates/eshop/index.html">Home</a></li>
-								<li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="active">Shop<i class="fa fa-angle-down"></i></a>
+								<li><a href="index.jsp">Home</a></li>
+								<li class="dropdown"><a href="cartelera.jsp" class="active">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="http://themifycloud.com/demos/templates/eshop/shop.html" class="active">Products</a></li>
 										<li><a href="http://themifycloud.com/demos/templates/eshop/product-details.html">Product Details</a></li> 
 										<li><a href="http://themifycloud.com/demos/templates/eshop/checkout.html">Checkout</a></li> 
-										<li><a href="http://themifycloud.com/demos/templates/eshop/cart.html">Cart</a></li> 
+										<li><a href="carro.jsp">Cart</a></li> 
 										<li><a href="http://themifycloud.com/demos/templates/eshop/login.html">Login</a></li> 
                                     </ul>
                                 </li> 
@@ -129,7 +129,7 @@
                                     </ul>
                                 </li> 
 								<li><a href="http://themifycloud.com/demos/templates/eshop/404.html">404</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/contact-us.html">Contact</a></li>
+								<li><a href="contacto.jsp">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -296,13 +296,13 @@
 										<img src="imagenes/product12.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 								</div>
@@ -321,13 +321,13 @@
 										<img src="imagenes/product11.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 								</div>
@@ -346,13 +346,13 @@
 										<img src="imagenes/product10.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 								</div>
@@ -371,13 +371,13 @@
 										<img src="imagenes/product9.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 									<img src="imagenes/new.png" class="new" alt="">
@@ -397,13 +397,13 @@
 										<img src="imagenes/product8.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 									<img src="imagenes/sale.png" class="new" alt="">
@@ -423,13 +423,13 @@
 										<img src="imagenes/product7.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 								</div>
@@ -449,13 +449,13 @@
 										<img src="imagenes/product6.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 								</div>
@@ -475,13 +475,13 @@
 										<img src="imagenes/product5.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 								</div>
@@ -501,13 +501,13 @@
 										<img src="imagenes/product4.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 								</div>
@@ -527,13 +527,13 @@
 										<img src="imagenes/product3.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 								</div>
@@ -554,13 +554,13 @@
 										<img src="imagenes/product2.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 								</div>
@@ -580,13 +580,13 @@
 										<img src="imagenes/product1.jpg" alt="">
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
-										<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="http://themifycloud.com/demos/templates/eshop/shop.html#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 								</div>
