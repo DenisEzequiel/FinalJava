@@ -1,11 +1,9 @@
-﻿
+
 /*************************
 Author : InvoInn Team
 website: http://invoinn.com
 *******Typography******
 **************************/
-
-
 
 body {
   font-family: 'Calibri', sans-serif;
@@ -1510,7 +1508,7 @@ h2.title {
 }
 
 
-.or{
+.o{
 	background: #3A5C83;
 	border-radius: 40px;
 	color: #FFFFFF;
@@ -2147,7 +2145,7 @@ h2.title {
 
 .rating-area {
   border: 1px solid #F7F7F0;
-  direction: block;
+  direction: rtl;
   overflow: hidden;
 }
 
