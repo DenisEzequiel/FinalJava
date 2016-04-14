@@ -8,9 +8,10 @@
                                     <div class="col-sm-4 col-sm-offset-1">
                                             <div class="login-form"><!--login form-->
                                                     <h2>Ingrese a su cuenta</h2>
-                                                    <form action="controlador" method="post">
-                                                            <input type="text" placeholder="Nombre de usuario" required>
-                                                            <input type="text" placeholder="Constraseña" required>
+                                                    <form action="Controlador" method="post">
+                                                            <input type="hidden" name="form" value="login">
+                                                            <input type="text" name="nomUsu" placeholder="Nombre de usuario" required>
+                                                            <input type="password" name="contra" placeholder="Constraseña" required>
                                                             <span>
                                                                     <input type="checkbox" class="checkbox"> 
                                                                     Mantenerme conectado

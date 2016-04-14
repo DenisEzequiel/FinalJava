@@ -6,4 +6,12 @@
             30
         </session-timeout>
     </session-config>
+    <servlet>
+        <servlet-name>Controlador</servlet-name>
+        <servlet-class>aplicacion.controlador.Controlador</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Controlador</servlet-name>
+        <url-pattern>/Controlador</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -21,14 +21,13 @@ public class UsuarioBD
     {
         Usuario usu=null;
         Connection con = conec.getConexion();
-        String sql = "SELECT * FROM usuarios where nombre_usuario=? and contrasena=?;";
+        String sql = "select * from usuarios where nombre_usuario=? and contrasena=?;";
         try
         {
             PreparedStatement pr = con.prepareStatement(sql);
             pr.setString(1, nom);
             pr.setString(2, contra);
             ResultSet res = pr.executeQuery();
-            con.close();
             
             if(res.next())
             {
@@ -47,6 +46,7 @@ public class UsuarioBD
                usu.setNombreUsuario(res.getString(13));
                usu.setTelefono(res.getString(7));
             }
+            con.close();
             
         }catch(SQLException ex)
         {

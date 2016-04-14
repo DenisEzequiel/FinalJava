@@ -147,12 +147,14 @@
                     </div><!--/header-bottom-->
             </header>
         
-            <% 
-        if( request.getParameter("pagina")==null )
+        <%
+        String pA = (String)session.getAttribute("PActual");
+        if( request.getParameter("pagina") == null && pA == null )
         {
-            %><jsp:include page="home.jsp"/><%  
+            %><jsp:include page="home.jsp"/><%
+             
         }
-        else
+        else if(pA == null)
         {
             int c = Integer.parseInt(request.getParameter("pagina"));
             switch(c)
@@ -160,6 +162,7 @@
                 case 1:
                 {
                     %><jsp:include page="cartelera.jsp"/><%
+                    
                         break;
                 }
                 case 2:
@@ -175,9 +178,32 @@
                     %><jsp:include page="login.jsp"/><%
                 }
             }
-        }   
-
-        %>
+        }
+        else
+        {
+            int c = Integer.parseInt(pA);
+            switch(c)
+            {
+                case 1:
+                {
+                    %><jsp:include page="cartelera.jsp"/><%
+                    
+                        break;
+                }
+                case 2:
+                {
+                    %><jsp:include page="pelicula.jsp"/><%
+                }
+                case 3:
+                {
+                    %><jsp:include page="carro.jsp"/><%
+                }
+                case 4:
+                {
+                    %><jsp:include page="login.jsp"/><%
+                }
+            }    
+        }%>
 
             <footer id="footer"><!--Footer-->
                     <div class="footer-top">

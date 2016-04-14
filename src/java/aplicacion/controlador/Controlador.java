@@ -35,7 +35,7 @@ public class Controlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
-         factoria= FactoriaDeComandos.getInstancia();
+        factoria= FactoriaDeComandos.getInstancia();
         String proxPag= factoria.buscarComando(request.getParameter("form")).ejecutar(request,response);
         request.getRequestDispatcher(proxPag).forward(request, response);
     }

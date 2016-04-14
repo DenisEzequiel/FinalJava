@@ -16,12 +16,13 @@ import java.util.logging.Logger;
 public class FactoriaDeComandos {
     public static FactoriaDeComandos instancia; 
     private Comando comando;
-    private HashMap<String, Class> mapa;
+    private HashMap<String, Class<?>> mapa;
     
     
     //constructor singleton
     private FactoriaDeComandos()
-    { mapa=new HashMap<String, Class>();
+    { 
+        mapa=new HashMap<String, Class<?>>();
         mapa.put("login",LogIn.class);
        
         
@@ -34,13 +35,18 @@ public class FactoriaDeComandos {
        return instancia;}
     
     public Comando buscarComando(String nom) 
-    { Comando c=null;
-        try {
-            c =(Comando) Class.forName(mapa.get(nom).getName()).newInstance();
-        } catch (ClassNotFoundException ex) {
-           
-        } catch(InstantiationException ex){
-        } catch(IllegalAccessException ex){
+    { 
+        Comando c=null;
+        try
+        {
+            c =(Comando)mapa.get(nom).newInstance();
+        }
+        catch(InstantiationException e)
+        {
+            
+        }
+        catch(IllegalAccessException e)
+        {
             
         }
         

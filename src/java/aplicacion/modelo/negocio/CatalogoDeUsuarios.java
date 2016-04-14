@@ -16,6 +16,7 @@ public class CatalogoDeUsuarios
     UsuarioBD usuarios;
     public Usuario buscarUsuario(String nombre, String contra)
     { 
+        usuarios = new UsuarioBD();
         Usuario usu = null;
         usu = usuarios.buscarUsuario(nombre, contra);
         return usu;

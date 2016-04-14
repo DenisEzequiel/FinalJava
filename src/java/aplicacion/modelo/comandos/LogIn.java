@@ -18,15 +18,15 @@ public class LogIn extends Comando
 {
     CatalogoDeUsuarios CdeU = new CatalogoDeUsuarios();
     
+    @Override
     public String ejecutar (HttpServletRequest request, HttpServletResponse response)
     { 
         String nomUsu = request.getParameter("nomUsu");
         String contra = request.getParameter("contra");
-        
         Usuario usu = CdeU.buscarUsuario(nomUsu, contra);
         
-        //Guardar el usuario 
-        
-        return "direccion de la proxima pagina";
+        request.getSession().setAttribute("usuario", usu);
+        request.getSession().setAttribute("PActual", "4");
+        return "/index.jsp";
     }
 }
