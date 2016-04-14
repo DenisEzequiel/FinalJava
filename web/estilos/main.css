@@ -8,7 +8,7 @@ website: http://invoinn.com
 body {
   font-family: 'Calibri', sans-serif;
   position: relative;
-  font-weight: 400px;
+  font-weight: 400;
 }
 
 ul li {
@@ -206,6 +206,16 @@ a#scrollUp i{
   margin-top: 10px;
 }
 
+.shop-menu ul li label {
+  background: #FFFFFF;
+  color: #696763;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  padding:0;
+  padding-right: 0;
+  margin-top: 10px;
+}
 
 .shop-menu ul li a i{
 	margin-right:3px;
@@ -217,7 +227,10 @@ a#scrollUp i{
 	background:#fff;
 }
 
-
+.shop-menu ul li label:hover {
+	color:#3A5C83;
+	background:#fff;
+}
 
 .navbar-collapse.collapse{
   padding-left: 0;

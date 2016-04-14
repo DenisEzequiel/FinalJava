@@ -88,11 +88,13 @@
                                             <div class="col-sm-8">
                                                     <div class="shop-menu pull-right">
                                                             <ul class="nav navbar-nav">
+                                                                <form action="index.jsp" method="post" onclick="submit()">
                                                                     <li><a href="http://themifycloud.com/demos/templates/eshop/#"><i class="fa fa-user"></i> Account</a></li>
                                                                     <li><a href="http://themifycloud.com/demos/templates/eshop/#"><i class="fa fa-star"></i> Wishlist</a></li>
                                                                     <li><a href="http://themifycloud.com/demos/templates/eshop/checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                                                     <li><a href="carro.jsp"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                                                    <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                                                                    <li><label><input type="radio" name="pagina" value="4" >Login</label></li>
+                                                                </form>
                                                             </ul>
                                                     </div>
                                             </div>
@@ -160,7 +162,18 @@
                     %><jsp:include page="cartelera.jsp"/><%
                         break;
                 }
-
+                case 2:
+                {
+                    %><jsp:include page="pelicula.jsp"/><%
+                }
+                case 3:
+                {
+                    %><jsp:include page="carro.jsp"/><%
+                }
+                case 4:
+                {
+                    %><jsp:include page="login.jsp"/><%
+                }
             }
         }   
 

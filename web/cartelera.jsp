@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)http://themifycloud.com/demos/templates/eshop/shop.html -->
 <html>
-<body>
+    <body>
 	<section>
 		<div class="container">
 			<div class="row">
