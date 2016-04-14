@@ -33,7 +33,19 @@ public class UsuarioBD
             if(res.next())
             {
                usu = new Usuario();
-               usu.setActivo(res.getBoolean(1));
+               usu.setActivo(res.getBoolean(10));
+               usu.setApellido(res.getString(3));
+               usu.setBloqueado(res.getBoolean(11));
+               usu.setContrasena(res.getString(4));
+               usu.setDireccion(res.getString(6));
+               usu.setDni(res.getString(8));
+               usu.setEsAdmin(res.getBoolean(5));
+               usu.setFechaNacimiento(res.getDate(9));
+               usu.setIdUsuario(res.getInt(1));
+               usu.setMail(res.getString(12));
+               usu.setNombre(res.getString(2));
+               usu.setNombreUsuario(res.getString(13));
+               usu.setTelefono(res.getString(7));
             }
             
         }catch(SQLException ex)
