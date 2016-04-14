@@ -5,6 +5,7 @@
  */
 package aplicacion.controlador;
 
+import aplicacion.modelo.comandos.FactoriaDeComandos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -28,12 +29,15 @@ public class Controlador extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * 
      */
+    private FactoriaDeComandos factoria;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
-        
-        
+         factoria= FactoriaDeComandos.getInstancia();
+        String proxPag= factoria.buscarComando(request.getParameter("form")).ejecutar(request,response);
+        request.getRequestDispatcher(proxPag).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

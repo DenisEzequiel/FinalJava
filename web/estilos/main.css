@@ -246,6 +246,20 @@ a#scrollUp i{
 	color:#fdb45e;
 }
 
+.mainmenu ul li label {
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-size: 17px;
+	font-weight: 300;
+	padding: 0;
+	padding-bottom: 10px;
+}
+
+.mainmenu ul li label:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active{
+	background:none;
+	color:#fdb45e;
+}
+
 .search_box input {
   background: #F0F0E9;
   border: medium none;
