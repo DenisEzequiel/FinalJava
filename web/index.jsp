@@ -115,7 +115,7 @@
                                                     <div class="mainmenu pull-left">
                                                             <ul class="nav navbar-nav collapse navbar-collapse">
                                                                     <li><a href="index.jsp" class="active">Home</a></li>
-                                                                    <li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Shop<i class="fa fa-angle-down"></i></a>
+                                                                    <li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Películas<i class="fa fa-angle-down"></i></a>
                                                                         <ul role="menu" class="sub-menu">
                                                                             <form action="index.jsp" onclick="submit()">
                                                                                 <li><label><input type="radio" name="pagina" value="1" >Cartelera</label></li>
@@ -125,14 +125,13 @@
                                                                             </form>
                                                                         </ul>
                                                                     </li> 
-                                                                    <li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Blog<i class="fa fa-angle-down"></i></a>
+                                                                    <li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Nosotros<i class="fa fa-angle-down"></i></a>
                                                                         <ul role="menu" class="sub-menu">
                                                                             <li><a href="estrenos.jsp">Blog List</a></li>
                                                                             <li><a href="http://themifycloud.com/demos/templates/eshop/blog-single.html">Blog Single</a></li>
                                                                         </ul>
-                                                                    </li> 
-                                                                    <li><a href="error.jsp">404</a></li>
-                                                                    <li><a href="contacto.jsp">Contact</a></li>
+                                                                    </li>
+                                                                    <li><a href="contacto.jsp">Contacto</a></li>
                                                             </ul>
                                                     </div>
                                             </div>
