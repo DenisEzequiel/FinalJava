@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package aplicacion.modelo.comandos;
-import aplicacion.modelo.comandos.Comando;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +17,12 @@ public class LogIn extends Comando
 {
     CatalogoDeUsuarios CdeU = new CatalogoDeUsuarios();
     
+    /**
+     *
+     * @param request
+     * @param response
+     * @return
+     */
     @Override
     public String ejecutar (HttpServletRequest request, HttpServletResponse response)
     { 

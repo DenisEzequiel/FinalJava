@@ -264,9 +264,9 @@ a#scrollUp i{
 	font-family: 'Roboto', sans-serif;
 	font-size: 17px;
 	font-weight: 300; 
-          /*padding:15px;
-	//padding-left: 30px;
-        //padding-top: 17px;*/
+        padding:15px;
+	padding-left: 10px;
+        padding-top: 15px;
 	
         
 }
@@ -1491,7 +1491,7 @@ h2.title {
 
 .login-form form input, .signup-form form input {
   background: #F0F0E9;
-  border: medium none;
+  //border: medium none;
   color: #696763;
   display: block;
   font-family: 'Roboto', sans-serif;
@@ -1502,6 +1502,15 @@ h2.title {
   outline: medium none;
   padding-left: 10px;
   width: 100%;
+ 
+}
+
+.login-form form input:focus, 
+.login-form form input:hover,
+.signup-form form input:focus,
+.signup-form form input:hover
+{
+  border-color: #FDB45E;
 }
 
 .login-form form span{
@@ -2560,22 +2569,23 @@ h2.title {
   color: #3A5C83;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) 
+{
 	.header-bottom{
 		padding:0px;
 		background-color:#172431;
-		margin-bottom:50px;
+		margin-bottom:30px;
 	}
 	.mainmenu > ul > li > label{
-		padding:15px;
+		padding:0px;
 		color:#fff;
+                
 	}
 	
 	.mainmenu ul li{
 		padding:0px;
-                padding-left: 20px;
-                
-                
+                padding-left: 15px;
+                             
 	}
 	.search_box{
 		margin-top:12px;
@@ -2596,8 +2606,26 @@ h2.title {
 	.search_box{
 		margin-top: -28px;
 	}
+        
+        .mainmenu > ul > li > label{
+		padding:0px;
+		color:#fff;
+                
+	}
 }
 
 .logo{
 	font-size: 23px;
+}
+
+.control
+{
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #696763;
+  height: 46px;
+  padding: 6px 12px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 4px;
 }

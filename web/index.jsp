@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </div><!--/header_top-->
-            <form action="index.jsp" method="post" onclick="submit()">
+            
                 <div class="header-middle"><!--header-middle-->
                     <div class="container">
                         <div class="row">
@@ -87,11 +87,11 @@
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
-
+                                         <form action="index.jsp" method="post" onclick="submit()">        
                                             <li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li>                                    
                                             <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
                                             <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i>Login</label></li>
-
+                                         </form>        
                                     </ul>
                                 </div>
                             </div>
@@ -111,9 +111,9 @@
                                         <span class="icon-bar"></span>
                                     </button>
                                 </div>
-                                <div class="mainmenu pull-left">
-                                    <ul class="nav navbar-nav collapse navbar-collapse">
-
+                                <div class="mainmenu pull-left">                                                                         
+                                    <form action="index.jsp" method="post" onclick="submit()"> 
+                                        <ul class="nav navbar-nav collapse navbar-collapse">                                                                           
                                             <li><label><input type="radio" name="pagina" value="1" >Home</label></li>
                                             <li><label><input type="radio" name="pagina" value="2">Películas</label></li>
                                             <!--<li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Películas<i class="fa fa-angle-down"></i></a>
@@ -137,8 +137,9 @@
                                             -->
                                             <li><label><input type="radio" name="pagina" value="3">Nosotros</label></li>
                                             <li><label><input type="radio" name="pagina" value="4">Contacto</label></li>
-                                            <!--<li><a href="contacto.jsp">Contacto</a></li> -->
-                                    </ul>
+                                            <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
+                                        </ul>
+                                    </form>    
                                 </div>
                             </div>
                             <div class="col-sm-3">
@@ -149,7 +150,7 @@
                         </div>
                     </div>
                 </div><!--/header-bottom-->
-             </form>
+             
         </header>
         
         <%
@@ -197,7 +198,7 @@
                         break;
                 }
                 case 7:
-                {   //falta la pagina cuenta
+                {   
                     %><jsp:include page="login.jsp"/><%
                         break;
                 }
@@ -220,7 +221,7 @@
                         break;
                 }
                 case 3:
-                {   //falta la pagina nosotros
+                {  
                     %><jsp:include page="nosotros.jsp"/><%
                         break;
                 }
@@ -240,7 +241,7 @@
                         break;
                 }
                 case 7:
-                {   //falta la pagina cuenta
+                {   
                     %><jsp:include page="login.jsp"/><%
                         break;
                 }

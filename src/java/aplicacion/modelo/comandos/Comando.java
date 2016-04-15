@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JP
  */
-public abstract class Comando {
-    
-    public abstract String ejecutar(HttpServletRequest request, HttpServletResponse response);
-    
-    
+public abstract class Comando
+{
+    public abstract String ejecutar(HttpServletRequest request, HttpServletResponse response);    
 }
