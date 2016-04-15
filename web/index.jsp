@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Home | E-Shop</title> 
+        <title>Aefilep | Home</title> 
         <link href="estilos/bootstrap.min.css" rel="stylesheet">
         <link href="estilos/font-awesome.min.css" rel="stylesheet">
         <link href="estilos/prettyPhoto.css" rel="stylesheet">
@@ -33,8 +33,8 @@
                         <div class="col-sm-6">
                             <div class="contactinfo">
                                 <ul class="nav nav-pills">
-                                    <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                                  <!--  <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li> -->
                                 </ul>
                             </div>
                         </div>
@@ -157,6 +157,7 @@
         if( request.getParameter("pagina") == null && pA == null )
         {
             %><jsp:include page="home.jsp"/><%
+              //System.out.println("trae a home");  
              
         }
         else if(pA == null)
@@ -172,12 +173,12 @@
                 }
                 case 2:
                 {
-                    %><jsp:include page="pelicula.jsp"/><%
+                    %><jsp:include page="cartelera.jsp"/><%
                         break;
                 }
                 case 3:
-                {   //falta la pagina nosotros
-                    %><jsp:include page="contacto.jsp"/><%
+                {   
+                    %><jsp:include page="nosotros.jsp"/><%
                         break;
                 }
                 case 4:
@@ -215,12 +216,12 @@
                 }
                 case 2:
                 {
-                    %><jsp:include page="pelicula.jsp"/><%
+                    %><jsp:include page="cartelera.jsp"/><%
                         break;
                 }
                 case 3:
                 {   //falta la pagina nosotros
-                    %><jsp:include page="contacto.jsp"/><%
+                    %><jsp:include page="nosotros.jsp"/><%
                         break;
                 }
                 case 4:

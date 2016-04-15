@@ -263,12 +263,14 @@ a#scrollUp i{
 	color: white;
 	font-family: 'Roboto', sans-serif;
 	font-size: 17px;
-	font-weight: 300;
-	//padding: 15px;
+	font-weight: 300; 
+          /*padding:15px;
 	//padding-left: 30px;
-        //padding-top: 17px;
+        //padding-top: 17px;*/
+	
         
 }
+      
 
 .mainmenu ul li label:hover, .mainmenu ul li label.active,  .shop-menu ul li label.active{
 	background:none;
