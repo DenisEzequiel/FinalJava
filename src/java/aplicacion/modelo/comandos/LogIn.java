@@ -26,7 +26,7 @@ public class LogIn extends Comando
         Usuario usu = CdeU.buscarUsuario(nomUsu, contra);
         
         request.getSession().setAttribute("usuario", usu);
-        request.getSession().setAttribute("PActual", "4");
+        request.getSession().setAttribute("PActual", "7");
         return "/index.jsp";
     }
 }

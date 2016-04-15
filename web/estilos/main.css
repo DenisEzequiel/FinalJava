@@ -241,9 +241,9 @@ a#scrollUp i{
   padding-left: 15px;
 }
 
-.mainmenu ul li:first-child{
+/*.mainmenu ul li:first-child{
   padding-left: 0px;
-}
+}*/
 
 .mainmenu ul li a {
 	color: #696763;
@@ -264,13 +264,20 @@ a#scrollUp i{
 	font-family: 'Roboto', sans-serif;
 	font-size: 17px;
 	font-weight: 300;
-	padding: 0;
-	padding-bottom: 10px;
+	//padding: 15px;
+	//padding-left: 30px;
+        //padding-top: 17px;
+        
 }
 
-.mainmenu ul li label:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active{
+.mainmenu ul li label:hover, .mainmenu ul li label.active,  .shop-menu ul li label.active{
 	background:none;
 	color:#fdb45e;
+}
+
+input[type="radio"]
+{
+    display: none;
 }
 
 .search_box input {
@@ -2557,13 +2564,16 @@ h2.title {
 		background-color:#172431;
 		margin-bottom:50px;
 	}
-	.mainmenu > ul > li > a{
-		padding:20px;
+	.mainmenu > ul > li > label{
+		padding:15px;
 		color:#fff;
 	}
 	
 	.mainmenu ul li{
 		padding:0px;
+                padding-left: 20px;
+                
+                
 	}
 	.search_box{
 		margin-top:12px;
