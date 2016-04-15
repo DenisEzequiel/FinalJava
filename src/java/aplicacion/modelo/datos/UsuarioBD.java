@@ -17,6 +17,7 @@ import java.sql.SQLException;
 public class UsuarioBD
 {
     Conexion conec = new Conexion();
+    
     public Usuario buscarUsuario(String nom, String contra)
     {
         Usuario usu=null;

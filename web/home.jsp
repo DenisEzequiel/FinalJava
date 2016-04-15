@@ -78,113 +78,70 @@
                             <div class="row">
                                     <div class="col-sm-3">
                                             <div class="left-sidebar">
-                                                    <h2>Category</h2>
+                                                    <h2>Géneros</h2>
                                                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                                                            <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                            <h4 class="panel-title">
-                                                                                    <a data-toggle="collapse" data-parent="#accordian" href="http://themifycloud.com/demos/templates/eshop/#sportswear">
-                                                                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                                                                            Sportswear
-                                                                                    </a>
-                                                                            </h4>
-                                                                    </div>
-                                                                    <div id="sportswear" class="panel-collapse collapse">
-                                                                            <div class="panel-body">
-                                                                                    <ul>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Nike </a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Under Armour </a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Adidas </a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Puma</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">ASICS </a></li>
-                                                                                    </ul>
-                                                                            </div>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                            <h4 class="panel-title">
-                                                                                    <a data-toggle="collapse" data-parent="#accordian" href="http://themifycloud.com/demos/templates/eshop/#mens">
-                                                                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                                                                            Mens
-                                                                                    </a>
-                                                                            </h4>
-                                                                    </div>
-                                                                    <div id="mens" class="panel-collapse collapse">
-                                                                            <div class="panel-body">
-                                                                                    <ul>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Fendi</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Guess</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Valentino</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Dior</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Versace</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Armani</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Prada</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Dolce and Gabbana</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Chanel</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Gucci</a></li>
-                                                                                    </ul>
-                                                                            </div>
-                                                                    </div>
-                                                            </div>
-
-                                                            <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                            <h4 class="panel-title">
-                                                                                    <a data-toggle="collapse" data-parent="#accordian" href="http://themifycloud.com/demos/templates/eshop/#womens">
-                                                                                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                                                                            Womens
-                                                                                    </a>
-                                                                            </h4>
-                                                                    </div>
-                                                                    <div id="womens" class="panel-collapse collapse">
-                                                                            <div class="panel-body">
-                                                                                    <ul>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Fendi</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Guess</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Valentino</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Dior</a></li>
-                                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#">Versace</a></li>
-                                                                                    </ul>
-                                                                            </div>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                            <h4 class="panel-title"><a href="http://themifycloud.com/demos/templates/eshop/#">Kids</a></h4>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                            <h4 class="panel-title"><a href="http://themifycloud.com/demos/templates/eshop/#">Fashion</a></h4>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                            <h4 class="panel-title"><a href="http://themifycloud.com/demos/templates/eshop/#">Households</a></h4>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                            <h4 class="panel-title"><a href="http://themifycloud.com/demos/templates/eshop/#">Interiors</a></h4>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                            <h4 class="panel-title"><a href="http://themifycloud.com/demos/templates/eshop/#">Clothing</a></h4>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                            <h4 class="panel-title"><a href="http://themifycloud.com/demos/templates/eshop/#">Bags</a></h4>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                            <h4 class="panel-title"><a href="http://themifycloud.com/demos/templates/eshop/#">Shoes</a></h4>
-                                                                    </div>
-                                                            </div>
-                                                    </div><!--/category-products-->
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="estrenos.jsp">Estrenos</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Acción</a></h4>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Aventura</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Ciencia Ficción</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Comedia</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Crimen</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Documental</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Drama</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Romance</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Suspenso</a></h4>
+								</div>
+							</div>
+                                                        <div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Thriller</a></h4>
+								</div>
+							</div>
+                                                        <div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="index.jsp">Terror</a></h4>
+								</div>
+							</div>
+						</div><!--/category-productsr-->
 
                                                     <div class="brands_products"><!--brands_products-->
                                                             <h2>Brands</h2>
