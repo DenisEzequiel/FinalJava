@@ -146,6 +146,11 @@ a#scrollUp i{
   padding-left: 0;
 }
 
+.container .row .col-sm-4 input[type="radio"]
+{
+    display: none;
+}
+
 .header-middle .container .row .col-sm-8 {
 	padding-right:0;
 }
@@ -1492,7 +1497,7 @@ h2.title {
 
 .login-form form input, .signup-form form input,.cuenta input {
   background: #F0F0E9;
-  /*border: medium none;*/
+  border: medium none;
   color: #696763;
   display: block;
   font-family: 'Roboto', sans-serif;
