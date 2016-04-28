@@ -36,7 +36,7 @@ public class LogIn extends Comando
         if(usu!=null)
         {
              request.getSession().setAttribute("usuario", usu);
-             request.getSession().setAttribute("PActual", PAnterior);
+             request.getSession().setAttribute("pagina", PAnterior);
         }
         return "/index.jsp";
     }
