@@ -153,100 +153,66 @@
              
         </header>
         
-        <%
-        String pA = (String)session.getAttribute("PActual");
-        if( request.getParameter("pagina") == null && pA == null )
-        {
-            %><jsp:include page="home.jsp"/><%
-              //System.out.println("trae a home");  
+       <%
+             String pA = (String)session.getAttribute("PActual");
+
+             if(pA!=null)
+             {
+                if(request.getParameter("pagina")!=null)
+                {
+                    session.setAttribute("pagina",request.getParameter("pagina"));
+                }   
+                
+                int c = Integer.parseInt((String)session.getAttribute("pagina"));
+                 
+                switch(c)
+                {
+                        case 1:
+                        {
+                            %><jsp:include page="home.jsp"/><%
+                                break;
+                        }
+                        case 2:
+                        {
+                            %><jsp:include page="cartelera.jsp"/><%
+                                break;
+                        }
+                        case 3:
+                        {   
+                            %><jsp:include page="nosotros.jsp"/><%
+                                break;
+                        }
+                        case 4:
+                        {  
+                            %><jsp:include page="contacto.jsp"/><%
+                                break;
+                        }
+                        case 5:
+                        {   //falta la pagina cuenta
+                            %><jsp:include page="contacto.jsp"/><%
+                                break;
+                        }
+                        case 6:
+                        {   
+                            %><jsp:include page="carro.jsp"/><%
+                                break;
+                        }
+                        case 7:
+                        {   
+                            %><jsp:include page="login.jsp"/><%
+                                break;
+                        }
+                    }   
+                }
              
-        }
-        else if(pA == null)
-        {
-            int c = Integer.parseInt(request.getParameter("pagina"));
-            switch(c)
-            {
-                case 1:
-                {
-                    %><jsp:include page="home.jsp"/><%
-                    
-                        break;
-                }
-                case 2:
-                {
-                    %><jsp:include page="cartelera.jsp"/><%
-                        break;
-                }
-                case 3:
-                {   
-                    %><jsp:include page="nosotros.jsp"/><%
-                        break;
-                }
-                case 4:
-                {  
-                    %><jsp:include page="contacto.jsp"/><%
-                        break;
-                }
-                case 5:
-                {   //falta la pagina cuenta
-                    %><jsp:include page="contacto.jsp"/><%
-                        break;
-                }
-                case 6:
-                {   
-                    %><jsp:include page="carro.jsp"/><%
-                        break;
-                }
-                case 7:
-                {   
-                    %><jsp:include page="login.jsp"/><%
-                        break;
-                }
-            }
-        }
-        else
-        {
-            int c = Integer.parseInt(pA);
-            switch(c)
-            {             
-                 case 1:
-                {
-                    %><jsp:include page="home.jsp"/><%
-                    
-                        break;
-                }
-                case 2:
-                {
-                    %><jsp:include page="cartelera.jsp"/><%
-                        break;
-                }
-                case 3:
-                {  
-                    %><jsp:include page="nosotros.jsp"/><%
-                        break;
-                }
-                case 4:
-                {  
-                    %><jsp:include page="contacto.jsp"/><%
-                        break;
-                }
-                case 5:
-                {   //falta la pagina cuenta
-                    %><jsp:include page="contacto.jsp"/><%
-                        break;
-                }
-                case 6:
-                {   
-                    %><jsp:include page="carro.jsp"/><%
-                        break;
-                }
-                case 7:
-                {   
-                    %><jsp:include page="login.jsp"/><%
-                        break;
-                }
-            }    
-        }%>
+             else
+             {
+                 %><jsp:include page="home.jsp"/><%
+                 session.setAttribute("PActual","sad");
+                 session.setAttribute("pagina", "1");
+             }
+        %>
+        
 
         <footer id="footer"><!--Footer-->
             <div class="footer-top">
