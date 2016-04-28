@@ -155,14 +155,12 @@
         
        <%
              String pA = (String)session.getAttribute("PActual");
-
              if(pA!=null)
              {
                 if(request.getParameter("pagina")!=null)
                 {
                     session.setAttribute("pagina",request.getParameter("pagina"));
                 }   
-                
                 int c = Integer.parseInt((String)session.getAttribute("pagina"));
                  
                 switch(c)
@@ -202,7 +200,15 @@
                             %><jsp:include page="login.jsp"/><%
                                 break;
                         }
-                    }   
+                        case 8:
+                        {
+                            %><jsp:include page="signup.jsp"/><%
+                        }
+                    }
+                    if(c!=7)
+                    {
+                        session.setAttribute("anterior", Integer.toString(c));
+                    }
                 }
              
              else
@@ -210,6 +216,7 @@
                  %><jsp:include page="home.jsp"/><%
                  session.setAttribute("PActual","sad");
                  session.setAttribute("pagina", "1");
+                 session.setAttribute("anterior", "1");
              }
         %>
         
