@@ -26,12 +26,18 @@ public class LogIn extends Comando
     @Override
     public String ejecutar (HttpServletRequest request, HttpServletResponse response)
     { 
+        
+        String PAnterior = (String)request.getSession().getAttribute("anterior");
+       
         String nomUsu = request.getParameter("nomUsu");
         String contra = request.getParameter("contra");
         Usuario usu = CdeU.buscarUsuario(nomUsu, contra);
         
-        request.getSession().setAttribute("usuario", usu);
-        request.getSession().setAttribute("PActual", "7");
+        if(usu!=null)
+        {
+             request.getSession().setAttribute("usuario", usu);
+             request.getSession().setAttribute("pagina", PAnterior);
+        }
         return "/index.jsp";
     }
 }

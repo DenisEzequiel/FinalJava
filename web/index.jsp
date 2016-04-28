@@ -22,10 +22,7 @@
         <![endif]-->       
         <link rel="shortcut icon" href="#">
         <!-- iconos para las cosas apple, para mi hay que borrarlo a la mierda -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://themifycloud.com/demos/templates/eshop/images/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://themifycloud.com/demos/templates/eshop/images/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://themifycloud.com/demos/templates/eshop/images/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="http://themifycloud.com/demos/templates/eshop/images/ico/apple-touch-icon-57-precomposed.png">
+      
     </head><!--/head-->
 
     <body>
@@ -73,35 +70,13 @@
                                 <div class="logo pull-left">
                                     <a href="index.jsp"><span>E</span>-Shop</a>
                                 </div>
-                                <div class="btn-group pull-right">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                            USA
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Canada</a></li>
-                                            <li><a href="#">UK</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                            DOLLAR
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Canadian Dollar</a></li>
-                                            <li><a href="#">Pound</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
-                                         <form action="index.jsp" method="post" onclick="submit()">        
-                                            <li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li>                                    
+                                        <form action="index.jsp" method="post" onclick="submit()">  <form action="index.jsp" method="post" onclick="submit()">    
+                                            <%if(session.getAttribute("usuario")!=null){%><li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li><%}%>             
                                             <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
                                             <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i>Login</label></li>
                                          </form>        
@@ -127,7 +102,7 @@
                                 <div class="mainmenu pull-left">                                                                         
                                     <form action="index.jsp" method="post" onclick="submit()"> 
                                         <ul class="nav navbar-nav collapse navbar-collapse">                                                                           
-                                            <li><label><input type="radio" name="pagina" value="1" >Home</label></li>
+                                            <li><label><input type="radio" name="pagina" value="1">Home</label></li>
                                             <li><label><input type="radio" name="pagina" value="2">Películas</label></li>
                                             <!--<li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Películas<i class="fa fa-angle-down"></i></a>
                                                 <ul role="menu" class="sub-menu">
@@ -178,14 +153,12 @@
         
        <%
              String pA = (String)session.getAttribute("PActual");
-
              if(pA!=null)
              {
                 if(request.getParameter("pagina")!=null)
                 {
                     session.setAttribute("pagina",request.getParameter("pagina"));
                 }   
-                
                 int c = Integer.parseInt((String)session.getAttribute("pagina"));
                  
                 switch(c)
@@ -212,7 +185,7 @@
                         }
                         case 5:
                         {   //falta la pagina cuenta
-                            %><jsp:include page="contacto.jsp"/><%
+                            %><jsp:include page="cuenta.jsp"/><%
                                 break;
                         }
                         case 6:
@@ -225,7 +198,15 @@
                             %><jsp:include page="login.jsp"/><%
                                 break;
                         }
-                    }   
+                        case 8:
+                        {
+                            %><jsp:include page="signup.jsp"/><%
+                        }
+                    }
+                    if(c!=7)
+                    {
+                        session.setAttribute("anterior", Integer.toString(c));
+                    }
                 }
              
              else
@@ -233,90 +214,12 @@
                  %><jsp:include page="home.jsp"/><%
                  session.setAttribute("PActual","primeraVez");
                  session.setAttribute("pagina", "1");
+                 session.setAttribute("anterior", "1");
              }
         %>
         
 
         <footer id="footer"><!--Footer-->
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="companyinfo">
-                                <h2><span>e</span>-shop</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="col-sm-3">
-                                <div class="video-gallery text-center">
-                                    <a href="#">
-                                        <div class="iframe-img">
-                                            <img src="imagenes/iframe1.png" alt="">
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                    </a>
-                                    <p>Circle of Hands</p>
-                                    <h2>24 DEC 2014</h2>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                                <div class="video-gallery text-center">
-                                    <a href="#">
-                                        <div class="iframe-img">
-                                            <img src="imagenes/iframe2.png" alt="">
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                    </a>
-                                    <p>Circle of Hands</p>
-                                    <h2>24 DEC 2014</h2>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                                <div class="video-gallery text-center">
-                                    <a href="#">
-                                        <div class="iframe-img">
-                                            <img src="imagenes/iframe3.png" alt="">
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                    </a>
-                                    <p>Circle of Hands</p>
-                                    <h2>24 DEC 2014</h2>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                                <div class="video-gallery text-center">
-                                    <a href="#">
-                                        <div class="iframe-img">
-                                            <img src="imagenes/iframe4.png" alt="">
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                    </a>
-                                    <p>Circle of Hands</p>
-                                    <h2>24 DEC 2014</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="address">
-                                <img src="imagenes/map.png" alt="">
-                                <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="footer-widget">
                 <div class="container">
@@ -369,17 +272,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-sm-offset-1">
-                            <div class="single-widget">
-                                <h2>About Shopper</h2>
-                                <form action="#" class="searchform">
-                                    <input type="text" placeholder="Your email address">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                                    <p>Get the most recent updates from <br>our site and be updated your self...</p>
-                                </form>
-                            </div>
-                        </div>
-
+                   
                     </div>
                 </div>
             </div>
@@ -387,8 +280,8 @@
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row">
-                        <p class="pull-left">Copyright © 2013 E-Shop Inc. All rights reserved.</p>
-                        <p class="pull-right">Designed by <span><a target="_blank" href="#">InvoInn</a></span></p>
+                        <p class="pull-left">Copyright © 2013 Aefilep Inc. Todos los derechos reservados.</p>
+                        <p class="pull-right">Designed by <span><a target="_blank" href="#">Aefilep Team</a></span></p>
                     </div>
                 </div>
             </div>
