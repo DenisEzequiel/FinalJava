@@ -1380,7 +1380,7 @@ h2.title {
 	color:#363432;
 }
 
-#reviews  form span {
+#reviews form span {
   display: block;
 }
 
@@ -1465,10 +1465,11 @@ h2.title {
 *******login page CSS******
 **************************/
 
-#form {
+#form
+{
   display: block;
   margin-bottom: 185px;
-  margin-top: 185px;
+  margin-top: 50px;
   overflow: hidden;
 }
 
@@ -1489,7 +1490,7 @@ h2.title {
 }
 
 
-.login-form form input, .signup-form form input {
+.login-form form input, .signup-form form input,.cuenta input {
   background: #F0F0E9;
   //border: medium none;
   color: #696763;
@@ -1524,11 +1525,11 @@ h2.title {
   margin-right: 5px;
 }
 
-.login-form form button {
+.login-form form button .cuenta button{
   margin-top: 23px;
 }
 
-.login-form form button, .signup-form form button {
+.login-form form button, .signup-form form button,.cuenta button {
   background: #3A5C83;
   border: medium none;
   border-radius: 0;

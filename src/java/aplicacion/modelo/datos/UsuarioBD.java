@@ -56,4 +56,26 @@ public class UsuarioBD
         
         return usu;
     }
+    
+    public void actualizarDatos(int id,String nombre,String apellido,String direccion,String telefono,String mail)
+    {
+        Connection con = conec.getConexion();
+        String sql = "update usuarios set nombre=?,apellido=?,direccion=?,telefono=?,mail=? where id_usuario=?";
+   
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(sql);
+            pr.setString(1, nombre);
+            pr.setString(2, apellido);
+            pr.setString(3, direccion);
+            pr.setString(4, telefono);
+            pr.setString(5, mail);
+            pr.setInt(6,id);
+            pr.executeUpdate();
+        }
+         catch(SQLException ex)
+        {
+            
+        }
+    }
 }
