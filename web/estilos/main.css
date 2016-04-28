@@ -1,3 +1,7 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
+@import url(http://fonts.googleapis.com/css?family=Abel);
+
 
 /*************************
 Author : InvoInn Team
@@ -2628,4 +2632,10 @@ h2.title {
   width: 100%;
   font-size: 16px;
   border-radius: 4px;
+}
+
+.fotoAefilep
+{
+    margin-bottom: 100px;
+    margin-top: -300px;
 }

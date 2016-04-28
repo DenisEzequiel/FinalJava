@@ -53,6 +53,7 @@ public class UsuarioBD
         {
             
         }
+        System.out.print(usu.getApellido());
         
         return usu;
     }

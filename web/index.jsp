@@ -1,6 +1,9 @@
+<%@page import="aplicacion.modelo.entidades.Parametro"%>
+<%@page import="aplicacion.modelo.datos.ParametroBD"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    <head> 
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
@@ -26,6 +29,16 @@
     </head><!--/head-->
 
     <body>
+        <%
+
+            ParametroBD pbd = new ParametroBD();
+            Parametro par = pbd.obtenerParametros();
+            
+            request.getSession().setAttribute("parametro", par);
+         
+            
+            %>
+            
         <header id="header">
             <div class="header_top"><!--header_top-->
                 <div class="container">
@@ -136,10 +149,20 @@
                                             </li>
                                             -->
                                             <li><label><input type="radio" name="pagina" value="3">Nosotros</label></li>
-                                            <li><label><input type="radio" name="pagina" value="4">Contacto</label></li>
+                                            <li><label><input type="radio" name="pagina" value="4">Contacto  </label></li>
+                                            
+                                            
+                                            
+                                           
                                             <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
                                         </ul>
-                                    </form>    
+                                    </form>   
+                                      <input type="hidden" name="form" value="contacto">
+                                     <form action="Controlador" method="post" onclick="submit()">
+                                             
+                                             
+                                        
+                                     </form> 
                                 </div>
                             </div>
                             <div class="col-sm-3">
@@ -208,7 +231,7 @@
              else
              {
                  %><jsp:include page="home.jsp"/><%
-                 session.setAttribute("PActual","sad");
+                 session.setAttribute("PActual","primeraVez");
                  session.setAttribute("pagina", "1");
              }
         %>

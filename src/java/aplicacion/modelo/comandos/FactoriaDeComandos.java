@@ -16,7 +16,8 @@ public class FactoriaDeComandos
     private FactoriaDeComandos()
     { 
         mapa=new HashMap<>();
-        mapa.put("login",LogIn.class);     
+        mapa.put("login",LogIn.class);
+       
     }
     /**
      * Metodo de clase devuelve la instancia de FactoriaDeComandos
