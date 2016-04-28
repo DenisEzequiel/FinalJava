@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <body>
-	 
+
 	<div id="contact-page" class="container">
     	<div class="bg">
 	    	<div class="row">    		
@@ -74,6 +71,3 @@
 	    	</div>  
     	</div>	
     </div><!--/#contact-page-->
-
-    </body>
-</html>

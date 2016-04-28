@@ -19,10 +19,7 @@
         <![endif]-->       
         <link rel="shortcut icon" href="#">
         <!-- iconos para las cosas apple, para mi hay que borrarlo a la mierda -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://themifycloud.com/demos/templates/eshop/images/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://themifycloud.com/demos/templates/eshop/images/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://themifycloud.com/demos/templates/eshop/images/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="http://themifycloud.com/demos/templates/eshop/images/ico/apple-touch-icon-57-precomposed.png">
+      
     </head><!--/head-->
 
     <body>
@@ -87,8 +84,8 @@
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
-                                         <form action="index.jsp" method="post" onclick="submit()">        
-                                            <li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li>                                    
+                                        <form action="index.jsp" method="post" onclick="submit()">  <form action="index.jsp" method="post" onclick="submit()">    
+                                            <li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li>             
                                             <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
                                             <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i>Login</label></li>
                                          </form>        
@@ -114,7 +111,7 @@
                                 <div class="mainmenu pull-left">                                                                         
                                     <form action="index.jsp" method="post" onclick="submit()"> 
                                         <ul class="nav navbar-nav collapse navbar-collapse">                                                                           
-                                            <li><label><input type="radio" name="pagina" value="1" >Home</label></li>
+                                            <li><label><input type="radio" name="pagina" value="1">Home</label></li>
                                             <li><label><input type="radio" name="pagina" value="2">Películas</label></li>
                                             <!--<li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Películas<i class="fa fa-angle-down"></i></a>
                                                 <ul role="menu" class="sub-menu">
@@ -187,7 +184,7 @@
                         }
                         case 5:
                         {   //falta la pagina cuenta
-                            %><jsp:include page="contacto.jsp"/><%
+                            %><jsp:include page="cuenta.jsp"/><%
                                 break;
                         }
                         case 6:
