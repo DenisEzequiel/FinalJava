@@ -33,8 +33,11 @@ public class LogIn extends Comando
         String contra = request.getParameter("contra");
         Usuario usu = CdeU.buscarUsuario(nomUsu, contra);
         
-        request.getSession().setAttribute("usuario", usu);
-        request.getSession().setAttribute("pagina",PAnterior);
+        if(usu!=null)
+        {
+             request.getSession().setAttribute("usuario", usu);
+             request.getSession().setAttribute("PActual", PAnterior);
+        }
         return "/index.jsp";
     }
 }
