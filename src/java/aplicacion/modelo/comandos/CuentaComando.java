@@ -22,17 +22,29 @@ public class CuentaComando extends Comando
     {
         UsuarioBD usuBD = new UsuarioBD();
         Usuario usu = (Usuario)request.getSession().getAttribute("usuario");
-        
-        usuBD.actualizarDatos(usu.getIdUsuario(),request.getParameter("nombre"),request.getParameter("apellido"),request.getParameter("direccion"),request.getParameter("telefono"),request.getParameter("mail"));
-        
-        usu.setNombre(request.getParameter("nombre"));
-        usu.setApellido(request.getParameter("apellido"));
-        usu.setDireccion(request.getParameter("direccion"));
-        usu.setTelefono(request.getParameter("telefono")); 
-        usu.setMail(request.getParameter("mail"));
-        
-        request.getSession().setAttribute("usuario", usu);
-        
+        if(request.getParameter("cambioContra")==null)
+        {       
+            usuBD.actualizarDatos(usu.getIdUsuario(),request.getParameter("nombre"),request.getParameter("apellido"),request.getParameter("direccion"),request.getParameter("telefono"),request.getParameter("mail"));
+
+            usu.setNombre(request.getParameter("nombre"));
+            usu.setApellido(request.getParameter("apellido"));
+            usu.setDireccion(request.getParameter("direccion"));
+            usu.setTelefono(request.getParameter("telefono")); 
+            usu.setMail(request.getParameter("mail"));
+
+            request.getSession().setAttribute("usuario", usu);
+        }
+        else
+        {
+            Usuario usuario = usuBD.buscarUsuario(usu.getNombreUsuario(), request.getParameter("contraAnterior"));
+            if(usuario!=null)
+            {
+                if(request.getParameter("nuevaContra").equals(request.getParameter("repiteContra")))
+                {
+                    usuBD.actualizarContrasenia(usu.getIdUsuario(),request.getParameter("nuevaContra"));
+                }
+            }
+        }
         return  "/index.jsp";
     }
     

@@ -63,7 +63,7 @@
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
                                         <form action="index.jsp" method="post" onclick="submit()">  <form action="index.jsp" method="post" onclick="submit()">    
-                                            <li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li>             
+                                            <%if(session.getAttribute("usuario")!=null){%><li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li><%}%>             
                                             <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
                                             <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i>Login</label></li>
                                          </form>        
