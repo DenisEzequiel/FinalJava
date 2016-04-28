@@ -57,29 +57,7 @@
                                 <div class="logo pull-left">
                                     <a href="index.jsp"><span>E</span>-Shop</a>
                                 </div>
-                                <div class="btn-group pull-right">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                            USA
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Canada</a></li>
-                                            <li><a href="#">UK</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                            DOLLAR
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Canadian Dollar</a></li>
-                                            <li><a href="#">Pound</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
@@ -219,85 +197,6 @@
         
 
         <footer id="footer"><!--Footer-->
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="companyinfo">
-                                <h2><span>e</span>-shop</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="col-sm-3">
-                                <div class="video-gallery text-center">
-                                    <a href="#">
-                                        <div class="iframe-img">
-                                            <img src="imagenes/iframe1.png" alt="">
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                    </a>
-                                    <p>Circle of Hands</p>
-                                    <h2>24 DEC 2014</h2>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                                <div class="video-gallery text-center">
-                                    <a href="#">
-                                        <div class="iframe-img">
-                                            <img src="imagenes/iframe2.png" alt="">
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                    </a>
-                                    <p>Circle of Hands</p>
-                                    <h2>24 DEC 2014</h2>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                                <div class="video-gallery text-center">
-                                    <a href="#">
-                                        <div class="iframe-img">
-                                            <img src="imagenes/iframe3.png" alt="">
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                    </a>
-                                    <p>Circle of Hands</p>
-                                    <h2>24 DEC 2014</h2>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                                <div class="video-gallery text-center">
-                                    <a href="#">
-                                        <div class="iframe-img">
-                                            <img src="imagenes/iframe4.png" alt="">
-                                        </div>
-                                        <div class="overlay-icon">
-                                            <i class="fa fa-play-circle-o"></i>
-                                        </div>
-                                    </a>
-                                    <p>Circle of Hands</p>
-                                    <h2>24 DEC 2014</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="address">
-                                <img src="imagenes/map.png" alt="">
-                                <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="footer-widget">
                 <div class="container">
@@ -350,17 +249,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-sm-3 col-sm-offset-1">
-                            <div class="single-widget">
-                                <h2>About Shopper</h2>
-                                <form action="#" class="searchform">
-                                    <input type="text" placeholder="Your email address">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                                    <p>Get the most recent updates from <br>our site and be updated your self...</p>
-                                </form>
-                            </div>
-                        </div>
-
+                   
                     </div>
                 </div>
             </div>
@@ -368,8 +257,8 @@
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row">
-                        <p class="pull-left">Copyright © 2013 E-Shop Inc. All rights reserved.</p>
-                        <p class="pull-right">Designed by <span><a target="_blank" href="#">InvoInn</a></span></p>
+                        <p class="pull-left">Copyright © 2013 Aefilep Inc. Todos los derechos reservados.</p>
+                        <p class="pull-right">Designed by <span><a target="_blank" href="#">Aefilep Team</a></span></p>
                     </div>
                 </div>
             </div>
