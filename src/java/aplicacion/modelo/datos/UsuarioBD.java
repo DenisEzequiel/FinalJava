@@ -53,6 +53,7 @@ public class UsuarioBD
         {
             
         }
+        System.out.print(usu.getApellido());
         
         return usu;
     }
@@ -79,7 +80,25 @@ public class UsuarioBD
         }
     }
     
-    public void registrarUsuario(Usuario usu)
+    public void actualizarContrasenia(int id,String contra)
+    {
+        Connection con = conec.getConexion();
+        String sql = "update usuarios set contrasena=? where id_usuario=?";
+   
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(sql);
+            pr.setString(1, contra);         
+            pr.setInt(2,id);
+            pr.executeUpdate();
+        }
+         catch(SQLException ex)
+        {
+            
+        }
+    }
+            
+public void registrarUsuario(Usuario usu)
     {
         PreparedStatement prpstmt;
         Connection con = conec.getConexion();
