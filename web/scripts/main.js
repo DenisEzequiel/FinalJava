@@ -27,27 +27,4 @@ $(document).ready(function(){
 	        zIndex: 2147483647 // Z-Index for the overlay
 		});
 	});
-                   
 });
-
-var acc = document.getElementsByClassName("accordion");
- 
-var i;
-for (i = 0; i < acc.length; i++) {
- 
-acc[i].onclick = function(){
-           
-for(var j=0;j<acc.length;j++)
-{
-    if(this!=acc[j])
-    {
-        acc[j].classList.remove("active");
-        acc[j].nextElementSibling.classList.remove("show");
-    }
-}
-                 
-this.classList.toggle("active");
-this.nextElementSibling.classList.toggle("show");
-             
-};
-}

@@ -8,8 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Aefilep | Home</title>
-        <link href="estilos/jquery-ui.min.css" rel="stylesheet">
+        <title>Aefilep | Home</title> 
         <link href="estilos/bootstrap.min.css" rel="stylesheet">
         <link href="estilos/font-awesome.min.css" rel="stylesheet">
         <link href="estilos/prettyPhoto.css" rel="stylesheet">
@@ -17,13 +16,13 @@
         <link href="estilos/animate.css" rel="stylesheet">
         <link href="estilos/main.css" rel="stylesheet">
         <link href="estilos/responsive.css" rel="stylesheet">
-        
         <!--[if lt IE 9]>
         <script src="js/html5shiv.js"></script>
         <script src="js/respond.min.js"></script>
         <![endif]-->       
         <link rel="shortcut icon" href="#">
-
+        <!-- iconos para las cosas apple, para mi hay que borrarlo a la mierda -->
+      
     </head><!--/head-->
 
     <body>
@@ -79,7 +78,7 @@
                                         <form action="index.jsp" method="post" onclick="submit()">  <form action="index.jsp" method="post" onclick="submit()">    
                                             <%if(session.getAttribute("usuario")!=null){%><li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li><%}%>             
                                             <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
-                                            <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i> Login</label></li>
+                                            <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i>Login</label></li>
                                          </form>        
                                     </ul>
                                 </div>
@@ -282,15 +281,13 @@
                 <div class="container">
                     <div class="row">
                         <p class="pull-left">Copyright © 2013 Aefilep Inc. Todos los derechos reservados.</p>
-                        <p class="pull-right">Diseñado por <span><a target="_blank" href="#">Aefilep Team</a></span></p>
+                        <p class="pull-right">Designed by <span><a target="_blank" href="#">Aefilep Team</a></span></p>
                     </div>
                 </div>
             </div>
         </footer><!--/Footer-->
         
-       
         <script src="scripts/jquery.js"></script>
-        <script src="scripts/jquery-ui.min.js"></script>
         <script src="scripts/bootstrap.min.js"></script>
         <script src="scripts/jquery.scrollUp.min.js"></script>
         <script src="scripts/price-range.js"></script>
