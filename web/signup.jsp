@@ -28,32 +28,32 @@
                                                     </tr>
                                                     <tr>
                                                         <td colspan="4">
-                                                            <input class="control" type="text" placeholder="Nombre" required value="<%=nombre %>">
+                                                            <input class="control form-control" type="text" placeholder="Nombre" required value="<%=nombre %>">
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="4"><input class="control" type="text" placeholder="Apellido" required></td>
+                                                        <td colspan="4"><input class="control form-control" type="text" placeholder="Apellido" required></td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td colspan="3" style="text-align:center;">Cumpleaños</td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="width:60%"><input class="control" type="text" placeholder="DNI" required></td>
-                                                        <td><input class="control" type="text" placeholder="Día" required></td>
-                                                        <td><input class="control" type="text" placeholder="Mes" required></td>
-                                                        <td><input class="control" type="text" placeholder="Año" required></td>
+                                                        <td style="width:60%"><input class="control form-control" type="text" placeholder="DNI" required></td>
+                                                        <td><input class="control form-control" type="text" placeholder="Día" required></td>
+                                                        <td><input class="control form-control" type="text" placeholder="Mes" required></td>
+                                                        <td><input class="control form-control" type="text" placeholder="Año" required></td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="1"><input class="control" type="text" placeholder="Calle" required></td>
-                                                        <td colspan="3"><input class="control" type="text" placeholder="Número" required></td>
+                                                        <td colspan="1"><input class="control form-control" type="text" placeholder="Calle" required></td>
+                                                        <td colspan="3"><input class="control form-control" type="text" placeholder="Número" required></td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="4"><input class="control" type="text" placeholder="Teléfono" required></td>
+                                                        <td colspan="4"><input class="control form-control" type="text" placeholder="Teléfono" required></td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="4">
-                                                            <input class="control" type="text" placeholder="Email" required value="<%=email %>">
+                                                            <input class="control form-control" type="text" placeholder="Email" required value="<%=email %>">
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -73,14 +73,14 @@
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <input class="control" type="text" placeholder="Nombre de Usuario" required>
+                                                            <input class="control form-control" type="text" placeholder="Nombre de Usuario" required>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input class="control" type="password" placeholder="Contraseña" required value="<%=contrasenia %>"></td>
+                                                        <td><input class="control form-control" type="password" placeholder="Contraseña" required value="<%=contrasenia %>"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input class="control" type="password" placeholder="Confirmar contraseña" required></td>
+                                                        <td><input class="control form-control" type="password" placeholder="Confirmar contraseña" required></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -95,12 +95,12 @@
                                                     </tr>
                                                     <tr>
                                                         <td colspan="2">
-                                                            <input class="control" type="text" placeholder="Número de tarjeta" required>
+                                                            <input class="control form-control" type="text" placeholder="Número de tarjeta" required>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input class="control" type="text" placeholder="Empresa/Banco" required></td>
-                                                        <td><input class="control" type="text" placeholder="Código de seguridad" required></td>
+                                                        <td><input class="control form-control" type="text" placeholder="Empresa/Banco" required></td>
+                                                        <td><input class="control form-control" type="text" placeholder="Código de seguridad" required></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
