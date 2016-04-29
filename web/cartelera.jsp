@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html>
-    <body>
+<h2 class="title text-center">Películas</h2>
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Géneros</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                                              <h2>Géneros</h2>
+                                                    <div class="brands-name">
+                                                        <ul class="nav nav-pills nav-stacked">
+                                                            <li><a href="estrenos.jsp">Estrenos</a></li>
+                                                            <li><a href="index.jsp">Accion</a></li>
+                                                            <li><a href="index.jsp">Aventura</a></li>
+                                                            <li><a href="index.jsp">Ciencia Ficcion</a></li>
+                                                            <li><a href="index.jsp">Comedia</a></li>
+                                                            <li><a href="index.jsp">Crimen</a></li>
+                                                            <li><a href="index.jsp">Documental</a></li>
+                                                            <li><a href="index.jsp">Drama</a></li>
+                                                            <li><a href="index.jsp">Romance</a></li>
+                                                            <li><a href="index.jsp">Suspenso</a></li>
+                                                            <li><a href="index.jsp">Thriller</a></li>
+                                                            <li><a href="index.jsp">Terror</a></li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                            
+						<!-- <h2>Géneros</h2>
+						<div class="panel-group category-products" id="accordian"><!--category-productsr
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title"><a href="estrenos.jsp">Estrenos</a></h4>
@@ -103,7 +121,7 @@
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Películas</h2>
+						
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">

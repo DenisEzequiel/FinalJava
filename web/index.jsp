@@ -78,7 +78,7 @@
                                         <form action="index.jsp" method="post" onclick="submit()">  <form action="index.jsp" method="post" onclick="submit()">    
                                             <%if(session.getAttribute("usuario")!=null){%><li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li><%}%>             
                                             <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
-                                            <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i>Login</label></li>
+                                            <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i> Login</label></li>
                                          </form>        
                                     </ul>
                                 </div>
@@ -142,7 +142,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <div class="search_box pull-right">
-                                    <input type="text" placeholder="Search">
+                                    <input type="text" placeholder="Buscar">
                                 </div>
                             </div>
                         </div>
@@ -281,7 +281,7 @@
                 <div class="container">
                     <div class="row">
                         <p class="pull-left">Copyright © 2013 Aefilep Inc. Todos los derechos reservados.</p>
-                        <p class="pull-right">Designed by <span><a target="_blank" href="#">Aefilep Team</a></span></p>
+                        <p class="pull-right">Diseñado por <span>Aefilep Team</a></span></p>
                     </div>
                 </div>
             </div>

@@ -1,13 +1,4 @@
-<%-- 
-    Document   : home
-    Created on : 14/04/2016, 13:42:24
-    Author     : JP
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <body>
         <section id="slider"><!--slider-->
                     <div class="container">
                             <div class="row">
@@ -79,7 +70,23 @@
                                     <div class="col-sm-3">
                                             <div class="left-sidebar">
                                                     <h2>Géneros</h2>
-                                                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                                                    <div class="brands-name">
+                                                        <ul class="nav nav-pills nav-stacked">
+                                                            <li><a href="estrenos.jsp">Estrenos</a></li>
+                                                            <li><a href="index.jsp">Accion</a></li>
+                                                            <li><a href="index.jsp">Aventura</a></li>
+                                                            <li><a href="index.jsp">Ciencia Ficcion</a></li>
+                                                            <li><a href="index.jsp">Comedia</a></li>
+                                                            <li><a href="index.jsp">Crimen</a></li>
+                                                            <li><a href="index.jsp">Documental</a></li>
+                                                            <li><a href="index.jsp">Drama</a></li>
+                                                            <li><a href="index.jsp">Romance</a></li>
+                                                            <li><a href="index.jsp">Suspenso</a></li>
+                                                            <li><a href="index.jsp">Thriller</a></li>
+                                                            <li><a href="index.jsp">Terror</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <!--<div class="panel-group category-products" id="accordian"><!--category-productsr
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title"><a href="estrenos.jsp">Estrenos</a></h4>
@@ -147,13 +154,13 @@
                                                             <h2>Brands</h2>
                                                             <div class="brands-name">
                                                                     <ul class="nav nav-pills nav-stacked">
-                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#"> <span class="pull-right">(50)</span>Acne</a></li>
-                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#"> <span class="pull-right">(27)</span>Albiro</a></li>
-                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#"> <span class="pull-right">(32)</span>Ronhill</a></li>
-                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#"> <span class="pull-right">(5)</span>Oddmolly</a></li>
-                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
-                                                                            <li><a href="http://themifycloud.com/demos/templates/eshop/#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
+                                                                            <li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
+                                                                            <li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
+                                                                            <li><a href="#"> <span class="pull-right">(27)</span>Albiro</a></li>
+                                                                            <li><a href="#"> <span class="pull-right">(32)</span>Ronhill</a></li>
+                                                                            <li><a href="#"> <span class="pull-right">(5)</span>Oddmolly</a></li>
+                                                                            <li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
+                                                                            <li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
                                                                     </ul>
                                                             </div>
                                                     </div><!--/brands_products-->
@@ -720,5 +727,3 @@
                             </div>
                     </div>
             </section>
-    </body>
-</html>

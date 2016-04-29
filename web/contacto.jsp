@@ -1,11 +1,10 @@
 <%@page import="aplicacion.modelo.entidades.Parametro"%>
-<!DOCTYPE html>
-<html>
-    <body>
+
         <%
             Parametro par = (Parametro) session.getAttribute("parametro");
               
             %>
+        <h2 class="title text-center">Contacto </h2>  
 	<div id="contact-page" class="container">
     	<div class="bg">
 	   
@@ -49,6 +48,3 @@
 	    	</div>  
     	</div>	
     </div><!--/#contact-page-->
-
-    </body>
-</html>

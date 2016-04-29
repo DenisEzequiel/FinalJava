@@ -53,7 +53,7 @@ public class UsuarioBD
         {
             
         }
-        System.out.print(usu.getApellido());
+        //System.out.print(usu.getApellido());
         
         return usu;
     }
@@ -73,11 +73,13 @@ public class UsuarioBD
             pr.setString(5, mail);
             pr.setInt(6,id);
             pr.executeUpdate();
+            con.close();
         }
          catch(SQLException ex)
         {
             
         }
+        
     }
     
     public void actualizarContrasenia(int id,String contra)
@@ -91,6 +93,7 @@ public class UsuarioBD
             pr.setString(1, contra);         
             pr.setInt(2,id);
             pr.executeUpdate();
+            con.close();
         }
          catch(SQLException ex)
         {
@@ -120,6 +123,7 @@ public void registrarUsuario(Usuario usu)
             prpstmt.setString(12, usu.getMail());
             prpstmt.setString(13, usu.getNombreUsuario());
             prpstmt.executeUpdate();
+            con.close();
         }
         catch(SQLException e)
         {

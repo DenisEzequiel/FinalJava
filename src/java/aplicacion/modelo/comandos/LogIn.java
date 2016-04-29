@@ -38,6 +38,10 @@ public class LogIn extends Comando
              request.getSession().setAttribute("usuario", usu);
              request.getSession().setAttribute("pagina", PAnterior);
         }
+        else
+        {
+            request.getSession().setAttribute("pagina", "7");
+        }
         return "/index.jsp";
     }
 }

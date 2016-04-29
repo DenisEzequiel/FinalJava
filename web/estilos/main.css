@@ -302,7 +302,7 @@ input[type="radio"]
   outline: medium none;
   padding-left: 10px;
   width: 155px;
-  /* background-image: url(../images/home/searchicon.png);*/
+  background-image: url("../imagenes/searchicon.png");
   background-repeat: no-repeat;
   background-position: 130px;
 }
@@ -714,7 +714,7 @@ ul.sub-menu {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  margin: 0 auto 30px;
+
   text-align: center;
   text-transform: uppercase;
   position: relative;
@@ -889,7 +889,6 @@ h2.title {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  margin: 0 15px;
   text-transform: uppercase;
   margin-bottom: 30px;
   position: relative;
@@ -1546,6 +1545,7 @@ h2.title {
   display: block;
   font-family: 'Roboto', sans-serif;
   padding: 6px 25px;
+  margin-left: auto;
 }
 
 .login-form label{
@@ -2644,4 +2644,86 @@ h2.title {
 {
     margin-bottom: 100px;
     margin-top: -300px;
+}
+
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    padding-left: 15px;
+    transition: 0.4s;
+    margin-bottom: -22px;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s ;
+    opacity: 0;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 500px;
+    margin-top: 50px;
+}
+
+button.accordion:after {
+    content: '\02795'; 
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2796"; 
+}
+
+
+#cuenta
+{
+  display: block;
+  margin-top: 50px;
+  overflow: hidden;
+  height:700px;
+  
+}
+
+.control.form-control {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #696763;
+  height: 46px;
+  padding: 6px 12px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 4px;
+  box-shadow:inherit;
+}
+
+.control.form-control:focus, 
+.control.form-control:hover {
+  box-shadow: inherit;
+  border-color: #FDB45E;
+}
+
+
+.btn.btn-default.right
+{
+    margin-left: auto;
 }
