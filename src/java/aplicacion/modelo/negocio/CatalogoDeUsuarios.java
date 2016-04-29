@@ -21,4 +21,11 @@ public class CatalogoDeUsuarios
         usu = usuarios.buscarUsuario(nombre, contra);
         return usu;
     }
+    
+    public void registrarUsuario(Usuario usu)
+    {
+        usuarios = new UsuarioBD();
+        usuarios.registrarUsuario(usu);
+        
+    }
 }
