@@ -56,7 +56,7 @@ public class UsuarioBD
         
         return usu;
     }
-    
+ 
     public void actualizarDatos(int id,String nombre,String apellido,String direccion,String telefono,String mail)
     {
         Connection con = conec.getConexion();
@@ -76,6 +76,35 @@ public class UsuarioBD
          catch(SQLException ex)
         {
             
+        }
+    }
+    
+    public void registrarUsuario(Usuario usu)
+    {
+        PreparedStatement prpstmt;
+        Connection con = conec.getConexion();
+        String transac = "insert into aefilep.usuarios values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        try
+        {
+            prpstmt = con.prepareStatement(transac);
+            prpstmt.setNull(1,0);
+            prpstmt.setString(2, usu.getNombre());
+            prpstmt.setString(3, usu.getApellido());
+            prpstmt.setString(4, usu.getContrasena());
+            prpstmt.setInt(5, 0);
+            prpstmt.setString(6, usu.getDireccion());
+            prpstmt.setString(7, usu.getTelefono());
+            prpstmt.setString(8, usu.getDni());
+            prpstmt.setDate(9, new java.sql.Date(usu.getFechaNacimiento().getTime()));
+            prpstmt.setInt(10, 1);
+            prpstmt.setInt(11, 0);
+            prpstmt.setString(12, usu.getMail());
+            prpstmt.setString(13, usu.getNombreUsuario());
+            prpstmt.executeUpdate();
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
         }
     }
 }

@@ -180,7 +180,7 @@
                             %><jsp:include page="signup.jsp"/><%
                         }
                     }
-                    if(c!=7)
+                    if(c!=7 && c!=8)
                     {
                         session.setAttribute("anterior", Integer.toString(c));
                     }

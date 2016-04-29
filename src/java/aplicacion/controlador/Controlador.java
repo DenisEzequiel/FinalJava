@@ -7,7 +7,6 @@ package aplicacion.controlador;
 
 import aplicacion.modelo.comandos.FactoriaDeComandos;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +35,7 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException 
     {
         factoria= FactoriaDeComandos.getInstancia();
-        String proxPag= factoria.buscarComando(request.getParameter("form")).ejecutar(request,response);
+        String proxPag = factoria.buscarComando(request.getParameter("form")).ejecutar(request,response);
         request.getRequestDispatcher(proxPag).forward(request, response);
     }
 
