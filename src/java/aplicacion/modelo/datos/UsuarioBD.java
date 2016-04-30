@@ -61,18 +61,8 @@ public class UsuarioBD
         return usu;
     }
  
-    public void actualizarDatos(int id,String nombre,String apellido,String direccion,String telefono,String mail,String dni,String fechaNacimiento)
-    {
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-        java.sql.Date fechaSql = null;
-        try
-            {
-                Date fecha = formatoFecha.parse(fechaNacimiento);
-                fechaSql = new java.sql.Date(fecha.getTime());
-            }
-        catch(ParseException e)
-            {
-            }      
+    public void modificarUsuario(Usuario usu)
+    {   
         
         Connection con = conec.getConexion();
         String sql = "update usuarios set nombre=? , apellido=? , direccion=? ,"
@@ -81,14 +71,14 @@ public class UsuarioBD
         try
         {
             PreparedStatement pr = con.prepareStatement(sql);
-            pr.setString(1, nombre);
-            pr.setString(2, apellido);
-            pr.setString(3, direccion);
-            pr.setString(4, telefono);
-            pr.setString(5, mail);           
-            pr.setString(6,dni);
-            pr.setDate(7,fechaSql);            
-            pr.setInt(8,id);
+            pr.setString(1, usu.getNombre());
+            pr.setString(2, usu.getApellido());
+            pr.setString(3, usu.getDireccion());
+            pr.setString(4, usu.getTelefono());
+            pr.setString(5, usu.getMail());           
+            pr.setString(6,usu.getDni());
+            pr.setDate(7, new java.sql.Date(usu.getFechaNacimiento().getTime()));            
+            pr.setInt(8,usu.getIdUsuario());
             pr.executeUpdate();
             con.close();
         }
@@ -98,7 +88,7 @@ public class UsuarioBD
         
     }
     
-    public boolean actualizarContrasenia(int id,String contra)
+    public boolean modificarContrasenia(int id,String contra)
     {
         Connection con = conec.getConexion();
         String sql = "update usuarios set contrasena=? where id_usuario=?";

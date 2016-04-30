@@ -65,19 +65,24 @@
             </div>                   
            
             <button class="accordion">Medios de pago</button>
-            <div class="panel">          
+            <div class="panel">   
                 <div class="row">
-                    <div class="col-sm-5 col-sm-offset-1">
-                        <br/>
-                        <form action="Controlador" method="post">
-                            <input type="hidden" name="form" value="cuenta">                       
-                                <div class="cuenta"><!--login form-->                           
-                                    <input type="hidden" name="form" value="cuenta">                              
-                                    <button type="submit" class="btn btn-default right "></button>       
-                                </div>
-                        </form>
+                    <div class="col-sm-12">
+                        <div class="table-responsive">                    
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>                                   
+                                        <th>Numero de tarjeta</th>
+                                        <th>Empresa/Banco</th>
+                                        <th>Codigo de seguridad</th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </div>
                     </div>
-                </div>  
+                </div>
             </div>
         </div>
     </section>

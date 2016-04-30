@@ -2677,7 +2677,7 @@ div.panel {
 
 div.panel.show {
     opacity: 1;
-    max-height: 500px;
+    max-height: 900px;
     margin-top: 50px;
 }
 
@@ -2701,7 +2701,7 @@ button.accordion.active:after {
   display: block;
   margin-top: 50px;
   overflow: hidden;
-  height:700px;
+  height:900px;
   
 }
 

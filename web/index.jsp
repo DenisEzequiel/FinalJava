@@ -116,11 +116,7 @@
                                             -->
                                         <li><label><input type="radio" name="pagina" value="3">Nosotros</label></li>
                                         <li><label><input type="radio" name="pagina" value="4">Contacto  </label></li>
-                                            
-                                            
-                                            
-                                           
-                                            <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
+                                          <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
                                     </ul>
                                 </form>   
                                 <input type="hidden" name="form" value="contacto">
@@ -256,8 +252,7 @@
                                     <li><a href="#">Copyright</a></li>
                                 </ul>
                             </div>
-                        </div>
-                   
+                        </div>                 
                     </div>
                 </div>
             </div>

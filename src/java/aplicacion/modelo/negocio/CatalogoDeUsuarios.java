@@ -28,4 +28,16 @@ public class CatalogoDeUsuarios
         usuarios.registrarUsuario(usu);
         
     }
+    
+    public void modificarUsuario(Usuario usu)
+    {
+        usuarios = new UsuarioBD();
+        usuarios.modificarUsuario(usu);
+    }
+    
+    public boolean modificarContrasenia(int id,String contrasenia)
+    {
+        usuarios = new UsuarioBD();
+        return usuarios.modificarContrasenia(id,contrasenia);
+    }
 }
