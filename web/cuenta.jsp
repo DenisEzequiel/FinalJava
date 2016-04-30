@@ -62,8 +62,7 @@
                         </div>
                     </div>
                 </div>                        
-            </div>                   
-           
+            </div>                          
             <button class="accordion">Medios de pago</button>
             <div class="panel">   
                 <div class="row">

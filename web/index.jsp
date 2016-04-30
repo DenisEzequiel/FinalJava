@@ -14,7 +14,7 @@
         <link href="estilos/main.css" rel="stylesheet">
         <link href="estilos/responsive.css" rel="stylesheet">
         
-        <link rel="shortcut icon" href="#">
+        <link rel="shortcut icon" href="imagenes/searchicon.png">
     </head><!--/head-->
 
     <body>
