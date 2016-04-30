@@ -2,12 +2,9 @@
 <%@page import="aplicacion.modelo.datos.ParametroBD"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head> 
-        
+    <head>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
         <title>Aefilep | Home</title> 
         <link href="estilos/bootstrap.min.css" rel="stylesheet">
         <link href="estilos/font-awesome.min.css" rel="stylesheet">
@@ -16,13 +13,8 @@
         <link href="estilos/animate.css" rel="stylesheet">
         <link href="estilos/main.css" rel="stylesheet">
         <link href="estilos/responsive.css" rel="stylesheet">
-        <!--[if lt IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/respond.min.js"></script>
-        <![endif]-->       
+        
         <link rel="shortcut icon" href="#">
-        <!-- iconos para las cosas apple, para mi hay que borrarlo a la mierda -->
-      
     </head><!--/head-->
 
     <body>
@@ -63,49 +55,48 @@
                 </div>
             </div><!--/header_top-->
             
-                <div class="header-middle"><!--header-middle-->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="logo pull-left">
-                                    <a href="index.jsp"><span>E</span>-Shop</a>
-                                </div>
-                               
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="shop-menu pull-right">
-                                    <ul class="nav navbar-nav">
-                                        <form action="index.jsp" method="post" onclick="submit()">  <form action="index.jsp" method="post" onclick="submit()">    
-                                            <%if(session.getAttribute("usuario")!=null){%><li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li><%}%>             
-                                            <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
-                                            <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i> Login</label></li>
-                                         </form>        
-                                    </ul>
-                                </div>
+            <div class="header-middle"><!--header-middle-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="logo pull-left">
+                                <a href="index.jsp"><span>E</span>-Shop</a>
+                            </div>               
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="shop-menu pull-right">
+                                <ul class="nav navbar-nav">
+                                    <form action="index.jsp" method="post" onclick="submit()">  <form action="index.jsp" method="post" onclick="submit()">    
+                                        <%if(session.getAttribute("usuario")!=null){%><li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li><%}%>             
+                                        <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
+                                        <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i> Login</label></li>
+                                    </form>        
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div><!--/header-middle-->
+                </div>
+            </div><!--/header-middle-->
 
-                <div class="header-bottom"><!--header-bottom-->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
-                                <div class="mainmenu pull-left">                                                                         
-                                    <form action="index.jsp" method="post" onclick="submit()"> 
-                                        <ul class="nav navbar-nav collapse navbar-collapse">                                                                           
-                                            <li><label><input type="radio" name="pagina" value="1">Home</label></li>
-                                            <li><label><input type="radio" name="pagina" value="2">Películas</label></li>
-                                            <!--<li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Películas<i class="fa fa-angle-down"></i></a>
-                                                <ul role="menu" class="sub-menu">
+            <div class="header-bottom"><!--header-bottom-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="mainmenu pull-left">                                                                         
+                                <form action="index.jsp" method="post" onclick="submit()"> 
+                                    <ul class="nav navbar-nav collapse navbar-collapse">                                                                           
+                                        <li><label><input type="radio" name="pagina" value="1">Home</label></li>
+                                        <li><label><input type="radio" name="pagina" value="2">Películas</label></li>
+                                        <!--<li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Películas<i class="fa fa-angle-down"></i></a>
+                                            <ul role="menu" class="sub-menu">
                                                     <form action="index.jsp" onclick="submit()">
                                                         <li><label><input type="hidden" name="pagina" value="1" >Cartelera</label></li>
                                                         <li><label><input type="hidden" name="pagina" value="2" >Película</label></li>
@@ -123,32 +114,28 @@
                                                 </ul>
                                             </li>
                                             -->
-                                            <li><label><input type="radio" name="pagina" value="3">Nosotros</label></li>
-                                            <li><label><input type="radio" name="pagina" value="4">Contacto  </label></li>
+                                        <li><label><input type="radio" name="pagina" value="3">Nosotros</label></li>
+                                        <li><label><input type="radio" name="pagina" value="4">Contacto  </label></li>
                                             
                                             
                                             
                                            
                                             <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
-                                        </ul>
-                                    </form>   
-                                      <input type="hidden" name="form" value="contacto">
-                                     <form action="Controlador" method="post" onclick="submit()">
-                                             
-                                             
-                                        
-                                     </form> 
-                                </div>
+                                    </ul>
+                                </form>   
+                                <input type="hidden" name="form" value="contacto">
+                                <form action="Controlador" method="post" onclick="submit()">                                       
+                                </form> 
                             </div>
-                            <div class="col-sm-3">
-                                <div class="search_box pull-right">
-                                    <input type="text" placeholder="Buscar">
-                                </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="search_box pull-right">
+                                <input type="text" placeholder="Buscar">
                             </div>
                         </div>
                     </div>
-                </div><!--/header-bottom-->
-             
+                </div>
+            </div><!--/header-bottom-->     
         </header>
         
        <%
@@ -218,9 +205,7 @@
              }
         %>
         
-
         <footer id="footer"><!--Footer-->
-
             <div class="footer-widget">
                 <div class="container">
                     <div class="row">
@@ -276,7 +261,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row">

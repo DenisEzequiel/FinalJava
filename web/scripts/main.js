@@ -49,3 +49,27 @@ var acc = document.getElementsByClassName("accordion");
               
  };
  }
+ 
+
+
+ 
+ function validarContrasenia()
+ {
+     var nueva = document.getElementById("nuevaContra").value;
+     var repetida = document.getElementById("repiteContra").value;
+     var mensaje = document.getElementById("mensajeError");
+     var p = document.getElementById("parrafoError");
+     p.innerHTML = "<strong>Error! </strong>Las contrase&ntilde;as no son iguales";
+     if(!mensaje.classList.contains("alert-danger"))
+     {
+         mensaje.classList.add("alert-danger");
+     }
+     if(nueva===repetida)
+     {
+        mensaje.classList.remove("alert-danger");
+        mensaje.classList.add("alert-success");
+        p.innerHTML = "<strong>Bien!</strong> Las contrase&ntilde;as son iguales";
+     }
+    
+     
+ }

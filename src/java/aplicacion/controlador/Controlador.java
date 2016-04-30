@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JP
  */
-@WebServlet(name = "Controlador", urlPatterns = {"/Aefilep"})
+@WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
 public class Controlador extends HttpServlet {
 
     /**
@@ -51,7 +51,7 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
     }
 
     /**

@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -58,10 +61,22 @@ public class UsuarioBD
         return usu;
     }
  
-    public void actualizarDatos(int id,String nombre,String apellido,String direccion,String telefono,String mail)
+    public void actualizarDatos(int id,String nombre,String apellido,String direccion,String telefono,String mail,String dni,String fechaNacimiento)
     {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        java.sql.Date fechaSql = null;
+        try
+            {
+                Date fecha = formatoFecha.parse(fechaNacimiento);
+                fechaSql = new java.sql.Date(fecha.getTime());
+            }
+        catch(ParseException e)
+            {
+            }      
+        
         Connection con = conec.getConexion();
-        String sql = "update usuarios set nombre=?,apellido=?,direccion=?,telefono=?,mail=? where id_usuario=?";
+        String sql = "update usuarios set nombre=? , apellido=? , direccion=? ,"
+                + " telefono=? , mail=?,dni=?,fecha_de_nacimiento=? where id_usuario=?";
    
         try
         {
@@ -70,19 +85,20 @@ public class UsuarioBD
             pr.setString(2, apellido);
             pr.setString(3, direccion);
             pr.setString(4, telefono);
-            pr.setString(5, mail);
-            pr.setInt(6,id);
+            pr.setString(5, mail);           
+            pr.setString(6,dni);
+            pr.setDate(7,fechaSql);            
+            pr.setInt(8,id);
             pr.executeUpdate();
             con.close();
         }
          catch(SQLException ex)
         {
-            
         }
         
     }
     
-    public void actualizarContrasenia(int id,String contra)
+    public boolean actualizarContrasenia(int id,String contra)
     {
         Connection con = conec.getConexion();
         String sql = "update usuarios set contrasena=? where id_usuario=?";
@@ -97,8 +113,9 @@ public class UsuarioBD
         }
          catch(SQLException ex)
         {
-            
+            return false;
         }
+        return true;
     }
             
 public void registrarUsuario(Usuario usu)
@@ -127,7 +144,6 @@ public void registrarUsuario(Usuario usu)
         }
         catch(SQLException e)
         {
-            e.printStackTrace();
         }
     }
 }
