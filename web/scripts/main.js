@@ -28,26 +28,26 @@ $(document).ready(function(){
 		});
 	});
         
-         $(".accordion").click(function(e){
-        var pulsado = $(e.target);
-        if(!pulsado.hasClass("active") && !pulsado.next().hasClass("show"))
+         $(".accordion").click(function(){
+             
+        if(!$(this).hasClass("active") && !$(this).next().hasClass("show"))
         {
             if(anterior!=null)
             {
-                if(anterior!=pulsado)
+                if(anterior!=$(this))
                 {
                     anterior.removeClass("active");
                     anterior.next().removeClass("show");
                 }
             }
-            pulsado.addClass("active");
-            pulsado.next().addClass("show");
-            anterior = pulsado;
+            $(this).addClass("active");
+            $(this).next().addClass("show");
+            anterior = $(this);
         }
         else
         {
-            pulsado.removeClass("active");
-            pulsado.next().removeClass("show");           
+            $(this).removeClass("active");
+            $(this).next().removeClass("show");           
         }         
     });
 });
@@ -77,11 +77,11 @@ $(document).ready(function(){
  
  $(document).ready(function(){
   
-    $('.fila').mouseenter(function(e)
+    $('.fila').mouseenter(function()
     {          
         $($(this).find("i")).addClass("suave");      
     });
-    $(".fila").mouseleave(function(e){ 
+    $(".fila").mouseleave(function(){ 
             
         $($(this).find("i")).removeClass("suave");
     });
