@@ -8,7 +8,7 @@
     <section id="cuenta"><!--form-->
         <div class="container">
              
-            <button class="accordion <%if(session.getAttribute("tabActual").equals("1")){%>active<%}%>">Informacion de tu cuenta</button>
+            <button id="btn1" class="accordion <%if(session.getAttribute("tabActual").equals("1")){%>active<%}%>">Informacion de tu cuenta</button>
             <div class="panel <%if(session.getAttribute("tabActual").equals("1")){%>show<%}%>">
                 <form action="Controlador" method="post">
                     <div class="row">
@@ -36,7 +36,7 @@
                 </form>
             </div>
                                     
-            <button class="accordion <%if(session.getAttribute("tabActual").equals("2")){%>active<%}%>">Cambio de contraseña</button>
+            <button id="btn2" class="accordion <%if(session.getAttribute("tabActual").equals("2")){%>active<%}%>">Cambio de contraseña</button>
             <div class="panel <%if(session.getAttribute("tabActual").equals("2")){%>show<%}%>">       
                 <div class="row">
                     <div class="col-sm-5 col-sm-offset-1">
@@ -63,21 +63,56 @@
                     </div>
                 </div>                        
             </div>                          
-            <button class="accordion">Medios de pago</button>
+            <button id="btn3"class="accordion">Medios de pago</button>
             <div class="panel">   
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="table-responsive">                    
-                            <table class="table">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                   
                                         <th>#</th>                                   
                                         <th>Numero de tarjeta</th>
                                         <th>Empresa/Banco</th>
                                         <th>Codigo de seguridad</th>
+                                    
                                     </tr>
                                 </thead>
-
+                                <tbody>
+                                    <tr class="fila">
+                                        <td>1</td>
+                                        <td>123</td>
+                                        <td>Macro</td>
+                                        <td>555555</td>
+                                         <td>
+                                            <label><input type="radio"><i class="fa fa-pencil-square-o i ultimaCol" aria-hidden="true"></i></label>
+                                            <label><input type="radio"><i class="fa fa-times ultimaCol" aria-hidden="true"></i></label>
+                                        </td>
+                                            
+                                    </tr>
+                                      
+                                    <tr class="fila" >
+                                        <td>2</td>
+                                        <td>321</td>
+                                        <td>Santa fe</td>
+                                        <td>777777</td>
+                                        <td>
+                                            <label><input type="radio"><i class="fa fa-pencil-square-o i ultimaCol" aria-hidden="true"></i></label>
+                                            <label><input type="radio"><i class="fa fa-times ultimaCol" aria-hidden="true"></i></label>
+                                        </td>
+                                    </tr>
+                                      <tr class="fila" >
+                                        <td>3</td>
+                                        <td>444</td>
+                                        <td>Visa</td>
+                                        <td>888888</td>
+                                         <td>
+                                            <label><input type="radio"><i class="fa fa-pencil-square-o i ultimaCol" aria-hidden="true"></i></label>
+                                            <label><input type="radio"><i class="fa fa-times ultimaCol" aria-hidden="true"></i></label>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>

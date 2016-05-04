@@ -2671,14 +2671,16 @@ div.panel {
     background-color: white;
     max-height: 0;
     overflow: hidden;
-    transition: 0.3s ;
+    will-change: transition;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
     opacity: 0;
 }
 
 div.panel.show {
     opacity: 1;
     max-height: 900px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 button.accordion:after {
@@ -2738,4 +2740,20 @@ button.accordion.active:after {
 {
     margin-top: 30px;
     margin-bottom: -50px;
+}
+
+.ultimaCol
+{
+    font-size: 25px;
+    opacity: 0;
+    
+}
+.suave
+{  
+    opacity:0.5;
+    transition:0.5s;
+}
+.suave:hover
+{
+    opacity:1;
 }

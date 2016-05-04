@@ -7,7 +7,7 @@
 	};	
 		
 /*scroll to top*/
-
+var anterior;
 $(document).ready(function(){
 	$(function () {
 		$.scrollUp({
@@ -27,29 +27,30 @@ $(document).ready(function(){
 	        zIndex: 2147483647 // Z-Index for the overlay
 		});
 	});
+        
+         $(".accordion").click(function(e){
+        var pulsado = $(e.target);
+        if(!pulsado.hasClass("active") && !pulsado.next().hasClass("show"))
+        {
+            if(anterior!=null)
+            {
+                if(anterior!=pulsado)
+                {
+                    anterior.removeClass("active");
+                    anterior.next().removeClass("show");
+                }
+            }
+            pulsado.addClass("active");
+            pulsado.next().addClass("show");
+            anterior = pulsado;
+        }
+        else
+        {
+            pulsado.removeClass("active");
+            pulsado.next().removeClass("show");           
+        }         
+    });
 });
-var acc = document.getElementsByClassName("accordion");
-  
- var i;
- for (i = 0; i < acc.length; i++) {
-  
- acc[i].onclick = function(){
-            
- for(var j=0;j<acc.length;j++)
- {
-     if(this!=acc[j])
-     {
-         acc[j].classList.remove("active");
-         acc[j].nextElementSibling.classList.remove("show");
-     }
- }
-                  
- this.classList.toggle("active");
- this.nextElementSibling.classList.toggle("show");
-              
- };
- }
- 
 
 
  
@@ -73,3 +74,15 @@ var acc = document.getElementsByClassName("accordion");
     
      
  }
+ 
+ $(document).ready(function(){
+  
+    $('.fila').mouseenter(function(e)
+    {          
+        $($(this).find("i")).addClass("suave");      
+    });
+    $(".fila").mouseleave(function(e){ 
+            
+        $($(this).find("i")).removeClass("suave");
+    });
+});
