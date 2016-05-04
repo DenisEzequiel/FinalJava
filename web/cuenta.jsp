@@ -8,7 +8,7 @@
     <section id="cuenta"><!--form-->
         <div class="container">
              
-            <button id="btn1" class="accordion <%if(session.getAttribute("tabActual").equals("1")){%>active<%}%>">Informacion de tu cuenta</button>
+            <button class="accordion <%if(session.getAttribute("tabActual").equals("1")){%>active<%}%>">Informacion de tu cuenta</button>
             <div class="panel <%if(session.getAttribute("tabActual").equals("1")){%>show<%}%>">
                 <form action="Controlador" method="post">
                     <div class="row">
@@ -36,7 +36,7 @@
                 </form>
             </div>
                                     
-            <button id="btn2" class="accordion <%if(session.getAttribute("tabActual").equals("2")){%>active<%}%>">Cambio de contraseña</button>
+            <button  class="accordion <%if(session.getAttribute("tabActual").equals("2")){%>active<%}%>">Cambio de contraseña</button>
             <div class="panel <%if(session.getAttribute("tabActual").equals("2")){%>show<%}%>">       
                 <div class="row">
                     <div class="col-sm-5 col-sm-offset-1">
@@ -63,7 +63,7 @@
                     </div>
                 </div>                        
             </div>                          
-            <button id="btn3"class="accordion">Medios de pago</button>
+            <button class="accordion">Medios de pago</button>
             <div class="panel">   
                 <div class="row">
                     <div class="col-sm-12">
