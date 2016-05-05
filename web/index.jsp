@@ -106,8 +106,7 @@
                                         {%>
                                             <li><label><input type="radio" name="pagina" value="9">Administrador  </label></li>
                                         <%}%>
-                                        <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
-
+                                                      <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                                            
                                     </ul>
                                 </form>   
                                 <input type="hidden" name="form" value="contacto">
