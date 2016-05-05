@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div><!--/header-middle-->
-
+            
             <div class="header-bottom"><!--header-bottom-->
                 <div class="container">
                     <div class="row">
@@ -95,37 +95,18 @@
                                 </button>
                             </div>
                             <div class="mainmenu pull-left">                                                                         
-                                <form action="index.jsp" method="post" onclick="submit()"> 
+                                <form action="index.jsp" method="post"> 
                                     <ul class="nav navbar-nav collapse navbar-collapse">                                                                           
-                                        <li><label><input type="radio" name="pagina" value="1">Home</label></li>
-                                        <li><label><input type="radio" name="pagina" value="2">Películas</label></li>
-                                        <!--<li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Películas<i class="fa fa-angle-down"></i></a>
-                                            <ul role="menu" class="sub-menu">
-                                                    <form action="index.jsp" onclick="submit()">
-                                                        <li><label><input type="hidden" name="pagina" value="1" >Cartelera</label></li>
-                                                        <li><label><input type="hidden" name="pagina" value="2" >Película</label></li>
-                                                        <li><label><input type="hidden" name="pagina" value="3" >Carro</label></li> 
-                                                        <li><label><input type="hidden" name="pagina" value="4" >Login</label></li>
-                                                    </form>
-                                                </ul>
-
-                                            </li> 
-
-                                            <li class="dropdown"><a href="http://themifycloud.com/demos/templates/eshop/#">Nosotros<i class="fa fa-angle-down"></i></a>
-                                                <ul role="menu" class="sub-menu">
-                                                    <li><a href="estrenos.jsp">Blog List</a></li>
-                                                    <li><a href="http://themifycloud.com/demos/templates/eshop/blog-single.html">Blog Single</a></li>
-                                                </ul>
-                                            </li>
-                                            -->
-                                        <li><label><input type="radio" name="pagina" value="3">Nosotros</label></li>
-                                        <li><label><input type="radio" name="pagina" value="4">Contacto  </label></li>
+                                        <li><label><input type="radio" name="pagina" value="1" onclick="submit()">Home</label></li>
+                                        <li><label><input type="radio" name="form" value="peliculas" onclick=window.location.href='/FinalJava/Controlador'>Películas</label></li>
+                                        <li><label><input type="radio" name="pagina" value="3" onclick="submit()">Nosotros</label></li>
+                                        <li><label><input type="radio" name="pagina" value="4" onclick="submit()">Contacto  </label></li>                                     
                                         <%Usuario usu = (Usuario)session.getAttribute("usuario");
                                         if(usu!=null && usu.isEsAdmin())
                                         {%>
                                             <li><label><input type="radio" name="pagina" value="9">Administrador  </label></li>
                                         <%}%>
-                                        <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
+                                                      <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                                            
                                     </ul>
                                 </form>   
                                 <input type="hidden" name="form" value="contacto">
@@ -303,3 +284,4 @@
         <a id="scrollUp" href="index.jsp/#top"><i class="fa fa-angle-up"></i></a>
     </body>
 </html>
+

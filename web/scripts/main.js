@@ -71,8 +71,6 @@ $(document).ready(function(){
         mensaje.classList.add("alert-success");
         p.innerHTML = "<strong>Bien!</strong> Las contrase&ntilde;as son iguales";
      }
-    
-     
  }
  
  $(document).ready(function(){
