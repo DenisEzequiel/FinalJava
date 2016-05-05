@@ -1,3 +1,4 @@
+<%@page import="aplicacion.modelo.entidades.Usuario"%>
 <%@page import="aplicacion.modelo.entidades.Parametro"%>
 <%@page import="aplicacion.modelo.datos.ParametroBD"%>
 <!DOCTYPE html>
@@ -18,14 +19,14 @@
     </head><!--/head-->
 
     <body>
-        <%
-
+        <%  request.getSession(true);
+            if(session.getAttribute("parametro")==null)
+            {
             ParametroBD pbd = new ParametroBD();
             Parametro par = pbd.obtenerParametros();
             
             request.getSession().setAttribute("parametro", par);
-         
-            
+            }
             %>
             
         <header id="header">
@@ -66,10 +67,13 @@
                         <div class="col-sm-8">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
-                                    <form action="index.jsp" method="post" onclick="submit()">  <form action="index.jsp" method="post" onclick="submit()">    
+                                    <form action="index.jsp" method="post" onclick="submit()">    
                                         <%if(session.getAttribute("usuario")!=null){%><li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li><%}%>             
                                         <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
-                                        <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i> Login</label></li>
+                                        <%if(session.getAttribute("usuario")==null){%>
+                                            <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i> LogIn</label></li>
+                                            <%}else{%> <li><label><input type="radio" name="pagina" value="10" ><i class="fa fa-lock"></i> LogOut</label></li>
+                                            <%}%>
                                     </form>        
                                 </ul>
                             </div>
@@ -77,7 +81,7 @@
                     </div>
                 </div>
             </div><!--/header-middle-->
-
+            
             <div class="header-bottom"><!--header-bottom-->
                 <div class="container">
                     <div class="row">
@@ -96,8 +100,14 @@
                                         <li><label><input type="radio" name="pagina" value="1" onclick="submit()">Home</label></li>
                                         <li><label><input type="radio" name="form" value="peliculas" onclick=window.location.href='/FinalJava/Controlador'>Películas</label></li>
                                         <li><label><input type="radio" name="pagina" value="3" onclick="submit()">Nosotros</label></li>
-                                        <li><label><input type="radio" name="pagina" value="4" onclick="submit()">Contacto  </label></li>
-                                          <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
+                                        <li><label><input type="radio" name="pagina" value="4" onclick="submit()">Contacto  </label></li>                                     
+                                        <%Usuario usu = (Usuario)session.getAttribute("usuario");
+                                        if(usu!=null && usu.isEsAdmin())
+                                        {%>
+                                            <li><label><input type="radio" name="pagina" value="9">Administrador  </label></li>
+                                        <%}%>
+                                        <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
+
                                     </ul>
                                 </form>   
                                 <input type="hidden" name="form" value="contacto">
@@ -165,7 +175,25 @@
                         case 8:
                         {
                             %><jsp:include page="signup.jsp"/><%
+                                break;
                         }
+                        case 9:
+                        { 
+                           %><jsp:include page="ABMPelicula.jsp"/><%
+                               break;
+                        }
+                        case 10:
+                        { 
+                            
+                       
+                            session.setAttribute("pagina", "1");
+                            request.getSession().invalidate();
+                            
+                            response.sendRedirect("/index.jsp");
+                            break;
+                            
+                        }
+       
                     }
                     if(c!=7 && c!=8)
                     {
@@ -257,3 +285,4 @@
         <a id="scrollUp" href="index.jsp/#top"><i class="fa fa-angle-up"></i></a>
     </body>
 </html>
+
