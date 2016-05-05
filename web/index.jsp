@@ -19,7 +19,7 @@
     </head><!--/head-->
 
     <body>
-        <%
+        <%  request.getSession(true);
             if(session.getAttribute("parametro")==null)
             {
             ParametroBD pbd = new ParametroBD();
@@ -67,12 +67,12 @@
                         <div class="col-sm-8">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
-                                    <form action="index.jsp" method="post" onclick="submit()">  <form action="index.jsp" method="post" onclick="submit()">    
+                                    <form action="index.jsp" method="post" onclick="submit()">    
                                         <%if(session.getAttribute("usuario")!=null){%><li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li><%}%>             
                                         <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
                                         <%if(session.getAttribute("usuario")==null){%>
-                                            <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i> Login</label></li>
-                                            <%}else{%> <li><label><input type="radio" name="pagina" value="1" ><i class="fa fa-lock"></i> LoOut</label></li>
+                                            <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i> LogIn</label></li>
+                                            <%}else{%> <li><label><input type="radio" name="pagina" value="10" ><i class="fa fa-lock"></i> LogOut</label></li>
                                             <%}%>
                                     </form>        
                                 </ul>
@@ -123,7 +123,7 @@
                                         <%Usuario usu = (Usuario)session.getAttribute("usuario");
                                         if(usu!=null && usu.isEsAdmin())
                                         {%>
-                                            <li><label><input type="radio" name="pagina" value="8">Administrador  </label></li>
+                                            <li><label><input type="radio" name="pagina" value="9">Administrador  </label></li>
                                         <%}%>
                                         <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
                                     </ul>
@@ -193,7 +193,25 @@
                         case 8:
                         {
                             %><jsp:include page="signup.jsp"/><%
+                                break;
                         }
+                        case 9:
+                        { 
+                           %><jsp:include page="ABMPelicula.jsp"/><%
+                               break;
+                        }
+                        case 10:
+                        { 
+                            
+                       
+                            session.setAttribute("pagina", "1");
+                            request.getSession().invalidate();
+                            
+                            response.sendRedirect("/index.jsp");
+                            break;
+                            
+                        }
+       
                     }
                     if(c!=7 && c!=8)
                     {
