@@ -1,3 +1,4 @@
+<%@page import="aplicacion.modelo.entidades.Usuario"%>
 <%@page import="aplicacion.modelo.entidades.Parametro"%>
 <%@page import="aplicacion.modelo.datos.ParametroBD"%>
 <!DOCTYPE html>
@@ -19,13 +20,13 @@
 
     <body>
         <%
-
+            if(session.getAttribute("parametro")==null)
+            {
             ParametroBD pbd = new ParametroBD();
             Parametro par = pbd.obtenerParametros();
             
             request.getSession().setAttribute("parametro", par);
-         
-            
+            }
             %>
             
         <header id="header">
@@ -69,7 +70,10 @@
                                     <form action="index.jsp" method="post" onclick="submit()">  <form action="index.jsp" method="post" onclick="submit()">    
                                         <%if(session.getAttribute("usuario")!=null){%><li><label><input type="radio" name="pagina" value="5" ><i class="fa fa-user"></i> Cuenta</label></li><%}%>             
                                         <li><label><input type="radio" name="pagina" value="6" ><i class="fa fa-shopping-cart"></i> Carrito</label></li>
-                                        <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i> Login</label></li>
+                                        <%if(session.getAttribute("usuario")==null){%>
+                                            <li><label><input type="radio" name="pagina" value="7" ><i class="fa fa-lock"></i> Login</label></li>
+                                            <%}else{%> <li><label><input type="radio" name="pagina" value="1" ><i class="fa fa-lock"></i> LoOut</label></li>
+                                            <%}%>
                                     </form>        
                                 </ul>
                             </div>
@@ -116,7 +120,12 @@
                                             -->
                                         <li><label><input type="radio" name="pagina" value="3">Nosotros</label></li>
                                         <li><label><input type="radio" name="pagina" value="4">Contacto  </label></li>
-                                          <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
+                                        <%Usuario usu = (Usuario)session.getAttribute("usuario");
+                                        if(usu!=null && usu.isEsAdmin())
+                                        {%>
+                                            <li><label><input type="radio" name="pagina" value="8">Administrador  </label></li>
+                                        <%}%>
+                                        <!--<li><a href="contacto.jsp">Contacto</a></li> -->                                       
                                     </ul>
                                 </form>   
                                 <input type="hidden" name="form" value="contacto">
