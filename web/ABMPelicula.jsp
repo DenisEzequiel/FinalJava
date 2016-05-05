@@ -21,7 +21,7 @@
                     
                     <div class="col-sm-5 col-sm-offset-0">
                         <div class="cuenta">
-                        <input type="text" class="control form-control" name="formPel" placeholder="Formato" required>
+                        
                                   <input type="text" class="control form-control" name="repPel" placeholder="Reparto" required>
                                   <input type="text" class="control form-control" name="urlPel" placeholder="URL Trailer" required>
                                    <input type="text" class="control form-control" name="sinPel" placeholder="Sinopsis" required>
@@ -32,9 +32,18 @@
                     </div>
                         
                                   
-                                  
                                
                         </div>
+                    <div class="row">
+                        <div class="col-sm-5 col-sm-offset-1">
+                             
+                    <% if(request.getSession().getAttribute("pelicula")!=null)
+                    { %> <div class="alert alert-success"> Película agregada con éxito </div>
+                    <%}%>
+                        </div>
+                             
+                    </div>
+                        
                     </div>
             </div>   
       </form>         

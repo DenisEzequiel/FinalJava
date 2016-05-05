@@ -5,10 +5,19 @@
  */
 package aplicacion.modelo.negocio;
 
+import aplicacion.modelo.datos.PeliculaDB;
+import aplicacion.modelo.entidades.Pelicula;
+
 /**
  *
  * @author User
  */
-public class CatalogoDePeliculas {
-    
+public class CatalogoDePeliculas 
+{  PeliculaDB peliculas;
+    public void agregarPelicula(Pelicula pelicula)
+    {
+        peliculas=new PeliculaDB();
+        peliculas.agregarPelicula(pelicula);
+        
+    }
 }
