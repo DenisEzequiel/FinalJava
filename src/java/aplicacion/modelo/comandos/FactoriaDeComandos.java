@@ -19,6 +19,7 @@ public class FactoriaDeComandos
         mapa.put("login",LogIn.class);
         mapa.put("cuenta",CuentaComando.class);
         mapa.put("registro", RegistroComando.class);
+        mapa.put("peliculas", PeliculasComando.class);
     }
     /**
      * Metodo de clase devuelve la instancia de FactoriaDeComandos
