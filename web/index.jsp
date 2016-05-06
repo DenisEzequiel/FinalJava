@@ -281,7 +281,7 @@
         <script src="scripts/jquery.prettyPhoto.js"></script>
         <script src="scripts/main.js"></script>
 
-        <a id="scrollUp" href="index.jsp/#top"><i class="fa fa-angle-up"></i></a>
+        <a id="scrollUp" href="index.jsp/#top" style="position: fixed; z-index: 2147483647; display: none;"><i class="fa fa-angle-up"></i></a>
     </body>
 </html>
 

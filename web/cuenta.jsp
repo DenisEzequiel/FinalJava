@@ -1,18 +1,19 @@
 <jsp:useBean id="usuario" scope="session" class="aplicacion.modelo.entidades.Usuario"/>
-<h2 class="title text-center">Cuenta </h2>  
+
 <%if(session.getAttribute("tabActual")==null)
 {
     session.setAttribute("tabActual","0");
     session.setAttribute("contraCambiada","2");
 }%>
-    <section id="cuenta"><!--form-->
-        <div class="container">
-             
-            <button class="accordion <%if(session.getAttribute("tabActual").equals("1")){%>active<%}%>">Informacion de tu cuenta</button>
-            <div class="panel <%if(session.getAttribute("tabActual").equals("1")){%>show<%}%>">
+    <section class="seccion"><!--form-->
+        <h2 class="title text-center">Cuenta </h2>  
+        <div class="container">           
                 <form action="Controlador" method="post">
+                    <div class="row s">
+                        <h2 class="title text-left">Informacion de tu cuenta</h2>
+                    </div>
                     <div class="row">
-                        <div class="col-sm-5 col-sm-offset-1">
+                        <div class="col-sm-5 col-sm-offset-1">                            
                             <div class="cuenta">
                                 <input type="hidden" name="form" value="cuenta">                              
                                 Nombre <input type="text" class="control form-control" name="nombre" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="nombre" name="usuario"/><%}%>">
@@ -34,10 +35,10 @@
                         </div>
                     </div>
                 </form>
-            </div>
-                                    
-            <button  class="accordion <%if(session.getAttribute("tabActual").equals("2")){%>active<%}%>">Cambio de contraseña</button>
-            <div class="panel <%if(session.getAttribute("tabActual").equals("2")){%>show<%}%>">       
+                                                
+            <div class="row">
+                <h2 class="title text-left">Cambio de contraseña</h2>
+            </div>        
                 <div class="row">
                     <div class="col-sm-5 col-sm-offset-1">
                         <br/>
@@ -61,10 +62,11 @@
                             </p>
                         </div>
                     </div>
-                </div>                        
-            </div>                          
-            <button class="accordion">Medios de pago</button>
-            <div class="panel">   
+                </div>   
+                            
+                <div class="row">
+                    <h2 class="title text-left">Medios de pago</h2>
+                </div>   
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="table-responsive">                    
@@ -117,10 +119,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
-    <%
-    session.setAttribute("tabActual","0");
-    session.setAttribute("contraCambiada","2");
-    %>               
+            

@@ -4,6 +4,7 @@
             Parametro par = (Parametro) session.getAttribute("parametro");
               
             %>
+<section class ="seccion">
         <h2 class="title text-center">Contacto </h2>  
 	<div id="contact-page" class="container">
     	<div class="bg">
@@ -48,3 +49,4 @@
 	    	</div>  
     	</div>	
     </div><!--/#contact-page-->
+</section>

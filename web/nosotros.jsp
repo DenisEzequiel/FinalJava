@@ -1,9 +1,10 @@
-
+<section class="seccion">
+<h2 class="title text-center">Nosotros</h2>  
 	<div id="contact-page" class="container">
     	<div class="bg">
 	    	<div class="row">    		
 	    		<div class="col-sm-12">    			   			
-					<h2 class="title text-center"> <strong>Nosotros</strong></h2>    			    				    				
+					  			    				    				
 					<div id="gmap" class="contact-map">
                                            <center>  <p> Aefilep abrió sus puertas en 1994 para brindar el mejor servicio a sus socios. Quienes formamos parte del </p>
                                             <p> videoclub buscamos no sólo satisfacer a quienes nos acompañan día a día con la posibilidad de que puedan acceder al </p>
@@ -22,3 +23,4 @@
 	    	</div>  
     	</div>	
     </div><!--/#contact-page-->
+</section>
