@@ -98,12 +98,12 @@
                                         <%Usuario usu = (Usuario)session.getAttribute("usuario");
                                         if(usu!=null && usu.isEsAdmin())
                                         {%>
-                                            <li>
-                                            <form action="Controlador" method="post">
-                                                <input type="hidden"  name="form" value="AgregarPeliculaComando"/>
-                                                <input type="submit" name="pagina" value="Administrador" >
-                                            </form>
-                                            </li>
+                                            <li class="dropdown"><a href="">Administrador<i class="fa fa-angle-down"></i></a>
+                                            <ul role="menu" class="sub-menu">
+                                                <li><a href="ABMPelicula.jsp">Cargar Pelicula</a></li>
+                                                <li><a href="">Opcion 2 Admin</a></li>
+                                            </ul>
+                                            </li> 
                                         <%}%>                                                         
                                     </ul>
                                 </form>   
