@@ -43,7 +43,13 @@
                                                                             <img src="imagenes/pricing.png" class="pricing" alt="">
                                                                     </div>
                                                             </div>
-
-        <a id="scrollUp" href="index.jsp/#top" style="position: fixed; z-index: 2147483647; display: none;"><i class="fa fa-angle-up"></i></a>
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+        </section>
+        
+       <jsp:include page="footer.jsp"/>
     </body>
 </html>

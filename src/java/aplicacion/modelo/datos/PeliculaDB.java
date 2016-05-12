@@ -9,7 +9,9 @@ import aplicacion.modelo.entidades.Pelicula;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -53,5 +55,76 @@ public class PeliculaDB {
         }
         //System.out.print(usu.getApellido());
         
+     }
+     
+     public ArrayList<Pelicula> buscarPeliculas(int inferior,int cantidad)
+     {
+         Connection con = conec.getConexion();
+         ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
+         String transac = "select * from peliculas where activo=1 limit ?,?;";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            
+            pr.setInt(1, inferior);
+            pr.setInt(2, cantidad);
+            
+            ResultSet res = pr.executeQuery();
+                   
+            while(res.next())
+            {
+                Pelicula p = new Pelicula();
+                
+                p.setIdPelicula(res.getInt(1));
+                p.setNombre(res.getString(2));
+                p.setDuracion(res.getInt(3));
+                p.setFormato(res.getString(4));
+                p.setStockAlquiler(res.getInt(5));
+                p.setStockVenta(res.getInt(6));
+                p.setReparto(res.getString(8));
+                p.setFechaCarga(new java.sql.Date(res.getDate(9).getTime()));
+                p.setActivo(res.getBoolean(10));
+                p.setUrlTrailer(res.getString(11));
+                p.setPrecioVenta(res.getFloat(12));
+                p.setSinopsis(res.getString(13));
+                p.setAnio(res.getInt(14));
+                
+                listaPeliculas.add(p);
+            }
+            con.close();
+            
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        return listaPeliculas;
+     }
+     
+     public int buscarCantidadPelicula()
+     {
+         Connection con = conec.getConexion();
+         int i=0;
+         String transac = "select count(*) from peliculas where activo=1;";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            ResultSet res = pr.executeQuery();
+            
+             if(res.next())
+            {
+                i = res.getInt(1);
+                con.close();
+                
+            }
+             
+        }
+        catch(SQLException e)
+        {
+           
+        }
+        
+        return i;
      }
 }

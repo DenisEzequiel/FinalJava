@@ -7,17 +7,28 @@ package aplicacion.modelo.negocio;
 
 import aplicacion.modelo.datos.PeliculaDB;
 import aplicacion.modelo.entidades.Pelicula;
+import java.util.ArrayList;
 
 /**
  *
  * @author User
  */
 public class CatalogoDePeliculas 
-{  PeliculaDB peliculas;
+{  PeliculaDB peliculas=new PeliculaDB();;
     public void agregarPelicula(Pelicula pelicula)
     {
-        peliculas=new PeliculaDB();
+        
         peliculas.agregarPelicula(pelicula);
         
+    }
+    
+    public ArrayList<Pelicula> buscarPeliculas(int inferior, int cantidad)
+    {
+       return peliculas.buscarPeliculas(inferior,cantidad);
+    }
+    
+    public int buscarCantidadPelicula()
+    {
+        return peliculas.buscarCantidadPelicula();
     }
 }

@@ -26,8 +26,7 @@ public class RedireccionarComando extends Comando
                 request.getSession().setAttribute("form","pelicuas");
                 return "Controlador";
         }
-        
-        
+               
         return "index.jsp";    
     }
     
