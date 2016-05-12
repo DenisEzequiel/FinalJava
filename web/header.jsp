@@ -46,7 +46,7 @@
                                         <li><a href="login.jsp"><i class="fa fa-lock"></i><input type="button" name="pagina" value="Ingresar" ></a></li>
                                         <%}else{%> <li><form action="Controlador" method="post">
                                                         <input type="hidden"  name="form" value="LogOutComando"/>
-                                                        <i class="fa fa-lock"></i><input type="button" name="pagina" value="Salir" >
+                                                        <i class="fa fa-lock"></i><input type="submit" name="pagina" value="Salir" >
                                                     </form></li>
                                             <%}%>
                                     </form>        
@@ -74,20 +74,20 @@
                                         <li>
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="form" value="InicioComando"/>
-                                                <input type="button" name="pagina" value="Inicio" >
+                                                <input type="submit" name="pagina" value="Inicio" >
                                             </form>
                                         </li>
                                         <li>
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="form" value="PeliculasComando"/>
-                                                <input type="button" name="pagina" value="Peliculas" >
+                                                <input type="submit" name="pagina" value="Peliculas" >
                                             </form>
                                         </li>
                                         <li><label><a href="nosotros.jsp"><input type="button" name="pagina" value="Nosotros"></a></label></li>
                                         <li>
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="form" value="ContactoComando"/>
-                                                <input type="button" name="pagina" value="Contacto" >
+                                                <input type="submit" name="pagina" value="Contacto" >
                                             </form>
                                         </li>                                   
                                         <%Usuario usu = (Usuario)session.getAttribute("usuario");
@@ -96,7 +96,7 @@
                                             <li>
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="form" value="AgregarPeliculaComando"/>
-                                                <input type="button" name="pagina" value="Administrador" >
+                                                <input type="submit" name="pagina" value="Administrador" >
                                             </form>
                                             </li>
                                         <%}%>                                                         
