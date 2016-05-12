@@ -68,13 +68,9 @@
                                                     
                                                         <ul class="pagination">
                                                              <form action="Controlador" method="post">  
-                                                            <%for(int j=1;j<=cantPaginas;j++){%>
-                                                                                         
-                                                                                                                
+                                                            <%for(int j=1;j<=cantPaginas;j++){%>                                                                                                              
                                                                     <li><input type="submit" name="paginacionActual" value="<%=j%>"> </li>
-                                                                    
-                                                               
-                                                            <%}%>  
+                                                             <%}%>  
                                                             <input type="hidden" name="form" value="PeliculasComando">   
                                                              </form>
                                                         </ul>
