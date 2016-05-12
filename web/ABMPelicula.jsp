@@ -1,5 +1,9 @@
-
-<section id="form"><!--form-->
+<html lang="en">
+    <jsp:include page="head.jsp"/>
+    
+<body>
+    <jsp:include page="header.jsp"/>
+    <section id="form">
     <form action="Controlador" method="post"> 
             <div class="container">
                 <h2 class="title text-center">Agregar una película </h2>  
@@ -9,7 +13,7 @@
                         <div class="cuenta">
                             
                             
-                                <input type="hidden" name="form" value="altaPelicula">
+                                <input type="hidden" name="form" value="AgregarPeliculaComando">
                                 <input type="text" class="control form-control" name="nomPel" placeholder="Nombre de película" required>
                                 <input type="text" class="control form-control" name="durPel" placeholder="Duración" required>
                                  <input type="text" class="control form-control" name="formPel" placeholder="Formato" required>
@@ -48,4 +52,7 @@
             </div>   
       </form>         
  </section>
+</body>
+<jsp:include page="footer.jsp"/>
+</html>
                          

@@ -5,7 +5,12 @@
         String email = request.getParameter("email");
         String contrasenia = request.getParameter("contra1");
     %>
-      
+<!DOCTYPE html>
+<html lang="en">
+    <jsp:include page="head.jsp"/>
+    
+<body>
+    <jsp:include page="header.jsp"/>
         <section id="form"><!--form-->
             <div class="container">
                 <div class="login-form"><!--login form-->
@@ -50,24 +55,27 @@
                                 <input class="control form-control" type="password" placeholder="Contraseña" name="Contra1" required value="<%=contrasenia %>">
                                 <input class="control form-control" type="password" placeholder="Confirmar contraseña" name="Contra2" required>
                                 <h2>Tus medios de pago</h2>
-                                <input class="control form-control" type="text" placeholder="Número de tarjeta" required>
+                                <input class="control form-control" type="text" placeholder="Número de tarjeta" name="IdTarjeta" required>
                                 <div class="row">
                                     <div class="col-sm-7 col-sm-offset-0">
-                                        <input class="control form-control" type="text" placeholder="Empresa/Banco" required>
+                                        <input class="control form-control" type="text" placeholder="Empresa/Banco" name="DescTarjeta"required>
                                     </div>
                                     <div class="col-sm-5 col-sm-offset-0">
-                                        <input class="control form-control" type="text" placeholder="Código de seguridad" required>
+                                        <input class="control form-control" type="text" placeholder="Código de seguridad" name="CodSTarjeta" required>
                                     </div>
                                 </div>  
                             </div>
                         </div><!--/row-->
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1">
-                                <input type="hidden" name="form" value="registro">
+                                <input type="hidden" name="form" value="RegistroComando">
                                 <button type="submit" class="btn btn-default">Completar Registro</button>
                             </div>
                         </div>
                     </form>
                 </div><!--/loggin form-->
             </div><!--/container-->
-        </section>    
+        </section>
+</body>
+<jsp:include page="footer.jsp"/>
+</html>

@@ -41,7 +41,7 @@
                     <div class="col-sm-4">
                         <div class="signup-form"><!--sign up form-->
                             <h2>Sos nuevo? Registrate!</h2>
-                            <form action="registro.jsp" method="post">
+                            <form action="signup.jsp" method="post">
                                 <input class="control form-control" type="text" name="nombre" placeholder="Nombre" required>
                                 <input class="control form-control" type="email" name="email" placeholder="Email" required>
                                 <input class="control form-control" type="password" name="contra1" placeholder="Contraseña" required>

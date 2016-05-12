@@ -6,8 +6,6 @@
                         <div class="col-sm-6">
                             <div class="contactinfo">
                                 <ul class="nav nav-pills">
-                                  <!--  <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li> -->
                                 </ul>
                             </div>
                         </div>
@@ -37,17 +35,25 @@
                         <div class="col-sm-8">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
-                                    <%if(session.getAttribute("usuario")!=null){%><li><input  type="button" name="pagina" value="Cuenta"><i class="fa fa-user"></i></li><%}%>             
-                                        <li><form action="Controlador" method="post">
+                                        <li>
+                                                    <form action="Controlador" method="post">
                                                         <input type="hidden"  name="form" value="CarritoComando"/>
-                                                        <i class="fa fa-shopping-cart"></i><input type="button" name="pagina" value="Carrito" >
-                                                    </form></li>
-                                        <%if(session.getAttribute("usuario")==null){%>
-                                        <li><a href="login.jsp"><i class="fa fa-lock"></i><input type="button" name="pagina" value="Ingresar" ></a></li>
-                                        <%}else{%> <li><form action="Controlador" method="post">
+                                                        <i class="fa fa-shopping-cart"></i><input type="submit" name="pagina" value="Carrito" >
+                                                    </form>
+                                        </li>
+                                        <%if(session.getAttribute("usuario")==null)
+                                            {%>
+                                                <li><a href="login.jsp"><i class="fa fa-lock"></i><input type="button" name="pagina" value="Ingresar" ></a></li>
+                                            <%}
+                                            else
+                                            {%>
+                                                <li><a href="cuenta.jsp"><i class="fa fa-user"></i><input type="button" name="pagina" value="Cuenta" ></a></li>
+                                                <li>
+                                                    <form action="Controlador" method="post">
                                                         <input type="hidden"  name="form" value="LogOutComando"/>
-                                                        <i class="fa fa-lock"></i><input type="button" name="pagina" value="Salir" >
-                                                    </form></li>
+                                                        <i class="fa fa-lock"></i><input type="submit" name="pagina" value="Salir" >
+                                                    </form>
+                                                </li>  
                                             <%}%>
                                     </form>        
                                 </ul>
@@ -93,12 +99,12 @@
                                         <%Usuario usu = (Usuario)session.getAttribute("usuario");
                                         if(usu!=null && usu.isEsAdmin())
                                         {%>
-                                            <li>
-                                            <form action="Controlador" method="post">
-                                                <input type="hidden"  name="form" value="AgregarPeliculaComando"/>
-                                                <input type="button" name="pagina" value="Administrador" >
-                                            </form>
-                                            </li>
+                                            <li class="dropdown"><a href=>Administrador<i class="fa fa-angle-down"></i></a>
+                                                <ul role="menu" class="sub-menu">
+                                                    <li><a href="ABMPelicula.jsp">Agregar Película</a></li>
+                                                    <li><a href="">Opcion 2 Admin</a></li>
+                                                </ul>
+                                            </li> 
                                         <%}%>                                                         
                                     </ul>
                                 </form>   

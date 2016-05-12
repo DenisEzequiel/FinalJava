@@ -28,7 +28,7 @@ public class PeliculaDB {
             PreparedStatement pr = con.prepareStatement(transac);
             
            
-             pr.setNull(1,0);
+            pr.setNull(1,0);
             pr.setString(2, p.getNombre());
             pr.setInt(3, p.getDuracion());
             pr.setString(4, p.getFormato());

@@ -5,8 +5,10 @@
  */
 package aplicacion.modelo.comandos;
 
+import aplicacion.modelo.entidades.Tarjeta;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
+import java.lang.annotation.Target;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,11 +24,6 @@ public class RegistroComando extends Comando
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
-        //Guardamos pag anterior para redireccionar.
-        String PAnterior = (String)request.getSession().getAttribute("anterior");
-        
-        HttpSession sesion = request.getSession();
-        //Genero objeto usuario que va hacia la BD
         Usuario us = new Usuario();
         us.setNombre((String)request.getParameter("Nombre"));
         us.setApellido((String)request.getParameter("Apellido"));
@@ -43,9 +40,15 @@ public class RegistroComando extends Comando
         us.setMail((String)request.getParameter("Email"));
         us.setNombreUsuario((String)request.getParameter("Usu"));
         
+        Tarjeta tarj = new Tarjeta();
+        tarj.setIdTarjeta((String)request.getParameter("IdTarjeta"));
+        tarj.setDescripcion((String)request.getParameter("DescTarjeta"));
+        tarj.setCodigoDeSeguridad(Integer.parseInt(request.getParameter("CodSTarjeta")));
+        us.agregarTarjeta(tarj);
+       
         CdeU.registrarUsuario(us);
         
-        request.getSession().setAttribute("pagina", PAnterior);
+        //request.getSession().setAttribute("pagina", PAnterior);
         return "/index.jsp";
     }
     

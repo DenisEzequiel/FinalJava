@@ -6,7 +6,9 @@
 package aplicacion.modelo.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+
 
 /**
  *
@@ -27,7 +29,20 @@ public class Usuario implements Serializable
     private boolean activo; 
     private boolean bloqueado;
     private boolean esAdmin; 
-
+    private ArrayList<Tarjeta> tarjetas;
+    
+    public Usuario()
+    {
+        tarjetas=new ArrayList<Tarjeta>();
+    }
+    public void agregarTarjeta(Tarjeta t)
+    { 
+        tarjetas.add(t);
+    }
+    public ArrayList<Tarjeta> getTarjetas()
+    {
+        return tarjetas;
+    }
     /**
      * @return the idUsuario
      */
