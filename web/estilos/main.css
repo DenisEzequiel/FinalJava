@@ -241,6 +241,7 @@ a#scrollUp i{
 	background:#fff;
 }
 
+
 .navbar-collapse.collapse{
   padding-left: 0;
 }
@@ -281,7 +282,8 @@ a#scrollUp i{
 }
       
 
-.mainmenu ul li label:hover, .mainmenu ul li label.active,  .shop-menu ul li label.active{
+.mainmenu ul li label:hover, .mainmenu ul li label.active,  .shop-menu ul li label.active, .shop-menu ul li input.active
+{
 	background:none;
 	color:#fdb45e;
 }

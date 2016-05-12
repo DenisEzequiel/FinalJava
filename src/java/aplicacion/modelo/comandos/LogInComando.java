@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JP
  */
-public class LogIn extends Comando
+public class LogInComando extends Comando
 {
     CatalogoDeUsuarios CdeU = new CatalogoDeUsuarios();
     

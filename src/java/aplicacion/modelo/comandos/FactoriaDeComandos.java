@@ -16,10 +16,11 @@ public class FactoriaDeComandos
     private FactoriaDeComandos()
     { 
         mapa=new HashMap<>();
-        mapa.put("login",LogIn.class);
-        mapa.put("cuenta",CuentaComando.class);
-        mapa.put("registro", RegistroComando.class);
-        mapa.put("peliculas", PeliculasComando.class);
+        mapa.put("LogInComando",LogInComando.class);
+        mapa.put("CuentaComando",CuentaComando.class);
+        mapa.put("RegistroComando", RegistroComando.class);
+        mapa.put("PeliculasComando", PeliculasComando.class);
+        mapa.put("AgregarPeliculaComando", AgregarPeliculaComando.class);
     }
     /**
      * Metodo de clase devuelve la instancia de FactoriaDeComandos

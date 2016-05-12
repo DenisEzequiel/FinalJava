@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-public class AgregarPelicula extends Comando{
+public class AgregarPeliculaComando extends Comando{
 
 
     @Override

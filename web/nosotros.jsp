@@ -1,4 +1,8 @@
-
+<html lang="en">
+    <jsp:include page="head.jsp"/>
+    
+<body>
+    <jsp:include page="header.jsp"/>
 	<div id="contact-page" class="container">
     	<div class="bg">
 	    	<div class="row">    		
@@ -21,4 +25,7 @@
 	    					
 	    	</div>  
     	</div>	
-    </div><!--/#contact-page-->
+    </div>
+<jsp:include page="footer.jsp"></jsp:include>
+            </body>
+</html>

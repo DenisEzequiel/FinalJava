@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <body>       
+<html lang="en">
+    <jsp:include page="head.jsp"/>
+    
+<body>
+    <jsp:include page="header.jsp"/>     
         <section id="form"><!--form-->
             <div class="container">
                 <div class="row">
@@ -8,7 +10,7 @@
                         <div class="login-form"><!--login form-->
                             <h2>Ingresá con tu usuario</h2>
                             <form action="Controlador" method="post">
-                                <input type="hidden" name="form" value="login">
+                                <input type="hidden" name="form" value="LogInComando">
                                 <input type="text" class="control form-control" name="nomUsu" placeholder="Nombre de usuario" required>
                                 <input type="password" class="control form-control" name="contra" placeholder="Constraseña" required>
                                 <span>
@@ -39,17 +41,18 @@
                     <div class="col-sm-4">
                         <div class="signup-form"><!--sign up form-->
                             <h2>Sos nuevo? Registrate!</h2>
-                            <form action="index.jsp" method="post">
+                            <form action="registro.jsp" method="post">
                                 <input class="control form-control" type="text" name="nombre" placeholder="Nombre" required>
                                 <input class="control form-control" type="email" name="email" placeholder="Email" required>
                                 <input class="control form-control" type="password" name="contra1" placeholder="Contraseña" required>
-                                <input type="radio" name="pagina" value="8" checked="checked">
                                 <button type="submit" class="btn btn-default">Continuar</button>
                             </form>
-                        </div><!--/sign up form-->
+                        </div>
                     </div>
                 </div>
             </div>
         </section><!--/form-->      
-    </body>
+            <jsp:include page="footer.jsp"></jsp:include>
+            </body>
 </html>
+

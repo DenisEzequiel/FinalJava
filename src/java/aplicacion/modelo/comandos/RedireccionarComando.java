@@ -5,9 +5,6 @@
  */
 package aplicacion.modelo.comandos;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,11 +12,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author marti_000
  */
-public class PeliculasComando extends Comando
+public class RedireccionarComando extends Comando
 {
+
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
-        return "/error.jsp";
+        request.getSession().setAttribute("form", request.getParameter("form"));
+        int c = Integer.parseInt((String)request.getParameter("pagina"));
+        switch(c)
+        {
+            case 2:
+                request.getSession().setAttribute("form","pelicuas");
+                return "Controlador";
+        }
+        
+        
+        return "index.jsp";    
     }
+    
 }
