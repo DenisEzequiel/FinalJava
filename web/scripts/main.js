@@ -7,7 +7,6 @@
 	};	
 		
 /*scroll to top*/
-var anterior;
 $(document).ready(function(){
 	$(function () {
 		$.scrollUp({
@@ -26,61 +25,5 @@ $(document).ready(function(){
 	        activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
 	        zIndex: 2147483647 // Z-Index for the overlay
 		});
-	});
-        
-         $(".accordion").click(function(){
-             
-        if(!$(this).hasClass("active") && !$(this).next().hasClass("show"))
-        {
-            if(anterior!=null)
-            {
-                if(anterior!=$(this))
-                {
-                    anterior.removeClass("active");
-                    anterior.next().removeClass("show");
-                }
-            }
-            $(this).addClass("active");
-            $(this).next().addClass("show");
-            anterior = $(this);
-        }
-        else
-        {
-            $(this).removeClass("active");
-            $(this).next().removeClass("show");           
-        }         
-    });
-});
-
-
- 
- function validarContrasenia()
- {
-     var nueva = document.getElementById("nuevaContra").value;
-     var repetida = document.getElementById("repiteContra").value;
-     var mensaje = document.getElementById("mensajeError");
-     var p = document.getElementById("parrafoError");
-     p.innerHTML = "<strong>Error! </strong>Las contrase&ntilde;as no son iguales";
-     if(!mensaje.classList.contains("alert-danger"))
-     {
-         mensaje.classList.add("alert-danger");
-     }
-     if(nueva===repetida)
-     {
-        mensaje.classList.remove("alert-danger");
-        mensaje.classList.add("alert-success");
-        p.innerHTML = "<strong>Bien!</strong> Las contrase&ntilde;as son iguales";
-     }
- }
- 
- $(document).ready(function(){
-  
-    $('.fila').mouseenter(function()
-    {          
-        $($(this).find("i")).addClass("suave");      
-    });
-    $(".fila").mouseleave(function(){ 
-            
-        $($(this).find("i")).removeClass("suave");
-    });
+	});       
 });

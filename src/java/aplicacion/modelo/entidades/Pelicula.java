@@ -25,6 +25,7 @@ public class Pelicula
     private Date fechaCarga;
     private boolean activo;
     private float precioVenta;
+    private int anio;
     //private String imagen;
 
     /**
@@ -40,6 +41,11 @@ public class Pelicula
     public void setIdPelicula(int idPelicula) {
         this.idPelicula = idPelicula;
     }
+    public int getAnio()
+    {return anio;}
+    
+    public void setAnio(int a)
+    {anio=a;}
 
     /**
      * @return the sinopsis

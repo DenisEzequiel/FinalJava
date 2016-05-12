@@ -892,7 +892,7 @@ h2.title {
   font-size: 18px;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 30px;
+ /* margin-bottom: 30px;*/
   position: relative;
 }
 
@@ -2587,7 +2587,7 @@ h2.title {
 	.header-bottom{
 		padding:0px;
 		background-color:#172431;
-		margin-bottom:30px;
+		margin-bottom:20px;
 	}
 	.mainmenu > ul > li > label{
 		padding:0px;
@@ -2683,6 +2683,7 @@ div.panel.show {
     opacity: 1;
     max-height: 900px;
     margin-top: 30px;
+
 }
 
 button.accordion:after {
@@ -2700,13 +2701,12 @@ button.accordion.active:after {
 }
 
 
-#cuenta
+.seccion
 {
   display: block;
-  margin-top: 50px;
+  /*margin-top: 50px;*/
   overflow: hidden;
-  height:900px;
-  
+  margin-bottom: 20px;
 }
 
 .control.form-control {
