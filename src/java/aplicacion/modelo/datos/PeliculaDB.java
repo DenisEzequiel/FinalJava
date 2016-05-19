@@ -102,6 +102,46 @@ public class PeliculaDB {
         return listaPeliculas;
      }
      
+     public Pelicula obtenerPelicula(int idPeli)
+     {
+        Connection con = conec.getConexion();
+        Pelicula p = new Pelicula();
+        String transac = "select * from peliculas where activo=1 and id_pelicula=?";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            
+            pr.setInt(1, idPeli);
+            
+            ResultSet res = pr.executeQuery();
+                   
+            if(res.next())
+            {
+                p.setIdPelicula(res.getInt(1));
+                p.setNombre(res.getString(2));
+                p.setDuracion(res.getInt(3));
+                p.setFormato(res.getString(4));
+                p.setStockAlquiler(res.getInt(5));
+                p.setStockVenta(res.getInt(6));
+                p.setReparto(res.getString(8));
+                p.setFechaCarga(new java.sql.Date(res.getDate(9).getTime()));
+                p.setActivo(res.getBoolean(10));
+                p.setUrlTrailer(res.getString(11));
+                p.setPrecioVenta(res.getFloat(12));
+                p.setSinopsis(res.getString(13));
+                p.setAnio(res.getInt(14));  
+            }
+            con.close();
+            
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        return p;
+     }
+     
      public int buscarCantidadPelicula()
      {
          Connection con = conec.getConexion();

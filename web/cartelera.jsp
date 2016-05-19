@@ -38,8 +38,7 @@
 
 
                                         <div class="col-sm-9 padding-right">
-                                                <div class="features_items"><!--features_items-->
-
+                                                <div class="features_items">
                                                 <% for(int i=0; i<listaCartelera.size();i++)
                                                   { %>
                                                         <div class="col-sm-4">
@@ -49,32 +48,37 @@
                                                                                         <img src="imagenes/product12.jpg" alt="">
                                                                                         <h2><%=listaCartelera.get(i).getNombre()%></h2>
                                                                                         <p><%=listaCartelera.get(i).getAnio()%></p>
-                                                                                        <a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Alquilar</a>
-                                                                                        <a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Comprar</a>
+                                                                                        <p>$ 40,05 - $ <%=listaCartelera.get(i).getPrecioVenta()%></p>
+                                                                                        <a href="" class="btn btn-default add-to-cart">Alquilar</a>
+                                                                                        <a href="" class="btn btn-default add-to-cart">Comprar</a>
 
                                                                                 </div>
-                                                                                <div class="product-overlay">
+                                                                                <div class="product-overlay text-center">
                                                                                         <div class="overlay-content">
                                                                                                 <h2><%=listaCartelera.get(i).getNombre()%></h2>
                                                                                                 <p><%=listaCartelera.get(i).getAnio()%></p>
-                                                                                                <a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>$50</a>
-                                                                                                <a href="pelicula.jsp" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>$150</a>
+                                                                                                <p>$ 40,05 - $ <%=listaCartelera.get(i).getPrecioVenta()%></p>
+                                                                                                <form action="Controlador" method="post">
+                                                                                                    <input type="hidden"  name="form" value="AgregarLineaComando"/>
+                                                                                                    <input type="hidden" name="idPelicula" value="<%=listaCartelera.get(i).getIdPelicula()%>"/>
+                                                                                                    <input class="btn btn-default add-to-cart linea" type="submit" name="tipoLinea" value="Alquilar">
+                                                                                                    <input class="btn btn-default add-to-cart linea" type="submit" name="tipoLinea" value="Comprar">
+                                                                                                </form>
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
                                                                 </div>
                                                         </div>
-                                                    <% } ; %>
-                                                    
-                                                        <ul class="pagination">
+                                                    <% } ; %>        
+                                                </div>
+                                                <ul class="pagination">
                                                              <form action="Controlador" method="post">  
                                                             <%for(int j=1;j<=cantPaginas;j++){%>                                                                                                              
                                                                     <li><input type="submit" name="paginacionActual" value="<%=j%>"> </li>
                                                              <%}%>  
                                                             <input type="hidden" name="form" value="PeliculasComando">   
                                                              </form>
-                                                        </ul>
-                                                </div><!--features_items-->
+                                                </ul>
                                         </div>
                                 </div>
                         </div>

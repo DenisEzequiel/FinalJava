@@ -1,4 +1,6 @@
+<%@page import="aplicacion.modelo.entidades.Pedido"%>
 <%@page import="aplicacion.modelo.entidades.Usuario"%>
+<% Pedido pedido = (Pedido)session.getAttribute("pedido");%>
 <header id="header">
             <div class="header_top"><!--header_top-->
                 <div class="container">
@@ -27,19 +29,24 @@
             <div class="header-middle"><!--header-middle-->
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <div class="logo pull-left">
-                                <a href="index.jsp"><span>E</span>-Shop</a>
+                                <a href="index.jsp"><span>A</span>efilep</a>
                             </div>               
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-3">
+                                                <div class="popover fade <%if(session.getAttribute("exitoPeliculaAgregada")!=null){%>in<%}%>">
+                                                                    Se ha agregado una película al carro.
+                                                </div> 
+                        </div>
+                        <div class="col-sm-4">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                         <li>
-                                                    <form action="Controlador" method="post">
-                                                        <input type="hidden"  name="form" value="CarritoComando"/>
-                                                        <i class="fa fa-shopping-cart"></i><input type="submit" name="pagina" value="Carrito" >
-                                                    </form>
+                                            <form action="Controlador" method="post">
+                                                <input type="hidden"  name="form" value="CarritoComando"/>
+                                                <i class="fa fa-shopping-cart"></i><input type="submit" name="pagina" value="Carrito (<%=pedido.getLineas().size()%>)" >
+                                            </form>
                                         </li>
                                         <%if(session.getAttribute("usuario")==null)
                                             {%>
@@ -52,9 +59,9 @@
                                                     <form action="Controlador" method="post">
                                                         <input type="hidden"  name="form" value="LogOutComando"/>
                                                         <i class="fa fa-lock"></i><input type="submit" name="pagina" value="Salir" >
-                                                    </form></li>
+                                                    </form>
+                                                </li>
                                             <%}%>
-                                    </form>        
                                 </ul>
                             </div>
                         </div>
@@ -106,7 +113,6 @@
                                             </li> 
                                         <%}%>                                                         
                                     </ul>
-                                </form>   
                             </div>
                         </div>
                         <div class="col-sm-3">

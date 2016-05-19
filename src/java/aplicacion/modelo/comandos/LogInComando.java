@@ -42,6 +42,6 @@ public class LogInComando extends Comando
         {
             request.getSession().setAttribute("pagina", "7");
         }
-        return "/index.jsp";
+        return "/login.jsp";
     }
 }

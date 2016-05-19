@@ -49,29 +49,26 @@ public class UsuarioBD
                 usu.setNombreUsuario(res.getString(13));
                 usu.setTelefono(res.getString(7));
                 
-            }
-            pr=con.prepareStatement(sql2);
-            pr.setInt(1, usu.getIdUsuario());
-            res= pr.executeQuery();
-            Tarjeta t;
+                pr=con.prepareStatement(sql2);
+                pr.setInt(1, usu.getIdUsuario());
+                res= pr.executeQuery();
+                Tarjeta t;
             
-            while(res.next())
-            {
-              t=new Tarjeta();
-              t.setCodigoDeSeguridad(res.getInt(1));
-              t.setIdTarjeta(res.getString(2));
-              t.setDescripcion(res.getString(4));
-              usu.agregarTarjeta(t);
+                while(res.next())
+                {
+                  t=new Tarjeta();
+                  t.setCodigoDeSeguridad(res.getInt(1));
+                  t.setIdTarjeta(res.getString(2));
+                  t.setDescripcion(res.getString(4));
+                  usu.agregarTarjeta(t);
+                }  
             }
-            
             con.close();
             
         }catch(SQLException ex)
         {
             
         }
-        //System.out.print(usu.getApellido());
-        
         return usu;
     }
  

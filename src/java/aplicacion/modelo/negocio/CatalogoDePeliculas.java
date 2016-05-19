@@ -14,12 +14,17 @@ import java.util.ArrayList;
  * @author User
  */
 public class CatalogoDePeliculas 
-{  PeliculaDB peliculas=new PeliculaDB();;
+{  
+    PeliculaDB peliculas=new PeliculaDB();
     public void agregarPelicula(Pelicula pelicula)
     {
         
         peliculas.agregarPelicula(pelicula);
         
+    }
+    public Pelicula obtenerPelicula(int idPel)
+    {
+        return peliculas.obtenerPelicula(idPel);
     }
     
     public ArrayList<Pelicula> buscarPeliculas(int inferior, int cantidad)

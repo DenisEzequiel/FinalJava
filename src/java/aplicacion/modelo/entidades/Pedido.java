@@ -5,6 +5,9 @@
  */
 package aplicacion.modelo.entidades;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,7 +22,23 @@ public class Pedido
     private Date fechaHasta;
     private String estado;
     private Date fechaDevolucion;
-
+    private float total;
+    private ArrayList<LineaPedido> lineas;
+    
+    public void setLinea(LineaPedido lp)
+    {
+        getLineas().add(lp);
+    }
+    
+    public Pedido()
+    {
+        lineas = new ArrayList<LineaPedido>();
+        estado = "Activo";
+        DateFormat hoyFormato = new SimpleDateFormat("yyyy/MM/dd");      
+        Date hoy=new Date();
+        hoyFormato.format(hoy);
+        fechaRealizacion = hoy;
+    }
     /**
      * @return the idPedido
      */
@@ -102,5 +121,19 @@ public class Pedido
      */
     public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
+    }
+
+    /**
+     * @return the lineas
+     */
+    public ArrayList<LineaPedido> getLineas() {
+        return lineas;
+    }
+
+    /**
+     * @param lineas the lineas to set
+     */
+    public void setLineas(ArrayList<LineaPedido> lineas) {
+        this.lineas = lineas;
     }
 }

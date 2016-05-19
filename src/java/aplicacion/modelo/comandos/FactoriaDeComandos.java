@@ -23,6 +23,7 @@ public class FactoriaDeComandos
         mapa.put("AgregarPeliculaComando", AgregarPeliculaComando.class);
         mapa.put("ContactoComando",ContactoComando.class);
         mapa.put("LogOutComando", LogOutComando.class);
+        mapa.put("AgregarLineaComando", AgregarLineaComando.class);
     }
     /**
      * Metodo de clase devuelve la instancia de FactoriaDeComandos

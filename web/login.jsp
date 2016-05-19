@@ -1,5 +1,5 @@
 <html lang="en">
-    <jsp:include page="head.jsp"/>
+<jsp:include page="head.jsp"/>
     
 <body>
     <jsp:include page="header.jsp"/>     
