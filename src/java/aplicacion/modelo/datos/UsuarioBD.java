@@ -125,7 +125,7 @@ public void registrarUsuario(Usuario usu)
         Connection con = conec.getConexion();
         String transac1 = "insert into aefilep.usuarios values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
         String transac2 = "select usuarios.id_usuario from aefilep.usuarios where usuarios.nombre_usuario=?;";
-        String transac3  =" insert into aefilep.tarjetas values(?,?,?,?);";
+        String transac3  =" insert into aefilep.tarjetas values(?,?,?,?,?,?);";
         try
         {
             prpstmt = con.prepareStatement(transac1);
@@ -157,6 +157,8 @@ public void registrarUsuario(Usuario usu)
             prpstmt.setString(2,usu.getTarjetas().get(0).getIdTarjeta());
             prpstmt.setInt(3,usu.getIdUsuario());
             prpstmt.setString(4,usu.getTarjetas().get(0).getDescripcion());
+            prpstmt.setString(5,usu.getTarjetas().get(0).getNombreTitular());
+            prpstmt.setDate(6, new java.sql.Date(usu.getTarjetas().get(0).getFechaVencimiento().getTime()));
             prpstmt.executeUpdate();
             con.close();
         }

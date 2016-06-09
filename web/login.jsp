@@ -42,9 +42,9 @@
                         <div class="signup-form"><!--sign up form-->
                             <h2>Sos nuevo? Registrate!</h2>
                             <form action="signup.jsp" method="post">
-                                <input class="control form-control" type="text" name="nombreUsuario" placeholder="Nombre de Usuario" required>
-                                <input class="control form-control" type="email" name="email" placeholder="Email" required>
-                                <input class="control form-control" type="password" name="contra1" placeholder="Contraseña" required>
+                                <input class="control form-control" type="text" name="nombreUsuario" placeholder="Nombre de Usuario" maxlenght="10"  required>
+                                <input class="control form-control" type="email" name="email" placeholder="Email" maxlenght="30" required>
+                                <input class="control form-control" type="password" name="contra1" placeholder="Contraseña" maxlenght="10" required>
                                 <button type="submit" class="btn btn-default">Continuar</button>
                             </form>
                         </div>
