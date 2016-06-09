@@ -39,6 +39,7 @@ public class AgregarLineaComando extends Comando
             LineaPedido linea = new LineaPedido();
             linea.setEsAlquiler(alquiler);
             Pelicula peli = cdp.obtenerPelicula(idPelicula);
+            linea.setCantidad(1);
             linea.setPelicula(peli);
             pedido.setLinea(linea);
         }

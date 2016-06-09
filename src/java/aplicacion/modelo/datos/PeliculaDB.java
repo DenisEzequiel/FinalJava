@@ -19,7 +19,8 @@ import java.util.ArrayList;
  */
 public class PeliculaDB {
      Conexion conec = new Conexion();
-    
+     ParametroBD parBD = new ParametroBD();
+     
      public void agregarPelicula(Pelicula p)
      {
         
@@ -89,6 +90,15 @@ public class PeliculaDB {
                 p.setSinopsis(res.getString(13));
                 p.setAnio(res.getInt(14));
                 
+                if(p.isEstreno())
+                {
+                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
+                }
+                else
+                {
+                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
+                }
+                
                 listaPeliculas.add(p);
             }
             con.close();
@@ -132,6 +142,15 @@ public class PeliculaDB {
                 p.setAnio(res.getInt(14));  
             }
             con.close();
+            
+            if(p.isEstreno())
+            {
+                p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
+            }
+            else
+            {
+                p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
+            }
             
         }
         catch(SQLException ex)

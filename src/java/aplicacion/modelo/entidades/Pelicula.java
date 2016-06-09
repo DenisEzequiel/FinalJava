@@ -25,7 +25,10 @@ public class Pelicula
     private Date fechaCarga;
     private boolean activo;
     private float precioVenta;
+    private float precioAlquiler;
     private int anio;
+    private boolean estreno;
+    
     //private String imagen;
 
     /**
@@ -34,7 +37,19 @@ public class Pelicula
     public int getIdPelicula() {
         return idPelicula;
     }
-
+   public boolean isEstreno()
+   {
+       Date fechaHoy= new Date();
+       long mshoy = fechaHoy.getTime();
+       long mscarga = fechaCarga.getTime();
+       long dif = mshoy - mscarga;
+       long dias = dif / (1000 * 60 * 60 * 24);
+       return(dias<=7);
+    }
+      public void setEstreno(boolean e)
+    {
+        estreno=e;
+    }
     /**
      * @param idPelicula the idPelicula to set
      */
@@ -199,5 +214,19 @@ public class Pelicula
      */
     public void setPrecioVenta(float precioVenta) {
         this.precioVenta = precioVenta;
+    }
+
+    /**
+     * @return the precioAlquiler
+     */
+    public float getPrecioAlquiler() {
+        return precioAlquiler;
+    }
+
+    /**
+     * @param precioAlquiler the precioAlquiler to set
+     */
+    public void setPrecioAlquiler(float precioAlquiler) {
+        this.precioAlquiler = precioAlquiler;
     }
 }

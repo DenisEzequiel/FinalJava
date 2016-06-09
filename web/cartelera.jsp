@@ -1,3 +1,4 @@
+<%@page import="aplicacion.modelo.entidades.Parametro"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,8 @@
         <jsp:include page="header.jsp"/>
         <%@page import="aplicacion.modelo.entidades.Pelicula"%>
         <%ArrayList<Pelicula> listaCartelera = (ArrayList)session.getAttribute("listaCartelera");
-          int cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9)+1; %>
+          int cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9)+1;
+        %>
         
         <h2 class="title text-center">Películas</h2>
                 <section>
@@ -48,7 +50,7 @@
                                                                                         <img src="imagenes/product12.jpg" alt="">
                                                                                         <h2><%=listaCartelera.get(i).getNombre()%></h2>
                                                                                         <p><%=listaCartelera.get(i).getAnio()%></p>
-                                                                                        <p>$ 40,05 - $ <%=listaCartelera.get(i).getPrecioVenta()%></p>
+                                                                                        <p>$ <%=listaCartelera.get(i).getPrecioAlquiler()%> - $ <%=listaCartelera.get(i).getPrecioVenta()%></p>
                                                                                         <a href="" class="btn btn-default add-to-cart">Alquilar</a>
                                                                                         <a href="" class="btn btn-default add-to-cart">Comprar</a>
 
@@ -57,7 +59,7 @@
                                                                                         <div class="overlay-content">
                                                                                                 <h2><%=listaCartelera.get(i).getNombre()%></h2>
                                                                                                 <p><%=listaCartelera.get(i).getAnio()%></p>
-                                                                                                <p>$ 40,05 - $ <%=listaCartelera.get(i).getPrecioVenta()%></p>
+                                                                                                <p>$ <%=listaCartelera.get(i).getPrecioAlquiler()%> - $ <%=listaCartelera.get(i).getPrecioVenta()%></p>
                                                                                                 <form action="Controlador" method="post">
                                                                                                     <input type="hidden"  name="form" value="AgregarLineaComando"/>
                                                                                                     <input type="hidden" name="idPelicula" value="<%=listaCartelera.get(i).getIdPelicula()%>"/>

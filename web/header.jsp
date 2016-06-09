@@ -35,18 +35,18 @@
                             </div>               
                         </div>
                         <div class="col-sm-3">
-                                                <div class="popover fade <%if(session.getAttribute("exitoPeliculaAgregada")!=null){%>in<%}%>">
-                                                                    Se ha agregado una película al carro.
+                            <div class="popover fade <%if(session.getAttribute("exitoPeliculaAgregada")!=null)
+                                                        {%> in <% 
+                                                        session.setAttribute("exitoPeliculaAgregada",null);}
+                                                        %>">
+                                                        Se ha agregado una película al carro.
                                                 </div> 
                         </div>
                         <div class="col-sm-4">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                         <li>
-                                            <form action="Controlador" method="post">
-                                                <input type="hidden"  name="form" value="CarritoComando"/>
-                                                <i class="fa fa-shopping-cart"></i><input type="submit" name="pagina" value="Carrito (<%=pedido.getLineas().size()%>)" >
-                                            </form>
+                                            <a href="carro.jsp"><i class="fa fa-shopping-cart"></i><input type="submit" name="pagina" value="Carrito (<%=pedido.getLineas().size()%>)" ></a>
                                         </li>
                                         <%if(session.getAttribute("usuario")==null)
                                             {%>

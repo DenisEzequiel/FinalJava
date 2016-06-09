@@ -43,8 +43,8 @@ public class ParametroBD {
                 par.setTelefono(res.getString(4));
                 par.setRazonSocial(res.getString(2));
                 par.setFechaActualizacion(res.getDate(1));
-                par.setPrecioAlquiler(res.getFloat(5));
-                par.setPrecioAlquilerEstreno(res.getFloat(6));
+                par.setPrecioAlquiler(res.getFloat(6));
+                par.setPrecioAlquilerEstreno(res.getFloat(5));
                 par.setRecargoDiario(res.getFloat(7));
          
                 

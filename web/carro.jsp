@@ -1,6 +1,14 @@
+
+<%@page import="aplicacion.modelo.entidades.Parametro"%>
+<%@page import="aplicacion.modelo.entidades.LineaPedido"%>
+<%@page import="aplicacion.modelo.entidades.Pedido"%>
 <!DOCTYPE html>
-<html> 
+<html>
+    <head>
+        <jsp:include page="head.jsp"/>
+    </head>
     <body>
+        <jsp:include page="header.jsp"/>
 
             <section id="cart_items">
                     <div class="container">
@@ -15,90 +23,64 @@
                                             <thead>
                                                     <tr class="cart_menu">
                                                             <td class="image">Película</td>
-                                                            <td class="description"></td>
+                                                            <td class="description">Descripción</td>
                                                             <td class="price">Precio</td>
                                                             <td class="quantity">Cantidad</td>
-                                                            <td class="total">Total</td>
+                                                            <td class="total">Subtotal</td>
                                                             <td></td>
                                                     </tr>
                                             </thead>
                                             <tbody>
-                                                    <tr>
-                                                            <td class="cart_product">
-                                                                    <a href=""><img src="imagenes/one.png" alt=""></a>
-                                                            </td>
-                                                            <td class="cart_description">
-                                                                    <h4><a href="">Colorblock Scuba</a></h4>
-                                                                    <p>Web ID: 1089772</p>
-                                                            </td>
-                                                            <td class="cart_price">
-                                                                    <p>$59</p>
-                                                            </td>
-                                                            <td class="cart_quantity">
-                                                                    <div class="cart_quantity_button">
-                                                                            <a class="cart_quantity_up" href=""> + </a>
-                                                                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                                                            <a class="cart_quantity_down" href=""> - </a>
-                                                                    </div>
-                                                            </td>
-                                                            <td class="cart_total">
-                                                                    <p class="cart_total_price">$59</p>
-                                                            </td>
-                                                            <td class="cart_delete">
-                                                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                                            </td>
-                                                    </tr>
-
+                                            <% Pedido ped = (Pedido)session.getAttribute("pedido");
+                                               for(LineaPedido lp: ped.getLineas())
+                                               {
+                                            %>
                                                     <tr>
                                                             <td class="cart_product">
                                                                     <a href=""><img src="imagenes/two.png" alt=""></a>
                                                             </td>
                                                             <td class="cart_description">
-                                                                    <h4><a href="">Colorblock Scuba</a></h4>
-                                                                    <p>Web ID: 1089772</p>
+                                                                    <h4><%=lp.getPelicula().getNombre()%></h4>
+                                                                    <% if(lp.isEsAlquiler())
+                                                                       {
+                                                                         %><h5>Tipo: Alquiler</h5><%  
+                                                                       }
+                                                                       else
+                                                                       {
+                                                                         %><h5>Tipo: Compra</h5><% 
+                                                                       }
+                                                                    %>
+                                                                    <h5>ID producto: <%=lp.getPelicula().getIdPelicula()%></h5>
                                                             </td>
                                                             <td class="cart_price">
-                                                                    <p>$59</p>
+                                                                    <% if(lp.isEsAlquiler())
+                                                                       {
+                                                                          %><h5>$ <%=lp.getPelicula().getPrecioAlquiler()%></h5><%  
+                                                                       }
+                                                                       else
+                                                                       {
+                                                                         %><h5>$ <%=lp.getPelicula().getPrecioVenta()%></h5><% 
+                                                                       }
+                                                                    %>
                                                             </td>
                                                             <td class="cart_quantity">
                                                                     <div class="cart_quantity_button">
-                                                                            <a class="cart_quantity_up" href=""> + </a>
-                                                                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                                                            <a class="cart_quantity_down" href=""> - </a>
+                                                                            <form action="Controlador" method="post">
+                                                                                <input type="hidden"  name="form" value="ActualizarLineaComando"/>
+                                                                                <input type="hidden" name="idPelicula" value="<%=lp.getPelicula().getIdPelicula()%>"/>
+                                                                                <input type="hidden" name="tipoLinea" value="<%=lp.isEsAlquiler()%>"/>
+                                                                                <input onchange="submit()" class="cart_quantity_input" type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
+                                                                            </form>
                                                                     </div>
                                                             </td>
                                                             <td class="cart_total">
-                                                                    <p class="cart_total_price">$59</p>
+                                                                    <p class="cart_total_price"><%=lp.getSubtotal()%></p>
                                                             </td>
                                                             <td class="cart_delete">
                                                                     <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
                                                             </td>
                                                     </tr>
-                                                    <tr>
-                                                            <td class="cart_product">
-                                                                    <a href=""><img src="imagenes/three.png" alt=""></a>
-                                                            </td>
-                                                            <td class="cart_description">
-                                                                    <h4><a href="">Colorblock Scuba</a></h4>
-                                                                    <p>Web ID: 1089772</p>
-                                                            </td>
-                                                            <td class="cart_price">
-                                                                    <p>$59</p>
-                                                            </td>
-                                                            <td class="cart_quantity">
-                                                                    <div class="cart_quantity_button">
-                                                                            <a class="cart_quantity_up" href=""> + </a>
-                                                                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                                                            <a class="cart_quantity_down" href=""> - </a>
-                                                                    </div>
-                                                            </td>
-                                                            <td class="cart_total">
-                                                                    <p class="cart_total_price">$59</p>
-                                                            </td>
-                                                            <td class="cart_delete">
-                                                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                                            </td>
-                                                    </tr>
+                                                <% } %>
                                             </tbody>
                                     </table>
                             </div>
@@ -182,5 +164,6 @@
                     </div>
             </section><!--/#do_action-->
 
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

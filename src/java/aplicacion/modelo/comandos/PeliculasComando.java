@@ -5,6 +5,8 @@
  */
 package aplicacion.modelo.comandos;
 
+import aplicacion.modelo.datos.ParametroBD;
+import aplicacion.modelo.entidades.Parametro;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import java.io.IOException;
@@ -38,9 +40,13 @@ public class PeliculasComando extends Comando
         int cantidadDePeliculas = cDp.buscarCantidadPelicula();
         ArrayList<Pelicula> listaPeliculas = cDp.buscarPeliculas((paginaActual-1)*9,9);
         
+        ParametroBD pbd = new ParametroBD();
+        Parametro par = pbd.obtenerParametros();
         
+        request.getSession().setAttribute("parametro", par);
         request.getSession().setAttribute("listaCartelera", listaPeliculas);
         request.getSession().setAttribute("cantidadPeliculas", cantidadDePeliculas);
-       return "cartelera.jsp";
+       
+        return "cartelera.jsp";
     }
 }

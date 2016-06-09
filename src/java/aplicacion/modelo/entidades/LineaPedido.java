@@ -33,7 +33,17 @@ public class LineaPedido
     /**
      * @return the subtotal
      */
-    public float getSubtotal() {
+    public float getSubtotal()
+    {
+        if(esAlquiler)
+        {
+            subtotal = cantidad*pelicula.getPrecioAlquiler();
+        }
+        else
+        {
+            subtotal = cantidad*pelicula.getPrecioVenta();
+        }
+        
         return subtotal;
     }
 
