@@ -102,7 +102,7 @@ public class Pelicula
     public void setFormato(String formato) {
         this.formato = formato;
     }
-
+    
     /**
      * @return the reparto
      */
@@ -200,4 +200,5 @@ public class Pelicula
     public void setPrecioVenta(float precioVenta) {
         this.precioVenta = precioVenta;
     }
+    
 }

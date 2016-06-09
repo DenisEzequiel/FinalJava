@@ -116,7 +116,14 @@
                                         {%>
                                             <li class="dropdown"><a href="">Administrador<i class="fa fa-angle-down"></i></a>
                                             <ul role="menu" class="sub-menu">
-                                                <li><a href="ABMPelicula.jsp">Cargar Pelicula</a></li>
+                                                <li>
+                                                    <form action="Controlador" method="post">
+                                                        <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
+                                                        <input type="hidden"  name="form" value="AgregarPeliculaComando"/>
+                                                        <input type="submit" name="pagina" value="Cargar Pelicula" >
+                                                    </form>
+                                                </li>    
+                                                    
                                                 <li><a href="">Opcion 2 Admin</a></li>
                                             </ul>
                                             </li> 

@@ -2833,3 +2833,15 @@ button.accordion.active:after {
     margin:0;
     margin-top:10px;
 }
+
+.listaGeneros
+{
+    
+    width: 100%;
+}
+
+.cuenta input[type="checkbox"]
+{
+     height: 15px;
+    
+}
