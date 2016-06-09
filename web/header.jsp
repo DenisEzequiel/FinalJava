@@ -41,7 +41,9 @@
                                         <li>
                                             <div class='cartel'>
                                                
-                                                 <div class="popover fade left <%if(session.getAttribute("exitoPeliculaAgregada")!=null){%>in<%}%>">
+                                                <div class="popover fade left <%if(session.getAttribute("exitoPeliculaAgregada")!=null)
+                                                                                { %> in <%
+                                                                                    session.setAttribute("exitoPeliculaAgregada", null); } %>">
                                                      <div class="arrow"></div>
                                                      <div class="popover-content">
                                                          Se ha agregado una película al carro.
@@ -52,10 +54,7 @@
                                                 
                                         </li>
                                         <li>
-                                            <form action="Controlador" method="post" class="formNav">
-                                                <input type="hidden"  name="form" value="CarritoComando"/>
-                                                <i class="fa fa-shopping-cart"></i><input type="submit" name="pagina" value=" Carrito (<%=pedido.getLineas().size()%>)" >
-                                            </form>
+                                            <a href="carro.jsp"><i class="fa fa-shopping-cart"></i><input type="submit" name="pagina" value=" Carrito (<%=pedido.getLineas().size()%>)" ></a>
                                         </li>
                                         <%if(session.getAttribute("usuario")==null)
                                             {%>
