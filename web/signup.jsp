@@ -28,15 +28,9 @@
                                 <input class="control form-control" type="text" placeholder="DNI" name="Dni" required>
                                 <h5>Fecha de Nacimiento</h5>
                                 <div class="row">
-                                    <div class="col-sm-4 col-sm-offset-0">
-                                        <input class="control form-control" type="text" placeholder="Día" name="Dia" required>
-                                    </div>
-                                    <div class="col-sm-4 col-sm-offset-0">
-                                        <input class="control form-control" type="text" placeholder="Mes" name="Mes" required>
-                                    </div>
-                                    <div class="col-sm-4 col-sm-offset-0">
-                                        <input class="control form-control" type="text" placeholder="Año" name="Ano" required>
-                                    </div>
+                                    <div class="col-sm-12 col-sm-offset-0">
+                                        <input class="control form-control" type="date" name="fechaNacimiento" required>
+                                    </div>                                   
                                 </div> 
                                 <div class="row">
                                     <div class="col-sm-8 col-sm-offset-0">
