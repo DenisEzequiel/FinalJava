@@ -8,6 +8,7 @@ package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Tarjeta;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -51,6 +52,14 @@ public class RegistroComando extends Comando
         tarj.setIdTarjeta((String)request.getParameter("IdTarjeta"));
         tarj.setDescripcion((String)request.getParameter("DescTarjeta"));
         tarj.setCodigoDeSeguridad(Integer.parseInt(request.getParameter("CodSTarjeta")));
+        tarj.setNombreTitular((String)request.getParameter("NombreTarjeta"));
+        
+        DateFormat fechaVencFormato = new SimpleDateFormat("yyyy/MM/dd");      
+        Date fechaVenc=new Date();
+        fechaVencFormato.format(fechaVenc);
+        tarj.setFechaVencimiento(fechaVenc);
+        
+        
         us.agregarTarjeta(tarj);
        
         CdeU.registrarUsuario(us);

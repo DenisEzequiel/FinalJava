@@ -5,6 +5,8 @@
  */
 package aplicacion.modelo.entidades;
 
+import java.util.Date;
+
 /**
  *
  * @author JP
@@ -14,6 +16,8 @@ public class Tarjeta {
     private String idTarjeta;
     private int codigoDeSeguridad;
     private String descripcion;
+    private String nombreTitular;
+    private Date fechaVencimiento;
 
     /**
      * @return the idTarjeta
@@ -55,5 +59,33 @@ public class Tarjeta {
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the nombreTitular
+     */
+    public String getNombreTitular() {
+        return nombreTitular;
+    }
+
+    /**
+     * @param nombreTitular the nombreTitular to set
+     */
+    public void setNombreTitular(String nombreTitular) {
+        this.nombreTitular = nombreTitular;
+    }
+
+    /**
+     * @return the fechaVencimiento
+     */
+    public Date getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    /**
+     * @param fechaVencimiento the fechaVencimiento to set
+     */
+    public void setFechaVencimiento(Date fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
     }
 }
