@@ -29,11 +29,11 @@ public class Usuario implements Serializable
     private boolean activo; 
     private boolean bloqueado;
     private boolean esAdmin; 
-    private ArrayList<Tarjeta> tarjetas;
+    private final ArrayList<Tarjeta> tarjetas;
     
     public Usuario()
     {
-        tarjetas=new ArrayList<Tarjeta>();
+        tarjetas=new ArrayList<>();
     }
     public void agregarTarjeta(Tarjeta t)
     { 

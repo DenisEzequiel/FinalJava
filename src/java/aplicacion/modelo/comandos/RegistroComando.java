@@ -8,11 +8,12 @@ package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Tarjeta;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
-import java.lang.annotation.Target;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -24,19 +25,26 @@ public class RegistroComando extends Comando
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
+         
         Usuario us = new Usuario();
+        
+        SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd");
+            Date fecha = null;
+            try
+            {
+                fecha = formato.parse(request.getParameter("fechaNacimiento"));              
+                us.setFechaNacimiento(new java.sql.Date(fecha.getTime()));
+            }
+            catch(ParseException e)
+            { }
+       
         us.setNombre((String)request.getParameter("Nombre"));
         us.setApellido((String)request.getParameter("Apellido"));
         us.setContrasena((String)request.getParameter("Contra1"));
         String dire =(String)request.getParameter("Calle")+" "+(String)request.getParameter("Num");
         us.setDireccion(dire);
         us.setTelefono((String)request.getParameter("Tel"));
-        us.setDni((String)request.getParameter("Dni"));
-        int anio = Integer.parseInt((String)request.getParameter("Ano"));
-        int mes = Integer.parseInt((String)request.getParameter("Mes"));
-        int dia = Integer.parseInt((String)request.getParameter("Dia"));
-        Date f = new Date(anio,mes,dia);
-        us.setFechaNacimiento(f);
+        us.setDni((String)request.getParameter("Dni")); 
         us.setMail((String)request.getParameter("Email"));
         us.setNombreUsuario((String)request.getParameter("Usu"));
         
@@ -44,6 +52,14 @@ public class RegistroComando extends Comando
         tarj.setIdTarjeta((String)request.getParameter("IdTarjeta"));
         tarj.setDescripcion((String)request.getParameter("DescTarjeta"));
         tarj.setCodigoDeSeguridad(Integer.parseInt(request.getParameter("CodSTarjeta")));
+        tarj.setNombreTitular((String)request.getParameter("NombreTarjeta"));
+        
+        DateFormat fechaVencFormato = new SimpleDateFormat("yyyy/MM/dd");      
+        Date fechaVenc=new Date();
+        fechaVencFormato.format(fechaVenc);
+        tarj.setFechaVencimiento(fechaVenc);
+        
+        
         us.agregarTarjeta(tarj);
        
         CdeU.registrarUsuario(us);

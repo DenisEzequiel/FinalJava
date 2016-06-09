@@ -34,19 +34,28 @@
                                 <a href="index.jsp"><span>A</span>efilep</a>
                             </div>               
                         </div>
-                        <div class="col-sm-3">
-                            <div class="popover fade <%if(session.getAttribute("exitoPeliculaAgregada")!=null)
-                                                        {%> in <% 
-                                                        session.setAttribute("exitoPeliculaAgregada",null);}
-                                                        %>">
-                                                        Se ha agregado una película al carro.
-                                                </div> 
-                        </div>
-                        <div class="col-sm-4">
+ 
+                        <div class="col-sm-7">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                         <li>
-                                            <a href="carro.jsp"><i class="fa fa-shopping-cart"></i><input type="submit" name="pagina" value="Carrito (<%=pedido.getLineas().size()%>)" ></a>
+                                            <div class='cartel'>
+                                               
+                                                 <div class="popover fade left <%if(session.getAttribute("exitoPeliculaAgregada")!=null){%>in<%}%>">
+                                                     <div class="arrow"></div>
+                                                     <div class="popover-content">
+                                                         Se ha agregado una película al carro.
+                                                     </div>
+                                                     
+                                                </div> 
+                                            </div>
+                                                
+                                        </li>
+                                        <li>
+                                            <form action="Controlador" method="post" class="formNav">
+                                                <input type="hidden"  name="form" value="CarritoComando"/>
+                                                <i class="fa fa-shopping-cart"></i><input type="submit" name="pagina" value=" Carrito (<%=pedido.getLineas().size()%>)" >
+                                            </form>
                                         </li>
                                         <%if(session.getAttribute("usuario")==null)
                                             {%>
@@ -56,9 +65,9 @@
                                             {%>
                                                 <li><a href="cuenta.jsp"><i class="fa fa-user"></i><input type="button" name="pagina" value="Cuenta" ></a></li>
                                                 <li>
-                                                    <form action="Controlador" method="post">
+                                                    <form action="Controlador" method="post" class="formNav">
                                                         <input type="hidden"  name="form" value="LogOutComando"/>
-                                                        <i class="fa fa-lock"></i><input type="submit" name="pagina" value="Salir" >
+                                                        <i class="fa fa-lock"></i><input type="submit" name="pagina" value=" Salir" >
                                                     </form>
                                                 </li>
                                             <%}%>
@@ -107,7 +116,14 @@
                                         {%>
                                             <li class="dropdown"><a href="">Administrador<i class="fa fa-angle-down"></i></a>
                                             <ul role="menu" class="sub-menu">
-                                                <li><a href="ABMPelicula.jsp">Cargar Pelicula</a></li>
+                                                <li>
+                                                    <form action="Controlador" method="post">
+                                                        <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
+                                                        <input type="hidden"  name="form" value="AgregarPeliculaComando"/>
+                                                        <input type="submit" name="pagina" value="Cargar Pelicula" >
+                                                    </form>
+                                                </li>    
+                                                    
                                                 <li><a href="">Opcion 2 Admin</a></li>
                                             </ul>
                                             </li> 
