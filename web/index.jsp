@@ -28,10 +28,10 @@
 						<div class="carousel-inner">
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-Shop</h1>
-									<h2>Free E-Commerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<h1><span>A</span>efilep</h1>
+									<h2>Video Club</h2>
+									<p>No se pierda este estreno absoluto. Se lo recomendamos.</p>
+									<button type="button" class="btn btn-default get">Obtener ahora</button>
 								</div>
 								<div class="col-sm-6">
 									<img src="./imagenes/girl1.jpg" class="girl img-responsive" alt="">
@@ -40,10 +40,10 @@
 							</div>
 							<div class="item active">
 								<div class="col-sm-6">
-									<h1><span>E</span>-Shop</h1>
-									<h2>100% Responsive Design</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<h1><span>A</span>efilep</h1>
+									<h2>Video Club</h2>
+									<p>No se pierda este estreno absoluto. Se lo recomendamos.</p>
+									<button type="button" class="btn btn-default get">Obtener ahora</button>
 								</div>
 								<div class="col-sm-6">
 									<img src="./imagenes/girl2.jpg" class="girl img-responsive" alt="">
@@ -53,10 +53,10 @@
 							
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-Shop</h1>
-									<h2>Free Ecommerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<h1><span>A</span>efilep</h1>
+									<h2>Video Club</h2>
+									<p>No se pierda este estreno absoluto. Se lo recomendamos.</p>
+									<button type="button" class="btn btn-default get">Obtener ahora</button>
 								</div>
 								<div class="col-sm-6">
 									<img src="./imagenes/girl3.jpg" class="girl img-responsive" alt="">
@@ -96,11 +96,11 @@
 					<div class="category-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="http://themifycloud.com/demos/templates/eshop/#tshirt" data-toggle="tab">T-Shirt</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/#blazers" data-toggle="tab">Blazers</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/#sunglass" data-toggle="tab">Sunglass</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/#kids" data-toggle="tab">Kids</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/#poloshirt" data-toggle="tab">Polo shirt</a></li>
+								<li class="active"><a href="http://themifycloud.com/demos/templates/eshop/#tshirt" data-toggle="tab">Comedia</a></li>
+								<li><a href="http://themifycloud.com/demos/templates/eshop/#blazers" data-toggle="tab">Drama</a></li>
+								<li><a href="http://themifycloud.com/demos/templates/eshop/#sunglass" data-toggle="tab">Terror</a></li>
+								<li><a href="http://themifycloud.com/demos/templates/eshop/#kids" data-toggle="tab">Acción</a></li>
+								<li><a href="http://themifycloud.com/demos/templates/eshop/#poloshirt" data-toggle="tab">Thriller</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
