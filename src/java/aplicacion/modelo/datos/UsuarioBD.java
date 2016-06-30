@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package aplicacion.modelo.datos;
-import aplicacion.modelo.entidades.Tarjeta;
 import aplicacion.modelo.entidades.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,7 +23,6 @@ public class UsuarioBD
         Usuario usu=null;
         Connection con = conec.getConexion();
         String sql = "select * from usuarios where nombre_usuario=? and contrasena=?;";
-        String sql2= "select * from tarjetas where id_usuario=?;";
         try
         {
             PreparedStatement pr = con.prepareStatement(sql);
@@ -47,21 +45,7 @@ public class UsuarioBD
                 usu.setMail(res.getString(12));
                 usu.setNombre(res.getString(2));
                 usu.setNombreUsuario(res.getString(13));
-                usu.setTelefono(res.getString(7));
-                
-                pr=con.prepareStatement(sql2);
-                pr.setInt(1, usu.getIdUsuario());
-                res= pr.executeQuery();
-                Tarjeta t;
-            
-                while(res.next())
-                {
-                  t=new Tarjeta();
-                  t.setCodigoDeSeguridad(res.getInt(1));
-                  t.setIdTarjeta(res.getString(2));
-                  t.setDescripcion(res.getString(4));
-                  usu.agregarTarjeta(t);
-                }  
+                usu.setTelefono(res.getString(7));  
             }
             con.close();
             
@@ -124,8 +108,6 @@ public void registrarUsuario(Usuario usu)
         PreparedStatement prpstmt;
         Connection con = conec.getConexion();
         String transac1 = "insert into aefilep.usuarios values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
-        String transac2 = "select usuarios.id_usuario from aefilep.usuarios where usuarios.nombre_usuario=?;";
-        String transac3  =" insert into aefilep.tarjetas values(?,?,?,?,?,?);";
         try
         {
             prpstmt = con.prepareStatement(transac1);
@@ -144,26 +126,11 @@ public void registrarUsuario(Usuario usu)
             prpstmt.setString(13, usu.getNombreUsuario());
             prpstmt.executeUpdate();
             
-            prpstmt = con.prepareStatement(transac2);
-            prpstmt.setString(1, usu.getNombreUsuario());
-            ResultSet rs = prpstmt.executeQuery();
-            if(rs.next())
-            {
-               usu.setIdUsuario(rs.getInt(1));
-            }
-            
-            prpstmt=con.prepareStatement(transac3);
-            prpstmt.setInt(1,usu.getTarjetas().get(0).getCodigoDeSeguridad());
-            prpstmt.setString(2,usu.getTarjetas().get(0).getIdTarjeta());
-            prpstmt.setInt(3,usu.getIdUsuario());
-            prpstmt.setString(4,usu.getTarjetas().get(0).getDescripcion());
-            prpstmt.setString(5,usu.getTarjetas().get(0).getNombreTitular());
-            prpstmt.setDate(6, new java.sql.Date(usu.getTarjetas().get(0).getFechaVencimiento().getTime()));
-            prpstmt.executeUpdate();
             con.close();
         }
         catch(SQLException e)
         {
+            
         }
     }
 }

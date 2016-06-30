@@ -5,10 +5,8 @@
  */
 package aplicacion.modelo.comandos;
 
-import aplicacion.modelo.entidades.Tarjeta;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,19 +34,21 @@ public class RegistroComando extends Comando
                 us.setFechaNacimiento(new java.sql.Date(fecha.getTime()));
             }
             catch(ParseException e)
-            { }
-       
+            {
+                
+            }
+            
         us.setNombre((String)request.getParameter("Nombre"));
         us.setApellido((String)request.getParameter("Apellido"));
         us.setContrasena((String)request.getParameter("Contra1"));
-        String dire =(String)request.getParameter("Calle")+" "+(String)request.getParameter("Num");
+        String dire =(String)request.getParameter("Calle")+" "+(String)request.getParameter("Num")+" "+(String)request.getParameter("Piso")+" "+(String)request.getParameter("Depto");
         us.setDireccion(dire);
         us.setTelefono((String)request.getParameter("Tel"));
         us.setDni((String)request.getParameter("Dni")); 
         us.setMail((String)request.getParameter("Email"));
         us.setNombreUsuario((String)request.getParameter("Usu"));
         
-        Tarjeta tarj = new Tarjeta();
+        /*Tarjeta tarj = new Tarjeta();
         tarj.setIdTarjeta((String)request.getParameter("IdTarjeta"));
         tarj.setDescripcion((String)request.getParameter("DescTarjeta"));
         tarj.setCodigoDeSeguridad(Integer.parseInt(request.getParameter("CodSTarjeta")));
@@ -60,11 +60,9 @@ public class RegistroComando extends Comando
         tarj.setFechaVencimiento(fechaVenc);
         
         
-        us.agregarTarjeta(tarj);
+        us.agregarTarjeta(tarj);*/
        
         CdeU.registrarUsuario(us);
-        
-        //request.getSession().setAttribute("pagina", PAnterior);
         return "/index.jsp";
     }
     

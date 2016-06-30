@@ -67,52 +67,6 @@
                             </p>
                         </div>
                     </div>
-                </div>   
-                            
-                <div class="row">
-                    <h2 class="title text-center">Medios de pago</h2>
-                </div>   
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="table-responsive">                    
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                      
-                                        <th>#</th>                                   
-                                        <th>Numero de tarjeta</th>
-                                        <th>Empresa/Banco</th>
-                                        <th>Codigo de seguridad</th>
-                                    
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <%if(session.getAttribute("usuario")!=null)
-                                    {
-                                       Usuario usu= (Usuario)session.getAttribute("usuario");
-                                       int lim= usu.getTarjetas().size();
-                                       for(int i=1;i<=lim;i++)
-                                       {
-                                     %>
-                                    
-                                    <tr class="fila">
-                                     
-                                        <td><%=i%></td>
-                                        <td><%=usu.getTarjetas().get(i-1).getIdTarjeta()%></td>
-                                        <td><%=usu.getTarjetas().get(i-1).getDescripcion()%></td>
-                                        <td><%=usu.getTarjetas().get(i-1).getCodigoDeSeguridad()%></td>
-                                         <td>
-                                            <label><input type="radio"><i class="fa fa-pencil-square-o i ultimaCol" aria-hidden="true"></i></label>
-                                            <label><input type="radio"><i class="fa fa-times ultimaCol" aria-hidden="true"></i></label>
-                                        </td>
-                                            
-                                    </tr>
-                                    <%}
-                                    }%>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
         </div>
     </section>
