@@ -29,9 +29,12 @@ public class AgregarLineaComando extends Comando
         {
             if(lp.getPelicula().getIdPelicula()==idPelicula && (lp.isEsAlquiler()==alquiler))
             {
-                lp.setCantidad(lp.getCantidad()+1);
+                if(alquiler==false)
+                    lp.setCantidad(lp.getCantidad()+1);
+               
                 lineaExiste=1;
             }
+          
         }
         if(lineaExiste==0)
         {
