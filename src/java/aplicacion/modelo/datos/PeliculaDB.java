@@ -11,26 +11,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
  *
  * @author User
  */
-public class PeliculaDB {
-     Conexion conec = new Conexion();
-     ParametroBD parBD = new ParametroBD();
-     PeliculasGenerosBD pelgenBD = new PeliculasGenerosBD();
-     public void agregarPelicula(Pelicula p)
-     {
-        
+public class PeliculaDB
+{
+    Conexion conec = new Conexion();
+    ParametroBD parBD = new ParametroBD();
+    PeliculasGenerosBD pelgenBD = new PeliculasGenerosBD();
+    public void agregarPelicula(Pelicula p)
+    {
         Connection con = conec.getConexion();
         String transac = "insert into aefilep.peliculas values (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         try
         {   
-            PreparedStatement pr = con.prepareStatement(transac);
+            PreparedStatement pr = con.prepareStatement(transac,Statement.RETURN_GENERATED_KEYS);
             
-           
             pr.setNull(1,0);
             pr.setString(2, p.getNombre());
             pr.setInt(3, p.getDuracion());
@@ -46,11 +46,12 @@ public class PeliculaDB {
             pr.setFloat(12, p.getPrecioVenta());
             pr.setString(13, p.getSinopsis());
             pr.setInt(14, p.getAnio());
-           pr.executeUpdate();
-           ResultSet rs = pr.getGeneratedKeys();
+            pr.executeUpdate();
+            ResultSet rs = pr.getGeneratedKeys();
            if(rs.next())
            {
-               p.setIdPelicula(rs.getInt(1));
+               int id = rs.getInt(1);
+               p.setIdPelicula(id);
            }
            con.close();
            pelgenBD.agregarPeliculaGeneros(p);
@@ -59,9 +60,8 @@ public class PeliculaDB {
         {
             ex.printStackTrace();
         }
-        //System.out.print(usu.getApellido());
         
-     }
+    }
      
      public ArrayList<Pelicula> buscarPeliculas(int inferior,int cantidad)
      {

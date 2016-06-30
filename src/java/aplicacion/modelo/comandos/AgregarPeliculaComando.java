@@ -59,7 +59,6 @@ public class AgregarPeliculaComando extends Comando
                     if(g.getIdGenero()==Integer.parseInt(selecc[i]))
                     {
                         pelicula.agregarGenero(g);
-                        System.out.println(g.getDescripcion());
                     }
                 }
             }
