@@ -5,6 +5,7 @@
  */
 package aplicacion.modelo.entidades;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 /**
@@ -213,6 +214,7 @@ public class Pelicula
      * @param precioVenta the precioVenta to set
      */
     public void setPrecioVenta(float precioVenta) {
+    
         this.precioVenta = precioVenta;
     }
 

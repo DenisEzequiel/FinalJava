@@ -14,7 +14,7 @@
                     <div class="container">
                             <div class="breadcrumbs">
                                     <ol class="breadcrumb">
-                                      <li><a href="http://themifycloud.com/demos/templates/eshop/cart.html#">Home</a></li>
+                                      <li><a href="/index.jsp">Home</a></li>
                                       <li class="active">Shopping Cart</li>
                                     </ol>
                             </div>
@@ -37,7 +37,7 @@
                                             %>
                                                     <tr>
                                                             <td class="cart_product">
-                                                                    <a href=""><img src="imagenes/two.png" alt=""></a>
+                                                                    <a href="#"><img src="imagenes/two.png" alt=""></a>
                                                             </td>
                                                             <td class="cart_description">
                                                                     <h4><%=lp.getPelicula().getNombre()%></h4>
@@ -55,11 +55,11 @@
                                                             <td class="cart_price">
                                                                     <% if(lp.isEsAlquiler())
                                                                        {
-                                                                          %><h5>$ <%=lp.getPelicula().getPrecioAlquiler()%></h5><%  
+                                                                          %><h5>$ <%=String.format("%.2f",lp.getPelicula().getPrecioAlquiler())%></h5><%  
                                                                        }
                                                                        else
                                                                        {
-                                                                         %><h5>$ <%=lp.getPelicula().getPrecioVenta()%></h5><% 
+                                                                          %><h5>$ <%=String.format("%.2f",lp.getPelicula().getPrecioVenta())%></h5><% 
                                                                        }
                                                                     %>
                                                             </td>
@@ -69,12 +69,12 @@
                                                                                 <input type="hidden"  name="form" value="ActualizarLineaComando"/>
                                                                                 <input type="hidden" name="idPelicula" value="<%=lp.getPelicula().getIdPelicula()%>"/>
                                                                                 <input type="hidden" name="tipoLinea" value="<%=lp.isEsAlquiler()%>"/>
-                                                                                <input onchange="submit()" class="cart_quantity_input" type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
+                                                                                <input onchange="submit()"<%if(lp.isEsAlquiler()){%>disabled<%}%> class="cart_quantity_input" type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
                                                                             </form>
                                                                     </div>
                                                             </td>
                                                             <td class="cart_total">
-                                                                    <p class="cart_total_price"><%=lp.getSubtotal()%></p>
+                                                                    <p class="cart_total_price">$ <%=String.format("%.2f",lp.getSubtotal())%></p>
                                                             </td>
                                                             <td class="cart_delete">
                                                                     <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>

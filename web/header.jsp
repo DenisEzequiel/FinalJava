@@ -39,6 +39,7 @@
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                         <li>
+                                            <% if(session.getAttribute("exitoPeliculaAgregada")!=null){ %>
                                             <div class='cartel'>
                                                
                                                 <div class="popover fade left <%if(session.getAttribute("exitoPeliculaAgregada")!=null)
@@ -51,8 +52,23 @@
                                                      
                                                 </div> 
                                             </div>
-                                                
+                                                     <%}else if(session.getAttribute("exitoLogin")!=null){%>
+                                                <div class='cartel'>
+                                               
+                                                <div class="popover fade left <%if(session.getAttribute("exitoLogin")!=null)
+                                                                                { %> in <%
+                                                                                    session.setAttribute("exitoLogin", null); } %>">
+               
+                                                     <div class="popover-content">
+                                                         Usuario logueado, bienvenid@ <%Usuario usu= (Usuario)session.getAttribute("usuario");%>
+                                                                    <%=usu.getNombre()%> 
+                                                     </div>
+                                                     
+                                                </div> 
+                                            </div> 
+                                               <%}%>      
                                         </li>
+                                        
                                         <li>
                                             <a href="carro.jsp"><i class="fa fa-shopping-cart"></i><input type="submit" name="pagina" value=" Carrito (<%=pedido.getLineas().size()%>)" ></a>
                                         </li>
@@ -113,7 +129,7 @@
                                         <%Usuario usu = (Usuario)session.getAttribute("usuario");
                                         if(usu!=null && usu.isEsAdmin())
                                         {%>
-                                            <li class="dropdown"><a href="">Administrador<i class="fa fa-angle-down"></i></a>
+                                            <li class="dropdown"><a href="#">Administrador<i class="fa fa-angle-down"></i></a>
                                             <ul role="menu" class="sub-menu">
                                                 <li>
                                                     <form action="Controlador" method="post">
