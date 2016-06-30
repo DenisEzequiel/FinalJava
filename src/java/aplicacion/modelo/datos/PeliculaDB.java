@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class PeliculaDB {
      Conexion conec = new Conexion();
      ParametroBD parBD = new ParametroBD();
-     
+     PeliculasGenerosBD pelgenBD = new PeliculasGenerosBD();
      public void agregarPelicula(Pelicula p)
      {
         
@@ -47,9 +47,14 @@ public class PeliculaDB {
             pr.setString(13, p.getSinopsis());
             pr.setInt(14, p.getAnio());
            pr.executeUpdate();
+           ResultSet rs = pr.getGeneratedKeys();
+           if(rs.next())
+           {
+               p.setIdPelicula(rs.getInt(1));
+           }
            con.close();
-            
-            
+           pelgenBD.agregarPeliculaGeneros(p);
+           
         }catch(SQLException ex)
         {
             ex.printStackTrace();
@@ -161,7 +166,33 @@ public class PeliculaDB {
         return p;
      }
      
-     public int buscarCantidadPelicula()
+     public int cantidadPeliculas()
+     {
+         Connection con = conec.getConexion();
+         int i=0;
+         String transac = "select count(*) from peliculas;";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            ResultSet res = pr.executeQuery();
+            
+             if(res.next())
+            {
+                i = res.getInt(1);
+                con.close();
+                
+            }
+             
+        }
+        catch(SQLException e)
+        {
+           
+        }
+        
+        return i;
+     }
+     
+     public int cantidadPeliculasActivas()
      {
          Connection con = conec.getConexion();
          int i=0;

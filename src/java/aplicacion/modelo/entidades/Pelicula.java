@@ -6,6 +6,7 @@
 package aplicacion.modelo.entidades;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -29,6 +30,23 @@ public class Pelicula
     private float precioAlquiler;
     private int anio;
     private boolean estreno;
+    private ArrayList<Genero> generos;
+
+    public Pelicula()
+    {
+        this.generos = new ArrayList<Genero>();
+    }
+    
+    
+
+    public ArrayList<Genero> getGeneros() {
+        return generos;
+    }
+
+    public void agregarGenero(Genero genero)
+    {
+        this.generos.add(genero);
+    }
     
     //private String imagen;
 

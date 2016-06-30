@@ -37,7 +37,7 @@ public class PeliculasComando extends Comando
         }
         cDp = new CatalogoDePeliculas();
         
-        int cantidadDePeliculas = cDp.buscarCantidadPelicula();
+        int cantidadDePeliculas = cDp.cantidadPeliculasActivas();
         ArrayList<Pelicula> listaPeliculas = cDp.buscarPeliculas((paginaActual-1)*9,9);
         
         ParametroBD pbd = new ParametroBD();

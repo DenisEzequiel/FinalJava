@@ -5,10 +5,12 @@
  */
 package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Pelicula;
+import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,12 +27,14 @@ public class AgregarPeliculaComando extends Comando
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
+        
         if(request.getParameter("desdeIndex")!=null)
         {
             request.getSession().setAttribute("listaGeneros", cdG.obtenerGeneros()); 
         }
         else
         {
+            ArrayList<Genero> generos = cdG.obtenerGeneros();
             pelicula=new Pelicula();
             pelicula.setActivo(true);
             pelicula.setFormato(request.getParameter("formPel"));
@@ -47,8 +51,18 @@ public class AgregarPeliculaComando extends Comando
             Date hoy=new Date();
             hoyFormato.format(hoy);
             pelicula.setFechaCarga(hoy);
-
-
+            String selecc[] = request.getParameterValues("generos");
+            for(Genero g: generos)
+            {
+                for(int i=0; i<selecc.length;i++)  
+                {
+                    if(g.getIdGenero()==Integer.parseInt(selecc[i]))
+                    {
+                        pelicula.agregarGenero(g);
+                        System.out.println(g.getDescripcion());
+                    }
+                }
+            }
             cDp.agregarPelicula(pelicula);
             request.getSession().setAttribute("pelicula", pelicula);
             
