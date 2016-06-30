@@ -63,6 +63,9 @@ public class RegistroComando extends Comando
         us.agregarTarjeta(tarj);*/
        
         CdeU.registrarUsuario(us);
+        request.getSession().setAttribute("usuario", us);
+        request.getSession().setAttribute("exitoLogin", true);
+             
         return "/index.jsp";
     }
     
