@@ -10,8 +10,7 @@
                     <div class="col-sm-4 col-sm-offset-1">
                         <%if(session.getAttribute("pedido")!=null)
                             {
-                            Pedido p=(Pedido)session.getAttribute("pedido");
-                                if(p.getEstado().equals("finalizado"))
+                                if(session.getAttribute("usuarioNoLogueado")!=null)
                                 {
                                     %> 
                                             <br/>
@@ -19,6 +18,7 @@
                                                 Necesita loguearse para poder finalizar un pedido 
                                             </div>
                                         <%
+                                            session.setAttribute("usuarioNoLogueado", null);
                                 }
                             }%>
                         <div class="login-form"><!--login form-->

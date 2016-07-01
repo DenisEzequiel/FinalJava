@@ -33,9 +33,8 @@ public class PedidoBD {
         {   
             PreparedStatement pr = con.prepareStatement(transac, PreparedStatement.RETURN_GENERATED_KEYS);
              pr.setDate(2, new java.sql.Date(p.getFechaRealizacion().getTime()));
-            //faltan fecha desde y hasta
-             pr.setDate(3, null);
-             pr.setDate(4, null);
+            pr.setDate(3,new java.sql.Date(p.getFechaDesde().getTime()));
+             pr.setDate(4,new java.sql.Date(p.getFechaHasta().getTime()));
              pr.setString(5, p.getEstado());
              pr.setDate(6,null);
              

@@ -13,11 +13,21 @@
 
             <section id="cart_items">
                     <div class="container">
-                            <div class="breadcrumbs">
-                                    <ol class="breadcrumb">
-                                      <li><a href="/index.jsp">Home</a></li>
-                                      <li class="active">Shopping Cart</li>
-                                    </ol>
+                        
+                             <div class="col-lg-3">
+                              <label class="alinear"> Cantidad de días a alquilar: </label>
+                            </div>
+                        
+                        <%int cantD=(Integer)session.getAttribute("cantidadDias");%>
+                        
+                        <div class="col-lg-1">
+                              <div class="signup-form">
+                                 
+                                     <form action="Controlador" method="post">
+                                         <input type="hidden" name="form" value="SetearFechaPedidoComando">
+                                       <input type="number" min="1" max="15" value="<%=cantD%>" class="control form-control" name="cantDias" onchange="submit()">
+                                    </form>              
+                                </div>
                             </div>
                             <div class="table-responsive cart_info">
                                     <table class="table table-condensed">
@@ -108,7 +118,7 @@
                                             <div class="alert alert-success">
                                                 Pedido realizado con éxito ! Un mail para confirmar el pago será enviado a <%=usu.getMail()%>
                                             </div>
-                                   <%}         
+                                                <%session.setAttribute("exitoPedido", null);}         
 
 
           

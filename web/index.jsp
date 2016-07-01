@@ -11,6 +11,7 @@
     {
         Pedido pedido = new Pedido();
         session.setAttribute("pedido", pedido);
+        session.setAttribute("cantidadDias", 1);
     }
     %>
     <jsp:include page="header.jsp"/>
