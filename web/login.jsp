@@ -1,3 +1,4 @@
+<%@page import="aplicacion.modelo.entidades.Pedido"%>
 <html lang="en">
 <jsp:include page="head.jsp"/>
     
@@ -7,6 +8,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4 col-sm-offset-1">
+                        <%if(session.getAttribute("pedido")!=null)
+                            {
+                            Pedido p=(Pedido)session.getAttribute("pedido");
+                                if(p.getEstado().equals("finalizado"))
+                                {
+                                    %> 
+                                            <br/>
+                                            <div class="alert alert-danger">
+                                                Necesita loguearse para poder finalizar un pedido 
+                                            </div>
+                                        <%
+                                }
+                            }%>
                         <div class="login-form"><!--login form-->
                             <h2>Ingresá con tu usuario</h2>
                             <form action="Controlador" method="post">
@@ -38,7 +52,7 @@
                     <div class="col-sm-1">
                     </div>
                     <div class="col-sm-4">
-                        <div class="signup-form"><!--sign up form-->
+                        <div class="signup-form"><!--sign up form <div class="chose_area">-->
                             <h2>Sos nuevo? Registrate!</h2>
                             <form action="signup.jsp" method="post">
                                 <input class="control form-control" type="text" name="nombreUsuario" placeholder="Nombre de Usuario" maxlenght="10"  required>
