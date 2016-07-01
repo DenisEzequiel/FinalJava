@@ -23,16 +23,23 @@ public class SeleccionarUsuarioComando extends Comando
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
         int idUsuEdit = Integer.parseInt( request.getParameter("idUsuEdit"));
-        ArrayList<Usuario> usuarios = (ArrayList<Usuario>)request.getSession().getAttribute("ListaUsuarios");
-        Usuario usuarioEdit=null;
-        for(Usuario u:usuarios)
+        if(idUsuEdit!=0)
         {
-            if(idUsuEdit==u.getIdUsuario())
+            ArrayList<Usuario> usuarios = (ArrayList<Usuario>)request.getSession().getAttribute("ListaUsuarios");
+            Usuario usuarioEdit=null;
+            for(Usuario u:usuarios)
             {
-                usuarioEdit=u;
+                if(idUsuEdit==u.getIdUsuario())
+                {
+                    usuarioEdit=u;
+                }
             }
+            request.getSession().setAttribute("UsuarioEdit", usuarioEdit);
         }
-        request.getSession().setAttribute("UsuarioEdit", usuarioEdit);
+        else
+        {
+            request.getSession().setAttribute("UsuarioEdit", null);
+        }
         
         return "/ABMUsuarios.jsp";
     }

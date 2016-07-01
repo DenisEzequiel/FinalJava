@@ -32,8 +32,19 @@ public class CatalogoDeUsuarios
     public void registrarUsuario(Usuario usu)
     {
         usuarios = new UsuarioBD();
-        usuarios.registrarUsuario(usu);
-        
+        usuarios.registrarUsuario(usu);   
+    }
+    
+    public void agregarUsuario(Usuario usu)
+    {
+        usuarios = new UsuarioBD();
+        usuarios.agregarUsuario(usu);
+    }
+    
+    public void editarUsuario(Usuario usu)
+    {
+        usuarios = new UsuarioBD();
+        usuarios.editarUsuario(usu);
     }
     
     public void modificarUsuario(Usuario usu)

@@ -23,7 +23,7 @@ public class UsuarioBD
     {
         Usuario usu=null;
         Connection con = conec.getConexion();
-        String sql = "select * from usuarios where nombre_usuario=? and contrasena=?;";
+        String sql = "select * from usuarios where nombre_usuario=? and contrasena=? and activo=1;";
         try
         {
             PreparedStatement pr = con.prepareStatement(sql);
@@ -95,6 +95,34 @@ public class UsuarioBD
         return usuarios;
     }
     
+    public void editarUsuario(Usuario usu)
+    {
+        Connection con = conec.getConexion();
+        String sql = "update usuarios set nombre=? , apellido=? , direccion=? ,"
+                + " telefono=? , mail=?,dni=?,fecha_de_nacimiento=?,bloqueado=?,activo=?,es_admin=?,nombre_usuario=? where id_usuario=?";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(sql);
+            pr.setString(1, usu.getNombre());
+            pr.setString(2, usu.getApellido());
+            pr.setString(3, usu.getDireccion());
+            pr.setString(4, usu.getTelefono());
+            pr.setString(5, usu.getMail());           
+            pr.setString(6,usu.getDni());
+            pr.setDate(7, new java.sql.Date(usu.getFechaNacimiento().getTime()));
+            pr.setBoolean(8, usu.isBloqueado());
+            pr.setBoolean(9, usu.isActivo());
+            pr.setBoolean(10, usu.isEsAdmin());
+            pr.setString(11, usu.getNombreUsuario());
+            pr.setInt(12,usu.getIdUsuario());
+            pr.executeUpdate();
+            con.close();
+        }
+         catch(SQLException ex)
+        {
+        }
+    }
+    
     public void modificarUsuario(Usuario usu)
     {   
         
@@ -141,6 +169,37 @@ public class UsuarioBD
         }
         return true;
     }
+    
+public void agregarUsuario(Usuario usu)
+{
+    PreparedStatement prpstmt;
+        Connection con = conec.getConexion();
+        String transac1 = "insert into aefilep.usuarios values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        try
+        {
+            prpstmt = con.prepareStatement(transac1);
+            prpstmt.setNull(1,0);
+            prpstmt.setString(2, usu.getNombre());
+            prpstmt.setString(3, usu.getApellido());
+            prpstmt.setString(4, usu.getContrasena());
+            prpstmt.setBoolean(5, usu.isEsAdmin());
+            prpstmt.setString(6, usu.getDireccion());
+            prpstmt.setString(7, usu.getTelefono());
+            prpstmt.setString(8, usu.getDni());
+            prpstmt.setDate(9, new java.sql.Date(usu.getFechaNacimiento().getTime()));
+            prpstmt.setBoolean(10, usu.isActivo());
+            prpstmt.setBoolean(11, usu.isBloqueado());
+            prpstmt.setString(12, usu.getMail());
+            prpstmt.setString(13, usu.getNombreUsuario());
+            prpstmt.executeUpdate();
+            
+            con.close();
+        }
+        catch(SQLException e)
+        {
+            
+        }
+}
             
 public void registrarUsuario(Usuario usu)
     {

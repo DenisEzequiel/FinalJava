@@ -47,20 +47,6 @@ public class RegistroComando extends Comando
         us.setDni((String)request.getParameter("Dni")); 
         us.setMail((String)request.getParameter("Email"));
         us.setNombreUsuario((String)request.getParameter("Usu"));
-        
-        /*Tarjeta tarj = new Tarjeta();
-        tarj.setIdTarjeta((String)request.getParameter("IdTarjeta"));
-        tarj.setDescripcion((String)request.getParameter("DescTarjeta"));
-        tarj.setCodigoDeSeguridad(Integer.parseInt(request.getParameter("CodSTarjeta")));
-        tarj.setNombreTitular((String)request.getParameter("NombreTarjeta"));
-        
-        DateFormat fechaVencFormato = new SimpleDateFormat("yyyy/MM/dd");      
-        Date fechaVenc=new Date();
-        fechaVencFormato.format(fechaVenc);
-        tarj.setFechaVencimiento(fechaVenc);
-        
-        
-        us.agregarTarjeta(tarj);*/
        
         CdeU.registrarUsuario(us);
         request.getSession().setAttribute("usuario", us);
