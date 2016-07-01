@@ -11,26 +11,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
  *
  * @author User
  */
-public class PeliculaDB {
-     Conexion conec = new Conexion();
-     ParametroBD parBD = new ParametroBD();
-     
-     public void agregarPelicula(Pelicula p)
-     {
-        
+public class PeliculaDB
+{
+    Conexion conec = new Conexion();
+    ParametroBD parBD = new ParametroBD();
+    PeliculasGenerosBD pelgenBD = new PeliculasGenerosBD();
+    public void agregarPelicula(Pelicula p)
+    {
         Connection con = conec.getConexion();
         String transac = "insert into aefilep.peliculas values (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         try
         {   
-            PreparedStatement pr = con.prepareStatement(transac);
+            PreparedStatement pr = con.prepareStatement(transac,Statement.RETURN_GENERATED_KEYS);
             
-           
             pr.setNull(1,0);
             pr.setString(2, p.getNombre());
             pr.setInt(3, p.getDuracion());
@@ -46,15 +46,20 @@ public class PeliculaDB {
             pr.setFloat(12, p.getPrecioVenta());
             pr.setString(13, p.getSinopsis());
             pr.setInt(14, p.getAnio());
-           pr.executeUpdate();
+            pr.executeUpdate();
+            ResultSet rs = pr.getGeneratedKeys();
+           if(rs.next())
+           {
+               int id = rs.getInt(1);
+               p.setIdPelicula(id);
+           }
            con.close();
-            
-            
+           pelgenBD.agregarPeliculaGeneros(p);
+           
         }catch(SQLException ex)
         {
             ex.printStackTrace();
         }
-        //System.out.print(usu.getApellido());
         
      }
      public void actualizarPelicula(Pelicula p)
@@ -194,7 +199,33 @@ public class PeliculaDB {
         return p;
      }
      
-     public int buscarCantidadPelicula()
+     public int cantidadPeliculas()
+     {
+         Connection con = conec.getConexion();
+         int i=0;
+         String transac = "select count(*) from peliculas;";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            ResultSet res = pr.executeQuery();
+            
+             if(res.next())
+            {
+                i = res.getInt(1);
+                con.close();
+                
+            }
+             
+        }
+        catch(SQLException e)
+        {
+           
+        }
+        
+        return i;
+     }
+     
+     public int cantidadPeliculasActivas()
      {
          Connection con = conec.getConexion();
          int i=0;
