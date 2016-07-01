@@ -137,9 +137,14 @@
                                                         <input type="hidden"  name="form" value="AgregarPeliculaComando"/>
                                                         <input type="submit" name="pagina" value="Cargar Pelicula" >
                                                     </form>
-                                                </li>    
-                                                    
-                                                <li><a href="">Opcion 2 Admin</a></li>
+                                                </li>
+                                                <li>
+                                                    <form action="Controlador" method="post">
+                                                        <input type="hidden"  name="form" value="AdminUsuariosComando"/>
+                                                        <input type="submit" name="pagina" value="Usuarios" >
+                                                    </form>
+                                                </li>
+                                                <li><a href="">Admin opcion 2</a></li>
                                             </ul>
                                             </li> 
                                         <%}%>                                                         

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -55,7 +56,45 @@ public class UsuarioBD
         }
         return usu;
     }
- 
+    
+    public ArrayList<Usuario> obtenerUsuarios()
+    {
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        Connection con = conec.getConexion();
+        String sql = "select * from usuarios;";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(sql);
+            ResultSet res = pr.executeQuery();
+            
+            while(res.next())
+            {
+                Usuario usu = new Usuario();
+                usu.setActivo(res.getBoolean(10));
+                usu.setApellido(res.getString(3));
+                usu.setBloqueado(res.getBoolean(11));
+                usu.setContrasena(res.getString(4));
+                usu.setDireccion(res.getString(6));
+                usu.setDni(res.getString(8));
+                usu.setEsAdmin(res.getBoolean(5));
+                usu.setFechaNacimiento(res.getDate(9));
+                usu.setIdUsuario(res.getInt(1));
+                usu.setMail(res.getString(12));
+                usu.setNombre(res.getString(2));
+                usu.setNombreUsuario(res.getString(13));
+                usu.setTelefono(res.getString(7));
+                
+                usuarios.add(usu);
+            }
+            con.close();
+            
+        }catch(SQLException ex)
+        {
+            
+        }
+        return usuarios;
+    }
+    
     public void modificarUsuario(Usuario usu)
     {   
         

@@ -6,6 +6,7 @@
 package aplicacion.modelo.negocio;
 import aplicacion.modelo.datos.UsuarioBD;
 import aplicacion.modelo.entidades.Usuario;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,6 +21,12 @@ public class CatalogoDeUsuarios
         Usuario usu = null;
         usu = usuarios.buscarUsuario(nombre, contra);
         return usu;
+    }
+    
+    public ArrayList<Usuario> obtenerUsuarios()
+    {
+        usuarios = new UsuarioBD();
+        return usuarios.obtenerUsuarios();
     }
     
     public void registrarUsuario(Usuario usu)
