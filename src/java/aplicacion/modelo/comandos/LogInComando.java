@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package aplicacion.modelo.comandos;
+import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
 import javax.servlet.http.HttpServletRequest;
@@ -27,17 +28,20 @@ public class LogInComando extends Comando
     public String ejecutar (HttpServletRequest request, HttpServletResponse response)
     { 
         
-        String PAnterior = (String)request.getSession().getAttribute("anterior");
+       
        
         String nomUsu = request.getParameter("nomUsu");
         String contra = request.getParameter("contra");
         Usuario usu = CdeU.buscarUsuario(nomUsu, contra);
+        Pedido p=(Pedido)request.getSession().getAttribute("pedido");
         
         if(usu!=null)
         {
              request.getSession().setAttribute("usuario", usu);
              request.getSession().setAttribute("exitoLogin", true);
-              return "/index.jsp";
+             if(p.getEstado().equals("finalizado"))
+              return("/carro.jsp");
+               return "/index.jsp";
         }
         else{
               return "/login.jsp";

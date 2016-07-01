@@ -22,6 +22,10 @@ public class CatalogoDePeliculas
         peliculas.agregarPelicula(pelicula);
         
     }
+    public void actualizarPelicula(Pelicula p)
+    {
+        peliculas.actualizarPelicula(p);
+    }
     public Pelicula obtenerPelicula(int idPel)
     {
         return peliculas.obtenerPelicula(idPel);

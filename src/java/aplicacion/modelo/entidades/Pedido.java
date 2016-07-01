@@ -24,7 +24,7 @@ public class Pedido
     private Date fechaDevolucion;
     private float total;
     private ArrayList<LineaPedido> lineas;
-    
+    private Usuario usuario;
     public void setLinea(LineaPedido lp)
     {
         getLineas().add(lp);
@@ -51,6 +51,13 @@ public class Pedido
      */
     public void setIdPedido(int idPedido) {
         this.idPedido = idPedido;
+        
+    }
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario u) {
+        this.usuario = u;
     }
 
     /**
