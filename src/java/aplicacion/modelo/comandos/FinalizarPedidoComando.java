@@ -21,12 +21,14 @@ public class FinalizarPedidoComando extends Comando{
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-    Pedido p=(Pedido)request.getSession().getAttribute("pedido");
-    p.setEstado("finalizado");
-    request.getSession().setAttribute("pedido",p);
+
+        Pedido p=(Pedido)request.getSession().getAttribute("pedido");
+
+   
         
         if(request.getSession().getAttribute("usuario")==null)
     { 
+            request.getSession().setAttribute("usuarioNoLogueado", true);
         return("login.jsp");
     }
         
@@ -72,9 +74,11 @@ public class FinalizarPedidoComando extends Comando{
              Usuario u= (Usuario)request.getSession().getAttribute("usuario");
              CatalogoDePedidos CdP= new CatalogoDePedidos();
              p.setUsuario(u);
+             p.setEstado("finalizado");
              CdP.registrarPedido(p);
              request.getSession().setAttribute("exitoPedido", true);
-             
+             Pedido pedido = new Pedido();
+             request.getSession().setAttribute("pedido", pedido);
             return "carro.jsp";
         }
     }
