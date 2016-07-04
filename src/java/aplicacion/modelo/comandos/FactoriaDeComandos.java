@@ -35,6 +35,8 @@ public class FactoriaDeComandos
         mapa.put("EditarUsuarioComando", EditarUsuarioComando.class);
         mapa.put("AgregarUsuarioComando", AgregarUsuarioComando.class);
         mapa.put("SetearFechaPedidoComando", SetearFechaPedidoComando.class);
+        mapa.put("EliminarLineaComando", EliminarLineaComando.class);
+        mapa.put("ObtenerPeliculaComando", ObtenerPeliculaComando.class);
     }
     /**
      * Metodo de clase devuelve la instancia de FactoriaDeComandos

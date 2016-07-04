@@ -8,6 +8,7 @@ package aplicacion.modelo.entidades;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -25,6 +26,17 @@ public class Pedido
     private float total;
     private ArrayList<LineaPedido> lineas;
     private Usuario usuario;
+    private int dias;
+    
+       public void setDias(Integer d)
+    {
+        dias=d;
+    }
+         public Integer getDias()
+    {
+        return dias;
+    }
+    
     public void setLinea(LineaPedido lp)
     {
         getLineas().add(lp);
@@ -38,6 +50,11 @@ public class Pedido
         Date hoy=new Date();
         hoyFormato.format(hoy);
         fechaRealizacion = hoy;
+        fechaDesde = hoy;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(hoy); // Configuramos la fecha que se recibe
+        calendar.add(Calendar.DAY_OF_YEAR, 1);  
+        fechaHasta = calendar.getTime();
     }
     /**
      * @return the idPedido

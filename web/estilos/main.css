@@ -1756,6 +1756,19 @@ h2.title {
   background:#3A5C83
 }
 
+.cart_delete button {
+  background:#F0F0E9;
+  color: #FFFFFF;
+  padding: 5px 7px;
+  font-size: 16px;
+  outline: none;
+  border:0px;    
+}
+
+.cart_delete button:hover {
+  background:#3A5C83
+}
+
 
 .bg h2.title {
   margin-right:0;
@@ -2854,4 +2867,46 @@ button.accordion.active:after {
   font-weight: 300;
   margin-bottom: 30px;
   vertical-align: middle;
+}
+
+#cart_items .cart_info .cart_menu.colorTablaCompra
+{
+    background:#3CB8C4;
+}
+
+.tamanio
+{
+    width: 50px;   
+}
+
+.alinearCantidad
+{
+    margin-left: 50px;
+}
+
+.product-information span span.precios
+{
+    font-size: 20px;
+    
+}
+
+h2 button
+{
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    background:rgba(58,92,131,0);
+    border:0;
+    outline:none;
+}
+
+h2 button:hover
+{
+    text-decoration: underline;
+}
+
+.product-information
+{
+    padding: 20px;
 }
