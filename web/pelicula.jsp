@@ -64,7 +64,7 @@
                                                                                                     <input type="hidden" name="idPelicula" value="<%=peliActual.getIdPelicula()%>"/>
                                                                                                     <input type="hidden" name="provieneDePelicula" value="true">
                                                                                                 
-                                                                                    <span><span class="precios">Alquiler $<%=peliActual.getPrecioAlquiler()%></span>
+                                                                                    <span><span class="precios">Alquiler $<%=String.format("%.2f",peliActual.getPrecioAlquiler())%></span>
                                                                                          <button type="submit" class="btn btn-fefault cart"  name="tipoLinea" value="Alquilar">
                                                                                                <i class="fa fa-shopping-cart"></i>
                                                                                                 Alquilar
@@ -73,7 +73,7 @@
                                                                                     </div>
                                                                                     <div class="row">
                                                                                     <span>
-                                                                                    <span class="precios">Compra $<%=peliActual.getPrecioVenta()%></span>
+                                                                                    <span class="precios">Compra $<%=String.format("%.2f",peliActual.getPrecioVenta())%></span>
                                                                                      <button type="submit" class="btn btn-fefault cart"  name="tipoLinea" value="Comprar">
                                                                                                <i class="fa fa-shopping-cart"></i>
                                                                                                 Comprar
