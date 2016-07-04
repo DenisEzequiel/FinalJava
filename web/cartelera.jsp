@@ -57,7 +57,11 @@
                                                                                 </div>
                                                                                 <div class="product-overlay text-center">
                                                                                         <div class="overlay-content">
-                                                                                                <h2><%=listaCartelera.get(i).getNombre()%></h2>
+                                                                                            <form action="Controlador" method="post">
+                                                                                            <h2><button><%=listaCartelera.get(i).getNombre()%></button></h2>
+                                                                                             <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
+                                                                                               <input type="hidden"  name="idPelicula" value="<%=listaCartelera.get(i).getIdPelicula()%>"/>
+                                                                                            </form>
                                                                                                 <p><%=listaCartelera.get(i).getAnio()%></p>
                                                                                                 <p>$ <%=String.format("%.2f",listaCartelera.get(i).getPrecioAlquiler())%> - $ <%=String.format("%.2f",listaCartelera.get(i).getPrecioVenta())%></p>
                                                                                                 <form action="Controlador" method="post">

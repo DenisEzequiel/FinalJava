@@ -49,6 +49,9 @@ public class AgregarLineaComando extends Comando
         request.getSession().setAttribute("pedido",pedido);
         request.getSession().setAttribute("exitoPeliculaAgregada", true);
         
+        if(request.getParameter("provieneDePelicula")!=null)
+           return "/pelicula.jsp";
+        
         return "/cartelera.jsp";
     }
     
