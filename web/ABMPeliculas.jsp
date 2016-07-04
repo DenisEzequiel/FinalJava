@@ -126,7 +126,7 @@
                                     <input type="text" class="control form-control" name="pvtaPel" placeholder="Precio Venta" required value="<%if(peli!=null)%><%= peli.getPrecioVenta() %>">
                                     <input type="text" class="control form-control" name="palqPel" placeholder="Precio Alquiler" readonly required value="<%if(peli!=null)%><%= peli.getPrecioAlquiler() %>">
                                     <input type="text" class="control form-control" name="anioPel" placeholder="Año de lanzamiento" required value="<%if(peli!=null)%><%= peli.getAnio() %>">
-                                    <%if(peli!=null){%><input type="date" class="control form-control" name="fCargaPel" required value="<%if(peli!=null)%><%= peli.getFechaCarga()%>"><%}%>
+                                    <%if(peli!=null){%><input type="date" class="control form-control" name="fCargaPel" readonly="" value="<%if(peli!=null)%><%= peli.getFechaCarga()%>"><%}%>
                                     
                                     Generos  
                                     <div class="listaGeneros">
