@@ -10,9 +10,25 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-
+            <% Pedido ped = (Pedido)session.getAttribute("pedido");
+            int contLAlquiler=0;
+            int contLCompra=0;
+            for(LineaPedido lp: ped.getLineas())
+            {  
+                if(lp.isEsAlquiler())
+                        contLAlquiler++;
+                else
+                        contLCompra++;
+                      
+            } 
+            %>
             <section id="cart_items">
+               
                     <div class="container">
+                           <%if(contLAlquiler>0){%>
+                             <div class="col-sm-8">
+                              <label class="alinear">Alquiler </label>
+                            </div>
                         
                              <div class="col-lg-3">
                               <label class="alinear"> Cantidad de días a alquilar: </label>
@@ -37,42 +53,92 @@
                                                             <td class="description">Descripción</td>
                                                             <td class="price">Precio</td>
                                                             <td class="quantity">Cantidad</td>
+                                                            <td>Cantidad de Días</td>
                                                             <td class="total">Subtotal</td>
                                                             <td></td>
                                                     </tr>
                                             </thead>
                                             <tbody>
-                                            <% Pedido ped = (Pedido)session.getAttribute("pedido");
+                                            <%
                                                for(LineaPedido lp: ped.getLineas())
-                                               {
+                                               {    
+                                                    if(lp.isEsAlquiler())
+                                                    {
                                             %>
                                                     <tr>
                                                             <td class="cart_product">
                                                                     <a href="#"><img src="imagenes/two.png" alt=""></a>
                                                             </td>
                                                             <td class="cart_description">
-                                                                    <h4><%=lp.getPelicula().getNombre()%></h4>
-                                                                    <% if(lp.isEsAlquiler())
-                                                                       {
-                                                                         %><h5>Tipo: Alquiler</h5><%  
-                                                                       }
-                                                                       else
-                                                                       {
-                                                                         %><h5>Tipo: Compra</h5><% 
-                                                                       }
-                                                                    %>
+                                                                    <h4><%=lp.getPelicula().getNombre()%></h4>                                                                                                                                                                          
                                                                     <h5>ID producto: <%=lp.getPelicula().getIdPelicula()%></h5>
                                                             </td>
                                                             <td class="cart_price">
-                                                                    <% if(lp.isEsAlquiler())
-                                                                       {
-                                                                          %><h5>$ <%=String.format("%.2f",lp.getPelicula().getPrecioAlquiler())%></h5><%  
-                                                                       }
-                                                                       else
-                                                                       {
-                                                                          %><h5>$ <%=String.format("%.2f",lp.getPelicula().getPrecioVenta())%></h5><% 
-                                                                       }
-                                                                    %>
+                                                                     
+                                                                      <h5>$ <%=String.format("%.2f",lp.getPelicula().getPrecioAlquiler())%></h5>                                                                                                                                             
+                                                            </td>
+                                                            <td class="cart_quantity">
+                                                                    <div class="cart_quantity_button">
+                                                                          <input disabled class="tamanio cart_quantity_input" type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
+                                                                            
+                                                                    </div>
+                                                            </td>
+                                                            <td>
+                                                                <h5 class="alinearCantidad"><%=session.getAttribute("cantidadDias")%></h5>
+                                                            </td>
+                                                            <td class="cart_total">
+                                                                <p class="cart_total_price">$ <%=String.format("%.2f",lp.getSubtotal((Integer)session.getAttribute("cantidadDias")))%></p>
+                                                            </td>
+                                                            <td class="cart_delete">
+                                                                   <form action="Controlador" method="post">
+                                                                    <input type="hidden"  name="form" value="EliminarLineaComando"/>
+                                                                                <input type="hidden" name="idPelicula" value="<%=lp.getPelicula().getIdPelicula()%>"/>
+                                                                                <input type="hidden" name="tipoLinea" value="<%=lp.isEsAlquiler()%>"/>
+                                                                                
+                                                                                <button class="cart_quantity_delete" type="submit"><i class="fa fa-times"></i></button>
+                                                                </form>
+                                                            </td>
+                                                    </tr>
+                                                <% }} %>
+                                            </tbody>
+                                    </table>
+                            
+                            </div>
+                            <%} if(contLCompra>0){%>
+                                              <div class="col-sm-8">
+                              <label class="alinear">Compra </label>
+                            </div>
+                            <div class="able-responsive cart_info">
+                                    <table class="table table-condensed">
+                                            <thead>
+                                                    <tr class="cart_menu colorTablaCompra">
+                                                            <td class="image">Película</td>
+                                                            <td class="description">Descripción</td>
+                                                            <td class="price">Precio</td>
+                                                            <td class="quantity">Cantidad</td>
+                                                            <td class="total">Subtotal</td>
+                                                            <td></td>
+                                                    </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                                    <%for(LineaPedido lp: ped.getLineas())
+                                               {    
+                                                    if(!lp.isEsAlquiler())
+                                                    { %>
+                                                    <tr>
+                                                            <td class="cart_product">
+                                                                    <a href="#"><img src="imagenes/two.png" alt=""></a>
+                                                            </td>
+                                                            <td class="cart_description">
+                                                                    <h4><%=lp.getPelicula().getNombre()%></h4>
+                                                                
+                                                                    <h5>ID producto: <%=lp.getPelicula().getIdPelicula()%></h5>
+                                                            </td>
+                                                            <td class="cart_price">
+                                                                 
+                                                                          <h5>$ <%=String.format("%.2f",lp.getPelicula().getPrecioVenta())%></h5>
+                                                                    
                                                             </td>
                                                             <td class="cart_quantity">
                                                                     <div class="cart_quantity_button">
@@ -80,21 +146,32 @@
                                                                                 <input type="hidden"  name="form" value="ActualizarLineaComando"/>
                                                                                 <input type="hidden" name="idPelicula" value="<%=lp.getPelicula().getIdPelicula()%>"/>
                                                                                 <input type="hidden" name="tipoLinea" value="<%=lp.isEsAlquiler()%>"/>
-                                                                                <input onchange="submit()"<%if(lp.isEsAlquiler()){%>disabled<%}%> class="cart_quantity_input" type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
+                                                                                <input onchange="submit()"  class="tamanio cart_quantity_input"type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
                                                                             </form>
                                                                     </div>
                                                             </td>
                                                             <td class="cart_total">
-                                                                    <p class="cart_total_price">$ <%=String.format("%.2f",lp.getSubtotal())%></p>
+                                                                <p class="cart_total_price">$ <%=String.format("%.2f",lp.getSubtotal((Integer)session.getAttribute("cantidadDias")))%></p>
                                                             </td>
                                                             <td class="cart_delete">
-                                                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                                                <form action="Controlador" method="post">
+                                                                    <input type="hidden"  name="form" value="EliminarLineaComando"/>
+                                                                                <input type="hidden" name="idPelicula" value="<%=lp.getPelicula().getIdPelicula()%>"/>
+                                                                                <input type="hidden" name="tipoLinea" value="<%=lp.isEsAlquiler()%>"/>
+                                                                                
+                                                                                <button class="cart_quantity_delete" type="submit"><i class="fa fa-times"></i></button>
+                                                                </form>
+                                                                    
+                                                                    
                                                             </td>
                                                     </tr>
-                                                <% } %>
+                                                       <%} }%>
+                                                
                                             </tbody>
                                     </table>
+                                 
                             </div>
+                            <%} %>
                     </div>
             </section> <!--/#cart_items-->
 
@@ -122,7 +199,15 @@
 
 
           
-                                   %>
+                                   
+                                   else if(contLAlquiler<=0 && contLCompra<=0)
+                                { 
+                                %> 
+                                            <div class="alert alert-danger">
+                                              Usted no ha agregado películas al pedido.
+                                            </div>
+                                      
+                                <%} else{ %> 
                               
                             </div>
                             <div class="col-sm-6">
@@ -137,7 +222,7 @@
                                 </div>
                               
                             </div>
-                            
+                             <%}%>
                         </div>
                     </div>
             </section><!--/#do_action-->

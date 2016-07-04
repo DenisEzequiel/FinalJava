@@ -39,8 +39,11 @@ public class LogInComando extends Comando
         {
              request.getSession().setAttribute("usuario", usu);
              request.getSession().setAttribute("exitoLogin", true);
-             if(p.getEstado().equals("finalizado"))
+             if( request.getSession().getAttribute("usuarioNoLogueado")!=null)
+             {
+             request.getSession().setAttribute("usuarioNoLogueado", null);
               return("/carro.jsp");
+             }
                return "/index.jsp";
         }
         else{

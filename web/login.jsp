@@ -18,7 +18,7 @@
                                                 Necesita loguearse para poder finalizar un pedido 
                                             </div>
                                         <%
-                                            session.setAttribute("usuarioNoLogueado", null);
+                                         
                                 }
                             }%>
                         <div class="login-form"><!--login form-->

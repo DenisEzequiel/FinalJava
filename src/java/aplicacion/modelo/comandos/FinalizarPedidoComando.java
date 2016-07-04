@@ -25,6 +25,8 @@ public class FinalizarPedidoComando extends Comando{
         Pedido p=(Pedido)request.getSession().getAttribute("pedido");
 
    
+    if(p.getLineas().size()>0)
+    {
         
         if(request.getSession().getAttribute("usuario")==null)
     { 
@@ -74,13 +76,18 @@ public class FinalizarPedidoComando extends Comando{
              Usuario u= (Usuario)request.getSession().getAttribute("usuario");
              CatalogoDePedidos CdP= new CatalogoDePedidos();
              p.setUsuario(u);
+             p.setDias((Integer)request.getSession().getAttribute("cantidadDias"));
              p.setEstado("finalizado");
              CdP.registrarPedido(p);
              request.getSession().setAttribute("exitoPedido", true);
              Pedido pedido = new Pedido();
              request.getSession().setAttribute("pedido", pedido);
+      }
+   }else {
+        request.getSession().setAttribute("pedidoVacio", true);
+            }
             return "carro.jsp";
         }
     }
     
-}
+

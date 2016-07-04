@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class LineaBD {
       Conexion conec = new Conexion();
     
-    public void registrarLineas(ArrayList<LineaPedido> lineas, int idPedido)
+    public void registrarLineas(ArrayList<LineaPedido> lineas, int idPedido, int dias)
     {
         
         for(LineaPedido lp: lineas ) 
@@ -33,7 +33,7 @@ public class LineaBD {
                 pr.setInt(2, idPedido);
                 pr.setInt(3, lp.getCantidad());
                 pr.setBoolean(4, lp.isEsAlquiler());
-                pr.setFloat(5, lp.getSubtotal());
+                pr.setFloat(5, lp.getSubtotal(dias));
                  pr.executeUpdate();
                   con.close();
             

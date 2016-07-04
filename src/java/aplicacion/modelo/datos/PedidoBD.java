@@ -47,7 +47,7 @@ public class PedidoBD {
             { 
                 int clave=rs.getInt(1);
                 LineaBD lbd=new LineaBD();
-                lbd.registrarLineas(p.getLineas(),clave);
+                lbd.registrarLineas(p.getLineas(),clave, p.getDias());
             }
              
              
