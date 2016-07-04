@@ -24,7 +24,7 @@ public class GeneroBD
     {
         Connection con = conec.getConexion();
         ArrayList<Genero> listaGeneros = new ArrayList<>();
-        String transac = "select * from generos";
+        String transac = "select * from generos;";
         try
         {
             PreparedStatement pr = con.prepareStatement(transac);                     

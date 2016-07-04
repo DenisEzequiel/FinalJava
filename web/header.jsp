@@ -134,8 +134,8 @@
                                                 <li>
                                                     <form action="Controlador" method="post">
                                                         <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
-                                                        <input type="hidden"  name="form" value="AgregarPeliculaComando"/>
-                                                        <input type="submit" name="pagina" value="Cargar Pelicula" >
+                                                        <input type="hidden"  name="form" value="AdminPeliculasComando"/>
+                                                        <input type="submit" name="pagina" value="Peliculas">
                                                     </form>
                                                 </li>
                                                 <li>

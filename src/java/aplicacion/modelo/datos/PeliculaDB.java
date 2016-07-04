@@ -64,13 +64,9 @@ public class PeliculaDB
      }
      public void actualizarPelicula(Pelicula p)
      {
-             
-        
         Connection con = conec.getConexion();
-        String sql = "update peliculas set  nombre=? , duracion=? ,"
-                + " formato=? ,stock_alquiler=?,stock_compra=?, reparto=?,fecha_carga=?,"
-                + "activo=?,url_trailer=?,precio_venta=?,sinopsis=?,anio=? where id_pelicula=?;";
-   
+        String sql = "update aefilep.peliculas set nombre=?, duracion=?, formato=?, stock_alquiler=?,"
+                + "stock_compra=?, reparto=?, activo=?, url_trailer=?, precio_venta=?, sinopsis=?, anio=? where id_pelicula=?;";
         try
         {
             PreparedStatement pr = con.prepareStatement(sql);
@@ -79,23 +75,75 @@ public class PeliculaDB
             pr.setString(3, p.getFormato());
             pr.setInt(4, p.getStockAlquiler());
             pr.setInt(5, p.getStockVenta());           
-            pr.setString(6,p.getReparto());
-            pr.setDate(7, new java.sql.Date(p.getFechaCarga().getTime()));
-            pr.setBoolean(8, p.isActivo());            
-            pr.setString(9,p.getUrlTrailer());
-            pr.setFloat(10,p.getPrecioVenta());
-            pr.setString(11,p.getSinopsis());
-            pr.setInt(12, p.getAnio());
-            pr.setInt(13, p.getIdPelicula());
+            pr.setString(6, p.getReparto());
+            pr.setBoolean(7, p.isActivo());            
+            pr.setString(8, p.getUrlTrailer());
+            pr.setFloat(9, p.getPrecioVenta());
+            pr.setString(10, p.getSinopsis());
+            pr.setInt(11, p.getAnio());
+            pr.setInt(12, p.getIdPelicula());
             pr.executeUpdate();
             con.close();
         }
-         catch(SQLException ex)
+        catch(SQLException ex)
         {
+            
+        }
+        pelgenBD.actualizarPeliculasGeneros(p);
+     }
+     
+     public ArrayList<Pelicula> obtenerPeliculas()
+     {
+         Connection con = conec.getConexion();
+         ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
+         String transac = "select * from peliculas;";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            ResultSet res = pr.executeQuery();
+                   
+            while(res.next())
+            {
+                Pelicula p = new Pelicula();
+                
+                p.setIdPelicula(res.getInt(1));
+                p.setNombre(res.getString(2));
+                p.setDuracion(res.getInt(3));
+                p.setFormato(res.getString(4));
+                p.setStockAlquiler(res.getInt(5));
+                p.setStockVenta(res.getInt(6));
+                p.setReparto(res.getString(8));
+                p.setFechaCarga(new java.sql.Date(res.getDate(9).getTime()));
+                p.setActivo(res.getBoolean(10));
+                p.setUrlTrailer(res.getString(11));
+                p.setPrecioVenta(res.getFloat(12));
+                p.setSinopsis(res.getString(13));
+                p.setAnio(res.getInt(14));
+                
+                if(p.isEstreno())
+                {
+                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
+                }
+                else
+                {
+                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
+                }
+                
+                p.setGeneros(pelgenBD.obtenerGenerosPelicula(p.getIdPelicula()));
+                
+                listaPeliculas.add(p);
+            }
+            con.close();
+            
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
         }
         
-    
+        return listaPeliculas;
      }
+     
      public ArrayList<Pelicula> buscarPeliculas(int inferior,int cantidad)
      {
          Connection con = conec.getConexion();

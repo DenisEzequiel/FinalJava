@@ -37,12 +37,26 @@ public class Pelicula
         this.generos = new ArrayList<Genero>();
     }
     
-    
-
     public ArrayList<Genero> getGeneros() {
         return generos;
     }
 
+    public void setGeneros(ArrayList<Genero> generos) {
+        this.generos = generos;
+    }
+    
+    public boolean contieneGenero(Genero gen)
+    {
+        for(Genero g:generos)
+        {
+            if(g.getIdGenero()==gen.getIdGenero())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void agregarGenero(Genero genero)
     {
         this.generos.add(genero);

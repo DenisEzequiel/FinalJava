@@ -30,6 +30,11 @@ public class CatalogoDePeliculas
         return peliculas.obtenerPelicula(idPel);
     }
     
+    public ArrayList<Pelicula> obtenerPeliculas()
+    {
+        return peliculas.obtenerPeliculas();
+    }
+    
     public ArrayList<Pelicula> buscarPeliculas(int inferior, int cantidad)
     {
        return peliculas.buscarPeliculas(inferior,cantidad);

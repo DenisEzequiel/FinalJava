@@ -20,6 +20,9 @@ public class FactoriaDeComandos
         mapa.put("CuentaComando",CuentaComando.class);
         mapa.put("RegistroComando", RegistroComando.class);
         mapa.put("PeliculasComando", PeliculasComando.class);
+        mapa.put("AdminPeliculasComando", AdminPeliculasComando.class);
+        mapa.put("SeleccionarPeliculaComando", SeleccionarPeliculaComando.class);
+        mapa.put("EditarPeliculaComando", EditarPeliculaComando.class);
         mapa.put("AgregarPeliculaComando", AgregarPeliculaComando.class);
         mapa.put("ContactoComando",ContactoComando.class);
         mapa.put("LogOutComando", LogOutComando.class);

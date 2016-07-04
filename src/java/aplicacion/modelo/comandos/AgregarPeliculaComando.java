@@ -6,6 +6,7 @@
 package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.entidades.Genero;
+import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import java.text.DateFormat;
@@ -63,10 +64,13 @@ public class AgregarPeliculaComando extends Comando
                 }
             }
             cDp.agregarPelicula(pelicula);
-            request.getSession().setAttribute("pelicula", pelicula);
+            ArrayList<Pelicula> peliculas = cDp.obtenerPeliculas();
+            request.getSession().setAttribute("ListaPeliculas", peliculas);
+            request.getSession().setAttribute("PeliEdit", pelicula);
+            request.getSession().setAttribute("ExitoAltaPeli", 1);
             
         }
-        return ("/ABMPelicula.jsp");
+        return ("/ABMPeliculas.jsp");
     }
     
     
