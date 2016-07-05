@@ -7,6 +7,7 @@ package aplicacion.modelo.negocio;
 
 import aplicacion.modelo.datos.PedidoBD;
 import aplicacion.modelo.entidades.Pedido;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,5 +21,15 @@ public class CatalogoDePedidos {
         
         pedidos.registrarPedido(p);
         
+    }
+    
+    public void cerrarPedido(Pedido p)
+    {
+        pedidos.cerrarPedido(p);
+    }
+    
+    public ArrayList<Pedido> obtenerPedidosPendientes(int idUsu)
+    {
+        return pedidos.obtenerPedidosPendientes(idUsu);
     }
 }

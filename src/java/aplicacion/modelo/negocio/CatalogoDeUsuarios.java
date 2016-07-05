@@ -23,6 +23,12 @@ public class CatalogoDeUsuarios
         return usu;
     }
     
+    public ArrayList<Usuario> buscarUsuarios(Usuario usu)
+    {
+        usuarios = new UsuarioBD();
+        return usuarios.buscarUsuarios(usu);
+    }
+    
     public ArrayList<Usuario> obtenerUsuarios()
     {
         usuarios = new UsuarioBD();

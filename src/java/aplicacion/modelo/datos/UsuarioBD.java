@@ -57,6 +57,54 @@ public class UsuarioBD
         return usu;
     }
     
+    public ArrayList<Usuario> buscarUsuarios(Usuario usu)
+    {
+        ArrayList<Usuario> resultado = new ArrayList<Usuario>();
+        Connection con = conec.getConexion();
+        String apell = usu.getApellido();
+        String sql = "select * from aefilep.usuarios where activo=1 and apellido like '"+apell+"%'";
+        int id = usu.getIdUsuario();
+        String nombre = usu.getNombre();
+        String dni = usu.getDni();
+        if(id!=0)
+            sql = sql + " and id_usuario="+id;
+        if(!nombre.equals(""))
+            sql = sql + " and nombre like '"+nombre+"%'";
+        if(!dni.equals(""))
+            sql = sql + " and dni like '"+dni+"%'";
+        sql = sql+";";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(sql);
+            ResultSet res = pr.executeQuery();
+            
+            while(res.next())
+            {
+                usu = new Usuario();
+                usu.setActivo(res.getBoolean(10));
+                usu.setApellido(res.getString(3));
+                usu.setBloqueado(res.getBoolean(11));
+                usu.setContrasena(res.getString(4));
+                usu.setDireccion(res.getString(6));
+                usu.setDni(res.getString(8));
+                usu.setEsAdmin(res.getBoolean(5));
+                usu.setFechaNacimiento(res.getDate(9));
+                usu.setIdUsuario(res.getInt(1));
+                usu.setMail(res.getString(12));
+                usu.setNombre(res.getString(2));
+                usu.setNombreUsuario(res.getString(13));
+                usu.setTelefono(res.getString(7));
+                resultado.add(usu);
+            }
+            con.close();
+            
+        }catch(SQLException ex)
+        {
+            
+        }
+        return resultado;
+    }
+    
     public ArrayList<Usuario> obtenerUsuarios()
     {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();

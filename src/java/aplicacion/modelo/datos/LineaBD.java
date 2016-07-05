@@ -8,6 +8,7 @@ package aplicacion.modelo.datos;
 import aplicacion.modelo.entidades.LineaPedido;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,6 +18,38 @@ import java.util.ArrayList;
  */
 public class LineaBD {
       Conexion conec = new Conexion();
+      PeliculaDB peliBd = new PeliculaDB();
+      public ArrayList<LineaPedido> obtenerLineaAlq (int idPedido)
+      {
+          String sql = "select * from aefilep.pedidos_peliculas where id_pedido =? and es_alquiler=1;";
+          Connection con = conec.getConexion();
+          ArrayList<LineaPedido> lineas = new ArrayList<>();
+          
+          try
+          {
+              PreparedStatement pr = con.prepareStatement(sql);
+              pr.setInt(1, idPedido);
+              ResultSet res = pr.executeQuery();
+
+               while(res.next())
+            {
+                LineaPedido lp = new LineaPedido();
+                
+                lp.setPelicula(peliBd.obtenerPelicula(res.getInt(1)));
+                lp.setCantidad(res.getInt(3));
+                lp.setEsAlquiler(res.getBoolean(4));
+                lp.setSubtotal(res.getFloat(5));
+                
+                lineas.add(lp);
+            }
+              
+          }
+          catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        return lineas;         
+      }
     
     public void registrarLineas(ArrayList<LineaPedido> lineas, int idPedido, int dias)
     {

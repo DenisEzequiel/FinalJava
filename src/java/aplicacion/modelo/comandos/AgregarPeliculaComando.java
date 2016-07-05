@@ -29,12 +29,6 @@ public class AgregarPeliculaComando extends Comando
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
         
-        if(request.getParameter("desdeIndex")!=null)
-        {
-            request.getSession().setAttribute("listaGeneros", cdG.obtenerGeneros()); 
-        }
-        else
-        {
             ArrayList<Genero> generos = cdG.obtenerGeneros();
             pelicula=new Pelicula();
             pelicula.setActivo(true);
@@ -69,7 +63,7 @@ public class AgregarPeliculaComando extends Comando
             request.getSession().setAttribute("PeliEdit", pelicula);
             request.getSession().setAttribute("ExitoAltaPeli", 1);
             
-        }
+        
         return ("/ABMPeliculas.jsp");
     }
     

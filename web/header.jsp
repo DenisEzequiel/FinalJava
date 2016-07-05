@@ -144,7 +144,7 @@
                                                         <input type="submit" name="pagina" value="Usuarios" >
                                                     </form>
                                                 </li>
-                                                <li><a href="">Admin opcion 2</a></li>
+                                                <li><a href="Devoluciones.jsp">Devoluciones</a></li>
                                             </ul>
                                             </li> 
                                         <%}%>                                                         

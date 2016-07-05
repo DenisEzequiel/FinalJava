@@ -31,6 +31,7 @@ public class Usuario implements Serializable
     
     public Usuario()
     {
+        
     }
     
     /**
