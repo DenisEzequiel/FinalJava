@@ -156,7 +156,7 @@
                                 <form action="Controlador" method="post">
                                 <input type="text" name="nombrePelicula" placeholder="Nombre pelicula">
                                 <input type="hidden" name="form" value="PeliculasComando" onchange="submit()">
-       
+                                </form>
                             </div>
                         </div>
                     </div>

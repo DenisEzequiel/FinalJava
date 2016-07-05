@@ -552,7 +552,7 @@ ul.sub-menu {
 	margin-right:15px;
 }
 
-.single-widget ul li a{
+.single-widget ul li a,.single-widget form ul li label {
 	color: #ADBAC8;
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
@@ -560,11 +560,19 @@ ul.sub-menu {
 	padding: 5px 0;
 	padding-left: 10px;
 }
+.single-widget form ul li label{
+    padding: 3px 0;
+    padding-left:10px;
+}
 
-.single-widget ul li a i {
+.single-widget ul li a i{
   margin-right: 18px;
 }
-.single-widget ul li a:before{
+
+.single-widget form ul li label i {
+  margin-right: 30px;
+}
+.single-widget ul li a:before,.single-widget form ul li label:before{
 	position: absolute;
 	font-family: FontAwesome;
 	top: 3px;
@@ -575,7 +583,7 @@ ul.sub-menu {
 	font-size: 17px;
 }
 
-.single-widget ul li a:hover{
+.single-widget ul li a:hover,.single-widget form ul li label:hover{
 	background:none;
 	color:#f90;
 }
