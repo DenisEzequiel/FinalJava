@@ -34,6 +34,10 @@ public class CatalogoDePeliculas
     {
         return peliculas.obtenerPeliculas();
     }
+     public ArrayList<Pelicula> obtenerPeliculas(String nombre,int inferior,int cantidad)
+    {
+        return peliculas.obtenerPeliculas(nombre,inferior,cantidad);
+    }
     
     public ArrayList<Pelicula> buscarPeliculas(int inferior, int cantidad)
     {
@@ -43,5 +47,19 @@ public class CatalogoDePeliculas
     public int cantidadPeliculasActivas()
     {
         return peliculas.cantidadPeliculasActivas();
+    }
+    
+    public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad)
+    {
+       return peliculas.obtenerEstrenos(inferior,cantidad);
+    }
+        public ArrayList<Pelicula> obtenerEstrenos(int cant)
+    {
+       return peliculas.obtenerEstrenos(cant);
+    }
+    
+     public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad)
+    {
+       return peliculas.obtenerGenero(idGenero,inferior,cantidad);
     }
 }

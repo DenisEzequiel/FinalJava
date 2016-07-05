@@ -54,6 +54,7 @@
                                              
                                                                                 </span>
                                                                                     <p><b>Disponible para alquiler:</b><%if(peliActual.getStockAlquiler()>0){ %> Si <%}else{%> No <%}%></p>
+                                                                                    <p><b>Disponible para compra:</b><%if(peliActual.getStockVenta()>0){ %> Si <%}else{%> No <%}%></p>
                                                                                     <p><b>Estreno: </b> <%if(peliActual.isEstreno()){%> Si <%}else{%> No <%}%></p>
                                                                                      <p><b>Formato:</b><%=peliActual.getFormato()%></p>
                                                                                     <p><b>Reparto:</b><%=peliActual.getReparto()%></p>

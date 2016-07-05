@@ -35,7 +35,7 @@ public class FinalizarPedidoComando extends Comando{
     }
         
         else 
-        {   int iLinea=1;
+        {   int iLinea=0;
             for(LineaPedido lp: p.getLineas())
             { int stock;
                 if(lp.isEsAlquiler())
@@ -44,9 +44,9 @@ public class FinalizarPedidoComando extends Comando{
                 }else stock=lp.getPelicula().getStockVenta();
                 
                 if(stock<lp.getCantidad())
-                {
+                {   
                     request.getSession().setAttribute("errorStock", iLinea);
-                    return "/carro.jsp";
+                    return "/carro.jsp";  
                 }  
                 iLinea++;
             }

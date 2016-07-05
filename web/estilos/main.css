@@ -153,6 +153,7 @@ a#scrollUp i{
 .container .row .col-sm-4 input[type="radio"]
 {
     display: none;
+    
 }
 
 .header-middle .container .row .col-sm-8 {
@@ -313,9 +314,9 @@ a#scrollUp i{
 
 input[type="radio"]
 {
-    display: none;
-}
+   display: none;
 
+}
 .search_box input {
   background: #F0F0E9;
   border: medium none;
@@ -551,7 +552,7 @@ ul.sub-menu {
 	margin-right:15px;
 }
 
-.single-widget ul li a{
+.single-widget ul li a,.single-widget form ul li label {
 	color: #ADBAC8;
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
@@ -559,11 +560,19 @@ ul.sub-menu {
 	padding: 5px 0;
 	padding-left: 10px;
 }
+.single-widget form ul li label{
+    padding: 3px 0;
+    padding-left:10px;
+}
 
-.single-widget ul li a i {
+.single-widget ul li a i{
   margin-right: 18px;
 }
-.single-widget ul li a:before{
+
+.single-widget form ul li label i {
+  margin-right: 30px;
+}
+.single-widget ul li a:before,.single-widget form ul li label:before{
 	position: absolute;
 	font-family: FontAwesome;
 	top: 3px;
@@ -574,7 +583,7 @@ ul.sub-menu {
 	font-size: 17px;
 }
 
-.single-widget ul li a:hover{
+.single-widget ul li a:hover,.single-widget form ul li label:hover{
 	background:none;
 	color:#f90;
 }
@@ -1193,7 +1202,7 @@ h2.title {
   z-index: 2;
 }
 
-.pagination form li  input, .pagination form li  span {
+.pagination li  input, .pagination li  span {
   background-color: #f0f0e9;
   border: 0;
   float: left;
@@ -2909,4 +2918,17 @@ h2 button:hover
 .product-information
 {
     padding: 20px;
+}
+
+.etiquetaGenero
+{
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    
+}
+.etiquetaGenero:hover
+{
+    text-decoration: underline;
+    cursor: pointer;
 }

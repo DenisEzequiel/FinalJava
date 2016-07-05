@@ -153,7 +153,10 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="search_box pull-right">
-                                <input type="text" placeholder="Buscar">
+                                <form action="Controlador" method="post">
+                                <input type="text" name="nombrePelicula" placeholder="Nombre pelicula">
+                                <input type="hidden" name="form" value="PeliculasComando" onchange="submit()">
+                                </form>
                             </div>
                         </div>
                     </div>

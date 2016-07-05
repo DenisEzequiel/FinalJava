@@ -143,6 +143,60 @@ public class PeliculaDB
         
         return listaPeliculas;
      }
+     public ArrayList<Pelicula> obtenerPeliculas(String nombre, int inferior, int cantidad)
+     {
+         Connection con = conec.getConexion();
+         ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
+         String transac = "select * from peliculas where nombre like '%"+nombre+"%' limit ?,?;";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            pr.setInt(1, inferior);
+            pr.setInt(2, cantidad);
+          
+            ResultSet res = pr.executeQuery();
+                   
+            while(res.next())
+            {
+                Pelicula p = new Pelicula();
+                
+                p.setIdPelicula(res.getInt(1));
+                p.setNombre(res.getString(2));
+                p.setDuracion(res.getInt(3));
+                p.setFormato(res.getString(4));
+                p.setStockAlquiler(res.getInt(5));
+                p.setStockVenta(res.getInt(6));
+                p.setReparto(res.getString(8));
+                p.setFechaCarga(new java.sql.Date(res.getDate(9).getTime()));
+                p.setActivo(res.getBoolean(10));
+                p.setUrlTrailer(res.getString(11));
+                p.setPrecioVenta(res.getFloat(12));
+                p.setSinopsis(res.getString(13));
+                p.setAnio(res.getInt(14));
+                
+                if(p.isEstreno())
+                {
+                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
+                }
+                else
+                {
+                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
+                }
+                
+                p.setGeneros(pelgenBD.obtenerGenerosPelicula(p.getIdPelicula()));
+                
+                listaPeliculas.add(p);
+            }
+            con.close();
+            
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        return listaPeliculas;
+     }
      
      public ArrayList<Pelicula> buscarPeliculas(int inferior,int cantidad)
      {
@@ -298,4 +352,139 @@ public class PeliculaDB
         
         return i;
      }
+     
+       public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad)
+     {
+         Connection con = conec.getConexion();
+         ArrayList<Pelicula> listaEstrenos = new ArrayList<>();
+         String transac = "select * from peliculas where(`fecha_carga` +7)>CURRENT_DATE() limit ?,?;";
+        try
+        {   
+            PreparedStatement pr = con.prepareStatement(transac);
+            pr.setInt(1, inferior);
+            pr.setInt(2, cantidad);
+            ResultSet res = pr.executeQuery();
+                   
+            while(res.next())
+            {
+                Pelicula p = new Pelicula();
+                
+                p.setIdPelicula(res.getInt(1));
+                p.setNombre(res.getString(2));
+                p.setDuracion(res.getInt(3));
+                p.setFormato(res.getString(4));
+                p.setStockAlquiler(res.getInt(5));
+                p.setStockVenta(res.getInt(6));
+                p.setReparto(res.getString(8));
+                p.setFechaCarga(new java.sql.Date(res.getDate(9).getTime()));
+                p.setActivo(res.getBoolean(10));
+                p.setUrlTrailer(res.getString(11));
+                p.setPrecioVenta(res.getFloat(12));
+                p.setSinopsis(res.getString(13));
+                p.setAnio(res.getInt(14));
+                
+                if(p.isEstreno())
+                {
+                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
+                }
+                else
+                {
+                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
+                }
+                
+                p.setGeneros(pelgenBD.obtenerGenerosPelicula(p.getIdPelicula()));
+                
+                listaEstrenos.add(p);
+            }
+            con.close();
+            
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        return listaEstrenos;
+     }
+         public ArrayList<Pelicula> obtenerEstrenos(int cant)
+     {
+         Connection con = conec.getConexion();
+         ArrayList<Pelicula> listaEstrenos = new ArrayList<>();
+         String transac = "select * from peliculas where(`fecha_carga` +7)>CURRENT_DATE() order by `fecha_carga` desc limit 0,?;";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            pr.setInt(1, cant);
+            ResultSet res = pr.executeQuery();
+                   
+            while(res.next())
+            {
+                Pelicula p = new Pelicula();
+                
+                p.setIdPelicula(res.getInt(1));
+                p.setNombre(res.getString(2));
+                p.setDuracion(res.getInt(3));
+                p.setFormato(res.getString(4));
+                p.setStockAlquiler(res.getInt(5));
+                p.setStockVenta(res.getInt(6));
+                p.setReparto(res.getString(8));
+                p.setFechaCarga(new java.sql.Date(res.getDate(9).getTime()));
+                p.setActivo(res.getBoolean(10));
+                p.setUrlTrailer(res.getString(11));
+                p.setPrecioVenta(res.getFloat(12));
+                p.setSinopsis(res.getString(13));
+                p.setAnio(res.getInt(14));
+                
+                if(p.isEstreno())
+                {
+                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
+                }
+                else
+                {
+                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
+                }
+                
+                p.setGeneros(pelgenBD.obtenerGenerosPelicula(p.getIdPelicula()));
+                
+                listaEstrenos.add(p);
+            }
+            con.close();
+            
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        return listaEstrenos;
+     }
+       public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad)
+     {
+         Connection con = conec.getConexion();
+         ArrayList<Pelicula> listaGenero = new ArrayList<>();
+         String transac = "select id_pelicula from peliculas_generos where id_genero=? limit ?,?";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            pr.setInt(1, idGenero);
+            pr.setInt(2, inferior);
+            pr.setInt(3,cantidad);
+            ResultSet res = pr.executeQuery();
+                   
+            while(res.next())
+            {
+                Pelicula p = obtenerPelicula(res.getInt(1));
+                               
+                listaGenero.add(p);
+            }
+            con.close();
+            
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        return listaGenero;
+    }
 }
