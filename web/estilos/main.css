@@ -153,6 +153,7 @@ a#scrollUp i{
 .container .row .col-sm-4 input[type="radio"]
 {
     display: none;
+    
 }
 
 .header-middle .container .row .col-sm-8 {
@@ -313,9 +314,9 @@ a#scrollUp i{
 
 input[type="radio"]
 {
-    display: none;
-}
+   display: none;
 
+}
 .search_box input {
   background: #F0F0E9;
   border: medium none;
@@ -1193,7 +1194,7 @@ h2.title {
   z-index: 2;
 }
 
-.pagination form li  input, .pagination form li  span {
+.pagination li  input, .pagination li  span {
   background-color: #f0f0e9;
   border: 0;
   float: left;
@@ -2909,4 +2910,17 @@ h2 button:hover
 .product-information
 {
     padding: 20px;
+}
+
+.etiquetaGenero
+{
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    
+}
+.etiquetaGenero:hover
+{
+    text-decoration: underline;
+    cursor: pointer;
 }

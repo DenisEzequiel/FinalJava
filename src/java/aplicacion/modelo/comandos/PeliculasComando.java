@@ -38,15 +38,31 @@ public class PeliculasComando extends Comando
         cDp = new CatalogoDePeliculas();
         
         int cantidadDePeliculas = cDp.cantidadPeliculasActivas();
-        ArrayList<Pelicula> listaPeliculas = cDp.buscarPeliculas((paginaActual-1)*9,9);
-        
+        ArrayList<Pelicula> listaPeliculas;
+        if(request.getParameter("tipo")!=null)
+        {
+            if(request.getParameter("tipo").equals("estreno"))             
+                listaPeliculas = cDp.obtenerEstrenos((paginaActual-1)*9,9);
+            else
+                listaPeliculas = cDp.obtenerGenero(Integer.parseInt(request.getParameter("tipo")),(paginaActual-1)*9,9);
+          request.getSession().setAttribute("generoObtenido",true);
+        }
+        else if(request.getParameter("nombrePelicula")!=null)
+        {
+            listaPeliculas = cDp.obtenerPeliculas(request.getParameter("nombrePelicula"),(paginaActual-1)*9,9);
+          request.getSession().setAttribute("generoObtenido",true);
+        }
+        else
+            listaPeliculas = cDp.buscarPeliculas((paginaActual-1)*9,9);
+      
+     
         ParametroBD pbd = new ParametroBD();
         Parametro par = pbd.obtenerParametros();
         
         request.getSession().setAttribute("parametro", par);
         request.getSession().setAttribute("listaCartelera", listaPeliculas);
         request.getSession().setAttribute("cantidadPeliculas", cantidadDePeliculas);
-       
+        request.getSession().setAttribute("generoObtenido", null);
         return "cartelera.jsp";
     }
 }

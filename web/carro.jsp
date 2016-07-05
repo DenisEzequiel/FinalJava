@@ -79,7 +79,7 @@
                                                             </td>
                                                             <td class="cart_quantity">
                                                                     <div class="cart_quantity_button">
-                                                                          <input disabled class="tamanio cart_quantity_input" type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
+                                                                          <input disabled class="tamanio cart_quantity_input" min="1" type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
                                                                             
                                                                     </div>
                                                             </td>
@@ -146,7 +146,7 @@
                                                                                 <input type="hidden"  name="form" value="ActualizarLineaComando"/>
                                                                                 <input type="hidden" name="idPelicula" value="<%=lp.getPelicula().getIdPelicula()%>"/>
                                                                                 <input type="hidden" name="tipoLinea" value="<%=lp.isEsAlquiler()%>"/>
-                                                                                <input onchange="submit()"  class="tamanio cart_quantity_input"type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
+                                                                                <input onchange="submit()" min="1" class="tamanio cart_quantity_input"type="number" name="cantidad" value="<%=lp.getCantidad()%>"/>
                                                                             </form>
                                                                     </div>
                                                             </td>
@@ -181,12 +181,25 @@
                              <div class="col-sm-6">
                             <%
                                 if(session.getAttribute("errorStock")!= null && session.getAttribute("usuario")!=null)
-                                {
+                                {  LineaPedido lpe= ped.getLineas().get((Integer)session.getAttribute("errorStock"));
                                     
                                        %> 
                                             <div class="alert alert-danger">
-                                                Stock insuficiente en la linea <%=session.getAttribute("errorStock")%>
+                                                Stock insuficiente en la pelicula <%=lpe.getPelicula().getNombre()%> para <%if(lpe.isEsAlquiler()){%>alquiler<%}else{%>compra<%}%>
                                             </div>
+                                             </div>
+                            <div class="col-sm-6">
+                                 <div class="signup-form">
+                                 
+                                     <form action="Controlador" method="post">
+                                         <input type="hidden" name="form" value="FinalizarPedidoComando">
+                                        <button type="submit" class="btn btn-default">Finalizar pedido</button> 
+                                    </form>
+                                        
+                               
+                                </div>
+                              
+                            </div>
                                                 <% session.setAttribute("errorStock", null);
                                     }
                                 else if(session.getAttribute("exitoPedido")!=null)

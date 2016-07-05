@@ -1,7 +1,10 @@
+<%@page import="aplicacion.modelo.negocio.CatalogoDePeliculas"%>
 <%@page import="aplicacion.modelo.entidades.Pedido"%>
 <%@page import="aplicacion.modelo.entidades.Usuario"%>
 <%@page import="aplicacion.modelo.entidades.Parametro"%>
 <%@page import="aplicacion.modelo.datos.ParametroBD"%>
+<%@page import="aplicacion.modelo.entidades.Pelicula"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="head.jsp"/>
@@ -15,6 +18,10 @@
     }
     %>
     <jsp:include page="header.jsp"/>
+    <%CatalogoDePeliculas CdP= new CatalogoDePeliculas();
+        ArrayList<Pelicula>pelisCarrusel= CdP.obtenerEstrenos(3);
+        
+        %>
 <section id="slider"><!--slider-->
 		<div class="container">
 			<div class="row">
@@ -27,43 +34,30 @@
 						</ol>
 						
 						<div class="carousel-inner">
-							<div class="item">
+                                                    <% int indice=0;
+                                                        for(Pelicula pc: pelisCarrusel)
+                                                    { %>
+                                                    <div class="item <%if(indice==1){%>active<%}%>">
+                                                        
 								<div class="col-sm-6">
-									<h1><span>A</span>efilep</h1>
-									<h2>Video Club</h2>
-									<p>No se pierda este estreno absoluto. Se lo recomendamos.</p>
-									<button type="button" class="btn btn-default get">Obtener ahora</button>
+									<h1><span>A</span>efilep - Video Club</h1>
+                                                                        <h2><%=pc.getNombre()%></h2>
+									<p><%=pc.getSinopsis()%></p>
+                                                                         <form action="Controlador" method="post">
+                                                                                            <button type="submit" class="btn btn-default get">Obtener ahora</button>
+                                                                                             <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
+                                                                                               <input type="hidden"  name="idPelicula" value="<%=pc.getIdPelicula()%>"/>
+                                                                                            </form>
+									
 								</div>
+                                                           
 								<div class="col-sm-6">
 									<img src="./imagenes/girl1.jpg" class="girl img-responsive" alt="">
 									<img src="./imagenes/pricing.png" class="pricing" alt="">
 								</div>
 							</div>
-							<div class="item active">
-								<div class="col-sm-6">
-									<h1><span>A</span>efilep</h1>
-									<h2>Video Club</h2>
-									<p>No se pierda este estreno absoluto. Se lo recomendamos.</p>
-									<button type="button" class="btn btn-default get">Obtener ahora</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="./imagenes/girl2.jpg" class="girl img-responsive" alt="">
-									<img src="./imagenes/pricing.png" class="pricing" alt="">
-								</div>
-							</div>
+                                                    <%indice++;}%>                                    
 							
-							<div class="item">
-								<div class="col-sm-6">
-									<h1><span>A</span>efilep</h1>
-									<h2>Video Club</h2>
-									<p>No se pierda este estreno absoluto. Se lo recomendamos.</p>
-									<button type="button" class="btn btn-default get">Obtener ahora</button>
-								</div>
-								<div class="col-sm-6">
-									<img src="./imagenes/girl3.jpg" class="girl img-responsive" alt="">
-									<img src="./imagenes/pricing.png" class="pricing" alt="">
-								</div>
-							</div>
 							
 						</div>
 						
