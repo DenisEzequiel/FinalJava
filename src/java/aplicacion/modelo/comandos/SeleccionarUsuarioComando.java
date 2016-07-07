@@ -40,6 +40,7 @@ public class SeleccionarUsuarioComando extends Comando
         {
             request.getSession().setAttribute("UsuarioEdit", null);
         }
+        request.getSession().setAttribute("Scroll",true);
         
         return "/ABMUsuarios.jsp";
     }

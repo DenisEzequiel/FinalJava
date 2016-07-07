@@ -26,7 +26,6 @@ public class AdminUsuariosComando extends Comando
         Usuario usuarioEdit = usuarios.get(0);
         request.getSession().setAttribute("ListaUsuarios", usuarios);
         request.getSession().setAttribute("UsuarioEdit", usuarioEdit);
-        
         return "/ABMUsuarios.jsp";
     }
     

@@ -7,6 +7,7 @@ package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,19 +33,31 @@ public class LogInComando extends Comando
        
         String nomUsu = request.getParameter("nomUsu");
         String contra = request.getParameter("contra");
+        Boolean recordar = (request.getParameter("recordarUsu")!=null);
         Usuario usu = CdeU.buscarUsuario(nomUsu, contra);
         Pedido p=(Pedido)request.getSession().getAttribute("pedido");
-        
         if(usu!=null)
         {
-             request.getSession().setAttribute("usuario", usu);
+            if(recordar)
+            {
+                Cookie recordarNombre = new Cookie("nomUsuarioAefilep", nomUsu);
+                Cookie recordarContra = new Cookie("contraAefilep", contra);
+                recordarNombre.setMaxAge(356*24*60*60);
+                recordarContra.setMaxAge(365*24*60*60);
+                recordarContra.setPath("/");
+                recordarNombre.setPath("/");
+                response.addCookie(recordarNombre);
+                response.addCookie(recordarContra);
+            }
+            
+            request.getSession().setAttribute("usuario", usu);
              request.getSession().setAttribute("exitoLogin", true);
              if( request.getSession().getAttribute("usuarioNoLogueado")!=null)
              {
              request.getSession().setAttribute("usuarioNoLogueado", null);
               return("/carro.jsp");
              }
-               return "/index.jsp";
+             return "/index.jsp";
         }
         else{
               return "/login.jsp";

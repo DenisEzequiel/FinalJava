@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-sm-5 col-sm-offset-1">                            
                             <div class="cuenta">
-                                <input type="hidden" name="form" value="cuenta">                              
+                                <input type="hidden" name="form" value="CuentaComando">                              
                                 Nombre <input type="text" class="control form-control" name="nombre" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="nombre" name="usuario"/><%}%>">
                                 Apellido <input type="text" class="control form-control" name="apellido" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="apellido" name="usuario"/><%}%>">
                                 Dni <input type="text" maxlength="8" class="control form-control" name="dni" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="dni" name="usuario"/><%}%>">
@@ -33,8 +33,8 @@
                                 Telefono <input type="text" class="control form-control" name="telefono" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="telefono" name="usuario"/><%}%>">
                                 E-Mail <input type="email" class="control form-control" name="mail" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="mail" name="usuario"/><%}%>">
                                 <%if(session.getAttribute("tabActual").equals("1")){%> <div class="alert alert-success bajar"><p>Datos actualizados con exito!</p></div><%}%>
-                                <input type="hidden" name="form" value="cuenta"/>
                                 <br/><br/><br/><br/>
+                                <input type="hidden" name="form" value="CuentaComando"/>
                                 <button type="submit" class="btn btn-default right" name="actDatos" value="actualizarDatos">Actualizar Datos</button>
                             </div><!--/sign up form-->
                         </div>
@@ -48,9 +48,8 @@
                     <div class="col-sm-5 col-sm-offset-1">
                         <br/>
                         <form action="Controlador" method="post">
-                            <input type="hidden" name="form" value="cuenta">                       
-                            <div class="cuenta"><!--login form-->                           
-                                <input type="hidden" name="form" value="cuenta">                              
+                            <input type="hidden" name="form" value="CuentaComando">                       
+                            <div class="cuenta"><!--login form-->                             
                                 Contraseña anterior <input type="password" class="control form-control" name="contraAnterior" required>
                                 Nueva contraseña <input id="nuevaContra" type="password" class="control form-control" name="nuevaContra" required>
                                 Repita la contraseña <input id="repiteContra" type="password" class="control form-control" name="repiteContra" required onkeyup="validarContrasenia()">

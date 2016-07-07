@@ -41,15 +41,13 @@
                                         <li>
                                             <% if(session.getAttribute("exitoPeliculaAgregada")!=null){ %>
                                             <div class='cartel'>
-                                               
                                                 <div class="popover fade left <%if(session.getAttribute("exitoPeliculaAgregada")!=null)
                                                                                 { %> in <%
                                                                                     session.setAttribute("exitoPeliculaAgregada", null); } %>">
                                                      <div class="arrow"></div>
                                                      <div class="popover-content">
                                                          Se ha agregado una película al carro.
-                                                     </div>
-                                                     
+                                                     </div>    
                                                 </div> 
                                             </div>
                                                      <%}else if(session.getAttribute("exitoLogin")!=null){%>
@@ -144,7 +142,7 @@
                                                         <input type="submit" name="pagina" value="Usuarios" >
                                                     </form>
                                                 </li>
-                                                <li><a href="Devoluciones.jsp">Devoluciones</a></li>
+                                                <li><a href="Devoluciones.jsp/#Pedidos">Devoluciones</a></li>
                                             </ul>
                                             </li> 
                                         <%}%>                                                         

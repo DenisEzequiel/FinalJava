@@ -27,8 +27,8 @@
                                 <h2 class="title text-center">BUSCAR USUARIO</h2>
                                 <input class="control form-control"  type="text" placeholder="ID" maxlength="15" name="ID">
                                 <input class="control form-control" type="text" placeholder="Nombre" maxlength="15" name="Nombre">
-                                <input class="control form-control" type="text" placeholder="Apellido" name="Apellido" maxlength="15" required>
-                                <input class="control form-control" type="text" placeholder="DNI" name="Dni" pattern="^[0-9]*$" minlength="7" maxlength="9">     
+                                <input class="control form-control" type="text" placeholder="Apellido" name="Apellido" maxlength="15">
+                                <input class="control form-control" type="text" placeholder="DNI" name="Dni" pattern="^[0-9]*$" minlength="2" maxlength="9">     
                                 <input type="hidden" name="form" value="BuscarUsuarioComando">
                                 <button type="submit" class="btn btn-default">Buscar</button>
                             </div>
@@ -73,7 +73,7 @@
                 <%} %>
             </div>
             
-            <div class="row">
+            <div id="Pedidos" class="row">
                         <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="alert alert-success popover fade left <%if(session.getAttribute("ExitoCierre")!=null)
                                                                                 { %> in <%

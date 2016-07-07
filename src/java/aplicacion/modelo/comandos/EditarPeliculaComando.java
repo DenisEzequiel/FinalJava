@@ -75,6 +75,8 @@ public class EditarPeliculaComando extends Comando
         ArrayList<Pelicula> peliculas = CdeP.obtenerPeliculas();
         request.getSession().setAttribute("ListaPeliculas", peliculas);
         request.getSession().setAttribute("PeliEdit", PeliEditada);
+        request.getSession().setAttribute("Scroll",true);
+        request.getSession().setAttribute("ExitoPeli", true);
         
         return"/ABMPeliculas.jsp";
     }

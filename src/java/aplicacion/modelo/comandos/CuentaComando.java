@@ -76,12 +76,12 @@ public class CuentaComando extends Comando
                         request.getSession().setAttribute("contraCambiada","1");
                     else
                         request.getSession().setAttribute("contraCambiada","0");                    
-                    return  "/index.jsp";
+                    return  "/cuenta.jsp";
                 }
             }
             request.getSession().setAttribute("contraCambiada","0");
         }
-        return  "/index.jsp";
+        return  "/cuenta.jsp";
     }
     
 }

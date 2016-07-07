@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <jsp:include page="head.jsp"/>
-    <body>
+    <body onload="scrollDiv();">
         <jsp:include page="header.jsp"/>
         <%!ArrayList<Pelicula> peliculas;%>
         <%!ArrayList<Genero> generos;%>
@@ -24,7 +24,7 @@
                 <div class="row">
                     <h2 class="title text-center">Lista de Peliculas</h2> 
                 <div class="col-sm-12">
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="height:400px; overflow:auto">
                         <div class="table-striped">
                             <table class="table table-striped">
                             <thead>
@@ -87,73 +87,161 @@
                     </div>
                 </div> 
             </div>
-            <div id="Edit" class="row">
+            <div <%if(session.getAttribute("Scroll")!=null){%> id="Edit" <%session.setAttribute("Scroll", null); };%> class="row">
                 <h2 class="title text-center"><%if(peli!=null){%>EDITAR<%} else{%>AGREGAR<%};%> PELICULA</h2>
                 <form action="Controlador" method="post">  
                     <div class="col-sm-5 col-sm-offset-1">
                             <div class="row">
-                                <div class="col-sm-12 col-sm-offset-0">
-                                    <input class="control form-control"  type="text" placeholder="ID" maxlength="15" name="ID" readonly="" value="<%if(peli!=null)%><%=peli.getIdPelicula()%>">
-                                    <input type="text" class="control form-control" name="nomPel" placeholder="Nombre de película" required value="<%if(peli!=null)%><%=peli.getNombre()%>">
-                                    <input type="text" class="control form-control" name="durPel" placeholder="Duración" required value="<%if(peli!=null)%><%=peli.getDuracion()%>">
-                                    <input type="text" class="control form-control" name="formPel" placeholder="Formato" required value="<%if(peli!=null)%><%=peli.getFormato()%>">
-                                </div>
-                          
+                                    <div class="col-lg-3">
+                                        <h4 class="text-left">ID</h4>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <input class="control form-control"  type="text" placeholder="ID" maxlength="15" name="ID" readonly="" value="<%if(peli!=null)%><%=peli.getIdPelicula()%>">
+                                    </div>
+                            </div>
+                            <%if(peli!=null){%>
+                            <div class="row">
+                                    <div class="col-lg-3">
+                                        <h4 class="text-left">F. Alta</h4>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <input type="date" class="control form-control" name="fCargaPel" readonly="" value="<%if(peli!=null)%><%= peli.getFechaCarga()%>">
+                                    </div>
+                            </div>
+                            <%}%>
+                            <div class="row">
+                                    <div class="col-lg-3">
+                                        <h4 class="text-left">Año</h4>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="control form-control" name="anioPel" placeholder="Año de lanzamiento" required value="<%if(peli!=null)%><%= peli.getAnio() %>">
+                                    </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-6 col-sm-offset-0">
-                                    <input type="text" class="control form-control" name="stockAlqPel" placeholder="Stock para alquiler" required value="<%if(peli!=null)%><%=peli.getStockAlquiler()%>">
-                                 
-                                </div>
-                                <div class="col-sm-6 col-sm-offset-0">
-                                      <input type="text" class="control form-control" name="stockVtaPel" placeholder="Stock para venta" required value="<%if(peli!=null)%><%=peli.getStockVenta()%>">
-                                 
-                                </div>       
+                                    <div class="col-lg-3">
+                                        <h4 class="text-left">Título</h4>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="control form-control" name="nomPel" placeholder="Nombre de película" required value="<%if(peli!=null)%><%=peli.getNombre()%>">
+                                    </div>
                             </div>
-                             <div class="row">
+                            <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4 class="text-left">Duración</h4>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h4 class="text-left">Formato</h4>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-lg-6">
+                                        <input class="control form-control"  type="text" placeholder="ID" name="durPel" value="<%if(peli!=null)%><%=peli.getDuracion()%>">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="control form-control" name="formPel" placeholder="Formato" required value="<%if(peli!=null)%><%=peli.getFormato()%>">
+                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                        <h4 class="text-left">Sinopsis</h4>
+                                </div>    
+                            </div>        
+                            <div class="row">
                                 <div class="col-sm-12 col-sm-offset-0">
-                                     <textarea rows="5" class=" form-control" placeholder="Sinopsis" name="sinPel"><%if(peli!=null)%><%=peli.getSinopsis()%></textarea> 
+                                    <textarea rows="4" class="form-control" maxlength="400" placeholder="Sinopsis" name="sinPel"><%if(peli!=null)%><%=peli.getSinopsis()%></textarea> 
                                 </div>
-                             </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                        <h4 class="text-left">Reparto</h4>
+                                </div>    
+                            </div>        
+                            <div class="row">
+                                <div class="col-sm-12 col-sm-offset-0">
+                                    <textarea rows="4" class="form-control" maxlength="200" placeholder="Reparto" name="repPel"><%if(peli!=null)%><%= peli.getReparto()%></textarea>
+                                </div>
+                            </div>
                     </div>
                     <div class="col-sm-5 col-sm-offset-0">
-                        
-                            <div class="row">
-                                <div class="col-sm-12 col-sm-offset-0">
-                                    <input type="file" class="control form-control" name="imgPel" >
-                                    <input type="text" class="control form-control" name="repPel" placeholder="Reparto" required value="<%if(peli!=null)%><%= peli.getReparto()%>">
-                                    <input type="text" class="control form-control" name="urlPel" placeholder="URL Trailer" required value="<%if(peli!=null)%><%= peli.getUrlTrailer() %>">                               
-                                    <input type="text" class="control form-control" name="pvtaPel" placeholder="Precio Venta" required value="<%if(peli!=null)%><%= peli.getPrecioVenta() %>">
-                                    <input type="text" class="control form-control" name="palqPel" placeholder="Precio Alquiler" readonly required value="<%if(peli!=null)%><%= peli.getPrecioAlquiler() %>">
-                                    <input type="text" class="control form-control" name="anioPel" placeholder="Año de lanzamiento" required value="<%if(peli!=null)%><%= peli.getAnio() %>">
-                                    <%if(peli!=null){%><input type="date" class="control form-control" name="fCargaPel" readonly="" value="<%if(peli!=null)%><%= peli.getFechaCarga()%>"><%}%>
-                                    
-                                    Generos  
-                                    <div class="listaGeneros">
-
-                                     <% for(int i=0;i<generos.size();i++){%>
-                                     <label> <%=generos.get(i).getDescripcion()+" "%><input type="checkbox" class="" name="generos" value="<%=generos.get(i).getIdGenero()%>" <%if(peli!=null && peli.contieneGenero(generos.get(i)))%>checked<%;%>></label>
-                                     <%}%>
+                        <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4 class="text-left">Stock. Alq.</h4>
                                     </div>
-                                    Estado de Pelicula
-                                    <label>Activa</label><input class="control form-control" type="checkbox" name="Activa" value="true" <%if(peli!=null && peli.isActivo())%>checked<%;%>>
-                                    
-                                    
-                                </div>
-                            </div>
-                    
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="alert alert-success popover fade left <%if(session.getAttribute("ExitoAltaPeli")!=null)
-                                                                                { %> in <%
-                                                                                    session.setAttribute("ExitoAltaPeli", null); } %>">
-                                                     
-                                                         Película agregada con éxito
-                                                </div>                              
+                                    <div class="col-lg-6">
+                                        <h4 class="text-left">Stock. Vta.</h4>
+                                    </div>
                         </div>
+                        <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="text" class="control form-control" name="stockAlqPel" placeholder="Stock para alquiler" required value="<%if(peli!=null)%><%=peli.getStockAlquiler()%>">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="control form-control" name="stockVtaPel" placeholder="Stock para venta" required value="<%if(peli!=null)%><%=peli.getStockVenta()%>">
+                                    </div>
+                        </div>
+                        <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4 class="text-left">Precio. Alq.</h4>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h4 class="text-left">Precio. Vta.</h4>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-lg-6">
+                                        <input type="text" class="control form-control" name="palqPel" placeholder="Precio Alquiler" readonly required value="<%if(peli!=null)%><%= peli.getPrecioAlquiler() %>">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="control form-control" name="pvtaPel" placeholder="Precio Venta" required value="<%if(peli!=null)%><%= peli.getPrecioVenta() %>">
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-lg-3">
+                                        <h4 class="text-left">Portada</h4>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <input type="file" class="control form-control" name="imgPel" >
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-lg-3">
+                                        <h4 class="text-left">Link Trailer</h4>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="control form-control" name="urlPel" placeholder="URL Trailer" required value="<%if(peli!=null)%><%= peli.getUrlTrailer() %>">                               
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-lg-3">
+                                        <h4 class="text-left">Activa</h4>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <input class="control form-control" type="checkbox" name="Activa" value="true" <%if(peli!=null && peli.isActivo())%>checked<%;%>>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="text-left">Géneros</h4>
+                                    </div>
+                            </div>
+                            <div class="table-responsive" style="height:90px;overflow:auto;">
+                                <table class="table-striped col-lg-12">
+                                    <tbody>
+                                    <% for(int i=0;i<generos.size();i++){%>
+                                        <tr>
+                                            <td><%=generos.get(i).getDescripcion()%></td>
+                                            <td>
+                                                <input type="checkbox" class="" name="generos" value="<%=generos.get(i).getIdGenero()%>" <%if(peli!=null && peli.contieneGenero(generos.get(i)))%>checked<%;%>>
+                                            </td>
+                                        </tr>
+                                    <%}%>
+                                    </tbody>
+                                    </table>
+                            </div>
+                            <div class="alert alert-success fade<%if(session.getAttribute("ExitoPeli")!=null){ %> in <%session.setAttribute("ExitoPeli", null);} %>">
+                                    Pelicula <%if(peli==null){ %>agregada<% }else{%>editada<%}%> con éxito.        
+                            </div>
                     </div>
-                    
                     <div class="row">
                             <div class="col-lg-10 col-lg-offset-1">
                                 <input type="hidden" name="form" value="<%if(peli!=null) {%>EditarPeliculaComando<%}else{%>AgregarPeliculaComando<%}%>">

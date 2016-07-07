@@ -33,7 +33,6 @@ public class AdminPeliculasComando extends Comando
         request.getSession().setAttribute("ListaPeliculas", peliculas);
         request.getSession().setAttribute("ListaGeneros", generos);
         request.getSession().setAttribute("PeliEdit", peliEdit);
-        
         return "/ABMPeliculas.jsp";
     }
     

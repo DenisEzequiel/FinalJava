@@ -3,6 +3,26 @@
 <jsp:include page="head.jsp"/>
     
 <body>
+    <% String usu = null;
+       String contra = null;
+       if( request.getCookies()!=null )
+    {
+        Cookie[] todas = request.getCookies();
+        for(int i=0;i<todas.length;i++)
+        {
+            if(todas[i].getName().equals("nomUsuarioAefilep"))
+            {
+                usu = todas[i].getValue();
+                todas[i].setMaxAge(0);
+            }
+            if(todas[i].getName().equals("contraAefilep"))
+            {
+                contra = todas[i].getValue();
+                todas[i].setMaxAge(0);
+            }  
+        }
+    }
+    %>
     <jsp:include page="header.jsp"/>     
         <section id="form"><!--form-->
             <div class="container">
@@ -25,11 +45,11 @@
                             <h2>Ingresá con tu usuario</h2>
                             <form action="Controlador" method="post">
                                 <input type="hidden" name="form" value="LogInComando">
-                                <input type="text" class="control form-control" name="nomUsu" placeholder="Nombre de usuario" required>
-                                <input type="password" class="control form-control" name="contra" placeholder="Constraseña" required>
+                                <input type="text" class="control form-control" name="nomUsu" placeholder="Nombre de usuario" required <%if(usu!=null)%> value="<%=usu%>" <%;%>>
+                                <input type="password" class="control form-control" name="contra" placeholder="Constraseña" required <%if(contra!=null)%> value="<%=contra%>" <%;%>>
                                 <span>
-                                    <input type="checkbox" class="checkbox"> 
-                                        Mantenerme conectado
+                                    <input type="checkbox" class="checkbox" value="true" name="recordarUsu"> 
+                                Recordar mis datos
                                 </span>
                                 <button type="submit" class="btn btn-default">Iniciar sesion</button>
                             </form>

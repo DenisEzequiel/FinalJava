@@ -1,3 +1,16 @@
+/*Socrolls ABMs*/
+function scrollDiv()
+{
+    var div = document.getElementById('Edit');
+    div.scrollIntoView(true);
+}
+/*Desaparecer alertas y avisos*/
+$(document).ready(
+        function()
+        {
+            setTimeout(function(){$(".alert").fadeOut(1000)},4000);
+            setTimeout(function(){$(".popover").fadeOut(1000)},4000);
+        });
 /*price range*/
 
  $('#sl2').slider();
@@ -29,9 +42,3 @@ $(document).ready(function(){
 	});
         
 });
-
-$(document).ready(
-        function()
-        {
-            setTimeout(function(){$(".popover").fadeOut(1000)},4000);
-        });

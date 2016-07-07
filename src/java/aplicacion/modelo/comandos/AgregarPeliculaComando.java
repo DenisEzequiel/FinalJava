@@ -61,7 +61,8 @@ public class AgregarPeliculaComando extends Comando
             ArrayList<Pelicula> peliculas = cDp.obtenerPeliculas();
             request.getSession().setAttribute("ListaPeliculas", peliculas);
             request.getSession().setAttribute("PeliEdit", pelicula);
-            request.getSession().setAttribute("ExitoAltaPeli", 1);
+            request.getSession().setAttribute("Scroll",true);
+            request.getSession().setAttribute("ExitoPeli", true);
             
         
         return ("/ABMPeliculas.jsp");

@@ -39,6 +39,7 @@ public class SeleccionarPeliculaComando extends Comando
         {
             request.getSession().setAttribute("PeliEdit", null);
         }
+        request.getSession().setAttribute("Scroll",true);
         
         return "/ABMPeliculas.jsp";
     }

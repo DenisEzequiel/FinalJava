@@ -71,7 +71,7 @@ public class UsuarioBD
         if(!nombre.equals(""))
             sql = sql + " and nombre like '"+nombre+"%'";
         if(!dni.equals(""))
-            sql = sql + " and dni like '"+dni+"%'";
+            sql = sql + " and dni like '%"+dni+"%'";
         sql = sql+";";
         try
         {

@@ -56,6 +56,8 @@ public class AgregarUsuarioComando extends Comando
         cDeUsu.agregarUsuario(usNuevo);
         ArrayList<Usuario> usuarios = cDeUsu.obtenerUsuarios();
         request.getSession().setAttribute("ListaUsuarios", usuarios);
+        request.getSession().setAttribute("Scroll",true);
+        request.getSession().setAttribute("ExitoUsu", true);
         
         return "/ABMUsuarios.jsp";
     }

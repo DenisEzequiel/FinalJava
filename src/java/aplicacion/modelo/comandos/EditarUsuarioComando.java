@@ -58,6 +58,8 @@ public class EditarUsuarioComando extends Comando
         ArrayList<Usuario> usuarios = cDeUsu.obtenerUsuarios();
         request.getSession().setAttribute("ListaUsuarios", usuarios);
         request.getSession().setAttribute("UsuarioEdit", usEditado);
+        request.getSession().setAttribute("Scroll",true);
+        request.getSession().setAttribute("ExitoUsu", true);
         
         return"/ABMUsuarios.jsp";
     }

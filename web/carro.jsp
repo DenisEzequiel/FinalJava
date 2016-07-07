@@ -11,6 +11,7 @@
     <body>
         <jsp:include page="header.jsp"/>
             <% Pedido ped = (Pedido)session.getAttribute("pedido");
+            Usuario usu = (Usuario)session.getAttribute("usuario");
             int contLAlquiler=0;
             int contLCompra=0;
             for(LineaPedido lp: ped.getLineas())
@@ -180,7 +181,7 @@
                         <div class="row">
                              <div class="col-sm-6">
                             <%
-                                if(session.getAttribute("errorStock")!= null && session.getAttribute("usuario")!=null)
+                                if(session.getAttribute("errorStock")!= null && usu!=null)
                                 {  LineaPedido lpe= ped.getLineas().get((Integer)session.getAttribute("errorStock"));
                                     
                                        %> 
@@ -203,7 +204,7 @@
                                                 <% session.setAttribute("errorStock", null);
                                     }
                                 else if(session.getAttribute("exitoPedido")!=null)
-                                { Usuario usu=(Usuario)session.getAttribute("usuario");
+                                { //Usuario usu=(Usuario)session.getAttribute("usuario");
                                 %> 
                                             <div class="alert alert-success">
                                                 Pedido realizado con éxito ! Un mail para confirmar el pago será enviado a <%=usu.getMail()%>
@@ -228,9 +229,13 @@
                                  
                                      <form action="Controlador" method="post">
                                          <input type="hidden" name="form" value="FinalizarPedidoComando">
-                                        <button type="submit" class="btn btn-default">Finalizar pedido</button> 
+                                        <button type="submit" <%if(usu!=null && usu.isEsAdmin()){%> disabled="" <%};%> class="btn btn-default">Finalizar pedido</button> 
                                     </form>
-                                        
+                                    <%if(usu!=null && usu.isEsAdmin()){%>
+                                    <div class="alert alert-danger">
+                                              Usted no puede finalizar un pedido porque es Administrador.
+                                    </div>
+                                    <%};%>   
                                
                                 </div>
                               
