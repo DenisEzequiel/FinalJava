@@ -17,8 +17,11 @@
             {
                 listaCartelera = (ArrayList)session.getAttribute("listaCartelera");
             }
-            
-          int cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9)+1;
+            int cantPaginas;
+            if((Integer)session.getAttribute("cantidadPeliculas") % 9==0)
+                cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9);
+            else
+                cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9)+1;
         %>
         
         <h2 class="title text-center">Películas</h2>
@@ -58,7 +61,14 @@
 
                                         <div class="col-sm-9 padding-right">
                                                 <div class="features_items">
-                                                <% for(int i=0; i<listaCartelera.size();i++)
+                                                    <% if(session.getAttribute("errorNoEncontradas")!=null){%>
+                                                                                    
+                                            <div class="alert alert-danger">
+                                                <h2 class='text-center'>No hay películas que coincidan con su búsqueda!!</h2>
+                                            </div>
+                                                <%session.setAttribute("errorNoEncontradas", null);}         
+
+                                                 for(int i=0; i<listaCartelera.size();i++)
                                                   { %>
                                                         <div class="col-sm-4">
                                                                 <div class="product-image-wrapper">
@@ -98,7 +108,7 @@
                                                                         
                                                 <ul class="pagination">
                                                               <%for(int j=1;j<=cantPaginas;j++){%>                                                                                                
-                                                                    <li><input type="submit" name="paginacionActual" value="<%=j%>"> </li>
+                                                              <li><input type="submit" <%if((Integer)request.getAttribute("pActual")==j){%> disabled<%}%> name="paginacionActual" value="<%=j%>"> </li>
                                                              <%}%>  
                                                             <input type="hidden" name="form" value="PeliculasComando">   
                                               

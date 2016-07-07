@@ -531,7 +531,7 @@ ul.sub-menu {
 }
 
 .footer-widget {
-  margin-bottom: 68px;
+  margin-bottom: 20px;
 }
 
 .footer-widget .container {
@@ -552,7 +552,7 @@ ul.sub-menu {
 	margin-right:15px;
 }
 
-.single-widget ul li a,.single-widget form ul li label {
+.single-widget ul li a,.single-widget form ul li label, .single-widget ul li form input {
 	color: #ADBAC8;
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
@@ -565,14 +565,14 @@ ul.sub-menu {
     padding-left:10px;
 }
 
-.single-widget ul li a i{
+.single-widget ul li a i,.single-widget ul li form i input {
   margin-right: 18px;
 }
 
 .single-widget form ul li label i {
   margin-right: 30px;
 }
-.single-widget ul li a:before,.single-widget form ul li label:before{
+.single-widget ul li a:before,.single-widget form ul li label:before,.single-widget ul li form:before{
 	position: absolute;
 	font-family: FontAwesome;
 	top: 3px;
@@ -583,7 +583,7 @@ ul.sub-menu {
 	font-size: 17px;
 }
 
-.single-widget ul li a:hover,.single-widget form ul li label:hover{
+.single-widget ul li a:hover,.single-widget form ul li label:hover,.single-widget ul li form input:hover{
 	background:none;
 	color:#f90;
 }
@@ -2673,7 +2673,7 @@ h2.title {
 }
 
 .logo{
-	font-size: 23px;
+	margin-left: 10px;
 }
 
 .control
@@ -2931,4 +2931,26 @@ h2 button:hover
 {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.single-widget.listaGenerosFooter
+{
+    margin-top: -15px;
+}
+
+.single-widget ul li form input
+{
+    border:0px;
+    outline: none;
+    background:#172431;
+}
+
+.alert.alert-danger.error
+{
+    display: none;
+}
+
+.shop-menu.pull-right.logo
+{
+    margin-top:5px;
 }

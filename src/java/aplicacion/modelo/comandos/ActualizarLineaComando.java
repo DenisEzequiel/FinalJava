@@ -22,7 +22,10 @@ public class ActualizarLineaComando extends Comando
        
     boolean tipoL = Boolean.parseBoolean(request.getParameter("tipoLinea"));
     int idPelicula = Integer.parseInt(request.getParameter("idPelicula"));
-    int cant = Integer.parseInt(request.getParameter("cantidad"));
+    String cantStr=request.getParameter("cantidad");
+    if(cantStr.matches("[1-9][0-9]*"))
+    {
+    int cant = Integer.parseInt(cantStr);
     Pedido pedido = (Pedido)request.getSession().getAttribute("pedido");
         for(LineaPedido lp: pedido.getLineas())
         {
@@ -31,6 +34,10 @@ public class ActualizarLineaComando extends Comando
                 lp.setCantidad(cant);
             }
         }
+    }
+    else
+    request.getSession().setAttribute("cantidadInvalida", true);
+    
     return("carro.jsp");
     }
     

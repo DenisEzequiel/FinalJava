@@ -189,18 +189,7 @@
                                                 Stock insuficiente en la pelicula <%=lpe.getPelicula().getNombre()%> para <%if(lpe.isEsAlquiler()){%>alquiler<%}else{%>compra<%}%>
                                             </div>
                                              </div>
-                            <div class="col-sm-6">
-                                 <div class="signup-form">
-                                 
-                                     <form action="Controlador" method="post">
-                                         <input type="hidden" name="form" value="FinalizarPedidoComando">
-                                        <button type="submit" class="btn btn-default">Finalizar pedido</button> 
-                                    </form>
-                                        
-                               
-                                </div>
-                              
-                            </div>
+                          
                                                 <% session.setAttribute("errorStock", null);
                                     }
                                 else if(session.getAttribute("exitoPedido")!=null)
@@ -220,8 +209,25 @@
                                             <div class="alert alert-danger">
                                               Usted no ha agregado películas al pedido.
                                             </div>
+                                <%} else if(session.getAttribute("cantidadInvalida")!= null)
+                                { 
+                                %> 
+                                            <div class="alert alert-danger">
+                                             Por favor ingrese una cantidad válida
+                                            </div>
                                       
-                                <%} else{ %> 
+                                <%session.setAttribute("cantidadInvalida",null);} 
+                                  else if(session.getAttribute("errorDias")!=null)
+                                { 
+                                %> 
+                                            <div class="alert alert-danger">
+                                               Por favor ingrese una cantidad de días válida. 
+                                               No se permiten alquileres que excedan los 15 días.
+                                            </div>
+                                                <%session.setAttribute("errorDias", null);}         
+
+
+                              else{ %> 
                               
                             </div>
                             <div class="col-sm-6">
@@ -242,7 +248,7 @@
                             </div>
                              <%}%>
                         </div>
-                    </div>
+               
             </section><!--/#do_action-->
 
         <jsp:include page="footer.jsp"/>

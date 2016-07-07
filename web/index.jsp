@@ -20,6 +20,11 @@
     <jsp:include page="header.jsp"/>
     <%CatalogoDePeliculas CdP= new CatalogoDePeliculas();
         ArrayList<Pelicula>pelisCarrusel= CdP.obtenerEstrenos(3);
+        ArrayList<Pelicula>pelisIndexComedia=CdP.obtenerGenero(6, 0, 4);
+        ArrayList<Pelicula>pelisIndexDrama=CdP.obtenerGenero(3, 0, 4);
+        ArrayList<Pelicula>pelisIndexTerror=CdP.obtenerGenero(1, 0, 4);
+        ArrayList<Pelicula>pelisIndexAccion=CdP.obtenerGenero(2, 0, 4);
+        ArrayList<Pelicula>pelisIndexThriller=CdP.obtenerGenero(5, 0, 4);
         
         %>
 <section id="slider"><!--slider-->
@@ -91,287 +96,132 @@
 					<div class="category-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="http://themifycloud.com/demos/templates/eshop/#tshirt" data-toggle="tab">Comedia</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/#blazers" data-toggle="tab">Drama</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/#sunglass" data-toggle="tab">Terror</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/#kids" data-toggle="tab">Acción</a></li>
-								<li><a href="http://themifycloud.com/demos/templates/eshop/#poloshirt" data-toggle="tab">Thriller</a></li>
+								<li class="active"><a href="#comedia" data-toggle="tab">Comedia</a></li>
+								<li><a href="#drama" data-toggle="tab">Drama</a></li>
+								<li><a href="#terror" data-toggle="tab">Terror</a></li>
+								<li><a href="#accion" data-toggle="tab">Acción</a></li>
+								<li><a href="#thriller" data-toggle="tab">Thriller</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div class="tab-pane fade active in" id="tshirt">
+							<div class="tab-pane fade active in" id="comedia">
+                                                            <%for(Pelicula p: pelisIndexComedia)
+                                                            {%>
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="./imagenes/gallery1.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<img src="./imagenes/product12.jpg" alt="">
+                                                                                                 <h2><%=p.getNombre()%></h2>
+												       <form action="Controlador" method="post">
+                                                                                            <button type="submit" class="btn btn-default get">Obtener ahora</button>
+                                                                                             <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
+                                                                                               <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
+                                                                                            </form>
+                                                                                               
+												
 											</div>
 											
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery2.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery3.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery4.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
+								<%}%>
 							</div>
 							
-							<div class="tab-pane fade" id="blazers">
+							<div class="tab-pane fade" id="drama">
+                                                            <%for(Pelicula p:pelisIndexDrama)
+                                                            {%>
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="./imagenes/gallery4.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<img src="./imagenes/product12.jpg" alt="">
+                                                                                                 <h2><%=p.getNombre()%></h2>
+												       <form action="Controlador" method="post">
+                                                                                            <button type="submit" class="btn btn-default get">Obtener ahora</button>
+                                                                                             <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
+                                                                                               <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
+                                                                                            </form>
+                                                                                               
+												
 											</div>
 											
 										</div>
 									</div>
 								</div>
+                                                                    <%}%>
+						
+							
+							<div class="tab-pane fade active in" id="terror">
+                                                            <%for(Pelicula p: pelisIndexTerror)
+                                                            {%>
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="./imagenes/gallery3.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<img src="./imagenes/product12.jpg" alt="">
+                                                                                                 <h2><%=p.getNombre()%></h2>
+												       <form action="Controlador" method="post">
+                                                                                            <button type="submit" class="btn btn-default get">Obtener ahora</button>
+                                                                                             <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
+                                                                                               <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
+                                                                                            </form>
+                                                                                               
+												
 											</div>
 											
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery2.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery1.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
+								<%}%>
 							</div>
 							
-							<div class="tab-pane fade" id="sunglass">
+							<div class="tab-pane fade active in" id="accion">
+                                                            <%for(Pelicula p: pelisIndexAccion)
+                                                            {%>
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="./imagenes/gallery3.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<img src="./imagenes/product12.jpg" alt="">
+                                                                                                 <h2><%=p.getNombre()%></h2>
+												       <form action="Controlador" method="post">
+                                                                                            <button type="submit" class="btn btn-default get">Obtener ahora</button>
+                                                                                             <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
+                                                                                               <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
+                                                                                            </form>
+                                                                                               
+												
 											</div>
 											
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery4.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery1.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery2.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
+								<%}%>
 							</div>
 							
-							<div class="tab-pane fade" id="kids">
+							<div class="tab-pane fade active in" id="thriller">
+                                                            <%for(Pelicula p: pelisIndexThriller)
+                                                            {%>
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="./imagenes/gallery1.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<img src="./imagenes/product12.jpg" alt="">
+                                                                                                 <h2><%=p.getNombre()%></h2>
+												       <form action="Controlador" method="post">
+                                                                                            <button type="submit" class="btn btn-default get">Obtener ahora</button>
+                                                                                             <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
+                                                                                               <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
+                                                                                            </form>
+                                                                                               
+												
 											</div>
 											
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery2.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery3.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery4.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="tab-pane fade" id="poloshirt">
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery2.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery4.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery3.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="./imagenes/gallery1.jpg" alt="">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="http://themifycloud.com/demos/templates/eshop/#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
+								<%}%>
 							</div>
 						</div>
 					</div><!--/category-tab-->	
