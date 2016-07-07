@@ -58,7 +58,14 @@
 
                                         <div class="col-sm-9 padding-right">
                                                 <div class="features_items">
-                                                <% for(int i=0; i<listaCartelera.size();i++)
+                                                    <% if(session.getAttribute("errorNoEncontradas")!=null){%>
+                                                                                    
+                                            <div class="alert alert-danger">
+                                                <h2 class='text-center'>No hay películas que coincidan con su búsqueda!!</h2>
+                                            </div>
+                                                <%session.setAttribute("errorNoEncontradas", null);}         
+
+                                                 for(int i=0; i<listaCartelera.size();i++)
                                                   { %>
                                                         <div class="col-sm-4">
                                                                 <div class="product-image-wrapper">

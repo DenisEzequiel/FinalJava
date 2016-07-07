@@ -1,13 +1,31 @@
-        <footer id="footer"><!--Footer-->
+        <%@page import="aplicacion.modelo.entidades.Usuario"%>
+<footer id="footer"><!--Footer-->
             <div class="footer-widget">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="single-widget">
+                                
                                 <h2>Usuario</h2>
                                 <ul class="nav nav-pills nav-stacked">
                                     <%if(session.getAttribute("usuario")==null){%><li><a href="login.jsp">Iniciar sesión</a></li><%}else{%><li><a href="cuenta.jsp">Cuenta</a></li><%}%>
                                     <li><a href="carro.jsp">Carrito</a></li>
+                                    <%if(session.getAttribute("usuario")!=null && ((Usuario)session.getAttribute("usuario")).isEsAdmin()){%>
+                                       <li>
+                                                    <form action="Controlador" method="post">
+                                                        <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
+                                                        <input type="hidden"  name="form" value="AdminPeliculasComando"/>
+                                                        <input type="submit" name="pagina" value="Peliculas">
+                                                    </form>
+                                                </li>
+                                                <li>
+                                                    <form action="Controlador" method="post">
+                                                        <input type="hidden"  name="form" value="AdminUsuariosComando"/>
+                                                        <input type="submit" name="pagina" value="Usuarios" >
+                                                    </form>
+                                                </li>
+                                    <li><a href="Devoluciones.jsp">Devoluciones</a></li>
+                                    <%}%>
                                 </ul>
                             </div>
                         </div>
@@ -33,7 +51,7 @@
                             </div>
                         </div>
                         <div class="col-sm-2">
-                            <div class="single-widget">
+                            <div class="single-widget listaGenerosFooter">
                                 <form action="Controlador" method="post" >                               
                                  <input type="hidden" name="form" value="PeliculasComando" >
                                  
@@ -52,24 +70,22 @@
                         </div>
                         <div class="col-sm-2">
                             <div class="single-widget">
-                                <h2>About Shopper</h2>
+                                <h2>Acerca de</h2>
                                 <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="#">Company Information</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="#">Store Location</a></li>
-                                    <li><a href="#">Affillate Program</a></li>
-                                    <li><a href="#">Copyright</a></li>
+                                    <li><a href="nosotros.jsp">Nosotros</a></li>
+                                    <li><a href="contacto.jsp">Contacto</a></li>  
                                 </ul>
                             </div>
-                        </div>                 
+                        </div>
+                                    
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row">
-                        <p class="pull-left">Copyright © 2013 Aefilep Inc. Todos los derechos reservados.</p>
-                        <p class="pull-right">Diseñado por <span>Aefilep Team</a></span></p>
+                        <p class="pull-left">Copyright © 2016 Aefilep Inc. Todos los derechos reservados.</p>
+                        <p class="pull-right">Diseñado por <span>Aefilep Team</span></p>
                     </div>
                 </div>
             </div>

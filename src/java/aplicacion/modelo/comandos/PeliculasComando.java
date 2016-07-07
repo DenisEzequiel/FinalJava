@@ -50,7 +50,9 @@ public class PeliculasComando extends Comando
         else if(request.getParameter("nombrePelicula")!=null)
         {
             listaPeliculas = cDp.obtenerPeliculas(request.getParameter("nombrePelicula"),(paginaActual-1)*9,9);
-          request.getSession().setAttribute("generoObtenido",true);
+            if(listaPeliculas.isEmpty())
+                request.getSession().setAttribute("errorNoEncontradas",true);
+            request.getSession().setAttribute("generoObtenido",true);
         }
         else
             listaPeliculas = cDp.buscarPeliculas((paginaActual-1)*9,9);
