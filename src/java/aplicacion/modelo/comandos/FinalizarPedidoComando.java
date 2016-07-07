@@ -23,6 +23,7 @@ public class FinalizarPedidoComando extends Comando{
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
 
         Pedido p=(Pedido)request.getSession().getAttribute("pedido");
+        int contAlq=0;
 
    
     if(p.getLineas().size()>0)
@@ -54,7 +55,8 @@ public class FinalizarPedidoComando extends Comando{
              {   
                  if(lp.isEsAlquiler())
                  {
-                 
+                     
+                 contAlq++;
                  lp.getPelicula().setStockAlquiler(lp.getPelicula().getStockAlquiler()-lp.getCantidad());
                  }else
                  {
@@ -77,7 +79,9 @@ public class FinalizarPedidoComando extends Comando{
              CatalogoDePedidos CdP= new CatalogoDePedidos();
              p.setUsuario(u);
              p.setDias((Integer)request.getSession().getAttribute("cantidadDias"));
+             if(contAlq>0)
              p.setEstado("finalizado");
+             else p.setEstado("cerrado");
              CdP.registrarPedido(p);
              request.getSession().setAttribute("exitoPedido", true);
              Pedido pedido = new Pedido();
