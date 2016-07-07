@@ -2944,3 +2944,7 @@ h2 button:hover
     outline: none;
     background:#172431;
 }
+
+.alert.alert-danger.error{
+    display: none;
+}

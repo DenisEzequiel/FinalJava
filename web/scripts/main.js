@@ -34,4 +34,10 @@ $(document).ready(
         function()
         {
             setTimeout(function(){$(".popover").fadeOut(1000)},4000);
-        });
+            
+        }
+
+                        );
+        
+        
+ 

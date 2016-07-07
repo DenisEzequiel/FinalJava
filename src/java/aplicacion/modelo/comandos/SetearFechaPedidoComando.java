@@ -19,13 +19,22 @@ public class SetearFechaPedidoComando extends Comando {
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        
-        Integer dias=Integer.parseInt(request.getParameter("cantDias"));
+        String diasStr=request.getParameter("cantDias");
+        if(diasStr.matches("[1-9][0-9]*"))
+        {
+        Integer dias=Integer.parseInt(diasStr);
+        if(dias<=15 && dias>0)
+        {
         Pedido p= (Pedido) request.getSession().getAttribute("pedido");
         p.setFechaDesde(p.getFechaRealizacion());
         p.setFechaHasta(devolverFecha(dias, p.getFechaDesde()));
         request.getSession().setAttribute("cantidadDias", dias);
-        return "/carro.jsp";
+        }else
+          request.getSession().setAttribute("errorDias",true);  
+        }else
+          request.getSession().setAttribute("errorDias",true);  
+        
+         return "/carro.jsp";
     }
     
     
