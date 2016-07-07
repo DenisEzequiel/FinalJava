@@ -155,6 +155,7 @@
                             <div class="search_box pull-right">
                                 <form action="Controlador" method="post">
                                 <input type="text" name="nombrePelicula" placeholder="Nombre pelicula">
+                                <input type="hidden" name="tipo" value="buscador">
                                 <input type="hidden" name="form" value="PeliculasComando" onchange="submit()">
                                 </form>
                             </div>

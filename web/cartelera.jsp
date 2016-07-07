@@ -17,8 +17,11 @@
             {
                 listaCartelera = (ArrayList)session.getAttribute("listaCartelera");
             }
-            
-          int cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9)+1;
+            int cantPaginas;
+            if((Integer)session.getAttribute("cantidadPeliculas") % 9==0)
+                cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9);
+            else
+                cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9)+1;
         %>
         
         <h2 class="title text-center">Películas</h2>
@@ -105,7 +108,7 @@
                                                                         
                                                 <ul class="pagination">
                                                               <%for(int j=1;j<=cantPaginas;j++){%>                                                                                                
-                                                                    <li><input type="submit" name="paginacionActual" value="<%=j%>"> </li>
+                                                              <li><input type="submit" <%if((Integer)request.getAttribute("pActual")==j){%> disabled<%}%> name="paginacionActual" value="<%=j%>"> </li>
                                                              <%}%>  
                                                             <input type="hidden" name="form" value="PeliculasComando">   
                                               

@@ -96,7 +96,7 @@ public class PeliculaDB
      {
          Connection con = conec.getConexion();
          ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
-         String transac = "select * from peliculas;";
+         String transac = "select * from peliculas where activo=1;";
         try
         {
             PreparedStatement pr = con.prepareStatement(transac);
@@ -147,7 +147,7 @@ public class PeliculaDB
      {
          Connection con = conec.getConexion();
          ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
-         String transac = "select * from peliculas where nombre like '%"+nombre+"%' limit ?,?;";
+         String transac = "select * from peliculas where nombre like '%"+nombre+"%'and activo=1 limit ?,?;";
         try
         {
             PreparedStatement pr = con.prepareStatement(transac);
@@ -352,12 +352,89 @@ public class PeliculaDB
         
         return i;
      }
-     
+          
+     public int cantidadEstrenosActivos()
+     {
+         Connection con = conec.getConexion();
+         int i=0;
+         String transac = "select count(*) from peliculas where activo=1 and (`fecha_carga` +7)>CURRENT_DATE();";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            ResultSet res = pr.executeQuery();
+            
+             if(res.next())
+            {
+                i = res.getInt(1);
+                con.close();
+                
+            }
+             
+        }
+        catch(SQLException e)
+        {
+           
+        }
+        
+        return i;
+     }
+     public int cantidadGenerosActivos(int id)
+     {
+         Connection con = conec.getConexion();
+         int i=0;
+         String transac = "select count(*) from peliculas p inner join peliculas_generos pg on p.id_pelicula=pg.id_pelicula where id_genero=? and activo=1;";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            pr.setInt(1,id);
+            ResultSet res = pr.executeQuery();
+            
+             if(res.next())
+            {
+                i = res.getInt(1);
+                con.close();
+                
+            }
+             
+        }
+        catch(SQLException e)
+        {
+           
+        }
+        
+        return i;
+     }
+      public int cantidadBuscadorActivos(String nombre)
+     {
+         Connection con = conec.getConexion();
+         int i=0;
+         String transac = "select count(*) from peliculas where  nombre like '%"+nombre+"%'and activo=1 ;";
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+          
+            ResultSet res = pr.executeQuery();
+            
+             if(res.next())
+            {
+                i = res.getInt(1);
+                con.close();
+                
+            }
+             
+        }
+        catch(SQLException e)
+        {
+           
+        }
+        
+        return i;
+     }
        public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad)
      {
          Connection con = conec.getConexion();
          ArrayList<Pelicula> listaEstrenos = new ArrayList<>();
-         String transac = "select * from peliculas where(`fecha_carga` +7)>CURRENT_DATE() limit ?,?;";
+         String transac = "select * from peliculas where(`fecha_carga` +7)>CURRENT_DATE() and activo=1 limit ?,?;";
         try
         {   
             PreparedStatement pr = con.prepareStatement(transac);
@@ -410,7 +487,7 @@ public class PeliculaDB
      {
          Connection con = conec.getConexion();
          ArrayList<Pelicula> listaEstrenos = new ArrayList<>();
-         String transac = "select * from peliculas where(`fecha_carga` +7)>CURRENT_DATE() order by `fecha_carga` desc limit 0,?;";
+         String transac = "select * from peliculas where(`fecha_carga` +7)>CURRENT_DATE() and activo=1 order by `fecha_carga` desc limit 0,?;";
         try
         {
             PreparedStatement pr = con.prepareStatement(transac);
@@ -460,7 +537,7 @@ public class PeliculaDB
         {    
             con = conec.getConexion();
             int limit= cant-listaEstrenos.size();
-            String transac2 = "select * from peliculas where(`fecha_carga` +7)<CURRENT_DATE() limit 0,?;";
+            String transac2 = "select * from peliculas where(`fecha_carga` +7)<CURRENT_DATE() and activo=1 limit 0,?;";
          
                 
                 try

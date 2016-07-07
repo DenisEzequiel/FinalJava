@@ -48,7 +48,18 @@ public class CatalogoDePeliculas
     {
         return peliculas.cantidadPeliculasActivas();
     }
-    
+     public int cantidadEstrenosActivos()
+    {
+        return peliculas.cantidadEstrenosActivos();
+    }
+     public int cantidadBuscadorActivos(String nombre)
+    {
+        return peliculas.cantidadBuscadorActivos(nombre);
+    }
+       public int cantidadGenerosActivos(int id)
+    {
+        return peliculas.cantidadGenerosActivos(id);
+    }
     public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad)
     {
        return peliculas.obtenerEstrenos(inferior,cantidad);
