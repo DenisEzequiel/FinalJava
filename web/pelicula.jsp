@@ -13,20 +13,28 @@
                                                         <div class="left-sidebar">
                                                                     <h2>Géneros</h2>
                                                                 <div class="brands-name">
+                                                                    <form action="Controlador" method="post" >
+                                                               
+                                                                    <input type="hidden" name="form" value="PeliculasComando" >
                                                                     <ul class="nav nav-pills nav-stacked">
-                                                                        <li><a href="estrenos.jsp">Estrenos</a></li>
-                                                                        <li><a href="index.jsp">Accion</a></li>
-                                                                        <li><a href="index.jsp">Aventura</a></li>
-                                                                        <li><a href="index.jsp">Ciencia Ficcion</a></li>
-                                                                        <li><a href="index.jsp">Comedia</a></li>
-                                                                        <li><a href="index.jsp">Crimen</a></li>
-                                                                        <li><a href="index.jsp">Documental</a></li>
-                                                                        <li><a href="index.jsp">Drama</a></li>
-                                                                        <li><a href="index.jsp">Romance</a></li>
-                                                                        <li><a href="index.jsp">Suspenso</a></li>
-                                                                        <li><a href="index.jsp">Thriller</a></li>
-                                                                        <li><a href="index.jsp">Terror</a></li>
-                                                                    </ul>
+                                                                    
+                                                                    
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="estreno" name="tipo">Estrenos</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="2" name="tipo">Acción</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="4" name="tipo">Aventura</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="7" name="tipo">Ciencia Ficción</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="6" name="tipo">Comedia</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="11" name="tipo">Crimen</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="9" name="tipo">Documental</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="3" name="tipo">Drama</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="8" name="tipo">Romance</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="10" name="tipo">Suspenso</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="1" name="tipo">Terror</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="5" name="tipo">Thriller</label></li>
+                                                         
+                                                              
+                                                                </ul>
+                                                                </form>
                                                                 </div>
                                                         </div>
                                                 </div>
