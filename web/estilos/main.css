@@ -2673,7 +2673,7 @@ h2.title {
 }
 
 .logo{
-	font-size: 23px;
+	margin-left: 10px;
 }
 
 .control
@@ -2945,6 +2945,12 @@ h2 button:hover
     background:#172431;
 }
 
-.alert.alert-danger.error{
+.alert.alert-danger.error
+{
     display: none;
+}
+
+.shop-menu.pull-right.logo
+{
+    margin-top:5px;
 }

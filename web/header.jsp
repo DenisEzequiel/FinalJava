@@ -31,12 +31,12 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="logo pull-left">
-                                <a href="index.jsp"><span>A</span>efilep</a>
+                                <a href="index.jsp"><img src="./imagenes/logo.jpg"></a>
                             </div>               
                         </div>
  
                         <div class="col-sm-7">
-                            <div class="shop-menu pull-right">
+                            <div class="shop-menu pull-right logo">
                                 <ul class="nav navbar-nav">
                                         <li>
                                             <% if(session.getAttribute("exitoPeliculaAgregada")!=null){ %>
