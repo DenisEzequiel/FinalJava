@@ -9,6 +9,7 @@ import aplicacion.modelo.entidades.Pelicula;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.File;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
@@ -42,8 +43,11 @@ public class PeliculaDB
             pr.setString(4, p.getFormato());
             pr.setInt(5, p.getStockAlquiler());
             pr.setInt(6, p.getStockVenta());
+
             pr.setBlob(7,p.getImagen());
             
+            pr.setBinaryStream(7, p.getImagen());
+
             pr.setString(8, p.getReparto());
             pr.setDate(9, new java.sql.Date(p.getFechaCarga().getTime()));
             pr.setBoolean(10,p.isActivo());

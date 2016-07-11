@@ -15,16 +15,15 @@
     <body>
         <jsp:include page="header.jsp"/>
         <%!ArrayList<Usuario> usuarios;%>
-        <%! ArrayList<Pedido> pendientes;%>
+        <%!ArrayList<Pedido> pendientes;%>
         <% pendientes = (ArrayList)session.getAttribute("ListaPendientes");%>
         <% usuarios = (ArrayList)session.getAttribute("ListaEncontrados");%>
         <div class="cuenta">
             <div class="container"> 
                 <div id="Edit" class="row">
-                
                 <form action="Controlador" method="post">  
                             <div class="col-lg-5 col-lg-offset-1">
-                                <h2 class="title text-center">BUSCAR USUARIO</h2>
+                                <h2 class="title text-center">Buscar Usuario</h2>
                                 <input class="control form-control"  type="text" placeholder="ID" maxlength="15" name="ID">
                                 <input class="control form-control" type="text" placeholder="Nombre" maxlength="15" name="Nombre">
                                 <input class="control form-control" type="text" placeholder="Apellido" name="Apellido" maxlength="15">
@@ -33,10 +32,10 @@
                                 <button type="submit" class="btn btn-default">Buscar</button>
                             </div>
                 </form>
-                <%if(usuarios!=null){ %>    
                 <div class="col-lg-5">
                     <h2 class="title text-center">Lista de Usuarios</h2>
-                    <div class="table-responsive">
+                <%if(usuarios!=null && !usuarios.isEmpty()){ %>
+                    <div class="table-responsive" style="height:250px; overflow:auto;">
                         <div class="table-striped">
                             <table class="table table-striped">
                             <thead>
@@ -69,24 +68,27 @@
                             </table>
                         </div>
                     </div>
+                <%} else if(usuarios!=null && usuarios.isEmpty()){%>
+                <div class="alert alert-danger fade<%if(usuarios.isEmpty()){ %> in <%session.setAttribute("ListaEncontrados", null);} %>">
+                        No Existen clientes que coincidan con la búsqueda.       
                 </div>
-                <%} %>
+                <%}%>
+                </div>
             </div>
             
-            <div id="Pedidos" class="row">
-                        <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="alert alert-success popover fade left <%if(session.getAttribute("ExitoCierre")!=null)
-                                                                                { %> in <%
-                                                                                    session.setAttribute("ExitoCierre", null); } %>">
-                                                     
-                                                         Pedido cerrado con éxito.
-                                                </div>                              
-                        </div>
-            </div>
-            
-                <div class="row">
-                <%if(pendientes!=null){ %>    
+            <%if(session.getAttribute("ExitoCierre")!=null){%>
+            <div class="row">
                 <div class="col-lg-12">
+                    <div class="alert alert-success fade in">
+                    Pedido cerrado con Éxito.
+                    </div>
+                </div>
+            </div>
+            <%session.setAttribute("ExitoCierre", null);} %>
+                      
+            <div class="row">
+                    <div class="col-lg-12">
+                    <%if(pendientes!=null && !pendientes.isEmpty()){ %>
                     <h2 class="title text-center">Pedidos pendientes de devolucion</h2>
                     <div class="table-responsive">
                         <div class="table-striped">
@@ -128,17 +130,19 @@
                                     <td></td>
                                     <td></td> 
                                     </tr>
-                                   
-                                <%} }%>
+                                    <%} }%>
                             </tbody>
                             </table>
                         </div>
                     </div>
+                    <%}else if(pendientes!=null && pendientes.isEmpty()) {%>
+                    <div class="alert alert-success fade<%if(pendientes.isEmpty()){ %> in <%session.setAttribute("ListaPendientes", null);} %>">
+                        El Cliente no tiene pedidos pendientes de devolución.       
+                    </div>
+                    <%}%>
+                    </div>
                 </div>
-                <%} %>
-                    
-            </div>
-            
+                
          </div>
       </div>
     </body>
