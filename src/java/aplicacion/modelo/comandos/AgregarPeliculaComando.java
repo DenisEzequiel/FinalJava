@@ -21,10 +21,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-
-import sun.swing.FilePane;
-
-
 /**
  *
  * @author User
@@ -65,7 +61,7 @@ public class AgregarPeliculaComando extends Comando
                 pelicula.setImagen(inputStream);
               } catch (Exception e)
             {}
-
+            
             try
             {
                 img = request.getPart("imgPel");
@@ -79,8 +75,6 @@ public class AgregarPeliculaComando extends Comando
             {
                 Logger.getLogger(AgregarPeliculaComando.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-
             String selecc[] = request.getParameterValues("generos");
             for(Genero g: generos)
             {
