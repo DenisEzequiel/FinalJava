@@ -6,6 +6,8 @@
 package aplicacion.modelo.datos;
 
 import aplicacion.modelo.entidades.Pelicula;
+import java.io.File;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,8 +39,7 @@ public class PeliculaDB
             pr.setString(4, p.getFormato());
             pr.setInt(5, p.getStockAlquiler());
             pr.setInt(6, p.getStockVenta());
-            pr.setNull(7,0);
-            //pr.setString(7, IMAGEN());
+            pr.setBinaryStream(7, p.getImagen());
             pr.setString(8, p.getReparto());
             pr.setDate(9, new java.sql.Date(p.getFechaCarga().getTime()));
             pr.setBoolean(10,p.isActivo());

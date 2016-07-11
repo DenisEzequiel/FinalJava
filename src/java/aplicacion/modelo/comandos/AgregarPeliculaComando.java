@@ -9,12 +9,18 @@ import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import sun.swing.FilePane;
 
 /**
  *
@@ -30,6 +36,7 @@ public class AgregarPeliculaComando extends Comando
     {
         
             ArrayList<Genero> generos = cdG.obtenerGeneros();
+            Part img = null;
             pelicula=new Pelicula();
             pelicula.setActivo(true);
             pelicula.setFormato(request.getParameter("formPel"));
@@ -46,6 +53,20 @@ public class AgregarPeliculaComando extends Comando
             Date hoy=new Date();
             hoyFormato.format(hoy);
             pelicula.setFechaCarga(hoy);
+            try
+            {
+                img = request.getPart("imgPel");
+                pelicula.setImagen(img.getInputStream());
+            } 
+            catch (IOException ex)
+            {
+                Logger.getLogger(AgregarPeliculaComando.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            catch (ServletException ex)
+            {
+                Logger.getLogger(AgregarPeliculaComando.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             String selecc[] = request.getParameterValues("generos");
             for(Genero g: generos)
             {
