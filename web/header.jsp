@@ -142,7 +142,7 @@
                                                         <input type="submit" name="pagina" value="Usuarios" >
                                                     </form>
                                                 </li>
-                                                <li><a href="Devoluciones.jsp/#Pedidos">Devoluciones</a></li>
+                                                <li><a href="Devoluciones.jsp">Devoluciones</a></li>
                                             </ul>
                                             </li> 
                                         <%}%>                                                         
