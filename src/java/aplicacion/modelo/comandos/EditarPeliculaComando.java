@@ -11,13 +11,19 @@ import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -46,6 +52,16 @@ public class EditarPeliculaComando extends Comando
         PeliEditada.setStockVenta(Integer.parseInt(request.getParameter("stockVtaPel")));
         PeliEditada.setUrlTrailer(request.getParameter("urlPel"));
         PeliEditada.setAnio(Integer.parseInt(request.getParameter("anioPel")));
+        
+        Part hola = null;
+        try {
+            hola = request.getPart("imgPel");
+            InputStream inputStream = hola.getInputStream();
+            if(inputStream!=null)
+                PeliEditada.setImagen(inputStream);
+        } catch (Exception e)
+        {}
+        
         SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd");
         Date fecha = null;
             try

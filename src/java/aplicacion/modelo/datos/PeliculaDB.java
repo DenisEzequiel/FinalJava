@@ -66,7 +66,7 @@ public class PeliculaDB
      {
         Connection con = conec.getConexion();
         String sql = "update aefilep.peliculas set nombre=?, duracion=?, formato=?, stock_alquiler=?,"
-                + "stock_compra=?, reparto=?, activo=?, url_trailer=?, precio_venta=?, sinopsis=?, anio=? where id_pelicula=?;";
+                + "stock_compra=?, reparto=?, activo=?,url_trailer=?, precio_venta=?, sinopsis=?, anio=?,imagen=? where id_pelicula=?;";
         try
         {
             PreparedStatement pr = con.prepareStatement(sql);
@@ -81,7 +81,8 @@ public class PeliculaDB
             pr.setFloat(9, p.getPrecioVenta());
             pr.setString(10, p.getSinopsis());
             pr.setInt(11, p.getAnio());
-            pr.setInt(12, p.getIdPelicula());
+            pr.setBlob(12, p.getImagen());
+            pr.setInt(13, p.getIdPelicula());
             pr.executeUpdate();
             con.close();
         }

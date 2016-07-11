@@ -89,7 +89,7 @@
             </div>
             <div <%if(session.getAttribute("Scroll")!=null){%> id="Edit" <%session.setAttribute("Scroll", null); };%> class="row">
                 <h2 class="title text-center"><%if(peli!=null){%>EDITAR<%} else{%>AGREGAR<%};%> PELICULA</h2>
-                <form action="Controlador" method="post">  
+                <form action="Controlador" method="post" enctype="multipart/form-data" >  
                     <div class="col-sm-5 col-sm-offset-1">
                             <div class="row">
                                     <div class="col-lg-3">

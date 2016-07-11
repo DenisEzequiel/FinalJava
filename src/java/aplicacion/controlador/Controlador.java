@@ -8,6 +8,7 @@ package aplicacion.controlador;
 import aplicacion.modelo.comandos.FactoriaDeComandos;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author JP
  */
 @WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
+@MultipartConfig 
 public class Controlador extends HttpServlet {
 
     /**

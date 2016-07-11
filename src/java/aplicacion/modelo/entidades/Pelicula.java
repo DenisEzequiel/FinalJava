@@ -5,9 +5,11 @@
  */
 package aplicacion.modelo.entidades;
 
+import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -31,12 +33,21 @@ public class Pelicula
     private int anio;
     private boolean estreno;
     private ArrayList<Genero> generos;
-
+    private InputStream imagen;
+    
     public Pelicula()
     {
         this.generos = new ArrayList<Genero>();
     }
     
+    public InputStream getImagen() {
+        return imagen;
+    }
+   
+     public void setImagen(InputStream imagen) {
+        this.imagen = imagen;
+    }
+   
     public ArrayList<Genero> getGeneros() {
         return generos;
     }
