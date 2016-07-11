@@ -9,12 +9,14 @@ import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -46,6 +48,14 @@ public class AgregarPeliculaComando extends Comando
             Date hoy=new Date();
             hoyFormato.format(hoy);
             pelicula.setFechaCarga(hoy);
+            Part imagen = null;
+            try {
+            imagen = request.getPart("imgPel");
+            InputStream inputStream = imagen.getInputStream();
+            if(inputStream!=null)
+                pelicula.setImagen(inputStream);
+              } catch (Exception e)
+            {}
             String selecc[] = request.getParameterValues("generos");
             for(Genero g: generos)
             {

@@ -2954,3 +2954,25 @@ h2 button:hover
 {
     margin-top:5px;
 }
+
+.productinfo img.imagen
+{
+    height:400px;
+    width:250px;
+    
+}
+
+
+.productinfo img.imgChica
+{
+    height:150px;
+    width:100px;
+}
+
+
+img.imagenCarrusel
+{
+    height:400px;
+    width:250px;
+    
+}

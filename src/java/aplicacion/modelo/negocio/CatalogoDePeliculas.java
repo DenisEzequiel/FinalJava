@@ -21,6 +21,12 @@ public class CatalogoDePeliculas
     {
         peliculas.agregarPelicula(pelicula);
     }
+    public byte[] buscarImagen(int id)
+    {
+     return peliculas.buscarImagen(id);
+     
+    }
+    
     public void actualizarPelicula(Pelicula p)
     {
         peliculas.actualizarPelicula(p);

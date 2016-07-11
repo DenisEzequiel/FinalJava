@@ -57,7 +57,7 @@
 								</div>
                                                            
 								<div class="col-sm-6">
-									<img src="./imagenes/girl1.jpg" class="girl img-responsive" alt="">
+									<img src="ProcesadorImagenes?id=<%=pc.getIdPelicula()%>" class="imagenCarrusel img-responsive" alt="">
 									<img src="./imagenes/pricing.png" class="pricing" alt="">
 								</div>
 							</div>
@@ -111,7 +111,7 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="./imagenes/product12.jpg" alt="">
+												<img class="imgChica" src="ProcesadorImagenes?id=<%=p.getIdPelicula()%>" alt="">
                                                                                                  <h2><%=p.getNombre()%></h2>
 												       <form action="Controlador" method="post">
                                                                                             <button type="submit" class="btn btn-default get">Obtener ahora</button>
@@ -135,7 +135,7 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="./imagenes/product12.jpg" alt="">
+												<img class="imgChica" src="ProcesadorImagenes?id=<%=p.getIdPelicula()%>" alt="">
                                                                                                  <h2><%=p.getNombre()%></h2>
 												       <form action="Controlador" method="post">
                                                                                             <button type="submit" class="btn btn-default get">Obtener ahora</button>
@@ -159,7 +159,7 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="./imagenes/product12.jpg" alt="">
+												<img class="imgChica" src="ProcesadorImagenes?id=<%=p.getIdPelicula()%>" alt="">
                                                                                                  <h2><%=p.getNombre()%></h2>
 												       <form action="Controlador" method="post">
                                                                                             <button type="submit" class="btn btn-default get">Obtener ahora</button>
@@ -183,7 +183,7 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="./imagenes/product12.jpg" alt="">
+												<img class="imgChica" src="ProcesadorImagenes?id=<%=p.getIdPelicula()%>" alt="">
                                                                                                  <h2><%=p.getNombre()%></h2>
 												       <form action="Controlador" method="post">
                                                                                             <button type="submit" class="btn btn-default get">Obtener ahora</button>
@@ -207,7 +207,7 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="./imagenes/product12.jpg" alt="">
+												<img class="imgChica" src="ProcesadorImagenes?id=<%=p.getIdPelicula()%>" alt="">
                                                                                                  <h2><%=p.getNombre()%></h2>
 												       <form action="Controlador" method="post">
                                                                                             <button type="submit" class="btn btn-default get">Obtener ahora</button>

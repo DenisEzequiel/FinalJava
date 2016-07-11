@@ -64,6 +64,7 @@
                                    <li><label><input onclick="submit()" type="radio" value="10" name="tipo">Suspenso</label></li>
                                    <li><label><input onclick="submit()" type="radio" value="1" name="tipo">Terror</label></li>
                                    <li><label><input onclick="submit()" type="radio" value="5" name="tipo">Thriller</label></li>
+                                   <li><label><input onclick="submit()" type="radio" value="12" name="tipo">Infantil</label></li>
                                 </ul>
                                 </form>
                             </div>

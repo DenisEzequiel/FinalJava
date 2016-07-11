@@ -50,7 +50,9 @@
                                                                     <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="10" name="tipo">Suspenso</label></li>
                                                                     <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="1" name="tipo">Terror</label></li>
                                                                     <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="5" name="tipo">Thriller</label></li>
+                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="12" name="tipo">Infantil</label></li>
                                                          
+                                                                    
                                                               
                                                                 </ul>
                                                                 </form>
@@ -68,16 +70,16 @@
                                             </div>
                                                 <%session.setAttribute("errorNoEncontradas", null);}         
 
-                                                 for(int i=0; i<listaCartelera.size();i++)
+                                                 for(Pelicula p: listaCartelera)
                                                   { %>
                                                         <div class="col-sm-4">
                                                                 <div class="product-image-wrapper">
                                                                         <div class="single-products">
                                                                                 <div class="productinfo text-center">
-                                                                                        <img src="imagenes/product12.jpg" alt="">
-                                                                                        <h2><%=listaCartelera.get(i).getNombre()%></h2>
-                                                                                        <p><%=listaCartelera.get(i).getAnio()%></p>
-                                                                                        <p>$ <%=String.format("%.2f",listaCartelera.get(i).getPrecioAlquiler())%> - $ <%=String.format("%.2f",listaCartelera.get(i).getPrecioVenta())%></p>
+                                                                                        <img class="imagen" src="ProcesadorImagenes?id=<%=p.getIdPelicula()%>" alt="">
+                                                                                        <h2><%=p.getNombre()%></h2>
+                                                                                        <p><%=p.getAnio()%></p>
+                                                                                        <p>$ <%=String.format("%.2f",p.getPrecioAlquiler())%> - $ <%=String.format("%.2f",p.getPrecioVenta())%></p>
                                                                                         <a href="" class="btn btn-default add-to-cart">Alquilar</a>
                                                                                         <a href="" class="btn btn-default add-to-cart">Comprar</a>
 
@@ -85,15 +87,15 @@
                                                                                 <div class="product-overlay text-center">
                                                                                         <div class="overlay-content">
                                                                                             <form action="Controlador" method="post">
-                                                                                            <h2><button><%=listaCartelera.get(i).getNombre()%></button></h2>
+                                                                                            <h2><button><%=p.getNombre()%></button></h2>
                                                                                              <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
-                                                                                               <input type="hidden"  name="idPelicula" value="<%=listaCartelera.get(i).getIdPelicula()%>"/>
+                                                                                               <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
                                                                                             </form>
-                                                                                                <p><%=listaCartelera.get(i).getAnio()%></p>
-                                                                                                <p>$ <%=String.format("%.2f",listaCartelera.get(i).getPrecioAlquiler())%> - $ <%=String.format("%.2f",listaCartelera.get(i).getPrecioVenta())%></p>
+                                                                                                <p><%=p.getAnio()%></p>
+                                                                                                <p>$ <%=String.format("%.2f",p.getPrecioAlquiler())%> - $ <%=String.format("%.2f",p.getPrecioVenta())%></p>
                                                                                                 <form action="Controlador" method="post">
                                                                                                     <input type="hidden"  name="form" value="AgregarLineaComando"/>
-                                                                                                    <input type="hidden" name="idPelicula" value="<%=listaCartelera.get(i).getIdPelicula()%>"/>
+                                                                                                    <input type="hidden" name="idPelicula" value="<%=p.getIdPelicula()%>"/>
                                                                                                     <input class="btn btn-default add-to-cart linea" type="submit" name="tipoLinea" value="Alquilar">
                                                                                                     <input class="btn btn-default add-to-cart linea" type="submit" name="tipoLinea" value="Comprar">
                                                                                                 </form>

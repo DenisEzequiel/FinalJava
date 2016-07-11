@@ -6,6 +6,10 @@
 package aplicacion.modelo.datos;
 
 import aplicacion.modelo.entidades.Pelicula;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -37,8 +42,8 @@ public class PeliculaDB
             pr.setString(4, p.getFormato());
             pr.setInt(5, p.getStockAlquiler());
             pr.setInt(6, p.getStockVenta());
-            pr.setNull(7,0);
-            //pr.setString(7, IMAGEN());
+            pr.setBlob(7,p.getImagen());
+            
             pr.setString(8, p.getReparto());
             pr.setDate(9, new java.sql.Date(p.getFechaCarga().getTime()));
             pr.setBoolean(10,p.isActivo());
@@ -66,7 +71,7 @@ public class PeliculaDB
      {
         Connection con = conec.getConexion();
         String sql = "update aefilep.peliculas set nombre=?, duracion=?, formato=?, stock_alquiler=?,"
-                + "stock_compra=?, reparto=?, activo=?,url_trailer=?, precio_venta=?, sinopsis=?, anio=?,imagen=? where id_pelicula=?;";
+                + "stock_compra=?, reparto=?, activo=?,url_trailer=?, precio_venta=?, sinopsis=?, anio=?, imagen=? where id_pelicula=?;";
         try
         {
             PreparedStatement pr = con.prepareStatement(sql);
@@ -80,8 +85,8 @@ public class PeliculaDB
             pr.setString(8, p.getUrlTrailer());
             pr.setFloat(9, p.getPrecioVenta());
             pr.setString(10, p.getSinopsis());
-            pr.setInt(11, p.getAnio());
-            pr.setBlob(12, p.getImagen());
+            pr.setInt(11, p.getAnio());           
+            pr.setBlob(12, p.getImagen());            
             pr.setInt(13, p.getIdPelicula());
             pr.executeUpdate();
             con.close();
@@ -91,6 +96,35 @@ public class PeliculaDB
             
         }
         pelgenBD.actualizarPeliculasGeneros(p);
+     }
+     
+     public byte[] buscarImagen(int id)
+     {
+           Connection con = conec.getConexion();
+        
+         String transac = "select imagen from peliculas where id_pelicula=?;";
+         byte[] imgData=null;
+        try
+        {
+            PreparedStatement pr = con.prepareStatement(transac);
+            pr.setInt(1, id);
+            ResultSet res = pr.executeQuery();
+            
+                   
+            if(res.next())
+            {
+               imgData = res.getBytes("imagen");
+            }
+            con.close();
+            
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        return imgData;
+     
      }
      
      public ArrayList<Pelicula> obtenerPeliculas()
@@ -144,6 +178,7 @@ public class PeliculaDB
         
         return listaPeliculas;
      }
+    
      public ArrayList<Pelicula> obtenerPeliculas(String nombre, int inferior, int cantidad)
      {
          Connection con = conec.getConexion();

@@ -53,10 +53,10 @@ public class EditarPeliculaComando extends Comando
         PeliEditada.setUrlTrailer(request.getParameter("urlPel"));
         PeliEditada.setAnio(Integer.parseInt(request.getParameter("anioPel")));
         
-        Part hola = null;
+        Part imagen = null;
         try {
-            hola = request.getPart("imgPel");
-            InputStream inputStream = hola.getInputStream();
+            imagen = request.getPart("imgPel");
+            InputStream inputStream = imagen.getInputStream();
             if(inputStream!=null)
                 PeliEditada.setImagen(inputStream);
         } catch (Exception e)
