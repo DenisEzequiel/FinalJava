@@ -48,11 +48,15 @@ public class CuentaComando extends Comando
             usuarioModificado.setTelefono(request.getParameter("telefono"));
             usuarioModificado.setMail(request.getParameter("mail"));
             usuarioModificado.setDni(request.getParameter("dni"));
-                      
-           // usuBD.actualizarDatos(usu.getIdUsuario(),request.getParameter("nombre"),request.getParameter("apellido"),request.getParameter("direccion"),
-                               //   request.getParameter("telefono"),request.getParameter("mail"),request.getParameter("dni"),request.getParameter("fechaNacimiento"));
-            CdeU.modificarUsuario(usuarioModificado);
             
+            try
+            {
+            CdeU.modificarUsuario(usuarioModificado);
+            }
+            catch(Exception ex)
+            {
+                request.getSession().setAttribute("excepcion","Error en la actualizacion de los datos");
+            }
             usu.setNombre(request.getParameter("nombre"));
             usu.setApellido(request.getParameter("apellido"));
             usu.setDireccion(request.getParameter("direccion"));
@@ -78,12 +82,23 @@ public class CuentaComando extends Comando
             {
                 if(request.getParameter("nuevaContra").equals(request.getParameter("repiteContra")))
                 {
+                    try
+                    {
                     boolean exito = CdeU.modificarContrasenia(usu.getIdUsuario(),request.getParameter("nuevaContra"));
                     if(exito)
                         request.getSession().setAttribute("contraCambiada","1");
                     else
                         request.getSession().setAttribute("contraCambiada","0");                    
-                    return  "/cuenta.jsp";
+                    
+                    }
+                    catch(Exception ex)
+                    {
+                         request.setAttribute("excepcion","Error en la actualización de los datos");
+                    }
+                    finally
+                    {
+                        return  "/cuenta.jsp";
+                    }
                 }
             }
             request.getSession().setAttribute("contraCambiada","0");

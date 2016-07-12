@@ -57,13 +57,20 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-sm-3 col-sm-offset-0">                           
-                        <div id="mensajeError" class="alert <%if(session.getAttribute("tabActual").equals("2") && session.getAttribute("contraCambiada").equals("1")){%>alert-success<%}
-                        else if(session.getAttribute("tabActual").equals("2") && session.getAttribute("contraCambiada").equals("0")){%>alert-danger<%}%>">
+                    <div class="col-sm-3 col-sm-offset-0"> 
+                      
+                        <div id="mensajeError" class="alert <%if(session.getAttribute("contraCambiada").equals("1")){%>alert-success<%}
+                        else if(session.getAttribute("contraCambiada").equals("0")){%>alert-danger<%}%>">
                                 
-                            <p id="parrafoError"><%if(session.getAttribute("tabActual").equals("2") && session.getAttribute("contraCambiada").equals("1")){%>Contraseña cambiada con exito!<%
-                            }else if(session.getAttribute("tabActual").equals("2") && session.getAttribute("contraCambiada").equals("0")){%><strong>Error! </strong>Su contraseña no pudo ser cambiada<%}%> 
+                            <p id="parrafoError"><%if(session.getAttribute("contraCambiada").equals("1")){%>Contraseña cambiada con exito!<%
+                            }else if(session.getAttribute("contraCambiada").equals("0")){%><strong>Error! </strong>Su contraseña no pudo ser cambiada<%}%> 
                             </p>
+                            
+                              <%if(request.getAttribute("excepcion")!=null){%>
+                                                        <div class="alert alert-danger">
+                                                              <%=request.getAttribute("excepcion")%>
+                                                           </div>
+                                                         <%}%>
                         </div>
                     </div>
                 </div>

@@ -47,12 +47,20 @@ public class RegistroComando extends Comando
         us.setDni((String)request.getParameter("Dni")); 
         us.setMail((String)request.getParameter("Email"));
         us.setNombreUsuario((String)request.getParameter("Usu"));
-       
+        try
+        {
         CdeU.registrarUsuario(us);
         request.getSession().setAttribute("usuario", us);
         request.getSession().setAttribute("exitoLogin", true);
-             
+        }
+        catch(Exception ex)
+        {
+             request.getSession().setAttribute("excepcion","Error en registrar al nuevo usuario");
+        }
+        finally
+        {
         return "/index.jsp";
+        }
     }
     
 }

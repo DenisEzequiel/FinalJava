@@ -149,6 +149,11 @@
                     </div>
                     <%}%>
                     </div>
+                    <% if(request.getAttribute("excepcion")!=null){%>
+                                                        <div class="alert alert-danger">
+                                                              <%=request.getAttribute("excepcion")%>
+                                                           </div>
+                                                         <%}%>
                 </div>
                 
          </div>
