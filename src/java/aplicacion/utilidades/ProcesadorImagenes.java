@@ -60,11 +60,18 @@ public class ProcesadorImagenes extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          CatalogoDePeliculas cdp= new CatalogoDePeliculas();
+         try
+         {
           byte[]imgData= cdp.buscarImagen(Integer.parseInt(request.getParameter("id")));
           OutputStream os = response.getOutputStream(); 
-            os.write(imgData);
-            os.flush();
-            os.close();
+          os.write(imgData);
+          os.flush();
+          os.close();
+         }
+         catch(Exception ex)
+         {
+             //ERROR IMAGENES ?????
+         }
 
 
     }
