@@ -30,7 +30,11 @@ public class AgregarLineaComando extends Comando
             if(lp.getPelicula().getIdPelicula()==idPelicula && (lp.isEsAlquiler()==alquiler))
             {
                 if(alquiler==false)
-                    lp.setCantidad(lp.getCantidad()+1);
+                {
+                   lp.setCantidad(lp.getCantidad()+1);
+                   request.getSession().setAttribute("exitoPeliculaAgregada", true);
+                }
+                    
                
                 lineaExiste=1;
             }
@@ -41,13 +45,20 @@ public class AgregarLineaComando extends Comando
             CatalogoDePeliculas cdp = new CatalogoDePeliculas();
             LineaPedido linea = new LineaPedido();
             linea.setEsAlquiler(alquiler);
-            Pelicula peli = cdp.obtenerPelicula(idPelicula);
-            linea.setCantidad(1);
-            linea.setPelicula(peli);
-            pedido.setLinea(linea);
+            try
+            {
+                Pelicula peli = cdp.obtenerPelicula(idPelicula);
+                linea.setCantidad(1);
+                linea.setPelicula(peli);
+                pedido.setLinea(linea);
+                request.getSession().setAttribute("exitoPeliculaAgregada", true);
+            }
+            catch(Exception ex)
+            {
+                request.getSession().setAttribute("exitoPeliculaAgregada", false);
+            }   
         }
         request.getSession().setAttribute("pedido",pedido);
-        request.getSession().setAttribute("exitoPeliculaAgregada", true);
         
         if(request.getParameter("provieneDePelicula")!=null)
            return "/pelicula.jsp";

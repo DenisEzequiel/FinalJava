@@ -6,7 +6,6 @@
 package aplicacion.modelo.negocio;
 
 import aplicacion.modelo.datos.PeliculaDB;
-import aplicacion.modelo.datos.PeliculasGenerosBD;
 import aplicacion.modelo.entidades.Pelicula;
 import java.util.ArrayList;
 
@@ -16,66 +15,75 @@ import java.util.ArrayList;
  */
 public class CatalogoDePeliculas 
 {  
-    PeliculaDB peliculas=new PeliculaDB();
-    public void agregarPelicula(Pelicula pelicula)
+    PeliculaDB peliculas = new PeliculaDB();
+    
+    public void agregarPelicula(Pelicula pelicula) throws Exception
     {
         peliculas.agregarPelicula(pelicula);
     }
-    public byte[] buscarImagen(int id)
+    
+    public byte[] buscarImagen(int id) throws Exception
     {
      return peliculas.buscarImagen(id);
      
     }
     
-    public void actualizarPelicula(Pelicula p)
+    public void actualizarPelicula(Pelicula p) throws Exception
     {
         peliculas.actualizarPelicula(p);
     }
-    public Pelicula obtenerPelicula(int idPel)
+    
+    public Pelicula obtenerPelicula(int idPel) throws Exception
     {
         return peliculas.obtenerPelicula(idPel);
     }
     
-    public ArrayList<Pelicula> obtenerPeliculas()
+    public ArrayList<Pelicula> obtenerPeliculas() throws Exception
     {
         return peliculas.obtenerPeliculas();
     }
-     public ArrayList<Pelicula> obtenerPeliculas(String nombre,int inferior,int cantidad)
+    
+    public ArrayList<Pelicula> obtenerPeliculas(String nombre,int inferior,int cantidad) throws Exception
     {
         return peliculas.obtenerPeliculas(nombre,inferior,cantidad);
     }
     
-    public ArrayList<Pelicula> buscarPeliculas(int inferior, int cantidad)
+    public ArrayList<Pelicula> buscarPeliculas(int inferior, int cantidad) throws Exception
     {
        return peliculas.buscarPeliculas(inferior,cantidad);
     }
     
-    public int cantidadPeliculasActivas()
+    public int cantidadPeliculasActivas() throws Exception
     {
         return peliculas.cantidadPeliculasActivas();
     }
-     public int cantidadEstrenosActivos()
+    
+    public int cantidadEstrenosActivos() throws Exception
     {
         return peliculas.cantidadEstrenosActivos();
     }
-     public int cantidadBuscadorActivos(String nombre)
+    
+    public int cantidadBuscadorActivos(String nombre) throws Exception
     {
         return peliculas.cantidadBuscadorActivos(nombre);
     }
-       public int cantidadGenerosActivos(int id)
+    
+    public int cantidadGenerosActivos(int id) throws Exception
     {
         return peliculas.cantidadGenerosActivos(id);
     }
-    public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad)
+    
+    public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad) throws Exception
     {
        return peliculas.obtenerEstrenos(inferior,cantidad);
     }
-        public ArrayList<Pelicula> obtenerEstrenos(int cant)
+    
+    public ArrayList<Pelicula> obtenerEstrenos(int cant) throws Exception
     {
        return peliculas.obtenerEstrenos(cant);
     }
     
-     public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad)
+    public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad) throws Exception
     {
        return peliculas.obtenerGenero(idGenero,inferior,cantidad);
     }

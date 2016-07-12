@@ -6,7 +6,6 @@
 package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.entidades.Genero;
-import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import java.io.InputStream;
@@ -86,12 +85,23 @@ public class AgregarPeliculaComando extends Comando
                     }
                 }
             }
-            cDp.agregarPelicula(pelicula);
-            ArrayList<Pelicula> peliculas = cDp.obtenerPeliculas();
-            request.getSession().setAttribute("ListaPeliculas", peliculas);
-            request.getSession().setAttribute("PeliEdit", pelicula);
-            request.getSession().setAttribute("Scroll",true);
-            request.getSession().setAttribute("ExitoPeli", true);
+            
+            ArrayList<Pelicula> peliculas = new ArrayList<>();
+            try
+            {
+                cDp.agregarPelicula(pelicula);
+                peliculas = cDp.obtenerPeliculas();
+                request.getSession().setAttribute("ListaPeliculas", peliculas);
+                request.getSession().setAttribute("PeliEdit", pelicula);
+                request.getSession().setAttribute("Scroll",true);
+                request.getSession().setAttribute("ExitoPeli", true);
+            }
+            catch(Exception ex)
+            {
+                request.getSession().setAttribute("ExitoPeli", false);
+            }
+            
+            
             
         
         return ("/ABMPeliculas.jsp");

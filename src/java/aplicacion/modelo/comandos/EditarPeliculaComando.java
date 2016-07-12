@@ -7,20 +7,13 @@ package aplicacion.modelo.comandos;
 
 import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.entidades.Pelicula;
-import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
-import aplicacion.modelo.negocio.CatalogoDeUsuarios;
-import java.io.IOException;
 import java.io.InputStream;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
@@ -87,14 +80,23 @@ public class EditarPeliculaComando extends Comando
         Boolean esActivo = (request.getParameter("Activa")!=null);
         PeliEditada.setActivo(esActivo);
         
-        CdeP.actualizarPelicula(PeliEditada);
-        ArrayList<Pelicula> peliculas = CdeP.obtenerPeliculas();
-        request.getSession().setAttribute("ListaPeliculas", peliculas);
-        request.getSession().setAttribute("PeliEdit", PeliEditada);
-        request.getSession().setAttribute("Scroll",true);
-        request.getSession().setAttribute("ExitoPeli", true);
+        try
+        {
+            CdeP.actualizarPelicula(PeliEditada);
+            ArrayList<Pelicula> peliculas = CdeP.obtenerPeliculas();
+            request.getSession().setAttribute("ListaPeliculas", peliculas);
+            request.getSession().setAttribute("PeliEdit", PeliEditada);
+            request.getSession().setAttribute("Scroll",true);
+            request.getSession().setAttribute("ExitoPeli", true);
+
+            return "/ABMPeliculas.jsp";
+        }
+        catch(Exception ex)
+        {
+            request.getSession().setAttribute("ExitoPeli", false);
+            return "/ABMPeliculas.jsp";
+        }
         
-        return"/ABMPeliculas.jsp";
     }
     
 }

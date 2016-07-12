@@ -72,7 +72,14 @@ public class FinalizarPedidoComando extends Comando{
                         }
                     }
                  CatalogoDePeliculas CdPeli=new CatalogoDePeliculas();
-                 CdPeli.actualizarPelicula(lp.getPelicula());
+                 try
+                 {
+                     CdPeli.actualizarPelicula(lp.getPelicula());
+                 }
+                 catch(Exception ex)
+                 {
+                     //FALTA ERROR, NO ENTIENDO CÓDIGO.
+                 }
                  
              }
              Usuario u= (Usuario)request.getSession().getAttribute("usuario");

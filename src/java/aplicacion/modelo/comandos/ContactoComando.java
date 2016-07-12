@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import aplicacion.modelo.entidades.Parametro;
 import aplicacion.modelo.datos.ParametroBD;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author marti_000
