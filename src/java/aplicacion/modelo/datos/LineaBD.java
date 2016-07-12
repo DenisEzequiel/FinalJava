@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class LineaBD {
       Conexion conec = new Conexion();
       PeliculaDB peliBd = new PeliculaDB();
-      public ArrayList<LineaPedido> obtenerLineaAlq (int idPedido)
+      public ArrayList<LineaPedido> obtenerLineaAlq (int idPedido) throws Exception
       {
           String sql = "select * from aefilep.pedidos_peliculas where id_pedido =? and es_alquiler=1;";
           Connection con = conec.getConexion();
@@ -51,7 +51,7 @@ public class LineaBD {
         return lineas;         
       }
     
-    public void registrarLineas(ArrayList<LineaPedido> lineas, int idPedido, int dias)
+    public void registrarLineas(ArrayList<LineaPedido> lineas, int idPedido, int dias) throws Exception
     {
         
         for(LineaPedido lp: lineas ) 

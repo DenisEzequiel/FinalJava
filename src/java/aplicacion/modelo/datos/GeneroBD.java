@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class GeneroBD 
 {
     Conexion conec = new Conexion();
-    public ArrayList<Genero> obtenerGeneros()
+    public ArrayList<Genero> obtenerGeneros() throws Exception
     {
         Connection con = conec.getConexion();
         ArrayList<Genero> listaGeneros = new ArrayList<>();

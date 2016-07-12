@@ -29,7 +29,7 @@ public class PeliculaDB
     Conexion conec = new Conexion();
     ParametroBD parBD = new ParametroBD();
     PeliculasGenerosBD pelgenBD = new PeliculasGenerosBD();
-    public void agregarPelicula(Pelicula p)
+    public void agregarPelicula(Pelicula p) throws Exception
     {
         Connection con = conec.getConexion();
         String transac = "insert into aefilep.peliculas values (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
@@ -71,7 +71,7 @@ public class PeliculaDB
         }
         
      }
-     public void actualizarPelicula(Pelicula p)
+     public void actualizarPelicula(Pelicula p) throws Exception
      {
         Connection con = conec.getConexion();
         String sql = "update aefilep.peliculas set nombre=?, duracion=?, formato=?, stock_alquiler=?,"
@@ -102,7 +102,7 @@ public class PeliculaDB
         pelgenBD.actualizarPeliculasGeneros(p);
      }
      
-     public byte[] buscarImagen(int id)
+     public byte[] buscarImagen(int id) throws Exception
      {
            Connection con = conec.getConexion();
         
@@ -131,7 +131,7 @@ public class PeliculaDB
      
      }
      
-     public ArrayList<Pelicula> obtenerPeliculas()
+     public ArrayList<Pelicula> obtenerPeliculas() throws Exception
      {
          Connection con = conec.getConexion();
          ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
@@ -183,7 +183,7 @@ public class PeliculaDB
         return listaPeliculas;
      }
     
-     public ArrayList<Pelicula> obtenerPeliculas(String nombre, int inferior, int cantidad)
+     public ArrayList<Pelicula> obtenerPeliculas(String nombre, int inferior, int cantidad) throws Exception
      {
          Connection con = conec.getConexion();
          ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
@@ -238,7 +238,7 @@ public class PeliculaDB
         return listaPeliculas;
      }
      
-     public ArrayList<Pelicula> buscarPeliculas(int inferior,int cantidad)
+     public ArrayList<Pelicula> buscarPeliculas(int inferior,int cantidad) throws Exception
      {
          Connection con = conec.getConexion();
          ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
@@ -292,7 +292,7 @@ public class PeliculaDB
         return listaPeliculas;
      }
      
-     public Pelicula obtenerPelicula(int idPeli)
+     public Pelicula obtenerPelicula(int idPeli) throws Exception
      {
         Connection con = conec.getConexion();
         Pelicula p = new Pelicula();
@@ -341,7 +341,7 @@ public class PeliculaDB
         return p;
      }
      
-     public int cantidadPeliculas()
+     public int cantidadPeliculas() throws Exception
      {
          Connection con = conec.getConexion();
          int i=0;
@@ -367,7 +367,7 @@ public class PeliculaDB
         return i;
      }
      
-     public int cantidadPeliculasActivas()
+     public int cantidadPeliculasActivas() throws Exception
      {
          Connection con = conec.getConexion();
          int i=0;
@@ -393,7 +393,7 @@ public class PeliculaDB
         return i;
      }
           
-     public int cantidadEstrenosActivos()
+     public int cantidadEstrenosActivos() throws Exception
      {
          Connection con = conec.getConexion();
          int i=0;
@@ -418,7 +418,7 @@ public class PeliculaDB
         
         return i;
      }
-     public int cantidadGenerosActivos(int id)
+     public int cantidadGenerosActivos(int id) throws Exception
      {
          Connection con = conec.getConexion();
          int i=0;
@@ -444,7 +444,7 @@ public class PeliculaDB
         
         return i;
      }
-      public int cantidadBuscadorActivos(String nombre)
+      public int cantidadBuscadorActivos(String nombre) throws Exception
      {
          Connection con = conec.getConexion();
          int i=0;
@@ -470,7 +470,7 @@ public class PeliculaDB
         
         return i;
      }
-       public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad)
+       public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad) throws Exception
      {
          Connection con = conec.getConexion();
          ArrayList<Pelicula> listaEstrenos = new ArrayList<>();
@@ -523,7 +523,7 @@ public class PeliculaDB
         
         return listaEstrenos;
      }
-     public ArrayList<Pelicula> obtenerEstrenos(int cant)
+     public ArrayList<Pelicula> obtenerEstrenos(int cant) throws Exception
      {
          Connection con = conec.getConexion();
          ArrayList<Pelicula> listaEstrenos = new ArrayList<>();
@@ -629,7 +629,7 @@ public class PeliculaDB
        }
         return listaEstrenos;
      }
-       public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad)
+       public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad) throws Exception
      {
          Connection con = conec.getConexion();
          ArrayList<Pelicula> listaGenero = new ArrayList<>();

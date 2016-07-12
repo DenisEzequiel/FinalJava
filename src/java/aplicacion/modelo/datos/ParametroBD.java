@@ -22,7 +22,7 @@ public class ParametroBD {
     
      Conexion conec = new Conexion();
     
-    public Parametro obtenerParametros()
+    public Parametro obtenerParametros() throws Exception
     { 
          Parametro par= null;
          Connection con = conec.getConexion();

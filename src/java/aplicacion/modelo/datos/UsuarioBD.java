@@ -23,12 +23,12 @@ public class UsuarioBD
     {
         Usuario usu=null;
         String sql = "select * from usuarios where nombre_usuario=? and contrasena=? and activo=1;";
+        Connection con =null; 
         
-                
-            Connection con = conec.getConexion();
-                   
-            PreparedStatement pr = con.prepareStatement(sql);
-            pr.setString(1, nom);
+        con = conec.getConexion();
+
+        PreparedStatement pr = con.prepareStatement(sql);
+        pr.setString(1, nom);
             pr.setString(2, contra);
             ResultSet res = pr.executeQuery();
             
@@ -50,12 +50,12 @@ public class UsuarioBD
                 usu.setTelefono(res.getString(7));  
             }
             con.close();
-            
-      
+        
+                 
         return usu;
     }
     
-    public ArrayList<Usuario> buscarUsuarios(Usuario usu)
+    public ArrayList<Usuario> buscarUsuarios(Usuario usu) throws Exception
     {
         ArrayList<Usuario> resultado = new ArrayList<Usuario>();
         Connection con = conec.getConexion();
@@ -103,7 +103,7 @@ public class UsuarioBD
         return resultado;
     }
     
-    public ArrayList<Usuario> obtenerUsuarios()
+    public ArrayList<Usuario> obtenerUsuarios() throws Exception
     {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         Connection con = conec.getConexion();
@@ -141,7 +141,7 @@ public class UsuarioBD
         return usuarios;
     }
     
-    public void editarUsuario(Usuario usu)
+    public void editarUsuario(Usuario usu) throws Exception
     {
         Connection con = conec.getConexion();
         String sql = "update usuarios set nombre=? , apellido=? , direccion=? ,"
@@ -169,7 +169,7 @@ public class UsuarioBD
         }
     }
     
-    public void modificarUsuario(Usuario usu)
+    public void modificarUsuario(Usuario usu) throws Exception
     {   
         
         Connection con = conec.getConexion();
@@ -196,7 +196,7 @@ public class UsuarioBD
         
     }
     
-    public boolean modificarContrasenia(int id,String contra)
+    public boolean modificarContrasenia(int id,String contra) throws Exception
     {
         Connection con = conec.getConexion();
         String sql = "update usuarios set contrasena=? where id_usuario=?";
@@ -216,7 +216,7 @@ public class UsuarioBD
         return true;
     }
     
-public void agregarUsuario(Usuario usu)
+public void agregarUsuario(Usuario usu) throws Exception
 {
     PreparedStatement prpstmt;
         Connection con = conec.getConexion();
@@ -247,7 +247,7 @@ public void agregarUsuario(Usuario usu)
         }
 }
             
-public void registrarUsuario(Usuario usu)
+public void registrarUsuario(Usuario usu) throws Exception
     {
         PreparedStatement prpstmt;
         Connection con = conec.getConexion();

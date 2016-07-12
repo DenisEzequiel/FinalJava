@@ -21,7 +21,7 @@ public class PeliculasGenerosBD
 {
     Conexion conec = new Conexion();
     
-     public void agregarPeliculaGeneros(Pelicula p)
+     public void agregarPeliculaGeneros(Pelicula p) throws Exception
      {
         Connection con = conec.getConexion();
         String transac = "insert into aefilep.peliculas_generos values ";
@@ -48,7 +48,7 @@ public class PeliculasGenerosBD
         }  
      }
     
-    public void actualizarPeliculasGeneros(Pelicula p)
+    public void actualizarPeliculasGeneros(Pelicula p) throws Exception
     {
         Connection con = conec.getConexion();
         String transac = "delete from aefilep.peliculas_generos where id_pelicula=?;";
@@ -66,7 +66,7 @@ public class PeliculasGenerosBD
         }
     }
      
-    public ArrayList<Genero> obtenerGenerosPelicula(int id)
+    public ArrayList<Genero> obtenerGenerosPelicula(int id) throws Exception
     {
         ArrayList<Genero> generos = new ArrayList<Genero>();
         Connection con = conec.getConexion();

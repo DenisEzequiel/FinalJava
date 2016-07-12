@@ -40,7 +40,8 @@ public class LogInComando extends Comando
         try {
             usu = CdeU.buscarUsuario(nomUsu, contra);
         } catch (Exception ex) {
-            request.getSession().setAttribute("excepcion", ex.getMessage());
+            String e = ex.getMessage();
+            request.getSession().setAttribute("excepcion", "Error en el logueo del usuario");
             return "/login.jsp";
         }
         Pedido p=(Pedido)request.getSession().getAttribute("pedido");

@@ -28,7 +28,7 @@ public class PedidoBD {
      LineaBD lineas = new LineaBD();
      PeliculaDB pelisBD = new PeliculaDB();
      
-     public void cerrarPedido(Pedido p)
+     public void cerrarPedido(Pedido p) throws Exception
      {
          Connection con = conec.getConexion();
          String transac = "update aefilep.pedidos set estado=?, fecha_devolucion=? where id_pedido=?;";
@@ -51,7 +51,7 @@ public class PedidoBD {
          }
      }
      
-     public void registrarPedido(Pedido p)
+     public void registrarPedido(Pedido p) throws Exception
      {
         
         Connection con = conec.getConexion();
@@ -88,20 +88,19 @@ public class PedidoBD {
         }
 }
      
-     public ArrayList<Pedido> obtenerPedidosPendientes (int idPedido)
-     {
-         
-         ArrayList<Pedido> pedidosEncontrados = new ArrayList<>();
-         Connection con = conec.getConexion();
+    public ArrayList<Pedido> obtenerPedidosPendientes (int idPedido) throws Exception
+    {         
+        ArrayList<Pedido> pedidosEncontrados = new ArrayList<>();
+        Connection con = conec.getConexion();
     
         String sql = "SELECT * FROM aefilep.pedidos where id_usuario=? and estado not like 'Cerrado';";
         try
         {   
             PreparedStatement pr = con.prepareStatement(sql);
-             pr.setInt(1,idPedido);
-             ResultSet res =pr.executeQuery();
+            pr.setInt(1,idPedido);
+            ResultSet res =pr.executeQuery();
              
-             while(res.next())
+            while(res.next())
             { 
                 Pedido p = new Pedido();
                 
@@ -112,20 +111,16 @@ public class PedidoBD {
                 p.setEstado(res.getString(5));
                 p.setFechaDevolucion(null);
                 p.setLineas(lineas.obtenerLineaAlq(p.getIdPedido()));
-                
-                
-                pedidosEncontrados.add(p);
-                     
-            }
-                    
-             con.close();
-      
+                                
+                pedidosEncontrados.add(p);                     
+            }                   
+            con.close();      
         }
-             catch(SQLException ex)
+        catch(SQLException ex)
         {
             ex.printStackTrace();
         }
-     return pedidosEncontrados;
-     }
+        return pedidosEncontrados;
+    }
             
 }

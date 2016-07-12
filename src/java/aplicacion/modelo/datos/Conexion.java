@@ -15,12 +15,12 @@ import java.sql.SQLException;
  */
 public class Conexion 
 {
-	public Connection getConexion() 
-	 {
+	public Connection getConexion() throws Exception
+	{
             Connection conexion=null;
 	      
-	     try
-	     {	    	
+	     
+	        	
 	         Class.forName("com.mysql.jdbc.Driver");
 	         String usuarioDB="root";
 	         String passwordDB="";
@@ -28,15 +28,9 @@ public class Conexion
 	         String servidor = "jdbc:mysql://localhost:3306/aefilep";
 	         
 	         conexion = DriverManager.getConnection(servidor,usuarioDB,passwordDB);
-	     }
-	     catch(Exception ex)
-             {	 
-	        conexion=null;
-                throw new Exception("Error en la conexion",ex);
-             }
-	     finally
-	     {
+	     
+	     
 	         return conexion;
 	     }
 	 }
-}
+

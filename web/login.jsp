@@ -59,14 +59,14 @@
                                     if(session.getAttribute("usuario") == null)
                                     {
                                          if(session.getAttribute("excepcion") != null)
-                                    {
+                                        {
                                        %> 
                                             <br/>
                                             <div class="alert alert-danger">
                                                 <%=session.getAttribute("excepcion")%>
                                             </div>
                                         <%
-                                    }else{%>
+                                        }else{%>
                                             <br/>
                                             <div class="alert alert-danger">
                                                 Usuario / Contraseña incorrecto  
