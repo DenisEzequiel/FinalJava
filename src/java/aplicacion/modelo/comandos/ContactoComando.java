@@ -23,9 +23,15 @@ public class ContactoComando extends Comando
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {      
             ParametroBD pbd = new ParametroBD();
+            try
+            {
             Parametro par = pbd.obtenerParametros();           
             request.getSession().setAttribute("parametro", par);
- 
+            }
+            catch(Exception ex)
+            {
+                request.setAttribute("excepcion", "Error en el acceso a los datos de Aefilep");
+            }
             return "contacto.jsp";
                            
     }

@@ -36,7 +36,7 @@ public class CatalogoDePeliculas
         return peliculas.obtenerPelicula(idPel);
     }
     
-    public ArrayList<Pelicula> obtenerPeliculas()
+    public ArrayList<Pelicula> obtenerPeliculas() 
     {
         return peliculas.obtenerPeliculas();
     }

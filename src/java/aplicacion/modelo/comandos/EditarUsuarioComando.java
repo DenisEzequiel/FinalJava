@@ -53,13 +53,20 @@ public class EditarUsuarioComando extends Comando
         usEditado.setActivo(esActivo);
         usEditado.setEsAdmin(esAdmin);
         usEditado.setBloqueado(esBloq);
-        
+        try
+        {
         cDeUsu.editarUsuario(usEditado);
         ArrayList<Usuario> usuarios = cDeUsu.obtenerUsuarios();
         request.getSession().setAttribute("ListaUsuarios", usuarios);
         request.getSession().setAttribute("UsuarioEdit", usEditado);
         request.getSession().setAttribute("Scroll",true);
         request.getSession().setAttribute("ExitoUsu", true);
+        }
+        catch(Exception ex)
+        {
+              request.setAttribute("excepcion","Error en la actualización de datos");
+        }
+        
         
         return"/ABMUsuarios.jsp";
     }

@@ -36,11 +36,18 @@ public class BuscarUsuarioComando extends Comando
         buscado.setNombre(request.getParameter("Nombre"));
         buscado.setApellido(request.getParameter("Apellido"));
         buscado.setDni(request.getParameter("Dni"));
+        try
+        {
         ArrayList<Usuario> encontrados = cDeU.buscarUsuarios(buscado);
-        
         request.getSession().setAttribute("ListaEncontrados", encontrados);
         request.getSession().setAttribute("ListaPendientes", null);
         
+        }
+        catch(Exception ex)
+        {
+            request.setAttribute("excepcion","Error en buscar al usuario");
+        }
+       
         return "/Devoluciones.jsp";
     }
     

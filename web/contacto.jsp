@@ -39,8 +39,12 @@
                                                                                                                     { %> in <%
                                                                                                                         session.setAttribute("ExitoMensajeEnviado", null); } %>">
                                                         Mensaje enviado con éxito. Gracias por contactarse.
-                                                        </div>                              
-                                                         
+                                                        </div> 
+                                                        <% else if(request.getAttribute("excepcion")!=null){%>
+                                                        <div class="alert alert-danger">
+                                                              <%=request.getAttribute("excepcion")%>
+                                                           </div>
+                                                         <%}%>
             
                                                         <input type="hidden" name="form" value="EnviarMensajeComando" >
                                                         <input type="submit" name="submit" class="btn btn-primary pull-right" value="Enviar">

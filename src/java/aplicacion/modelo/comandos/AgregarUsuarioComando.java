@@ -52,13 +52,21 @@ public class AgregarUsuarioComando extends Comando
         usNuevo.setActivo(esActivo);
         usNuevo.setEsAdmin(esAdmin);
         usNuevo.setBloqueado(esBloq);
-        
+        try
+        {
         cDeUsu.agregarUsuario(usNuevo);
         ArrayList<Usuario> usuarios = cDeUsu.obtenerUsuarios();
         request.getSession().setAttribute("ListaUsuarios", usuarios);
         request.getSession().setAttribute("Scroll",true);
         request.getSession().setAttribute("ExitoUsu", true);
         
+        }
+        catch(Exception ex)
+        {
+            request.setAttribute("excepcion", "Error en registración");
+        }
+        
+     
         return "/ABMUsuarios.jsp";
     }
     
