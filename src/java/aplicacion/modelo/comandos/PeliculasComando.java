@@ -89,12 +89,21 @@ public class PeliculasComando extends Comando
         }
      
         ParametroBD pbd = new ParametroBD();
-     
+        try
+        {
         Parametro par = pbd.obtenerParametros();
-        request.getSession().setAttribute("parametro", par);
+         request.getSession().setAttribute("parametro", par);
         request.getSession().setAttribute("listaCartelera", listaPeliculas);
         request.getSession().setAttribute("cantidadPeliculas",cantidadDePeliculas);
         request.getSession().setAttribute("generoObtenido", null);
+        }
+        catch(Exception e)
+        {
+            request.setAttribute("excepcion", "Error en el acceso a los datos");
+        }
+        finally
+        {
         return "cartelera.jsp";
+        }
     }
 }
