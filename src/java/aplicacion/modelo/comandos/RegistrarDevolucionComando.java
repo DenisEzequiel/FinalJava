@@ -10,6 +10,8 @@ import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.negocio.CatalogoDePedidos;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,7 +46,11 @@ public class RegistrarDevolucionComando extends Comando
                 lp.getPelicula().setStockAlquiler((lp.getPelicula().getStockAlquiler()+1));
             }
         }
-        cDeP.cerrarPedido(pedACerrar);
+        try {
+            cDeP.cerrarPedido(pedACerrar);
+        } catch (Exception ex) {
+            Logger.getLogger(RegistrarDevolucionComando.class.getName()).log(Level.SEVERE, null, ex);
+        }
         request.getSession().setAttribute("ExitoCierre", 1);
         request.getSession().setAttribute("ListaPendientes", null);
         

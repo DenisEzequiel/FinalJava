@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class CatalogoDePedidos {
     PedidoBD pedidos=new PedidoBD();
-    public void registrarPedido(Pedido p)
+    public void registrarPedido(Pedido p) throws Exception
     {
         
         
@@ -23,12 +23,12 @@ public class CatalogoDePedidos {
         
     }
     
-    public void cerrarPedido(Pedido p)
+    public void cerrarPedido(Pedido p) throws Exception
     {
         pedidos.cerrarPedido(p);
     }
     
-    public ArrayList<Pedido> obtenerPedidosPendientes(int idUsu)
+    public ArrayList<Pedido> obtenerPedidosPendientes(int idUsu) throws Exception
     {
         return pedidos.obtenerPedidosPendientes(idUsu);
     }

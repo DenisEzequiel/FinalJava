@@ -224,7 +224,18 @@
                                                Por favor ingrese una cantidad de días válida. 
                                                No se permiten alquileres que excedan los 15 días.
                                             </div>
-                                                <%session.setAttribute("errorDias", null);}         
+                                                <%session.setAttribute("errorDias", null);}  
+                                   else if(session.getAttribute("excepcion") != null)
+                                        {
+                                       %> 
+                                            
+                                            <div class="alert alert-danger">
+                                                <%=session.getAttribute("excepcion")%>
+                                            </div>
+                                        <%
+                                        };
+
+                                       %>     
 
 
                               else{ %> 
