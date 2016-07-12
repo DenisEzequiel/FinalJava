@@ -10,6 +10,8 @@ import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDePedidos;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -82,7 +84,14 @@ public class FinalizarPedidoComando extends Comando{
              if(contAlq>0)
              p.setEstado("finalizado");
              else p.setEstado("cerrado");
-             CdP.registrarPedido(p);
+            try {
+                CdP.registrarPedido(p);
+                
+            } catch (Exception ex) {
+                String e = ex.getMessage();
+                request.getSession().setAttribute("excepcion", "Error en la finalizacion del pedido");
+                return "/carro.jsp";
+            }
              request.getSession().setAttribute("exitoPedido", true);
              Pedido pedido = new Pedido();
              request.getSession().setAttribute("pedido", pedido);
