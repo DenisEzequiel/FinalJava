@@ -103,7 +103,7 @@
 								<li><a href="#thriller" data-toggle="tab">Thriller</a></li>
 							</ul>
 						</div>
-						<div class="tab-content">
+                                                <div class="tab-content">
 							<div class="tab-pane fade active in" id="comedia">
                                                             <%for(Pelicula p: pelisIndexComedia)
                                                             {%>
@@ -151,7 +151,7 @@
 								</div>
                                                                     <%}%>
 						
-							
+                                                        </div>
 							<div class="tab-pane fade active in" id="terror">
                                                             <%for(Pelicula p: pelisIndexTerror)
                                                             {%>
@@ -222,7 +222,7 @@
 									</div>
 								</div>
 								<%}%>
-							</div>
+                                                        </div>	
 						</div>
 					</div><!--/category-tab-->	
 				</div>
