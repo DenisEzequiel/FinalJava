@@ -15,14 +15,21 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JP
  */
-public class AdminUsuariosComando extends Comando
+public class AdminUsuariosComando extends Comando 
 {
     CatalogoDeUsuarios CdeUs = new CatalogoDeUsuarios();
     
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
-    {
-        ArrayList<Usuario> usuarios = CdeUs.obtenerUsuarios();
+    {   ArrayList<Usuario> usuarios =null;
+        try
+        {
+            usuarios = CdeUs.obtenerUsuarios();
+        } 
+        catch(Exception ex)
+        {
+            request.setAttribute("excepcion", "Error en la actualización de los usuarios");
+        }
         Usuario usuarioEdit = usuarios.get(0);
         request.getSession().setAttribute("ListaUsuarios", usuarios);
         request.getSession().setAttribute("UsuarioEdit", usuarioEdit);

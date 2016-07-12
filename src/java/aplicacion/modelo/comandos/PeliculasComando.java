@@ -89,8 +89,8 @@ public class PeliculasComando extends Comando
         }
      
         ParametroBD pbd = new ParametroBD();
+     
         Parametro par = pbd.obtenerParametros();
-        
         request.getSession().setAttribute("parametro", par);
         request.getSession().setAttribute("listaCartelera", listaPeliculas);
         request.getSession().setAttribute("cantidadPeliculas",cantidadDePeliculas);
