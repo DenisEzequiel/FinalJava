@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class CatalogoDeUsuarios
 {
     UsuarioBD usuarios;
-    public Usuario buscarUsuario(String nombre, String contra)
+    public Usuario buscarUsuario(String nombre, String contra) throws Exception
     { 
         usuarios = new UsuarioBD();
         Usuario usu = null;

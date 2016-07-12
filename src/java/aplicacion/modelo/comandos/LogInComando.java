@@ -7,6 +7,8 @@ package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +36,13 @@ public class LogInComando extends Comando
         String nomUsu = request.getParameter("nomUsu");
         String contra = request.getParameter("contra");
         Boolean recordar = (request.getParameter("recordarUsu")!=null);
-        Usuario usu = CdeU.buscarUsuario(nomUsu, contra);
+        Usuario usu=null;
+        try {
+            usu = CdeU.buscarUsuario(nomUsu, contra);
+        } catch (Exception ex) {
+            request.getSession().setAttribute("excepcion", ex.getMessage());
+            return "/login.jsp";
+        }
         Pedido p=(Pedido)request.getSession().getAttribute("pedido");
         if(usu!=null)
         {

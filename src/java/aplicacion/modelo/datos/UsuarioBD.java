@@ -19,13 +19,14 @@ public class UsuarioBD
 {
     Conexion conec = new Conexion();
     
-    public Usuario buscarUsuario(String nom, String contra)
+    public Usuario buscarUsuario(String nom, String contra) throws Exception
     {
         Usuario usu=null;
-        Connection con = conec.getConexion();
         String sql = "select * from usuarios where nombre_usuario=? and contrasena=? and activo=1;";
-        try
-        {
+        
+                
+            Connection con = conec.getConexion();
+                   
             PreparedStatement pr = con.prepareStatement(sql);
             pr.setString(1, nom);
             pr.setString(2, contra);
@@ -50,10 +51,7 @@ public class UsuarioBD
             }
             con.close();
             
-        }catch(SQLException ex)
-        {
-            
-        }
+      
         return usu;
     }
     

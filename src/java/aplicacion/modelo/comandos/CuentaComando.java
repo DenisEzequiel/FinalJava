@@ -13,6 +13,8 @@ import aplicacion.modelo.negocio.CatalogoDeUsuarios;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -66,7 +68,12 @@ public class CuentaComando extends Comando
         else
         {
             request.getSession().setAttribute("tabActual", "2");
-            Usuario usuario = CdeU.buscarUsuario(usu.getNombreUsuario(), request.getParameter("contraAnterior"));
+            Usuario usuario=null;
+            try {
+                usuario = CdeU.buscarUsuario(usu.getNombreUsuario(), request.getParameter("contraAnterior"));
+            } catch (Exception ex) {
+               request.getSession().setAttribute("excepcion", ex.getMessage());
+            }
             if(usuario!=null)
             {
                 if(request.getParameter("nuevaContra").equals(request.getParameter("repiteContra")))
