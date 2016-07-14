@@ -1,4 +1,3 @@
-
 <%@page import="aplicacion.modelo.entidades.Usuario"%>
 <%@page import="aplicacion.modelo.entidades.Parametro"%>
 <%@page import="aplicacion.modelo.entidades.LineaPedido"%>
