@@ -309,7 +309,7 @@ public class PeliculaDB
      
     public Pelicula obtenerPelicula(int idPeli) throws Exception
     {
-        Pelicula p = new Pelicula();
+        Pelicula p = null;
         String transac = "select * from peliculas where activo=1 and id_pelicula=?";
         
         try
@@ -320,7 +320,8 @@ public class PeliculaDB
             ResultSet res = pr.executeQuery();
                    
             if(res.next())
-            {
+            {   
+                p=new Pelicula();
                 p.setIdPelicula(res.getInt(1));
                 p.setNombre(res.getString(2));
                 p.setDuracion(res.getInt(3));
@@ -334,7 +335,6 @@ public class PeliculaDB
                 p.setPrecioVenta(res.getFloat(12));
                 p.setSinopsis(res.getString(13));
                 p.setAnio(res.getInt(14));  
-            }
             if(p.isEstreno())
             {
                 p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
@@ -343,6 +343,8 @@ public class PeliculaDB
             {
                 p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
             }
+            }
+           
             con.close();
         }
         catch(Exception ex)
@@ -649,8 +651,10 @@ public class PeliculaDB
             while(res.next())
             {
                 Pelicula p = obtenerPelicula(res.getInt(1));
-                               
-                listaGenero.add(p);
+                if(p!=null)
+                {               
+                    listaGenero.add(p);
+                }
             }
             con.close();
         }
