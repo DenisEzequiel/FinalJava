@@ -1,6 +1,17 @@
 <%@page import="aplicacion.modelo.entidades.Pedido"%>
 <%@page import="aplicacion.modelo.entidades.Usuario"%>
-<% Pedido pedido = (Pedido)session.getAttribute("pedido");%>
+
+<%  Pedido pedido=null; 
+    if(session.getAttribute("pedido")==null)
+    {
+        pedido = new Pedido();
+        session.setAttribute("pedido", pedido);
+        session.setAttribute("cantidadDias", 1);
+    }
+    else
+    {
+     pedido = (Pedido)session.getAttribute("pedido");
+    }%>
 <header id="header">
             <div class="header_top"><!--header_top-->
                 <div class="container">
@@ -58,8 +69,13 @@
                                                                                     session.setAttribute("exitoLogin", null); } %>">
                
                                                      <div class="popover-content">
-                                                         Usuario logueado, bienvenid@ <%Usuario usu= (Usuario)session.getAttribute("usuario");%>
-                                                                    <%=usu.getNombre()%> 
+                                                         Usuario logueado, bienvenid@ <%if(session.getAttribute("usuario")!=null)
+                                                         {
+                                                             Usuario usu= (Usuario)session.getAttribute("usuario");
+                                                             
+                                                           %>
+                                                              <%=usu.getNombre()%>
+                                                              <%}%>
                                                      </div>
                                                      
                                                 </div> 
@@ -105,12 +121,7 @@
                             </div>
                             <div class="mainmenu pull-left"> 
                                     <ul class="nav navbar-nav collapse navbar-collapse">                                                                           
-                                        <li>
-                                            <form action="Controlador" method="post">
-                                                <input type="hidden"  name="form" value="InicioComando"/>
-                                                <input type="submit" name="pagina" value="Inicio" >
-                                            </form>
-                                        </li>
+                                        <li><label><a href="index.jsp"><input type="button" name="pagina" value="Inicio"></a></label></li>
                                         <li>
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="form" value="PeliculasComando"/>

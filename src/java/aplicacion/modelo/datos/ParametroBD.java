@@ -6,6 +6,7 @@
 package aplicacion.modelo.datos;
 
 import aplicacion.modelo.entidades.Parametro;
+import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,14 +23,15 @@ public class ParametroBD {
     
      Conexion conec = new Conexion();
     
-    public Parametro obtenerParametros() throws Exception
+    public Parametro obtenerParametros() throws AefilepException
     { 
          Parametro par= null;
-         Connection con = conec.getConexion();
+         
         String sql = "select * from parametros where fecha_actualizacion like '2016-04-08' ;"; 
                         
         try
         {
+            Connection con = conec.getConexion();
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet res = ps.executeQuery();
   
@@ -51,9 +53,9 @@ public class ParametroBD {
             }
             con.close();
             
-        }catch(SQLException ex)
+        }catch(Exception ex)
         {
-            
+         throw new AefilepException("Error al obtener los datos de Aefilep",ex);
         }
         
         System.out.print("direccion: "+par.getDireccion());

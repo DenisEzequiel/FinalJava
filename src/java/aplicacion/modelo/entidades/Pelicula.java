@@ -112,6 +112,11 @@ public class Pelicula
     public String getSinopsis() {
         return sinopsis;
     }
+     public String getSinopsis(int cant) {
+         
+        return sinopsis.substring(0, cant);
+        
+    }
 
     /**
      * @param sinopsis the sinopsis to set

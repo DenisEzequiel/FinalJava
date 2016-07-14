@@ -37,7 +37,7 @@ public class AgregarUsuarioComando extends Comando
             }
             catch(ParseException e)
             {
-                
+                request.setAttribute("ex", "Ha ocurrido un error");
             }
         usNuevo.setNombre((String)request.getParameter("Nombre"));
         usNuevo.setApellido((String)request.getParameter("Apellido"));

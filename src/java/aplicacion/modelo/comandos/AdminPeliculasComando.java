@@ -10,8 +10,6 @@ import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,11 +27,16 @@ public class AdminPeliculasComando extends Comando
     {
         CdeP = new CatalogoDePeliculas();
         CdeG = new CatalogoDeGeneros();
+        ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+        ArrayList<Genero> generos = new ArrayList<Genero>();
+        Pelicula peliEdit = null;
         try
         {
-            ArrayList<Pelicula> peliculas = CdeP.obtenerPeliculas();
-            Pelicula peliEdit = peliculas.get(0);
+            peliculas = CdeP.obtenerPeliculas();
+            generos = CdeG.obtenerGeneros();
+            peliEdit = peliculas.get(0);
             request.getSession().setAttribute("ListaPeliculas", peliculas);
+            request.getSession().setAttribute("ListaGeneros", generos);
             request.getSession().setAttribute("PeliEdit", peliEdit);
         }
         catch(Exception ex)
@@ -41,17 +44,6 @@ public class AdminPeliculasComando extends Comando
             request.setAttribute("ex",ex.getMessage());
             return "/ABMPeliculas.jsp";
         }
-        finally
-        {
-            ArrayList<Genero> generos = null;
-            try {
-                generos = CdeG.obtenerGeneros();
-            } catch (Exception ex) {
-                request.setAttribute("ex",ex.getMessage());
-            }
-            request.getSession().setAttribute("ListaGeneros", generos);
-            return "/ABMPeliculas.jsp";
-        }
-    }
-    
+        return "/ABMPeliculas.jsp";
+    } 
 }

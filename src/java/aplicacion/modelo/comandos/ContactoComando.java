@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import aplicacion.modelo.entidades.Parametro;
 import aplicacion.modelo.datos.ParametroBD;
+import aplicacion.utilidades.AefilepException;
 /**
  *
  * @author marti_000
@@ -25,9 +26,10 @@ public class ContactoComando extends Comando
             Parametro par = pbd.obtenerParametros();           
             request.getSession().setAttribute("parametro", par);
             }
-            catch(Exception ex)
+            catch(AefilepException ex)
             {
-                request.setAttribute("excepcion", "Error en el acceso a los datos de Aefilep");
+                request.setAttribute("ex", ex.getMessage());
+                return "contacto.jsp";
             }
             return "contacto.jsp";
                            
