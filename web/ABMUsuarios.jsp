@@ -9,9 +9,13 @@
 <!DOCTYPE html>
 <html>
     <jsp:include page="head.jsp"/>
+    
     <body onload="scrollDiv();">
         <jsp:include page="header.jsp"/>
+        <% if(request.getAttribute("ex")==null)
+        {%>
         <%!ArrayList<Usuario> usuarios;%>
+        
         <% usuarios = (ArrayList)session.getAttribute("ListaUsuarios");%>
         <% Usuario usu;%>
         <% usu = (Usuario)session.getAttribute("UsuarioEdit");%>
@@ -229,6 +233,14 @@
             </form>
          </div>
       </div>
+                
+<%}
+else
+{%>
+     <div class="alert alert-danger">
+      <%=request.getAttribute("ex")%>
+     </div>
+<%}%>
     </body>
-    <jsp:include page="footer.jsp"/>
+<jsp:include page="footer.jsp"/>
 </html>
