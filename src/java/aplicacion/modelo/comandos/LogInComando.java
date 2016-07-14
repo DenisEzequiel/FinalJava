@@ -7,6 +7,7 @@ package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
+import aplicacion.utilidades.AefilepException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.Cookie;
@@ -29,19 +30,16 @@ public class LogInComando extends Comando
      */
     @Override
     public String ejecutar (HttpServletRequest request, HttpServletResponse response)
-    { 
-        
-       
-       
+    {    
         String nomUsu = request.getParameter("nomUsu");
         String contra = request.getParameter("contra");
         Boolean recordar = (request.getParameter("recordarUsu")!=null);
         Usuario usu=null;
         try {
             usu = CdeU.buscarUsuario(nomUsu, contra);
-        } catch (Exception ex) {
-            String e = ex.getMessage();
-            request.getSession().setAttribute("excepcion", "Error en el logueo del usuario");
+        } catch (AefilepException ex) 
+        {
+            request.setAttribute("ex", ex.getMessage());
             return "/login.jsp";
         }
         Pedido p=(Pedido)request.getSession().getAttribute("pedido");

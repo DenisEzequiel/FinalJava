@@ -7,6 +7,7 @@ package aplicacion.modelo.comandos;
 
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
+import aplicacion.utilidades.AefilepException;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,9 +44,10 @@ public class BuscarUsuarioComando extends Comando
         request.getSession().setAttribute("ListaPendientes", null);
         
         }
-        catch(Exception ex)
+        catch(AefilepException ex)
         {
-            request.setAttribute("excepcion","Error en buscar al usuario");
+            request.setAttribute("ex",ex.getMessage());
+            return "/Devoluciones.jsp";
         }
        
         return "/Devoluciones.jsp";

@@ -7,6 +7,7 @@ package aplicacion.modelo.comandos;
 
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
+import aplicacion.utilidades.AefilepException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,7 +36,7 @@ public class RegistroComando extends Comando
             }
             catch(ParseException e)
             {
-                
+                request.setAttribute("ex", "Ha ocurrido un error");
             }
             
         us.setNombre((String)request.getParameter("Nombre"));
@@ -50,17 +51,18 @@ public class RegistroComando extends Comando
         try
         {
         CdeU.registrarUsuario(us);
-        request.getSession().setAttribute("usuario", us);
+       
+        }
+        catch(AefilepException ex)
+        {
+             request.setAttribute("ex",ex.getMessage());
+             return "/signup.jsp";
+        }
+         request.getSession().setAttribute("usuario", us);
         request.getSession().setAttribute("exitoLogin", true);
-        }
-        catch(Exception ex)
-        {
-             request.getSession().setAttribute("excepcion","Error en registrar al nuevo usuario");
-        }
-        finally
-        {
+       
         return "/index.jsp";
-        }
+        
     }
     
 }

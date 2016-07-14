@@ -493,7 +493,7 @@ public class PeliculaDB
                         p.setUrlTrailer(res2.getString(11));
                         p.setPrecioVenta(res2.getFloat(12));
                         p.setSinopsis(res2.getString(13));
-                        p.setAnio(res.getInt(14));
+                        p.setAnio(res2.getInt(14));
                          if(p.isEstreno())
                 {
                     p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
