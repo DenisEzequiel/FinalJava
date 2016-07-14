@@ -7,6 +7,7 @@ package aplicacion.modelo.comandos;
 
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
+import aplicacion.utilidades.AefilepException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class AgregarUsuarioComando extends Comando
             }
             catch(ParseException e)
             {
-                
+                request.setAttribute("ex", "Ha ocurrido un error");
             }
         usNuevo.setNombre((String)request.getParameter("Nombre"));
         usNuevo.setApellido((String)request.getParameter("Apellido"));
@@ -61,9 +62,10 @@ public class AgregarUsuarioComando extends Comando
         request.getSession().setAttribute("ExitoUsu", true);
         
         }
-        catch(Exception ex)
+        catch(AefilepException ex)
         {
-            request.setAttribute("excepcion", "Error en registración");
+            request.setAttribute("ex", ex.getMessage());
+            return"/ABMUsuarios.jsp";
         }
         
      

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
+import aplicacion.utilidades.AefilepException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,7 +40,9 @@ public class CuentaComando extends Comando
                 usuarioModificado.setFechaNacimiento(new java.sql.Date(fecha.getTime()));
             }
             catch(ParseException e)
-            { }
+            {
+                request.setAttribute("ex", "Ha ocurrido un error");
+            }
             
             usuarioModificado.setIdUsuario(usu.getIdUsuario());
             usuarioModificado.setNombre(request.getParameter("nombre"));
@@ -53,9 +56,9 @@ public class CuentaComando extends Comando
             {
             CdeU.modificarUsuario(usuarioModificado);
             }
-            catch(Exception ex)
+            catch(AefilepException ex)
             {
-                request.getSession().setAttribute("excepcion","Error en la actualizacion de los datos");
+                request.getSession().setAttribute("ex",ex.getMessage());
             }
             usu.setNombre(request.getParameter("nombre"));
             usu.setApellido(request.getParameter("apellido"));
@@ -76,7 +79,7 @@ public class CuentaComando extends Comando
             try {
                 usuario = CdeU.buscarUsuario(usu.getNombreUsuario(), request.getParameter("contraAnterior"));
             } catch (Exception ex) {
-               request.getSession().setAttribute("excepcion", ex.getMessage());
+               request.getSession().setAttribute("ex", ex.getMessage());
             }
             if(usuario!=null)
             {
@@ -88,17 +91,19 @@ public class CuentaComando extends Comando
                     if(exito)
                         request.getSession().setAttribute("contraCambiada","1");
                     else
-                        request.getSession().setAttribute("contraCambiada","0");                    
+                        request.getSession().setAttribute("contraCambiada","0");  
+                    
+                    return  "/cuenta.jsp";
                     
                     }
                     catch(Exception ex)
                     {
-                         request.setAttribute("excepcion","Error en la actualización de los datos");
-                    }
-                    finally
-                    {
+                         request.setAttribute("ex",ex.getMessage());
+                         
                         return  "/cuenta.jsp";
                     }
+
+                    
                 }
             }
             request.getSession().setAttribute("contraCambiada","0");

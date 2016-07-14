@@ -210,9 +210,9 @@
                                 <div class="alert alert-success fade<%if(session.getAttribute("ExitoUsu")!=null){ %> in <%session.setAttribute("ExitoUsu", null);} %>">
                                     Usuario <%if(usu==null){ %>agregado<% }else{%>editado<%}%> con éxito.        
                                 </div>
-                                <% if(request.getAttribute("excepcion")!=null){%>
+                                <% if(request.getAttribute("ex")!=null){%>
                                                         <div class="alert alert-danger">
-                                                              <%=request.getAttribute("excepcion")%>
+                                                              <%=request.getAttribute("ex")%>
                                                            </div>
                                                          <%}%>
                             </div>

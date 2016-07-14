@@ -36,7 +36,7 @@ public class EditarUsuarioComando extends Comando
             }
             catch(ParseException e)
             {
-                
+                request.setAttribute("ex", "Ha ocurrido un error");
             }
         usEditado.setIdUsuario( Integer.parseInt(request.getParameter("ID")));
         usEditado.setNombre((String)request.getParameter("Nombre"));
@@ -53,19 +53,22 @@ public class EditarUsuarioComando extends Comando
         usEditado.setActivo(esActivo);
         usEditado.setEsAdmin(esAdmin);
         usEditado.setBloqueado(esBloq);
+        ArrayList<Usuario> usuarios=null;
         try
         {
         cDeUsu.editarUsuario(usEditado);
-        ArrayList<Usuario> usuarios = cDeUsu.obtenerUsuarios();
+       usuarios = cDeUsu.obtenerUsuarios();
+        
+        }
+        catch(Exception ex)
+        {
+              request.setAttribute("ex",ex.getMessage());
+              return"/ABMUsuarios.jsp";
+        }
         request.getSession().setAttribute("ListaUsuarios", usuarios);
         request.getSession().setAttribute("UsuarioEdit", usEditado);
         request.getSession().setAttribute("Scroll",true);
         request.getSession().setAttribute("ExitoUsu", true);
-        }
-        catch(Exception ex)
-        {
-              request.setAttribute("excepcion","Error en la actualización de datos");
-        }
         
         
         return"/ABMUsuarios.jsp";

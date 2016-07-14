@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import aplicacion.utilidades.AefilepException;
 
 /**
  *
@@ -19,12 +20,14 @@ public class UsuarioBD
 {
     Conexion conec = new Conexion();
     
-    public Usuario buscarUsuario(String nom, String contra) throws Exception
+    public Usuario buscarUsuario(String nom, String contra) throws AefilepException
     {
         Usuario usu=null;
         String sql = "select * from usuarios where nombre_usuario=? and contrasena=? and activo=1;";
         Connection con =null; 
         
+        try
+        {
         con = conec.getConexion();
 
         PreparedStatement pr = con.prepareStatement(sql);
@@ -50,15 +53,20 @@ public class UsuarioBD
                 usu.setTelefono(res.getString(7));  
             }
             con.close();
-        
+        }
+        catch(Exception ex)
+        {
+            throw new AefilepException("Error al recuperar usuario",ex);
+        }
                  
         return usu;
     }
     
-    public ArrayList<Usuario> buscarUsuarios(Usuario usu) throws Exception
+    public ArrayList<Usuario> buscarUsuarios(Usuario usu) throws AefilepException
     {
         ArrayList<Usuario> resultado = new ArrayList<Usuario>();
-        Connection con = conec.getConexion();
+                
+        
         String apell = usu.getApellido();
         String sql = "select * from aefilep.usuarios where activo=1 and apellido like '"+apell+"%'";
         int id = usu.getIdUsuario();
@@ -73,6 +81,7 @@ public class UsuarioBD
         sql = sql+";";
         try
         {
+            Connection con = conec.getConexion();
             PreparedStatement pr = con.prepareStatement(sql);
             ResultSet res = pr.executeQuery();
             
@@ -96,20 +105,21 @@ public class UsuarioBD
             }
             con.close();
             
-        }catch(SQLException ex)
+        }catch(Exception ex)
         {
-            
+            throw new AefilepException("Error al recuperar usuarios", ex);
         }
         return resultado;
     }
     
-    public ArrayList<Usuario> obtenerUsuarios() throws Exception
+    public ArrayList<Usuario> obtenerUsuarios() throws AefilepException
     {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-        Connection con = conec.getConexion();
+      
         String sql = "select * from usuarios;";
         try
-        {
+        {   
+            Connection con = conec.getConexion();
             PreparedStatement pr = con.prepareStatement(sql);
             ResultSet res = pr.executeQuery();
             
@@ -134,20 +144,21 @@ public class UsuarioBD
             }
             con.close();
             
-        }catch(SQLException ex)
+        }catch(Exception ex)
         {
-            
+            throw new AefilepException("Error al recuperar usuarios", ex);
         }
         return usuarios;
     }
     
-    public void editarUsuario(Usuario usu) throws Exception
+    public void editarUsuario(Usuario usu) throws AefilepException
     {
-        Connection con = conec.getConexion();
+        
         String sql = "update usuarios set nombre=? , apellido=? , direccion=? ,"
                 + " telefono=? , mail=?,dni=?,fecha_de_nacimiento=?,bloqueado=?,activo=?,es_admin=?,nombre_usuario=? where id_usuario=?";
         try
         {
+            Connection con = conec.getConexion();
             PreparedStatement pr = con.prepareStatement(sql);
             pr.setString(1, usu.getNombre());
             pr.setString(2, usu.getApellido());
@@ -164,20 +175,23 @@ public class UsuarioBD
             pr.executeUpdate();
             con.close();
         }
-         catch(SQLException ex)
+         catch(Exception ex)
         {
+            throw new AefilepException("Error al modificar datos del usuario", ex);
         }
     }
     
-    public void modificarUsuario(Usuario usu) throws Exception
+    //Ver que estos metodos son practicamente iguales
+    public void modificarUsuario(Usuario usu) throws AefilepException
     {   
         
-        Connection con = conec.getConexion();
+        
         String sql = "update usuarios set nombre=? , apellido=? , direccion=? ,"
                 + " telefono=? , mail=?,dni=?,fecha_de_nacimiento=? where id_usuario=?";
    
         try
         {
+            Connection con = conec.getConexion();
             PreparedStatement pr = con.prepareStatement(sql);
             pr.setString(1, usu.getNombre());
             pr.setString(2, usu.getApellido());
@@ -190,19 +204,21 @@ public class UsuarioBD
             pr.executeUpdate();
             con.close();
         }
-         catch(SQLException ex)
+         catch(Exception ex)
         {
+            throw new AefilepException("Error al modificar datos del usuario", ex);
         }
         
     }
     
-    public boolean modificarContrasenia(int id,String contra) throws Exception
+    public boolean modificarContrasenia(int id,String contra) throws AefilepException
     {
-        Connection con = conec.getConexion();
+        boolean res=false;
         String sql = "update usuarios set contrasena=? where id_usuario=?";
    
         try
         {
+            Connection con = conec.getConexion();
             PreparedStatement pr = con.prepareStatement(sql);
             pr.setString(1, contra);         
             pr.setInt(2,id);
@@ -210,19 +226,22 @@ public class UsuarioBD
             con.close();
         }
          catch(SQLException ex)
-        {
-            return false;
+        {     
+            throw new AefilepException("Error al modificar datos del usuario", ex);
+            
         }
-        return true;
+        res=true;
+        return res;
     }
     
-public void agregarUsuario(Usuario usu) throws Exception
+public void agregarUsuario(Usuario usu) throws AefilepException
 {
     PreparedStatement prpstmt;
-        Connection con = conec.getConexion();
+        
         String transac1 = "insert into aefilep.usuarios values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
         try
         {
+            Connection con = conec.getConexion();
             prpstmt = con.prepareStatement(transac1);
             prpstmt.setNull(1,0);
             prpstmt.setString(2, usu.getNombre());
@@ -241,19 +260,21 @@ public void agregarUsuario(Usuario usu) throws Exception
             
             con.close();
         }
-        catch(SQLException e)
+        catch(Exception ex)
         {
+             throw new AefilepException("Error al crear un nuevo usuario", ex);
             
         }
 }
             
-public void registrarUsuario(Usuario usu) throws Exception
+public void registrarUsuario(Usuario usu) throws AefilepException
     {
         PreparedStatement prpstmt;
-        Connection con = conec.getConexion();
+        
         String transac1 = "insert into aefilep.usuarios values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
         try
         {
+            Connection con = conec.getConexion();
             prpstmt = con.prepareStatement(transac1);
             prpstmt.setNull(1,0);
             prpstmt.setString(2, usu.getNombre());
@@ -272,8 +293,10 @@ public void registrarUsuario(Usuario usu) throws Exception
             
             con.close();
         }
-        catch(SQLException e)
+        //Otra vez metodos iguales
+        catch(Exception ex)
         {
+             throw new AefilepException("Error al crear un nuevo usuario", ex);
             
         }
     }

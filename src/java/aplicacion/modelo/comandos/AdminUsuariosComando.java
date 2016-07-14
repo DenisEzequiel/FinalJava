@@ -9,6 +9,7 @@ import aplicacion.modelo.negocio.CatalogoDeUsuarios;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import aplicacion.utilidades.AefilepException;
 
 /**
  *
@@ -25,9 +26,10 @@ public class AdminUsuariosComando extends Comando
         {
             usuarios = CdeUs.obtenerUsuarios();
         } 
-        catch(Exception ex)
+        catch(AefilepException ex)
         {
-            request.setAttribute("excepcion", "Error en la actualización de los usuarios");
+            request.setAttribute("ex", ex.getMessage());
+            return "/ABMUsuarios.jsp";
         }
         Usuario usuarioEdit = usuarios.get(0);
         request.getSession().setAttribute("ListaUsuarios", usuarios);

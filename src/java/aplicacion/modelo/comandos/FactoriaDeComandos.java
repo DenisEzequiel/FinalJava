@@ -28,7 +28,6 @@ public class FactoriaDeComandos
         mapa.put("LogOutComando", LogOutComando.class);
         mapa.put("AgregarLineaComando", AgregarLineaComando.class);
         mapa.put("ActualizarLineaComando",ActualizarLineaComando.class);
-        mapa.put("InicioComando", InicioComando.class);
         mapa.put("AdminUsuariosComando",AdminUsuariosComando.class);
         mapa.put("SeleccionarUsuarioComando", SeleccionarUsuarioComando.class);
         mapa.put("FinalizarPedidoComando", FinalizarPedidoComando.class);

@@ -4,9 +4,7 @@
     </head>
 
     <body>
-        <%
-                    Parametro par = (Parametro) session.getAttribute("parametro");
-        %>
+       
         <jsp:include page="header.jsp"/>
         <%@page import="aplicacion.modelo.entidades.Parametro"%>        
         <section class ="seccion">
@@ -37,14 +35,10 @@
                                                         <div class="row">
                                                         <div class="alert alert-success popover fade left <%if(session.getAttribute("ExitoMensajeEnviado")!=null)
                                                                                                                     { %> in <%
-                                                                                                                        session.setAttribute("ExitoMensajeEnviado", null); } %>">
+                                                                                                                        session.setAttribute("ExitoMensajeEnviado", null);}  %>">
                                                         Mensaje enviado con éxito. Gracias por contactarse.
                                                         </div> 
-                                                        <% else if(request.getAttribute("excepcion")!=null){%>
-                                                        <div class="alert alert-danger">
-                                                              <%=request.getAttribute("excepcion")%>
-                                                           </div>
-                                                         <%}%>
+                                                        
             
                                                         <input type="hidden" name="form" value="EnviarMensajeComando" >
                                                         <input type="submit" name="submit" class="btn btn-primary pull-right" value="Enviar">
@@ -57,11 +51,22 @@
                                         <div class="contact-info">
                                                 <h2 class="title text-center">Información Nuestra</h2>
                                                 <address>
+                                                    <%if(session.getAttribute("parametro")!=null)
+                                                    {
+                                                     Parametro par =(Parametro)session.getAttribute("parametro");
+                                                        %>
+
                                                         <p><%= par.getRazonSocial()%> </p>
                                                         <p> <%= par.getDireccion() %></p>
                                                         <p>Argentina- Rosario</p>
                                                         <p>Telefono: <%= par.getTelefono()%> </p>
                                                         <p>Email: <%= par.getMail()%> </p>
+                                                      <%  }
+                                                      else if(request.getAttribute("ex")!=null){%>
+                                                        <div class="alert alert-danger">
+                                                              <%=request.getAttribute("ex")%>
+                                                           </div>
+                                                         <%}%>
                                                 </address>
 
                                         </div>
