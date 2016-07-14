@@ -17,13 +17,19 @@
         <%!ArrayList<Pelicula> peliculas;%>
         <%!ArrayList<Genero> generos;%>
         <%!Parametro param;%>
-        <% param = (Parametro) session.getAttribute("parametro");%>
-        <% peliculas = (ArrayList)session.getAttribute("ListaPeliculas");%>
-        <% generos = (ArrayList)session.getAttribute("ListaGeneros");%>
-        <% Pelicula peli;%>
-        <% peli = (Pelicula)session.getAttribute("PeliEdit");%>
+        <%! Pelicula peli;%>
+        <% if(session.getAttribute("parametro")!=null){ param = (Parametro) session.getAttribute("parametro"); }%>
+        <% if(session.getAttribute("ListaPeliculas")!=null) { peliculas = (ArrayList)session.getAttribute("ListaPeliculas");}%>
+        <% if(session.getAttribute("ListaGeneros")!=null) { generos = (ArrayList)session.getAttribute("ListaGeneros");}%>
+        <% if(session.getAttribute("PeliEdit")!=null) { peli = (Pelicula)session.getAttribute("PeliEdit");}%>
         <div class="cuenta">
             <div class="container"> 
+                <div class="row">
+                    <div class="alert alert-success fade<%if(request.getAttribute("ex")!=null){ %> in <%}%>">
+                        <%= request.getAttribute("ex")%>
+                    </div>
+                </div>
+                <% if(request.getAttribute("ex")==null) { %>
                 <div class="row">
                     <h2 class="title text-center">Lista de Peliculas</h2> 
                 <div class="col-sm-12">
@@ -254,6 +260,7 @@
                     </div>
             </form>
             </div>
+            <% }%>
          </div>
       </div>
     </body>

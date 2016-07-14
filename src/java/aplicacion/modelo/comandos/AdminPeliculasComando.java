@@ -27,23 +27,23 @@ public class AdminPeliculasComando extends Comando
     {
         CdeP = new CatalogoDePeliculas();
         CdeG = new CatalogoDeGeneros();
+        ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+        ArrayList<Genero> generos = new ArrayList<Genero>();
+        Pelicula peliEdit = null;
         try
         {
-            ArrayList<Pelicula> peliculas = CdeP.obtenerPeliculas();
-            Pelicula peliEdit = peliculas.get(0);
+            peliculas = CdeP.obtenerPeliculas();
+            generos = CdeG.obtenerGeneros();
+            peliEdit = peliculas.get(0);
             request.getSession().setAttribute("ListaPeliculas", peliculas);
+            request.getSession().setAttribute("ListaGeneros", generos);
             request.getSession().setAttribute("PeliEdit", peliEdit);
         }
         catch(Exception ex)
         {
-            request.getSession().setAttribute("Excepcion","Error al recuperar películas");
-        }
-        finally
-        {
-            ArrayList<Genero> generos = CdeG.obtenerGeneros();
-            request.getSession().setAttribute("ListaGeneros", generos);
+            request.setAttribute("ex",ex.getMessage());
             return "/ABMPeliculas.jsp";
         }
-    }
-    
+        return "/ABMPeliculas.jsp";
+    } 
 }
