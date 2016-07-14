@@ -20,13 +20,13 @@
                                                 
                                                 <form id="main-contact-form" class="contact-form row" name="Controlador" method="post">
                                                     <div class="form-group col-md-6">
-                                                        <input type="text" name="name" class="form-control" required="required" placeholder="Nombre">
+                                                        <input type="text" name="name" class="form-control" required="required" pattern="^[a-zA-Z ]*$" title="Letras" placeholder="Nombre">
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <input type="email" name="email" class="form-control" required="required" placeholder="Email">
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <input type="text" name="subject" class="form-control" required="required" placeholder="Asunto">
+                                                        <input type="text" name="subject" class="form-control" pattern="^[a-zA-Z ]*$" title="Letras" required="required" placeholder="Asunto">
                                                     </div>
                                                     <div class="form-group col-md-12">
                                                         <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Escribir mensaje"></textarea>
