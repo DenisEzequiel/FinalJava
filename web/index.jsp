@@ -10,13 +10,6 @@
 <jsp:include page="head.jsp"/>
     
 <body>
-    <% if(session.getAttribute("pedido")==null)
-    {
-        Pedido pedido = new Pedido();
-        session.setAttribute("pedido", pedido);
-        session.setAttribute("cantidadDias", 1);
-    }
-    %>
     <jsp:include page="header.jsp"/>
     <%CatalogoDePeliculas CdP= new CatalogoDePeliculas();
         ArrayList<Pelicula>pelisCarrusel= CdP.obtenerEstrenos(3);
