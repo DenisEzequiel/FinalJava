@@ -64,7 +64,8 @@ public class PeliculaDB
     
     public void actualizarPelicula(Pelicula p) throws Exception
     {
-        String sql = "update aefilep.peliculas set nombre=?, duracion=?, formato=?, stock_alquiler=?,"
+        if(p.getImagen()!=null)
+        {String sql = "update aefilep.peliculas set nombre=?, duracion=?, formato=?, stock_alquiler=?,"
                 + "stock_compra=?, reparto=?, activo=?,url_trailer=?, precio_venta=?, sinopsis=?, anio=?, imagen=? where id_pelicula=?;";
         try
         {
@@ -91,6 +92,41 @@ public class PeliculaDB
         {
             throw new AefilepException("Error al actualizar datos de la película",ex);
         }
+        
+        }
+         else
+            
+        {
+         String sql = "update aefilep.peliculas set nombre=?, duracion=?, formato=?, stock_alquiler=?,"
+                + "stock_compra=?, reparto=?, activo=?,url_trailer=?, precio_venta=?, sinopsis=?, anio=? where id_pelicula=?;";
+        try
+        {
+            con = conec.getConexion();
+            PreparedStatement pr = con.prepareStatement(sql);
+            pr.setString(1, p.getNombre());
+            pr.setInt(2, p.getDuracion());
+            pr.setString(3, p.getFormato());
+            pr.setInt(4, p.getStockAlquiler());
+            pr.setInt(5, p.getStockVenta());           
+            pr.setString(6, p.getReparto());
+            pr.setBoolean(7, p.isActivo());            
+            pr.setString(8, p.getUrlTrailer());
+            pr.setFloat(9, p.getPrecioVenta());
+            pr.setString(10, p.getSinopsis());
+            pr.setInt(11, p.getAnio());           
+            pr.setInt(12, p.getIdPelicula());
+            pr.executeUpdate();
+            pelgenBD.actualizarPeliculasGeneros(p);
+            con.close();
+        }
+        catch(Exception ex)
+        {
+            throw new AefilepException("Error al actualizar datos de la película",ex);
+        }   
+        }
+            
+         
+        
     }
      
     public byte[] buscarImagen(int id) throws Exception
@@ -273,7 +309,7 @@ public class PeliculaDB
      
     public Pelicula obtenerPelicula(int idPeli) throws Exception
     {
-        Pelicula p = new Pelicula();
+        Pelicula p = null;
         String transac = "select * from peliculas where activo=1 and id_pelicula=?";
         
         try
@@ -284,7 +320,8 @@ public class PeliculaDB
             ResultSet res = pr.executeQuery();
                    
             if(res.next())
-            {
+            {   
+                p=new Pelicula();
                 p.setIdPelicula(res.getInt(1));
                 p.setNombre(res.getString(2));
                 p.setDuracion(res.getInt(3));
@@ -298,7 +335,6 @@ public class PeliculaDB
                 p.setPrecioVenta(res.getFloat(12));
                 p.setSinopsis(res.getString(13));
                 p.setAnio(res.getInt(14));  
-            }
             if(p.isEstreno())
             {
                 p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
@@ -307,6 +343,8 @@ public class PeliculaDB
             {
                 p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
             }
+            }
+           
             con.close();
         }
         catch(Exception ex)
@@ -613,8 +651,10 @@ public class PeliculaDB
             while(res.next())
             {
                 Pelicula p = obtenerPelicula(res.getInt(1));
-                               
-                listaGenero.add(p);
+                if(p!=null)
+                {               
+                    listaGenero.add(p);
+                }
             }
             con.close();
         }

@@ -125,7 +125,7 @@
                                         <h4 class="text-left">Año</h4>
                                     </div>
                                     <div class="col-lg-9">
-                                        <input type="text" class="control form-control" name="anioPel" placeholder="* (Año de lanzamiento)" required value="<%if(peli!=null)%><%= peli.getAnio() %>">
+                                        <input type="text" class="control form-control" name="anioPel" placeholder="* (Año de lanzamiento)" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null)%><%= peli.getAnio() %>">
                                     </div>
                             </div>
                             <div class="row">
@@ -133,7 +133,7 @@
                                         <h4 class="text-left">Título</h4>
                                     </div>
                                     <div class="col-lg-9">
-                                        <input type="text" class="control form-control" name="nomPel" placeholder="*" required value="<%if(peli!=null)%><%=peli.getNombre()%>">
+                                        <input type="text" class="control form-control" name="nomPel" placeholder="*"  required value="<%if(peli!=null)%><%=peli.getNombre()%>">
                                     </div>
                             </div>
                             <div class="row">
@@ -146,10 +146,10 @@
                             </div>
                             <div class="row">
                                     <div class="col-lg-6">
-                                        <input class="control form-control"  type="text" placeholder="* (En min.)" name="durPel" value="<%if(peli!=null)%><%=peli.getDuracion()%>">
+                                        <input class="control form-control"  type="text" placeholder="* (En min.)" name="durPel" pattern="^[0-9]*$" title="Numero" value="<%if(peli!=null)%><%=peli.getDuracion()%>">
                                     </div>
                                     <div class="col-lg-6">
-                                        <input type="text" class="control form-control" name="formPel" placeholder="*" required value="<%if(peli!=null)%><%=peli.getFormato()%>">
+                                        <input type="text" class="control form-control" name="formPel" placeholder="*"  required value="<%if(peli!=null)%><%=peli.getFormato()%>">
                                     </div>
                             </div>
                             <div class="row">
@@ -184,10 +184,10 @@
                         </div>
                         <div class="row">
                                     <div class="col-lg-6">
-                                        <input type="text" class="control form-control" name="stockAlqPel" placeholder="*" required value="<%if(peli!=null)%><%=peli.getStockAlquiler()%>">
+                                        <input type="text" class="control form-control" name="stockAlqPel" placeholder="*" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null)%><%=peli.getStockAlquiler()%>">
                                     </div>
                                     <div class="col-lg-6">
-                                        <input type="text" class="control form-control" name="stockVtaPel" placeholder="*" required value="<%if(peli!=null)%><%=peli.getStockVenta()%>">
+                                        <input type="text" class="control form-control" name="stockVtaPel" placeholder="*" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null)%><%=peli.getStockVenta()%>">
                                     </div>
                         </div>
                         <div class="row">
@@ -200,10 +200,10 @@
                             </div>
                             <div class="row">
                                     <div class="col-lg-6">
-                                        <input type="text" class="control form-control" name="palqPel" placeholder="Precio Alquiler" readonly required value="<%if(peli!=null){%><%= peli.getPrecioAlquiler()%><%}else if(peli==null){%><%= param.getPrecioAlquilerEstreno()%><%}%>">
+                                        <input type="text" class="control form-control" name="palqPel" placeholder="Precio Alquiler" pattern="^[0-9]*$" title="Numero" readonly required value="<%if(peli!=null){%><%= peli.getPrecioAlquiler()%><%}else if(peli==null){%><%= param.getPrecioAlquilerEstreno()%><%}%>">
                                     </div>
                                     <div class="col-lg-6">
-                                        <input type="text" class="control form-control" name="pvtaPel" placeholder="* (En $)" required value="<%if(peli!=null)%><%= peli.getPrecioVenta() %>">
+                                        <input type="text" class="control form-control" name="pvtaPel" placeholder="* (En $)" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null)%><%= peli.getPrecioVenta() %>">
                                     </div>
                             </div>
                             <div class="row">
