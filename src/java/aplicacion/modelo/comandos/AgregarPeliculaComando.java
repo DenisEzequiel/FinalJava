@@ -9,14 +9,10 @@ import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import java.io.InputStream;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
@@ -32,86 +28,73 @@ public class AgregarPeliculaComando extends Comando
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
-        
-            ArrayList<Genero> generos = null;
-        try {
-            generos = cdG.obtenerGeneros();
-        } catch (Exception ex) {
-            request.setAttribute("ex",ex.getMessage());
-        }
-            Part img = null;
-            pelicula=new Pelicula();
-            pelicula.setActivo(true);
-            pelicula.setFormato(request.getParameter("formPel"));
-            pelicula.setNombre(request.getParameter("nomPel"));
-            pelicula.setDuracion(Integer.parseInt(request.getParameter("durPel")));
-            pelicula.setPrecioVenta(Float.parseFloat(request.getParameter("pvtaPel")));
-            pelicula.setReparto(request.getParameter("repPel"));
-            pelicula.setSinopsis(request.getParameter("sinPel"));
-            pelicula.setStockAlquiler(Integer.parseInt(request.getParameter("stockAlqPel")));
-            pelicula.setStockVenta(Integer.parseInt(request.getParameter("stockVtaPel")));
-            pelicula.setUrlTrailer(request.getParameter("urlPel"));
-            pelicula.setAnio(Integer.parseInt(request.getParameter("anioPel")));
-            DateFormat hoyFormato = new SimpleDateFormat("yyyy/MM/dd");      
-            Date hoy=new Date();
-            hoyFormato.format(hoy);
-            pelicula.setFechaCarga(hoy);
-
-            Part imagen = null;
-            try {
-            imagen = request.getPart("imgPel");
-            InputStream inputStream = imagen.getInputStream();
-            if(inputStream!=null)
-                pelicula.setImagen(inputStream);
-              } catch (Exception ex)
+        pelicula=new Pelicula();
+        pelicula.setActivo(true);
+        pelicula.setFormato(request.getParameter("formPel"));
+        pelicula.setNombre(request.getParameter("nomPel"));
+        pelicula.setDuracion(Integer.parseInt(request.getParameter("durPel")));
+        pelicula.setPrecioVenta(Float.parseFloat(request.getParameter("pvtaPel")));
+        pelicula.setReparto(request.getParameter("repPel"));
+        pelicula.setSinopsis(request.getParameter("sinPel"));
+        pelicula.setStockAlquiler(Integer.parseInt(request.getParameter("stockAlqPel")));
+        pelicula.setStockVenta(Integer.parseInt(request.getParameter("stockVtaPel")));
+        pelicula.setUrlTrailer(request.getParameter("urlPel"));
+        pelicula.setAnio(Integer.parseInt(request.getParameter("anioPel")));
+        DateFormat hoyFormato = new SimpleDateFormat("yyyy/MM/dd");      
+        Date hoy=new Date();
+        hoyFormato.format(hoy);
+        pelicula.setFechaCarga(hoy);
+        //Comparo todos los generos con los seleccionados y los agrego a la película
+        ArrayList<Genero> generos = (ArrayList)request.getSession().getAttribute("ListaGeneros");
+        String selecc[] = request.getParameterValues("generos");
+        for(Genero g: generos)
+        {
+            for(int i=0; i<selecc.length;i++)  
             {
-                request.setAttribute("ex","Error al cargar imagen");
-                return ("/ABMPeliculas.jsp");
-            }
-            
-            try
-            {
-                img = request.getPart("imgPel");
-                pelicula.setImagen(img.getInputStream());
-            } 
-            catch (Exception ex)
-            {
-                request.setAttribute("ex",ex.getMessage());
-                return ("/ABMPeliculas.jsp");
-            }
-            String selecc[] = request.getParameterValues("generos");
-            for(Genero g: generos)
-            {
-                for(int i=0; i<selecc.length;i++)  
+                if(g.getIdGenero()==Integer.parseInt(selecc[i]))
                 {
-                    if(g.getIdGenero()==Integer.parseInt(selecc[i]))
-                    {
-                        pelicula.agregarGenero(g);
-                    }
+                    pelicula.agregarGenero(g);
                 }
             }
-            
-            ArrayList<Pelicula> peliculas = new ArrayList<>();
-            try
+        }    
+        //agregamos imagen a la película si
+        Part imagen = null;
+        try
+        {
+            if(request.getPart("imgPel")!=null)
             {
-                cDp.agregarPelicula(pelicula);
-                peliculas = cDp.obtenerPeliculas();
-                request.getSession().setAttribute("ListaPeliculas", peliculas);
-                request.getSession().setAttribute("PeliEdit", pelicula);
-                request.getSession().setAttribute("Scroll",true);
-                request.getSession().setAttribute("ExitoPeli", true);
+                imagen = request.getPart("imgPel");
+                InputStream inputStream = imagen.getInputStream();
+                if(inputStream!=null)
+                pelicula.setImagen(inputStream);
             }
-            catch(Exception ex)
-            {
-               // request.getSession().setAttribute("ExitoPeli", false);
-                request.setAttribute("ex",ex.getMessage());
-                return ("/ABMPeliculas.jsp");
-            }
-            
-            
-            
+        }
+        catch (Exception ex)
+        {
+            //estas excepciones no son del servidor, por eso está puesto
+            //a mano el mensaje de error.
+            request.setAttribute("ex","Error al cargar imagen");
+            return ("/ABMPeliculas.jsp");
+        }
+        //Agrego la película y actualizo la lista
+        ArrayList<Pelicula> peliculas = new ArrayList<>();
+        try
+        {
+            cDp.agregarPelicula(pelicula);
+            peliculas = cDp.obtenerPeliculas();
+            request.getSession().setAttribute("ListaPeliculas", peliculas);
+            request.getSession().setAttribute("PeliEdit", pelicula);
+            request.getSession().setAttribute("Scroll",true);
+            request.getSession().setAttribute("ExitoPeli", true);
+        }
+        catch(Exception ex)
+        {
+            request.setAttribute("ex", ex.getMessage());
+            request.getSession().setAttribute("Scroll",true);
+            return "/ABMPeliculas.jsp";
+        }
         
-        return ("/ABMPeliculas.jsp");
+        return "/ABMPeliculas.jsp";
     }
     
     
