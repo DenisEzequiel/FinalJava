@@ -6,8 +6,10 @@
 package aplicacion.modelo.comandos;
 
 import aplicacion.modelo.entidades.Genero;
+import aplicacion.modelo.entidades.Parametro;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
+import aplicacion.modelo.negocio.CatalogoDeParametros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -21,23 +23,28 @@ public class AdminPeliculasComando extends Comando
 {
     CatalogoDePeliculas CdeP;
     CatalogoDeGeneros CdeG;
+    CatalogoDeParametros CdePar;
     
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) 
     {
         CdeP = new CatalogoDePeliculas();
         CdeG = new CatalogoDeGeneros();
+        CdePar = new CatalogoDeParametros();
         ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
         ArrayList<Genero> generos = new ArrayList<Genero>();
         Pelicula peliEdit = null;
+        Parametro param = null;
         try
         {
             peliculas = CdeP.obtenerPeliculas();
             generos = CdeG.obtenerGeneros();
+            param = CdePar.obtenerParametros();
             peliEdit = peliculas.get(0);
             request.getSession().setAttribute("ListaPeliculas", peliculas);
             request.getSession().setAttribute("ListaGeneros", generos);
             request.getSession().setAttribute("PeliEdit", peliEdit);
+            request.getSession().setAttribute("Parametro", param);
         }
         catch(Exception ex)
         {

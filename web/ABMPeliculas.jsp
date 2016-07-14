@@ -17,19 +17,21 @@
         <%!ArrayList<Pelicula> peliculas;%>
         <%!ArrayList<Genero> generos;%>
         <%!Parametro param;%>
-        <%! Pelicula peli;%>
-        <% if(session.getAttribute("parametro")!=null){ param = (Parametro) session.getAttribute("parametro"); }%>
+        <%!Pelicula peli;%>
+        <% if(session.getAttribute("Parametro")!=null){ param = (Parametro) session.getAttribute("Parametro"); }%>
         <% if(session.getAttribute("ListaPeliculas")!=null) { peliculas = (ArrayList)session.getAttribute("ListaPeliculas");}%>
         <% if(session.getAttribute("ListaGeneros")!=null) { generos = (ArrayList)session.getAttribute("ListaGeneros");}%>
-        <% if(session.getAttribute("PeliEdit")!=null) { peli = (Pelicula)session.getAttribute("PeliEdit");}%>
+        <% peli = (Pelicula)session.getAttribute("PeliEdit"); %>
         <div class="cuenta">
             <div class="container"> 
+                <%if(request.getAttribute("ex")!=null && peliculas==null ){ %>
                 <div class="row">
-                    <div class="alert alert-success fade<%if(request.getAttribute("ex")!=null){ %> in <%}%>">
+                    <div class="alert alert-success fade in">
                         <%= request.getAttribute("ex")%>
                     </div>
                 </div>
-                <% if(request.getAttribute("ex")==null) { %>
+                <%}%>
+                <% if(peliculas!=null) { %>
                 <div class="row">
                     <h2 class="title text-center">Lista de Peliculas</h2> 
                 <div class="col-sm-12">
@@ -247,9 +249,19 @@
                                     </tbody>
                                     </table>
                             </div>
-                            <div class="alert alert-success fade<%if(session.getAttribute("ExitoPeli")!=null){ %> in <%session.setAttribute("ExitoPeli", null);} %>">
+                                    
+                            <%if(request.getAttribute("ex")!=null){ %>
+                            <div class="row">
+                                <div class="alert alert-danger fade in">
+                                    <%= request.getAttribute("ex")%>
+                                </div>
+                            </div>
+                            <%}%>
+                            <%if(session.getAttribute("ExitoPeli")!=null){%>
+                            <div class="alert alert-success fade in">
                                     Pelicula <%if(peli==null){ %>agregada<% }else{%>editada<%}%> con éxito.        
                             </div>
+                            <%session.setAttribute("ExitoPeli", null);}%>
                     </div>
                     <div class="row">
                             <div class="col-lg-10 col-lg-offset-1">
