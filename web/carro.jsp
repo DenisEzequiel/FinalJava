@@ -2,6 +2,7 @@
 <%@page import="aplicacion.modelo.entidades.Parametro"%>
 <%@page import="aplicacion.modelo.entidades.LineaPedido"%>
 <%@page import="aplicacion.modelo.entidades.Pedido"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,7 +32,7 @@
                             </div>
                         
                              <div class="col-lg-3">
-                              <label class="alinear"> Cantidad de dÌas a alquilar: </label>
+                              <label class="alinear"> Cantidad de d√≠as a alquilar: </label>
                             </div>
                         
                         <%int cantD=(Integer)session.getAttribute("cantidadDias");%>
@@ -49,11 +50,11 @@
                                     <table class="table table-condensed">
                                             <thead>
                                                     <tr class="cart_menu">
-                                                            <td class="image">PelÌcula</td>
-                                                            <td class="description">DescripciÛn</td>
+                                                            <td class="image">Pel√≠cula</td>
+                                                            <td class="description">Descripci√≥n</td>
                                                             <td class="price">Precio</td>
                                                             <td class="quantity">Cantidad</td>
-                                                            <td>Cantidad de DÌas</td>
+                                                            <td>Cantidad de D√≠as</td>
                                                             <td class="total">Subtotal</td>
                                                             <td></td>
                                                     </tr>
@@ -112,8 +113,8 @@
                                     <table class="table table-condensed">
                                             <thead>
                                                     <tr class="cart_menu colorTablaCompra">
-                                                            <td class="image">PelÌcula</td>
-                                                            <td class="description">DescripciÛn</td>
+                                                            <td class="image">Pel√≠cula</td>
+                                                            <td class="description">Descripci√≥n</td>
                                                             <td class="price">Precio</td>
                                                             <td class="quantity">Cantidad</td>
                                                             <td class="total">Subtotal</td>
@@ -195,7 +196,7 @@
                                 { //Usuario usu=(Usuario)session.getAttribute("usuario");
                                 %> 
                                             <div class="alert alert-success">
-                                                Pedido realizado con Èxito ! Un mail para confirmar el pago ser· enviado a <%=usu.getMail()%>
+                                                Pedido realizado con √©xito ! Un mail para confirmar el pago ser√° enviado a <%=usu.getMail()%>
                                             </div>
                                                 <%session.setAttribute("exitoPedido", null);}         
 
@@ -206,13 +207,13 @@
                                 { 
                                 %> 
                                             <div class="alert alert-danger">
-                                              Usted no ha agregado pelÌculas al pedido.
+                                              Usted no ha agregado pel√≠culas al pedido.
                                             </div>
                                 <%} else if(session.getAttribute("cantidadInvalida")!= null)
                                 { 
                                 %> 
                                             <div class="alert alert-danger">
-                                             Por favor ingrese una cantidad v·lida
+                                             Por favor ingrese una cantidad v√°lida
                                             </div>
                                       
                                 <%session.setAttribute("cantidadInvalida",null);} 
@@ -220,8 +221,8 @@
                                 { 
                                 %> 
                                             <div class="alert alert-danger">
-                                               Por favor ingrese una cantidad de dÌas v·lida. 
-                                               No se permiten alquileres que excedan los 15 dÌas.
+                                               Por favor ingrese una cantidad de d√≠as v√°lida. 
+                                               No se permiten alquileres que excedan los 15 d√≠as.
                                             </div>
                                                 <%session.setAttribute("errorDias", null);}  
                                    else if(session.getAttribute("ex") != null)
@@ -232,9 +233,9 @@
                                                 <%=session.getAttribute("ex")%>
                                             </div>
                                         <%
-                                        };
+                                        }
 
-                                       %>     
+                                           
 
 
                               else{ %> 
@@ -251,7 +252,7 @@
                                     <div class="alert alert-danger">
                                               Usted no puede finalizar un pedido porque es Administrador.
                                     </div>
-                                    <%};%>   
+                                    <%}%>   
                                
                                 </div>
                               
