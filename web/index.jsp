@@ -40,7 +40,7 @@
 								<div class="col-sm-6">
 									<h1><span>A</span>efilep - Video Club</h1>
                                                                         <h2><%=pc.getNombre()%></h2>
-									<p><%=pc.getSinopsis()%>...</p>
+									<p><%=pc.getSinopsis(150)%>...</p>
                                                                          <form action="Contrlador" method="post">
                                                                                             <button type="submit" class="btn btn-default get">Obtener ahora</button>
                                                                                              <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
