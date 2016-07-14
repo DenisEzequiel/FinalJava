@@ -40,7 +40,7 @@
 								<div class="col-sm-6">
 									<h1><span>A</span>efilep - Video Club</h1>
                                                                         <h2><%=pc.getNombre()%></h2>
-									<p><%=pc.getSinopsis()%></p>
+									<p><%=pc.getSinopsis(150)%>...</p>
                                                                          <form action="Controlador" method="post">
                                                                                             <button type="submit" class="btn btn-default get">Obtener ahora</button>
                                                                                              <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
@@ -145,7 +145,7 @@
                                                                     <%}%>
 						
                                                         </div>
-							<div class="tab-pane fade active in" id="terror">
+							<div class="tab-pane fade" id="terror">
                                                             <%for(Pelicula p: pelisIndexTerror)
                                                             {%>
 								<div class="col-sm-3">
@@ -169,7 +169,7 @@
 								<%}%>
 							</div>
 							
-							<div class="tab-pane fade active in" id="accion">
+							<div class="tab-pane fade" id="accion">
                                                             <%for(Pelicula p: pelisIndexAccion)
                                                             {%>
 								<div class="col-sm-3">
@@ -193,7 +193,7 @@
 								<%}%>
 							</div>
 							
-							<div class="tab-pane fade active in" id="thriller">
+							<div class="tab-pane fade" id="thriller">
                                                             <%for(Pelicula p: pelisIndexThriller)
                                                             {%>
 								<div class="col-sm-3">
