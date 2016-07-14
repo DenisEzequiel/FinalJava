@@ -21,16 +21,16 @@
                         <div class="col-sm-5 col-sm-offset-1">                            
                             <div class="cuenta">
                                 <input type="hidden" name="form" value="CuentaComando">                              
-                                Nombre <input type="text" class="control form-control" name="nombre" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="nombre" name="usuario"/><%}%>">
-                                Apellido <input type="text" class="control form-control" name="apellido" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="apellido" name="usuario"/><%}%>">
-                                Dni <input type="text" maxlength="8" class="control form-control" name="dni" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="dni" name="usuario"/><%}%>">
+                                Nombre <input type="text" class="control form-control" pattern="^[A-Za-z ]*$" title="Letra" name="nombre" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="nombre" name="usuario"/><%}%>">
+                                Apellido <input type="text" class="control form-control" name="apellido" pattern="^[A-Za-z ]*$" title="Letra" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="apellido" name="usuario"/><%}%>">
+                                Dni <input type="text" maxlength="8" class="control form-control" pattern="^[0-9]*$" title="Numero" name="dni" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="dni" name="usuario"/><%}%>">
                                 Fecha de nacimiento <input type="date" class="control form-control" name="fechaNacimiento" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="fechaNacimiento" name="usuario"/><%}%>">
                             </div>
                         </div>  
                         <div class="col-sm-5 col-sm-offset-0">
                             <div class="cuenta"><!--sign up form-->
                                 Direccion <input type="text" class="control form-control" name="direccion" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="direccion" name="usuario"/><%}%>">
-                                Telefono <input type="text" class="control form-control" name="telefono" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="telefono" name="usuario"/><%}%>">
+                                Telefono <input type="text" class="control form-control" pattern="^[0-9]*$" title="Numero" name="telefono" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="telefono" name="usuario"/><%}%>">
                                 E-Mail <input type="email" class="control form-control" name="mail" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="mail" name="usuario"/><%}%>">
                                 <%if(session.getAttribute("tabActual").equals("1")){%> <div class="alert alert-success bajar"><p>Datos actualizados con exito!</p></div><%}%>
                                 <br/><br/><br/><br/>
