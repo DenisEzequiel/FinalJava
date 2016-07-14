@@ -56,8 +56,17 @@
                                 <input class="control form-control" type="text" placeholder="Nombre de Usuario*" name="Usu" maxlength="10" required value="<%=nombreUsuario %>">
                                 <input class="control form-control" type="password" placeholder="Contraseña*" name="Contra1" minlength="4" maxlength="10" required value="<%=contrasenia %>">
                                 <input class="control form-control" type="password" placeholder="Confirmar contraseña*" name="Contra2" minlength="4" maxlength="10" required>
+                                <%if(request.getAttribute("ex") != null)
+                                        {
+                                       %> 
+                                            
+                                            <div class="alert alert-danger">
+                                                <%=request.getAttribute("ex")%>
+                                            </div>
+                                        <%}%>
                             </div>
                         </div><!--/row-->
+                        
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1">
                                 <input type="hidden" name="form" value="RegistroComando">

@@ -58,12 +58,12 @@
                                 {
                                     if(session.getAttribute("usuario") == null)
                                     {
-                                         if(session.getAttribute("excepcion") != null)
+                                         if(request.getAttribute("ex") != null)
                                         {
                                        %> 
                                             <br/>
                                             <div class="alert alert-danger">
-                                                <%=session.getAttribute("excepcion")%>
+                                                <%=request.getAttribute("ex")%>
                                             </div>
                                         <%
                                         }else{%>

@@ -84,15 +84,16 @@
                     </div>
                 </div>
             </div>
-            <%if(session.getAttribute("excepcion")!=null){%>
+            <%}if(request.getAttribute("ex")!=null){%>
             <div class="row">
                 <div class="col-lg-12">
                      <div class="alert alert-danger">
-                       <%=session.getAttribute("excepcion")%>
+                       <%=request.getAttribute("ex")%>
                      </div>
                 </div>
             </div>
-            <%session.setAttribute("ExitoCierre", null);} %>
+                     
+            <%}session.setAttribute("ExitoCierre", null); %>
                       
             <div class="row">
                     <div class="col-lg-12">
@@ -149,11 +150,7 @@
                     </div>
                     <%}%>
                     </div>
-                    <% if(request.getAttribute("excepcion")!=null){%>
-                                                        <div class="alert alert-danger">
-                                                              <%=request.getAttribute("excepcion")%>
-                                                           </div>
-                                                         <%}%>
+                    
                 </div>
                 
          </div>
