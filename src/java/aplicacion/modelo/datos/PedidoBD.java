@@ -66,6 +66,7 @@ public class PedidoBD {
          try {
              con = conec.getConexion();
          } catch (AefilepException ex) {
+             
               throw new AefilepException("Error al cargar el pedido",ex);
          }
     
@@ -108,7 +109,7 @@ public class PedidoBD {
          try {
              con = conec.getConexion();
          } catch (AefilepException ex) {
-             throw new AefilepException("Error al recuperar el pedido",ex);
+             throw new AefilepException("Error al recuperar los pedidos",ex);
          }
     
         String sql = "SELECT * FROM aefilep.pedidos where id_usuario=? and estado not like 'Cerrado';";

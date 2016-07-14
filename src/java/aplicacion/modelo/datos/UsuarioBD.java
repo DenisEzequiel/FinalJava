@@ -105,7 +105,8 @@ public class UsuarioBD
             }
             con.close();
             
-        }catch(Exception ex)
+        }
+        catch(Exception ex)
         {
             throw new AefilepException("Error al recuperar usuarios", ex);
         }

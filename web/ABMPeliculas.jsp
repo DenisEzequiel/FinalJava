@@ -203,7 +203,7 @@
                                         <h4 class="text-left">Portada</h4>
                                     </div>
                                     <div class="col-lg-9">
-                                        <input type="file" class="control form-control" name="imgPel" required="">
+                                        <input type="file" class="control form-control" name="imgPel">
                                     </div>
                             </div>
                             <div class="row">
