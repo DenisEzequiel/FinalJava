@@ -33,7 +33,12 @@ public class AgregarPeliculaComando extends Comando
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
         
-            ArrayList<Genero> generos = cdG.obtenerGeneros();
+            ArrayList<Genero> generos = null;
+        try {
+            generos = cdG.obtenerGeneros();
+        } catch (Exception ex) {
+            request.setAttribute("ex",ex.getMessage());
+        }
             Part img = null;
             pelicula=new Pelicula();
             pelicula.setActivo(true);
@@ -58,21 +63,21 @@ public class AgregarPeliculaComando extends Comando
             InputStream inputStream = imagen.getInputStream();
             if(inputStream!=null)
                 pelicula.setImagen(inputStream);
-              } catch (Exception e)
-            {}
+              } catch (Exception ex)
+            {
+                request.setAttribute("ex","Error al cargar imagen");
+                return ("/ABMPeliculas.jsp");
+            }
             
             try
             {
                 img = request.getPart("imgPel");
                 pelicula.setImagen(img.getInputStream());
             } 
-            catch (IOException ex)
+            catch (Exception ex)
             {
-                Logger.getLogger(AgregarPeliculaComando.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            catch (ServletException ex)
-            {
-                Logger.getLogger(AgregarPeliculaComando.class.getName()).log(Level.SEVERE, null, ex);
+                request.setAttribute("ex",ex.getMessage());
+                return ("/ABMPeliculas.jsp");
             }
             String selecc[] = request.getParameterValues("generos");
             for(Genero g: generos)
@@ -98,7 +103,9 @@ public class AgregarPeliculaComando extends Comando
             }
             catch(Exception ex)
             {
-                request.getSession().setAttribute("ExitoPeli", false);
+               // request.getSession().setAttribute("ExitoPeli", false);
+                request.setAttribute("ex",ex.getMessage());
+                return ("/ABMPeliculas.jsp");
             }
             
             

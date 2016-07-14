@@ -14,6 +14,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
@@ -33,7 +35,13 @@ public class EditarPeliculaComando extends Comando
         CdeP = new CatalogoDePeliculas();
         CdeG = new CatalogoDeGeneros();
         Pelicula PeliEditada = new Pelicula();
-        ArrayList<Genero> generos = CdeG.obtenerGeneros();
+        ArrayList<Genero> generos = null;
+        try {
+            generos = CdeG.obtenerGeneros();
+        } catch (Exception ex) {
+            request.setAttribute("ex",ex.getMessage());
+            return ("/ABMPeliculas.jsp");
+        }
         PeliEditada.setIdPelicula(Integer.parseInt(request.getParameter("ID")));
         PeliEditada.setFormato(request.getParameter("formPel"));
         PeliEditada.setNombre(request.getParameter("nomPel"));
@@ -52,8 +60,10 @@ public class EditarPeliculaComando extends Comando
             InputStream inputStream = imagen.getInputStream();
             if(inputStream!=null)
                 PeliEditada.setImagen(inputStream);
-        } catch (Exception e)
-        {}
+        } catch (Exception ex)
+        {       request.setAttribute("ex",ex.getMessage());
+                return ("/ABMPeliculas.jsp");
+        }
         
         SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd");
         Date fecha = null;
@@ -62,9 +72,10 @@ public class EditarPeliculaComando extends Comando
                 fecha = formato.parse(request.getParameter("fCargaPel"));              
                 PeliEditada.setFechaCarga(new java.sql.Date(fecha.getTime()));
             }
-            catch(ParseException e)
+            catch(Exception ex)
             {
-                
+                request.setAttribute("ex","Ha ocurrido un error");
+                return ("/ABMPeliculas.jsp");
             }
         String selecc[] = request.getParameterValues("generos");
         for(Genero g: generos)

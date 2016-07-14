@@ -7,6 +7,7 @@ package aplicacion.modelo.negocio;
 
 import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.datos.GeneroBD;
+import aplicacion.utilidades.AefilepException;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 public class CatalogoDeGeneros 
 {
     GeneroBD generosBD = new GeneroBD();
-    public ArrayList<Genero> obtenerGeneros() throws Exception
+    public ArrayList<Genero> obtenerGeneros() throws AefilepException
     {
         return generosBD.obtenerGeneros();
     }

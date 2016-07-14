@@ -31,7 +31,7 @@ public class VerPedidosComando extends Comando
             pedidosPendientes = cDePed.obtenerPedidosPendientes(idUsusario);
         } catch (Exception ex) {
            String e = ex.getMessage();
-           request.getSession().setAttribute("excepcion", "Error en la finalizacion del pedido");
+           request.setAttribute("ex", ex.getMessage());
            return "/Devoluciones.jsp";
         }
         request.getSession().setAttribute("ListaPendientes", pedidosPendientes);

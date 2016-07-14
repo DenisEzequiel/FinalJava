@@ -8,6 +8,7 @@ package aplicacion.modelo.datos;
 import aplicacion.modelo.entidades.LineaPedido;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.entidades.Pedido;
+import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +17,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,9 +31,14 @@ public class PedidoBD {
      LineaBD lineas = new LineaBD();
      PeliculaDB pelisBD = new PeliculaDB();
      
-     public void cerrarPedido(Pedido p) throws Exception
+     public void cerrarPedido(Pedido p) throws AefilepException 
      {
-         Connection con = conec.getConexion();
+         Connection con;
+         try {
+             con = conec.getConexion();
+         } catch (Exception ex) {
+            throw new AefilepException("Error al recuperar el pedido",ex);
+         }
          String transac = "update aefilep.pedidos set estado=?, fecha_devolucion=? where id_pedido=?;";
          try
          {
@@ -45,16 +53,21 @@ public class PedidoBD {
                 pelisBD.actualizarPelicula(pel);
             }
          }
-         catch(SQLException ex)
+         catch(Exception ex)
          {
-             ex.printStackTrace();
+             throw new AefilepException("Error al recuperar el pedido",ex);
          }
      }
      
-     public void registrarPedido(Pedido p) throws Exception
+     public void registrarPedido(Pedido p) throws AefilepException 
      {
         
-        Connection con = conec.getConexion();
+        Connection con;
+         try {
+             con = conec.getConexion();
+         } catch (AefilepException ex) {
+              throw new AefilepException("Error al cargar el pedido",ex);
+         }
     
         String transac = "insert into aefilep.pedidos values (?,?,?,?,?,?,?);";
         try
@@ -82,16 +95,21 @@ public class PedidoBD {
              con.close();
       
         }
-             catch(SQLException ex)
+             catch(Exception ex)
         {
-            ex.printStackTrace();
+             throw new AefilepException("Error al recuperar el pedido",ex);
         }
 }
      
-    public ArrayList<Pedido> obtenerPedidosPendientes (int idPedido) throws Exception
+    public ArrayList<Pedido> obtenerPedidosPendientes (int idPedido) throws AefilepException
     {         
         ArrayList<Pedido> pedidosEncontrados = new ArrayList<>();
-        Connection con = conec.getConexion();
+        Connection con;
+         try {
+             con = conec.getConexion();
+         } catch (AefilepException ex) {
+             throw new AefilepException("Error al recuperar el pedido",ex);
+         }
     
         String sql = "SELECT * FROM aefilep.pedidos where id_usuario=? and estado not like 'Cerrado';";
         try

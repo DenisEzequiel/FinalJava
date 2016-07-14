@@ -7,11 +7,14 @@ package aplicacion.modelo.datos;
 
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.entidades.Genero;
+import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,33 +23,40 @@ import java.util.ArrayList;
 public class GeneroBD 
 {
     Conexion conec = new Conexion();
-    public ArrayList<Genero> obtenerGeneros() throws Exception
+    public ArrayList<Genero> obtenerGeneros() throws AefilepException 
     {
-        Connection con = conec.getConexion();
-        ArrayList<Genero> listaGeneros = new ArrayList<>();
-        String transac = "select * from generos;";
         try
         {
-            PreparedStatement pr = con.prepareStatement(transac);                     
-            ResultSet res = pr.executeQuery();
-                   
-            while(res.next())
+            Connection con = conec.getConexion();
+            ArrayList<Genero> listaGeneros = new ArrayList<>();
+            String transac = "select * from generos;";
+            try
             {
-                Genero g = new Genero();
+                PreparedStatement pr = con.prepareStatement(transac);
+                ResultSet res = pr.executeQuery();
                 
-                g.setIdGenero(res.getInt(1));
-                g.setDescripcion(res.getString(2));
-                              
-                listaGeneros.add(g);
+                while(res.next())
+                {
+                    Genero g = new Genero();
+                    
+                    g.setIdGenero(res.getInt(1));
+                    g.setDescripcion(res.getString(2));
+                    
+                    listaGeneros.add(g);
+                }
+                con.close();
+                
             }
-            con.close();
+            catch(SQLException ex)
+            {
+                ex.printStackTrace();
+            }
             
+            return listaGeneros;
         }
-        catch(SQLException ex)
+        catch(Exception ex)
         {
-            ex.printStackTrace();
+            throw new AefilepException("Error al recuperar el genero",ex);
         }
-        
-        return listaGeneros;
     }
 }

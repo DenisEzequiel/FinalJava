@@ -49,7 +49,8 @@ public class RegistrarDevolucionComando extends Comando
         try {
             cDeP.cerrarPedido(pedACerrar);
         } catch (Exception ex) {
-            Logger.getLogger(RegistrarDevolucionComando.class.getName()).log(Level.SEVERE, null, ex);
+           request.setAttribute("ex",ex.getMessage());
+           return "/Devoluciones.jsp";
         }
         request.getSession().setAttribute("ExitoCierre", 1);
         request.getSession().setAttribute("ListaPendientes", null);

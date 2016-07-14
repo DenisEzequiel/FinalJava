@@ -6,11 +6,14 @@
 package aplicacion.modelo.datos;
 
 import aplicacion.modelo.entidades.LineaPedido;
+import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,10 +22,16 @@ import java.util.ArrayList;
 public class LineaBD {
       Conexion conec = new Conexion();
       PeliculaDB peliBd = new PeliculaDB();
-      public ArrayList<LineaPedido> obtenerLineaAlq (int idPedido) throws Exception
+      public ArrayList<LineaPedido> obtenerLineaAlq (int idPedido) throws AefilepException 
       {
           String sql = "select * from aefilep.pedidos_peliculas where id_pedido =? and es_alquiler=1;";
-          Connection con = conec.getConexion();
+          Connection con = null;
+          try {
+              con = conec.getConexion();
+          } catch (Exception ex)
+          {
+             throw new AefilepException("Error al recuperar la linea",ex);
+          }
           ArrayList<LineaPedido> lineas = new ArrayList<>();
           
           try
@@ -44,24 +53,34 @@ public class LineaBD {
             }
               
           }
-          catch(SQLException ex)
-        {
-            ex.printStackTrace();
-        }
+           
+            catch (Exception ex)
+            {
+             throw new AefilepException("Error al recuperar la linea",ex);
+            }
         return lineas;         
       }
     
-    public void registrarLineas(ArrayList<LineaPedido> lineas, int idPedido, int dias) throws Exception
+    public void registrarLineas(ArrayList<LineaPedido> lineas, int idPedido, int dias) throws AefilepException, SQLException 
     {
         
         for(LineaPedido lp: lineas ) 
         {   
             String transac1 = "insert into aefilep.pedidos_peliculas values (?,?,?,?,?);";
-            Connection con = conec.getConexion();
+            Connection con;
+            try {
+                con = conec.getConexion();
+            } catch (Exception ex) {
+                throw new AefilepException("Error al recuperar el genero",ex);
+            }
                     
-            try
-            {       
-                PreparedStatement pr = con.prepareStatement(transac1);
+                
+                PreparedStatement pr;
+            try {
+                pr = con.prepareStatement(transac1);
+            } catch (Exception ex) {
+                throw new AefilepException("Error al recuperar el genero",ex);
+            }
                 pr.setInt(1, lp.getPelicula().getIdPelicula());
                 pr.setInt(2, idPedido);
                 pr.setInt(3, lp.getCantidad());
@@ -70,12 +89,7 @@ public class LineaBD {
                  pr.executeUpdate();
                   con.close();
             
-            }
-            catch(SQLException ex)
-            {
-                
-            }
-             
+           
         }
        
     }
