@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class CatalogoDeGeneros 
 {
     GeneroBD generosBD = new GeneroBD();
-    public ArrayList<Genero> obtenerGeneros()
+    public ArrayList<Genero> obtenerGeneros() throws Exception
     {
         return generosBD.obtenerGeneros();
     }

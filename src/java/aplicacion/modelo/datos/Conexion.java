@@ -5,6 +5,7 @@
  */
 package aplicacion.modelo.datos;
 
+import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,10 +16,11 @@ import java.sql.SQLException;
  */
 public class Conexion 
 {
-	public Connection getConexion() throws Exception
+	public Connection getConexion() throws AefilepException
 	{
             Connection conexion=null;
-	      
+	      try
+              {
 	     
 	        	
 	         Class.forName("com.mysql.jdbc.Driver");
@@ -28,7 +30,19 @@ public class Conexion
 	         String servidor = "jdbc:mysql://localhost:3306/aefilep";
 	         
 	         conexion = DriverManager.getConnection(servidor,usuarioDB,passwordDB);
-	     
+              }
+              catch(ClassNotFoundException ex)
+              {
+                  throw new AefilepException(ex);
+              }
+              catch(SQLException ex)
+              {
+               throw new AefilepException(ex);
+              }
+              catch(Exception ex)
+              {
+               throw new AefilepException(ex);
+              }
 	     
 	         return conexion;
 	     }
