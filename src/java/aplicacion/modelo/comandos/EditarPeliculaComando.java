@@ -36,12 +36,16 @@ public class EditarPeliculaComando extends Comando
         CdeG = new CatalogoDeGeneros();
         Pelicula PeliEditada = new Pelicula();
         ArrayList<Genero> generos = null;
-        try {
+        try
+        {
             generos = CdeG.obtenerGeneros();
-        } catch (Exception ex) {
+        } 
+        catch (Exception ex) 
+        {
             request.setAttribute("ex",ex.getMessage());
             return ("/ABMPeliculas.jsp");
         }
+        
         PeliEditada.setIdPelicula(Integer.parseInt(request.getParameter("ID")));
         PeliEditada.setFormato(request.getParameter("formPel"));
         PeliEditada.setNombre(request.getParameter("nomPel"));
@@ -55,28 +59,32 @@ public class EditarPeliculaComando extends Comando
         PeliEditada.setAnio(Integer.parseInt(request.getParameter("anioPel")));
         
         Part imagen = null;
-        try {
+        try 
+        {
             imagen = request.getPart("imgPel");
             InputStream inputStream = imagen.getInputStream();
             if(inputStream!=null)
-                PeliEditada.setImagen(inputStream);
-        } catch (Exception ex)
-        {       request.setAttribute("ex",ex.getMessage());
-                return ("/ABMPeliculas.jsp");
+            PeliEditada.setImagen(inputStream);
+        } 
+        catch (Exception ex)
+        {       
+            request.setAttribute("ex",ex.getMessage());
+            return ("/ABMPeliculas.jsp");
         }
         
         SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd");
         Date fecha = null;
-            try
-            {
-                fecha = formato.parse(request.getParameter("fCargaPel"));              
-                PeliEditada.setFechaCarga(new java.sql.Date(fecha.getTime()));
-            }
-            catch(Exception ex)
-            {
-                request.setAttribute("ex","Ha ocurrido un error");
-                return ("/ABMPeliculas.jsp");
-            }
+        try
+        {
+            fecha = formato.parse(request.getParameter("fCargaPel"));              
+            PeliEditada.setFechaCarga(new java.sql.Date(fecha.getTime()));
+        }
+        catch(Exception ex)
+        {
+            request.setAttribute("ex","Ha ocurrido un error");
+            return ("/ABMPeliculas.jsp");
+        }
+        
         String selecc[] = request.getParameterValues("generos");
         for(Genero g: generos)
         {
@@ -105,6 +113,7 @@ public class EditarPeliculaComando extends Comando
         catch(Exception ex)
         {
             request.getSession().setAttribute("ExitoPeli", false);
+            request.setAttribute("ex",ex.getMessage());
             return "/ABMPeliculas.jsp";
         }
         

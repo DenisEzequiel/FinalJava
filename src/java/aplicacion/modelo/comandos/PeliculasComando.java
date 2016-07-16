@@ -38,19 +38,18 @@ public class PeliculasComando extends Comando
         
         if(request.getParameter("paginacionActual")==null)
         {
-            paginaActual = 1;
-            
+            paginaActual = 1; 
         }
         else
         {
             paginaActual = Integer.parseInt(request.getParameter("paginacionActual"));
         }
-        
         request.setAttribute("pActual", paginaActual);
-        cDp = new CatalogoDePeliculas();
         
+        cDp = new CatalogoDePeliculas();
         int cantidadDePeliculas = 0;
         ArrayList<Pelicula> listaPeliculas = null;
+        
         try
         {
             if(request.getSession().getAttribute("tipo")!=null)
@@ -85,25 +84,26 @@ public class PeliculasComando extends Comando
         }
         catch(Exception ex)
         {
-            //NO ENTIENDO CÓDIGO, VER QUE HACER CON LAS EXCEPCIONES
+            request.setAttribute("ex",ex.getMessage());
+            return "/cartelera.jsp";
         }
      
         ParametroBD pbd = new ParametroBD();
         try
         {
-        Parametro par = pbd.obtenerParametros();
-         request.getSession().setAttribute("parametro", par);
-        request.getSession().setAttribute("listaCartelera", listaPeliculas);
-        request.getSession().setAttribute("cantidadPeliculas",cantidadDePeliculas);
-        request.getSession().setAttribute("generoObtenido", null);
+            Parametro par = pbd.obtenerParametros();
+            request.getSession().setAttribute("parametro", par);
+            request.getSession().setAttribute("listaCartelera", listaPeliculas);
+            request.getSession().setAttribute("cantidadPeliculas",cantidadDePeliculas);
+            request.getSession().setAttribute("generoObtenido", null);
         }
-        catch(Exception e)
+        catch(Exception ex)
         {
-            request.setAttribute("excepcion", "Error en el acceso a los datos");
+            request.setAttribute("ex",ex.getMessage());
+            return "/cartelera.jsp";
         }
-        finally
-        {
+        
         return "cartelera.jsp";
-        }
+        
     }
 }
