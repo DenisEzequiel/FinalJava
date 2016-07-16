@@ -73,8 +73,8 @@
                                     <td><%= u.getFechaNacimiento()%></td>
                                     <td><%= u.getMail() %></td>
                                     <td><%= u.getTelefono() %></td>
-                                    <td><%= u.isActivo() %></td>
-                                    <td><%= u.isEsAdmin() %></td>
+                                    <td><%if(u.isActivo()){%><img src="./imagenes/check.png"><%}%></td>
+                                    <td><%if(u.isEsAdmin()){%><img src="./imagenes/check.png"><%}%></td>
                                     <td>
                                         <form action="Controlador" method="post">
                                         <input type="hidden"  name="form" value="SeleccionarUsuarioComando"/>

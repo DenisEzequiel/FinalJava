@@ -8,7 +8,6 @@ function scrollDiv()
 $(document).ready(
         function()
         {
-            setTimeout(function(){$(".alert").fadeOut(1000)},4000);
             setTimeout(function(){$(".popover").fadeOut(1000)},4000);
         });
 /*price range*/

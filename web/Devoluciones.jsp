@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
     <jsp:include page="head.jsp"/>
-    <body>
+    <body onload="scrollDiv();">
         <jsp:include page="header.jsp"/>
         <%!ArrayList<Usuario> usuarios;%>
         <%!ArrayList<Pedido> pendientes;%>
@@ -20,7 +20,7 @@
         <% usuarios = (ArrayList)session.getAttribute("ListaEncontrados");%>
         <div class="cuenta">
             <div class="container"> 
-                <div id="Edit" class="row">
+                <div class="row">
                 <form action="Controlador" method="post">  
                             <div class="col-lg-5 col-lg-offset-1">
                                 <h2 class="title text-center">Buscar Usuario</h2>
@@ -77,84 +77,83 @@
             </div>
             
             <%if(session.getAttribute("ExitoCierre")!=null){%>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="alert alert-success fade in">
-                    Pedido cerrado con Éxito.
-                    </div>
-                </div>
-            </div>
-            <%}if(request.getAttribute("ex")!=null){%>
-            <div class="row">
-                <div class="col-lg-12">
-                     <div class="alert alert-danger">
-                       <%=request.getAttribute("ex")%>
-                     </div>
-                </div>
-            </div>
-                     
-            <%}session.setAttribute("ExitoCierre", null); %>
-                      
-            <div class="row">
+                <div class="row">
                     <div class="col-lg-12">
-                    <%if(pendientes!=null && !pendientes.isEmpty()){ %>
-                    <h2 class="title text-center">Pedidos pendientes de devolucion</h2>
-                    <div class="table-responsive">
-                        <div class="table-striped">
-                            <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID Pedido</th>
-                                    <th>F Desde</th>
-                                    <th>F Hasta</th>
-                                    <th>Peliculas</th>
-                                    <th>Recargo</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <%for(Pedido p:pendientes)
-                                  {%>
-                                  <tr>
-                                    <td><%= p.getIdPedido()%></td>
-                                    <td><%= p.getFechaDesde() %></td>
-                                    <td><%= p.getFechaHasta() %></td>
-                                    <td></td>
-                                    <td><%= p.getRecargo()%></td>
-                                    <td>
-                                        <form action="Controlador" method="post">
-                                        <input type="hidden"  name="form" value="RegistrarDevolucionComando"/>
-                                        <input type="hidden" name="idPedido" value="<%= p.getIdPedido()%>">
-                                        <input type="submit" value="Registrar Devolución">
-                                        </form>
-                                    </td>
-                                   </tr>
-                                   <% for(LineaPedido lp: p.getLineas()) 
-                                   {%>
-                                    <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><%=lp.getPelicula().getNombre()%></td>
-                                    <td></td>
-                                    <td></td> 
-                                    </tr>
-                                    <%} }%>
-                            </tbody>
-                            </table>
+                        <div class="alert alert-success fade in">
+                        Pedido cerrado con Éxito.
                         </div>
                     </div>
-                    <%}else if(pendientes!=null && pendientes.isEmpty()) {%>
-                    <div class="alert alert-success fade<%if(pendientes.isEmpty()){ %> in <%session.setAttribute("ListaPendientes", null);} %>">
-                        El Cliente no tiene pedidos pendientes de devolución.       
-                    </div>
-                    <%}%>
-                    </div>
-                    
                 </div>
-                
-         </div>
-      </div>
+            <%} session.setAttribute("ExitoCierre", null);
+            if(request.getAttribute("ex")!=null){%>
+                <div class="row">
+                    <div class="col-lg-12">
+                         <div class="alert alert-danger">
+                           <%=request.getAttribute("ex")%>
+                         </div>
+                    </div>
+                </div>
+            <%}%>
+                      
+            <div <%if(session.getAttribute("Scroll")!=null){%> id="Edit" <%session.setAttribute("Scroll", null); };%> class="row">
+                    <div class="col-lg-12">
+                    <% if(pendientes!=null){%>
+                    <h2 class="title text-center">Pedidos pendientes de devolucion</h2>
+                        <%if(pendientes.isEmpty()){%>
+                            <div class="alert alert-success fade<%if(pendientes.isEmpty()){ %> in <%session.setAttribute("ListaPendientes", null);} %>">
+                                El Cliente no tiene pedidos pendientes de devolución.       
+                            </div>
+                        <%}else{%>
+                            <div class="table-responsive">
+                                <div class="table-striped">
+                                    <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Pedido</th>
+                                            <th>F Desde</th>
+                                            <th>F Hasta</th>
+                                            <th>Peliculas</th>
+                                            <th>Recargo</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%for(Pedido p:pendientes)
+                                          {%>
+                                          <tr>
+                                            <td><%= p.getIdPedido()%></td>
+                                            <td><%= p.getFechaDesde() %></td>
+                                            <td><%= p.getFechaHasta() %></td>
+                                            <td></td>
+                                            <td><%= p.getRecargo()%></td>
+                                            <td>
+                                                <form action="Controlador" method="post">
+                                                <input type="hidden"  name="form" value="RegistrarDevolucionComando"/>
+                                                <input type="hidden" name="idPedido" value="<%= p.getIdPedido()%>">
+                                                <input type="submit" value="Registrar Devolución">
+                                                </form>
+                                            </td>
+                                           </tr>
+                                           <% for(LineaPedido lp: p.getLineas()) 
+                                           {%>
+                                            <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><%=lp.getPelicula().getNombre()%></td>
+                                            <td></td>
+                                            <td></td> 
+                                            </tr>
+                                            <%} }%>
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                    <%} }%>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
     <jsp:include page="footer.jsp"/>
 </html>
