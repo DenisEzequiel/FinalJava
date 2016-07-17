@@ -1673,6 +1673,7 @@ h2.title {
 }
 
 
+
 #cart_items .cart_info .table.table-condensed tr {
   border-bottom: 1px solid#F7F7F0
 }
@@ -2883,6 +2884,10 @@ button.accordion.active:after {
 {
     background:#3CB8C4;
 }
+#cart_items .cart_info .cart_menu.colorTablaTotal
+{
+    background:#0DAE2D;
+}
 
 .tamanio
 {
@@ -2977,3 +2982,4 @@ img.imagenCarrusel
     width:250px;
     
 }
+

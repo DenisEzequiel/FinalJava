@@ -28,6 +28,19 @@ public class Pedido
     private Usuario usuario;
     private int dias;
     
+    public void setTotal()
+    { 
+        total=0;
+        for(LineaPedido lp: lineas)
+        {
+            total=total+lp.getSubtotal(dias);
+        }
+    }
+    public float getTotal()
+    {
+        return total;
+    }
+    
        public void setDias(Integer d)
     {
         dias=d;

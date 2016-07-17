@@ -81,8 +81,8 @@
                                     <td><%= pel.getStockVenta()%></td>
                                     <td><%= pel.getFechaCarga()%></td>
                                     <td><%= pel.getAnio()%></td>
-                                    <td><%= pel.isActivo()%></td>
-                                    <td><%= pel.isEstreno()%></td>
+                                    <td><% if(pel.isActivo()){%><img src="./imagenes/check.png"><%}%></td>
+                                    <td><% if(pel.isEstreno()){%><img src="./imagenes/check.png"><%}%></td>
                                     <td>
                                         <form action="Controlador" method="post">
                                         <input type="hidden"  name="form" value="SeleccionarPeliculaComando"/>

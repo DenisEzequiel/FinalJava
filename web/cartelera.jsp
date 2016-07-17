@@ -8,23 +8,32 @@
     <body>
         <jsp:include page="header.jsp"/>
         <%@page import="aplicacion.modelo.entidades.Pelicula"%>
-        <%ArrayList<Pelicula> listaCartelera;
-            if(session.getAttribute("generoObtenido")!=null)
+        <%!ArrayList<Pelicula> listaCartelera = null;%>
+        <%int cantPaginas = 0;%>
+        <%if(session.getAttribute("generoObtenido")!=null)
             {
-                listaCartelera = (ArrayList)session.getAttribute("pelisEncontradas");
+                if(session.getAttribute("pelisEncontradas")!=null)
+                {
+                    listaCartelera = (ArrayList)session.getAttribute("pelisEncontradas");
+                }
             }
             else
             {
-                listaCartelera = (ArrayList)session.getAttribute("listaCartelera");
+                if(session.getAttribute("listaCartelera")!=null)
+                {
+                    listaCartelera = (ArrayList)session.getAttribute("listaCartelera");
+                }
             }
-            int cantPaginas;
-            if((Integer)session.getAttribute("cantidadPeliculas") % 9==0)
-                cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9);
-            else
-                cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9)+1;
+            if(session.getAttribute("cantidadPeliculas")!=null)
+            {
+                if((Integer)session.getAttribute("cantidadPeliculas") % 9==0)
+                    cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9);
+                else
+                    cantPaginas= ((Integer)session.getAttribute("cantidadPeliculas")/9)+1;
+            }
         %>
         
-        <h2 class="title text-center">Películas</h2>
+        
                 <section>
                         <div class="container">
                                 <div class="row">
@@ -59,15 +68,20 @@
                                                             </div>
                                                 </div>
                                         </div>
-
-
                                         <div class="col-sm-9 padding-right">
-                                                <div class="features_items">
-                                                    <% if(session.getAttribute("errorNoEncontradas")!=null){%>
-                                                                                    
-                                            <div class="alert alert-danger">
-                                                <h2 class='text-center'>No hay películas que coincidan con su búsqueda!!</h2>
-                                            </div>
+                                            <h2 class="title text-center">Películas</h2>
+                                            <% if(request.getAttribute("ex")!=null){%>
+                                            <div class="row">
+                                                <div class="alert alert-danger fade in">
+                                                    <%= request.getAttribute("ex")%>
+                                                </div>
+                                            </div>                                        
+                                            <%} else {%>
+                                            <div class="features_items">
+                                                <% if(session.getAttribute("errorNoEncontradas")!=null){%>
+                                                <div class="alert alert-danger">
+                                                    <h2 class='text-center'>No hay películas que coincidan con su búsqueda!!</h2>
+                                                </div>
                                                 <%session.setAttribute("errorNoEncontradas", null);}         
 
                                                  for(Pelicula p: listaCartelera)
@@ -115,7 +129,8 @@
                                                             <input type="hidden" name="form" value="PeliculasComando">   
                                               
                                                  </ul>
-                                                   </form>
+                                                   </form> 
+                                        <%}%>
                                         </div>
                                 </div>
                         </div>

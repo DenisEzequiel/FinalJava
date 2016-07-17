@@ -35,7 +35,9 @@
                               <label class="alinear"> Cantidad de días a alquilar: </label>
                             </div>
                         
-                        <%int cantD=(Integer)session.getAttribute("cantidadDias");%>
+                        <%int cantD=(Integer)session.getAttribute("cantidadDias");
+                        ped.setDias(cantD);
+                        ped.setTotal();%>
                         
                         <div class="col-lg-1">
                               <div class="signup-form">
@@ -173,7 +175,33 @@
                                  
                             </div>
                             <%} %>
-                    </div>
+                    
+                   
+                    <div class="able-responsive cart_info">
+                                    <table class="table table-condensed">
+                                            <thead>
+                                                    <tr class="cart_menu colorTablaTotal">
+                                                      
+                                                            <td class="total">Total a abonar</td>
+                                                           
+                                                          
+                                                    </tr>
+                                            </thead>
+                                            <tbody>
+                                                
+                             
+                                                    <tr>
+                                                            <td class="cart_product">
+                                                                    <p class="cart_total_price">$ <%=String.format("%.2f",ped.getTotal())%>
+                                                            </td>
+                                                            
+                                                    </tr>
+                                                     
+                                            </tbody>
+                                    </table>
+                                 
+                            </div>
+                    </div>                                                
             </section> <!--/#cart_items-->
 
             <section id="form">

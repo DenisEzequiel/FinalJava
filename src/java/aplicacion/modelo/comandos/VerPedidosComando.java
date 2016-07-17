@@ -8,8 +8,6 @@ package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.negocio.CatalogoDePedidos;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,14 +25,17 @@ public class VerPedidosComando extends Comando
         cDePed = new CatalogoDePedidos();
         int idUsusario = Integer.parseInt(request.getParameter("idUsuPedidos"));
         ArrayList<Pedido> pedidosPendientes = null;
-        try {
+        try 
+        {
             pedidosPendientes = cDePed.obtenerPedidosPendientes(idUsusario);
-        } catch (Exception ex) {
-           String e = ex.getMessage();
+        } 
+        catch (Exception ex) 
+        {
            request.setAttribute("ex", ex.getMessage());
            return "/Devoluciones.jsp";
         }
         request.getSession().setAttribute("ListaPendientes", pedidosPendientes);
+        request.getSession().setAttribute("Scroll",true);
         return "/Devoluciones.jsp";
     }
     
