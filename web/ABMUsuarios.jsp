@@ -108,7 +108,7 @@
                                         <h4 class="text-left">Nombre</h4>
                                     </div>
                                     <div class="col-lg-9">
-                                        <input class="control form-control" type="text" placeholder="*" maxlength="15" name="Nombre" required value="<%if(usu!=null)%><%= usu.getNombre() %>">
+                                        <input class="control form-control" type="text" placeholder="*" maxlength="15" pattern="^[a-zA-Z ]*$" title="Letras" name="Nombre" required value="<%if(usu!=null)%><%= usu.getNombre() %>">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -116,7 +116,7 @@
                                         <h4 class="text-left">Apellido</h4>
                                     </div>
                                     <div class="col-lg-9">
-                                        <input class="control form-control" type="text" placeholder="*" name="Apellido" maxlength="15" required value="<%if(usu!=null)%><%= usu.getApellido() %>" >
+                                        <input class="control form-control" type="text" placeholder="*" name="Apellido" maxlength="15" pattern="^[a-zA-Z ]*$" title="Letras" required value="<%if(usu!=null)%><%= usu.getApellido() %>" >
                                     </div>
                                 </div>
                                 <div class="row">
