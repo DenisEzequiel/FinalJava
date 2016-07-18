@@ -27,18 +27,29 @@ public class AgregarUsuarioComando extends Comando
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
         cDeUsu = new CatalogoDeUsuarios();
+        boolean existeUsuario = true;
+        try
+        {
+            existeUsuario = cDeUsu.buscarUsuario((String)request.getParameter("Usu"));
+        }
+        catch(AefilepException ex)
+        {
+            request.setAttribute("ex", ex.getMessage());
+            return"/ABMUsuarios.jsp";
+        }
+              
         Usuario usNuevo = new Usuario();
-        SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha = null;
-            try
-            {
-                fecha = formato.parse(request.getParameter("fechaNacimiento"));              
-                usNuevo.setFechaNacimiento(new java.sql.Date(fecha.getTime()));
-            }
-            catch(ParseException e)
-            {
-                request.setAttribute("ex", "Ha ocurrido un error");
-            }
+        SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd");       
+
+        try
+        {
+            Date fecha = formato.parse(request.getParameter("fechaNacimiento"));              
+            usNuevo.setFechaNacimiento(new java.sql.Date(fecha.getTime()));
+        }
+        catch(ParseException e)
+        {
+            request.setAttribute("ex", "Ha ocurrido un error");
+        }
         usNuevo.setNombre((String)request.getParameter("Nombre"));
         usNuevo.setApellido((String)request.getParameter("Apellido"));
         usNuevo.setContrasena((String)request.getParameter("Contra1"));
@@ -53,21 +64,31 @@ public class AgregarUsuarioComando extends Comando
         usNuevo.setActivo(esActivo);
         usNuevo.setEsAdmin(esAdmin);
         usNuevo.setBloqueado(esBloq);
-        try
-        {
-        cDeUsu.agregarUsuario(usNuevo);
-        ArrayList<Usuario> usuarios = cDeUsu.obtenerUsuarios();
-        request.getSession().setAttribute("ListaUsuarios", usuarios);
-        request.getSession().setAttribute("Scroll",true);
-        request.getSession().setAttribute("ExitoUsu", true);
+        ArrayList<Usuario> usuarios;
         
-        }
-        catch(AefilepException ex)
-        {
-            request.setAttribute("ex", ex.getMessage());
-            return"/ABMUsuarios.jsp";
-        }
         
+        if(!existeUsuario)
+        {   
+            try
+            {
+                cDeUsu.agregarUsuario(usNuevo);
+                usuarios = cDeUsu.obtenerUsuarios();         
+            }
+            catch(AefilepException ex)
+            {
+                request.setAttribute("ex", ex.getMessage());
+                return"/ABMUsuarios.jsp";
+            }
+            request.getSession().setAttribute("ListaUsuarios", usuarios);
+            request.getSession().setAttribute("Scroll",true);
+            request.setAttribute("ExitoUsu", true); 
+        }
+        else
+        {
+            request.setAttribute("usuarioPorAgregar", usNuevo);
+            request.setAttribute("ExitoUsu", false); 
+            request.getSession().setAttribute("Scroll",true);
+        }
      
         return "/ABMUsuarios.jsp";
     }
