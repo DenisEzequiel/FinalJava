@@ -69,7 +69,7 @@ public class PeliculaDB
         
         if(p.getImagen()!=null)
         { String sql = "update peliculas set nombre=? , duracion=? , formato=? ,"
-                + " stock_alquiler=? ,stock_venta=?, reparto=?, activo=?,url_trailer=? ,"
+                + " stock_alquiler=? ,stock_compra=?, reparto=?, activo=?,url_trailer=? ,"
                 + " precio_venta=?, sinopsis=?, anio=?, imagen=? where id_pelicula=?";
             
         try
@@ -89,8 +89,9 @@ public class PeliculaDB
             pr.setInt(11, p.getAnio());           
             pr.setBlob(12, p.getImagen());            
             pr.setInt(13, p.getIdPelicula());
+             pelgenBD.actualizarPeliculasGeneros(p);
             pr.executeUpdate();
-            pelgenBD.actualizarPeliculasGeneros(p);
+           
             con.close();
         }
         catch(Exception ex)
@@ -103,7 +104,7 @@ public class PeliculaDB
             
         {
          String sql = "update peliculas set nombre=? , duracion=? , formato=? ,"
-                + " stock_alquiler=? ,stock_venta=?, reparto=?, activo=?,url_trailer=? ,"
+                + " stock_alquiler=? ,stock_compra=?, reparto=?, activo=?,url_trailer=? ,"
                 + " precio_venta=?, sinopsis=?, anio=? where id_pelicula=?";
         try
         {
