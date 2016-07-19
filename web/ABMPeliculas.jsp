@@ -112,7 +112,7 @@
                                 <h4 class="text-left">ID</h4>
                             </div>
                             <div class="col-sm-9">
-                                <input class="control form-control"  type="text" placeholder="ID (Automï¿½tico)" maxlength="15" name="ID" readonly="" value="<%if(peli!=null && request.getAttribute("peliculaPorAgregar")==null )%><%=peli.getIdPelicula()%>">
+                                <input class="control form-control"  type="text" placeholder="ID (Automático)" maxlength="15" name="ID" readonly="" value="<%if(peli!=null && request.getAttribute("peliculaPorAgregar")==null )%><%=peli.getIdPelicula()%>">
                             </div>
                         </div>
                         <%if(peli!=null && request.getAttribute("peliculaPorAgregar")==null){%>
@@ -139,7 +139,7 @@
                                 <h4 class="text-left">Año</h4>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" class="control form-control" name="anioPel" placeholder="* (Aï¿½o de lanzamiento)" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null || request.getAttribute("peliculaPorAgregar")!=null)%><%= peli.getAnio() %>">
+                                <input type="text" class="control form-control" name="anioPel" placeholder="* (Año de lanzamiento)" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null || request.getAttribute("peliculaPorAgregar")!=null)%><%= peli.getAnio() %>">
                             </div>
                         </div>
 
