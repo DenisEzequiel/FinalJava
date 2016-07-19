@@ -2867,8 +2867,28 @@ button.accordion.active:after {
 .cuenta input[type="checkbox"]
 {
      height: 15px;
+     width: auto;
+     display: inline;
+     position: relative;
+     top:2px;
+     cursor:pointer;
+     margin-right: 15px;
+}
+
+.puntero
+{
+    cursor:pointer;
+}
+.enTabla
+{
     
 }
+
+.enLinea
+{
+    display: inline;
+}
+
 
 .alinear
 {

@@ -89,7 +89,7 @@ public class UsuarioBD
             throw new AefilepException("Error al recuperar usuario",ex);
         }
                  
-        return cantidad>0 ? true : false;
+        return cantidad > 0;
     }
        
     public ArrayList<Usuario> buscarUsuarios(Usuario usu) throws AefilepException

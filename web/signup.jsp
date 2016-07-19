@@ -1,10 +1,6 @@
-<%@page import="java.util.Date"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.text.DateFormat"%>
 <%@page import="aplicacion.modelo.entidades.Usuario"%>
 <%
     Usuario usuPorRegistrar = new Usuario();
-     String fecha ;
     if(request.getAttribute("usuarioPorRegistrar")==null)
     {          
         usuPorRegistrar.setNombreUsuario(request.getParameter("nombreUsuario"));
@@ -12,8 +8,7 @@
         usuPorRegistrar.setContrasena(request.getParameter("contra1"));
     }
     else
-    {
-        
+    {      
         usuPorRegistrar = (Usuario)request.getAttribute("usuarioPorRegistrar");
     }
 %>

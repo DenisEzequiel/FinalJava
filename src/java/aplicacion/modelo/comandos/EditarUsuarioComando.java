@@ -56,19 +56,18 @@ public class EditarUsuarioComando extends Comando
         ArrayList<Usuario> usuarios=null;
         try
         {
-        cDeUsu.editarUsuario(usEditado);
-       usuarios = cDeUsu.obtenerUsuarios();
-        
+            cDeUsu.editarUsuario(usEditado);
+            usuarios = cDeUsu.obtenerUsuarios();       
         }
         catch(Exception ex)
         {
-              request.setAttribute("ex",ex.getMessage());
-              return"/ABMUsuarios.jsp";
+            request.setAttribute("ex",ex.getMessage());
+            return"/ABMUsuarios.jsp";
         }
         request.getSession().setAttribute("ListaUsuarios", usuarios);
         request.getSession().setAttribute("UsuarioEdit", usEditado);
         request.getSession().setAttribute("Scroll",true);
-        request.getSession().setAttribute("ExitoUsu", true);
+        request.setAttribute("ExitoUsu", true);
         
         
         return"/ABMUsuarios.jsp";

@@ -80,16 +80,15 @@ public class AgregarUsuarioComando extends Comando
                 return"/ABMUsuarios.jsp";
             }
             request.getSession().setAttribute("ListaUsuarios", usuarios);
-            request.getSession().setAttribute("Scroll",true);
             request.setAttribute("ExitoUsu", true); 
         }
         else
         {
             request.setAttribute("usuarioPorAgregar", usNuevo);
             request.setAttribute("ExitoUsu", false); 
-            request.getSession().setAttribute("Scroll",true);
+           
         }
-     
+         request.getSession().setAttribute("Scroll",true);
         return "/ABMUsuarios.jsp";
     }
     
