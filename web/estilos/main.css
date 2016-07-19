@@ -1673,6 +1673,7 @@ h2.title {
 }
 
 
+
 #cart_items .cart_info .table.table-condensed tr {
   border-bottom: 1px solid#F7F7F0
 }
@@ -2866,8 +2867,28 @@ button.accordion.active:after {
 .cuenta input[type="checkbox"]
 {
      height: 15px;
+     width: auto;
+     display: inline;
+     position: relative;
+     top:2px;
+     cursor:pointer;
+     margin-right: 15px;
+}
+
+.puntero
+{
+    cursor:pointer;
+}
+.enTabla
+{
     
 }
+
+.enLinea
+{
+    display: inline;
+}
+
 
 .alinear
 {
@@ -2882,6 +2903,10 @@ button.accordion.active:after {
 #cart_items .cart_info .cart_menu.colorTablaCompra
 {
     background:#3CB8C4;
+}
+#cart_items .cart_info .cart_menu.colorTablaTotal
+{
+    background:#0DAE2D;
 }
 
 .tamanio
@@ -2977,3 +3002,4 @@ img.imagenCarrusel
     width:250px;
     
 }
+

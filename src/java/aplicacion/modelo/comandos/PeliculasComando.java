@@ -44,7 +44,7 @@ public class PeliculasComando extends Comando
         {
             paginaActual = Integer.parseInt(request.getParameter("paginacionActual"));
         }
-        request.setAttribute("pActual", paginaActual);
+        request.getSession().setAttribute("pActual", paginaActual);
         
         cDp = new CatalogoDePeliculas();
         int cantidadDePeliculas = 0;

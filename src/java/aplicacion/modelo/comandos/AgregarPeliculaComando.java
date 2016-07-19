@@ -8,6 +8,7 @@ import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
+import aplicacion.utilidades.AefilepException;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -28,6 +29,17 @@ public class AgregarPeliculaComando extends Comando
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
+        boolean existePelicula = true;
+        try
+        {
+            existePelicula = cDp.obtenerPelicula((String)request.getParameter("nomPel"));
+        }
+        catch(AefilepException ex)
+        {
+            request.setAttribute("ex", ex.getMessage());
+            return"/ABMUsuarios.jsp";
+        }
+        
         pelicula=new Pelicula();
         pelicula.setActivo(true);
         pelicula.setFormato(request.getParameter("formPel"));
@@ -76,24 +88,34 @@ public class AgregarPeliculaComando extends Comando
             request.setAttribute("ex","Error al cargar imagen");
             return ("/ABMPeliculas.jsp");
         }
-        //Agrego la película y actualizo la lista
-        ArrayList<Pelicula> peliculas = new ArrayList<>();
-        try
+        
+        if(!existePelicula)
         {
-            cDp.agregarPelicula(pelicula);
-            peliculas = cDp.obtenerPeliculas();
+            //Agrego la película y actualizo la lista
+            ArrayList<Pelicula> peliculas = new ArrayList<>();
+            try
+            {
+                cDp.agregarPelicula(pelicula);
+                peliculas = cDp.obtenerPeliculas();            
+            }
+            catch(AefilepException ex)
+            {
+                request.setAttribute("ex", ex.getMessage());
+                request.getSession().setAttribute("Scroll",true);
+                return "/ABMPeliculas.jsp";
+            }         
             request.getSession().setAttribute("ListaPeliculas", peliculas);
-            request.getSession().setAttribute("PeliEdit", pelicula);
-            request.getSession().setAttribute("Scroll",true);
-            request.getSession().setAttribute("ExitoPeli", true);
+            //request.getSession().setAttribute("PeliEdit", pelicula);
+            request.setAttribute("ExitoPeli", true);
+            request.setAttribute("peliculaPorAgregar", null);
         }
-        catch(Exception ex)
+        else
         {
-            request.setAttribute("ex", ex.getMessage());
-            request.getSession().setAttribute("Scroll",true);
-            return "/ABMPeliculas.jsp";
+            request.setAttribute("peliculaPorAgregar", pelicula);
+            request.setAttribute("ExitoPeli", false); 
         }
         
+        request.getSession().setAttribute("Scroll",true);
         return "/ABMPeliculas.jsp";
     }
     

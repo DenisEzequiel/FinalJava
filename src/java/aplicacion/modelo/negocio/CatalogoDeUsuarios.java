@@ -15,54 +15,47 @@ import aplicacion.utilidades.AefilepException;
  */
 public class CatalogoDeUsuarios
 {
-    UsuarioBD usuarios;
+    UsuarioBD usuarios = new UsuarioBD();
     public Usuario buscarUsuario(String nombre, String contra) throws AefilepException
-    { 
-        usuarios = new UsuarioBD();
-        Usuario usu = null;
-        usu = usuarios.buscarUsuario(nombre, contra);
-        return usu;
+    {        
+        return usuarios.buscarUsuario(nombre, contra);
     }
-    
+    public boolean buscarUsuario(String nombreUsuario) throws AefilepException
+    {        
+        return usuarios.buscarUsuario(nombreUsuario);
+    }
     public ArrayList<Usuario> buscarUsuarios(Usuario usu) throws AefilepException
     {
-        usuarios = new UsuarioBD();
         return usuarios.buscarUsuarios(usu);
     }
     
     public ArrayList<Usuario> obtenerUsuarios() throws AefilepException
     {
-        usuarios = new UsuarioBD();
         return usuarios.obtenerUsuarios();
     }
     
     public void registrarUsuario(Usuario usu) throws AefilepException
     {
-        usuarios = new UsuarioBD();
         usuarios.registrarUsuario(usu);   
     }
     
     public void agregarUsuario(Usuario usu) throws AefilepException
     {
-        usuarios = new UsuarioBD();
         usuarios.agregarUsuario(usu);
     }
     
     public void editarUsuario(Usuario usu) throws AefilepException
     {
-        usuarios = new UsuarioBD();
         usuarios.editarUsuario(usu);
     }
     
     public void modificarUsuario(Usuario usu) throws AefilepException
     {
-        usuarios = new UsuarioBD();
         usuarios.modificarUsuario(usu);
     }
     
     public boolean modificarContrasenia(int id,String contrasenia) throws AefilepException
     {
-        usuarios = new UsuarioBD();
         return usuarios.modificarContrasenia(id,contrasenia);
     }
 }

@@ -5,7 +5,6 @@
 --%>
 <%@page import="aplicacion.modelo.entidades.Usuario"%>
 <%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <jsp:include page="head.jsp"/>
@@ -16,9 +15,14 @@
         {%>
         <%!ArrayList<Usuario> usuarios;%>
         
-        <% usuarios = (ArrayList)session.getAttribute("ListaUsuarios");%>
-        <% Usuario usu;%>
-        <% usu = (Usuario)session.getAttribute("UsuarioEdit");%>
+        <%  usuarios = (ArrayList)session.getAttribute("ListaUsuarios");%>
+        <%  Usuario usu = (Usuario)session.getAttribute("UsuarioEdit");
+            if(request.getAttribute("usuarioPorAgregar")!=null)
+            {          
+                 usu = (Usuario)request.getAttribute("usuarioPorAgregar");
+            }
+        
+        %>
         <div class="cuenta">
             <div class="container"> 
                 <div class="row">
@@ -78,7 +82,7 @@
                                     <td>
                                         <form action="Controlador" method="post">
                                         <input type="hidden"  name="form" value="SeleccionarUsuarioComando"/>
-                                        <input type="hidden" name="idUsuEdit" value="<%= u.getIdUsuario()%>">
+                                        <input type="hidden" name="idUsuEdit" value="<%=u.getIdUsuario()%>">
                                         <input type="submit" value="Editar">
                                         </form>
                                     </td>
@@ -92,144 +96,141 @@
             </div>
             <form action="Controlador" method="post">
                 <div <%if(session.getAttribute("Scroll")!=null){%> id="Edit" <%session.setAttribute("Scroll", null); };%>  class="row">
-                <h2 class="title text-center"><%if(usu!=null) {%>EDITAR<%}else{%>AGREGAR<%}%> USUARIO</h2>
-                    <div class="col-lg-5 col-lg-offset-1">
-                                <h2>InformaciÃ³n del Usuario</h2>
+                    <br/>    
+                    <h2 class="title text-center"><%if(usu!=null && request.getAttribute("usuarioPorAgregar")==null) {%>EDITAR<%}else{%>AGREGAR<%}%> USUARIO</h2>
+                            <div class="col-sm-6">
+                                <h2>Información del Usuario</h2>
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-sm-3">
                                         <h4 class="text-left">ID</h4>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control"  type="text" placeholder="(AutomÃ¡tico)" maxlength="15" name="ID" readonly="" value="<%if(usu!=null)%><%=usu.getIdUsuario()%>">
+                                    <div class="col-sm-9">
+                                        <input class="control form-control"  type="text" placeholder="(Automático)" maxlength="15" name="ID" readonly="" value="<%if(usu!=null && request.getAttribute("usuarioPorAgregar")==null)%><%=usu.getIdUsuario()%>">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-sm-3">
                                         <h4 class="text-left">Nombre</h4>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control" type="text" placeholder="*" maxlength="15" pattern="^[a-zA-Z ]*$" title="Letras" name="Nombre" required value="<%if(usu!=null)%><%= usu.getNombre() %>">
+                                    <div class="col-sm-9">
+                                        <input class="control form-control" type="text" placeholder="*" maxlength="15" pattern="^[a-zA-Z ]*$" title="Letras" name="Nombre" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getNombre() %>">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-sm-3">
                                         <h4 class="text-left">Apellido</h4>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control" type="text" placeholder="*" name="Apellido" maxlength="15" pattern="^[a-zA-Z ]*$" title="Letras" required value="<%if(usu!=null)%><%= usu.getApellido() %>" >
+                                    <div class="col-sm-9">
+                                        <input class="control form-control" type="text" placeholder="*" name="Apellido" maxlength="15" pattern="^[a-zA-Z ]*$" title="Letras" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getApellido() %>" >
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-sm-3">
                                         <h4 class="text-left">DNI</h4>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control" type="text" placeholder="*" name="Dni" pattern="^[0-9]*$" minlength="7" maxlength="9" required value="<%if(usu!=null)%><%= usu.getDni() %>">
+                                    <div class="col-sm-9">
+                                        <input class="control form-control" type="text" placeholder="*" name="Dni" pattern="^[0-9]*$" minlength="7" maxlength="9" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getDni() %>">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-sm-3">
                                         <h4 class="text-left">F. Nac.</h4>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control" type="date" name="fechaNacimiento" required value="<%if(usu!=null)%><%= usu.getFechaNacimiento() %>">
+                                    <div class="col-sm-9">
+                                        <input class="control form-control" type="date" name="fechaNacimiento" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getFechaNacimiento() %>">
                                     </div>                                   
                                 </div> 
                                 <div class="row">
-                                    <div class="col-lg-3">
-                                        <h4 class="text-left">DirecciÃ³n</h4>
+                                    <div class="col-sm-3">
+                                        <h4 class="text-left">Dirección</h4>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control" type="text" placeholder="*" maxlength="20" name="Calle" required value="<%if(usu!=null)%><%= usu.getDireccion() %>">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <h4 class="text-left">TelÃ©fono</h4>
-                                    </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control" type="text" placeholder="*" name="Tel" pattern="^[0-9]*$" maxlength="10" required value="<%if(usu!=null)%><%= usu.getTelefono() %>">
+                                    <div class="col-sm-9">
+                                        <input class="control form-control" type="text" placeholder="*" maxlength="20" name="Calle" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getDireccion() %>">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-sm-3">
+                                        <h4 class="text-left">Teléfono</h4>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input class="control form-control" type="text" placeholder="*" name="Tel" pattern="^[0-9]*$" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getTelefono() %>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
                                         <h4 class="text-left">E-Mail</h4>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control" type="text" placeholder="*" name="Email" maxlength="30" required value="<%if(usu!=null)%><%= usu.getMail() %>">
+                                    <div class="col-sm-9">
+                                        <input class="control form-control" type="text" placeholder="*" name="Email" maxlength="30" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getMail() %>">
                                     </div>
                                 </div>
-                    </div>
-                            <div class="col-lg-5 col-lg-offset-0">
-                                <h2>InformaciÃ³n de la cuenta</h2>
+                            </div>
+                            <div class="col-sm-6 ">
+                                <h2>Información de la cuenta</h2>
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-sm-5">
                                         <h4 class="text-left">Nombre de Usuario</h4>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control" type="text" placeholder="*" name="Usu" maxlength="10" required value="<%if(usu!=null)%><%= usu.getNombreUsuario() %>">
+                                    <div class="col-sm-7">
+                                        <input class="control form-control" type="text" placeholder="*" name="Usu" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getNombreUsuario() %>">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-3">
-                                        <h4 class="text-left">ContraseÃ±a</h4>
+                                    <div class="col-sm-5">
+                                        <h4 class="text-left">Contraseña</h4>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control" type="password" placeholder="*" name="Contra1" minlength="4" maxlength="10" required value="<%if(usu!=null)%><%= usu.getContrasena() %>">
+                                    <div class="col-sm-7">
+                                        <input class="control form-control" type="password" placeholder="*" name="Contra1" minlength="4" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getContrasena() %>">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-3">
-                                        <h4 class="text-left">Confirmar ContraseÃ±a</h4>
+                                    <div class="col-sm-5">
+                                        <h4 class="text-left">Confirmar Contraseña</h4>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <input class="control form-control" type="password" placeholder="*" name="Contra2" minlength="4" maxlength="10" required value="<%if(usu!=null)%><%= usu.getContrasena() %>">
+                                    <div class="col-sm-7">
+                                        <input class="control form-control" type="password" placeholder="*" name="Contra2" minlength="4" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getContrasena() %>">
                                     </div>
                                 </div>
                                 <h2>Estado de la cuenta</h2>
                                 <div class="row">
-                                    <div class="col-lg-8">
-                                        <h4 class="text-left">Administrador</h4>   
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <input class="control form-control" type="checkbox" name="Admin" value="true" <%if(usu!=null && usu.isEsAdmin())%>checked<%;%>>
+                                    <div class="col-sm-12">
+                                        <label class="puntero"><input class="enLinea" type="checkbox" name="Admin" value="true" <%if((usu!=null || request.getAttribute("usuarioPorAgregar")!=null) && usu.isEsAdmin())%>checked<%;%>><h4 class="enLinea">Administrador</h4></label>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-8">
-                                        <h4 class="text-left">Activo</h4>  
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <input class="control form-control" type="checkbox" name="Activo" value="true" <%if(usu==null)%>checked<%; if(usu!=null && usu.isActivo())%>checked<%;%>>
+                                    <div class="col-sm-12">                                                           
+                                        <label class="puntero"><input class="enLinea" type="checkbox" name="Activo" value="true" <% if((usu!=null || request.getAttribute("usuarioPorAgregar")!=null) && usu.isActivo())%>checked<%;%>><h4 class="enLinea">Activo</h4></label>
                                     </div>
                                 </div>    
                                 <div class="row">
-                                    <div class="col-lg-8">
-                                        <h4 class="text-left">Bloqueado</h4>  
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <input class="control form-control" type="checkbox" name="Bloqueado" value="true" <%if(usu!=null && usu.isBloqueado())%>checked<%;%>>
+                                    <div class="col-sm-12">                                                                  
+                                        <label class="puntero"><input class="enLinea" type="checkbox" name="Bloqueado" value="true" <%if((usu!=null || request.getAttribute("usuarioPorAgregar")!=null) && usu.isBloqueado())%>checked<%;%>><h4 class="enLinea">Bloqueado</h4> </label>
                                     </div>
                                 </div>
-                                <div class="alert alert-success fade<%if(session.getAttribute("ExitoUsu")!=null){ %> in <%session.setAttribute("ExitoUsu", null);} %>">
-                                    Usuario <%if(usu==null){ %>agregado<% }else{%>editado<%}%> con Ã©xito.        
-                                </div>
-                                <% if(request.getAttribute("ex")!=null){%>
-                                                        <div class="alert alert-danger">
-                                                              <%=request.getAttribute("ex")%>
-                                                           </div>
-                                                         <%}%>
+                                <%if(request.getAttribute("ExitoUsu")!=null){
+                                if((Boolean)request.getAttribute("ExitoUsu")){%>
+                                    <div class="alert alert-success">
+                                        <p class="text-center">Usuario <%if(usu==null){ %>agregado<% }else{%>editado<%}%> con éxito.</p>      
+                                    </div>
+                                 <%} else if(!(Boolean)request.getAttribute("ExitoUsu")){%>
+                                    <div class="alert alert-danger">
+                                        <p class="text-center">El nombre de usuario ya existe.</p>        
+                                    </div>  
+                            
+                                <%}} if(request.getAttribute("ex")!=null){%>
+                                    <div class="alert alert-danger">
+                                        <p class="text-center"><%=request.getAttribute("ex")%></p>
+                                    </div>
+                                <%}%>
                             </div>
+                        </div>
+            
+            <div class="col-sm-12">                      
+                <input type="hidden" name="form" value="<%if(usu!=null && request.getAttribute("usuarioPorAgregar")==null) {%>EditarUsuarioComando<%}else{%>AgregarUsuarioComando<%}%>">
+                <button type="submit" class="btn btn-default"><%if(usu!=null && request.getAttribute("usuarioPorAgregar")==null) {%>Guardar Cambios<%}else{%>Crear Usuario<%}%></button>
+                <h5 class="text-left">Los campos marcados con * son obligatorios</h5>   
             </div>
-            <div class="row">
-                <div class="col-lg-5 col-lg-offset-1">
-                    <h5 class="text-left">Los campos marcados con * son obligatorios</h5>
-                </div>
-                <div class="col-lg-5 col-lg-offset-0">
-                                <input type="hidden" name="form" value="<%if(usu!=null) {%>EditarUsuarioComando<%}else{%>AgregarUsuarioComando<%}%>">
-                                <button type="submit" class="btn btn-default"><%if(usu!=null) {%>Guardar Cambios<%}else{%>Crear Usuario<%}%></button>
-                </div>
-            </div>
+        
             </form>
          </div>
       </div>

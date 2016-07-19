@@ -28,10 +28,10 @@ public class UsuarioBD
         
         try
         {
-        con = conec.getConexion();
+            con = conec.getConexion();
 
-        PreparedStatement pr = con.prepareStatement(sql);
-        pr.setString(1, nom);
+            PreparedStatement pr = con.prepareStatement(sql);
+            pr.setString(1, nom);
             pr.setString(2, contra);
             ResultSet res = pr.executeQuery();
             
@@ -62,11 +62,40 @@ public class UsuarioBD
         return usu;
     }
     
+    public boolean buscarUsuario(String nombreUsuario) throws AefilepException
+    {        
+        String sql = "select count(*) from usuarios where nombre_usuario=? ;";
+        Connection con =null; 
+        int cantidad = 0;
+        try
+        {
+            con = conec.getConexion();
+
+            PreparedStatement pr = con.prepareStatement(sql);
+            pr.setString(1, nombreUsuario);
+            
+            ResultSet res = pr.executeQuery();
+                           
+            if(res.next())
+            {
+                cantidad = res.getInt(1);
+                con.close();
+            }
+            
+            con.close();
+        }
+        catch(Exception ex)
+        {
+            throw new AefilepException("Error al recuperar usuario",ex);
+        }
+                 
+        return cantidad > 0;
+    }
+       
     public ArrayList<Usuario> buscarUsuarios(Usuario usu) throws AefilepException
     {
         ArrayList<Usuario> resultado = new ArrayList<Usuario>();
-                
-        
+                        
         String apell = usu.getApellido();
         String sql = "select * from aefilep.usuarios where activo=1 and apellido like '"+apell+"%'";
         int id = usu.getIdUsuario();
@@ -145,7 +174,8 @@ public class UsuarioBD
             }
             con.close();
             
-        }catch(Exception ex)
+        }
+        catch(Exception ex)
         {
             throw new AefilepException("Error al recuperar usuarios", ex);
         }
@@ -153,8 +183,7 @@ public class UsuarioBD
     }
     
     public void editarUsuario(Usuario usu) throws AefilepException
-    {
-        
+    {        
         String sql = "update usuarios set nombre=? , apellido=? , direccion=? ,"
                 + " telefono=? , mail=?,dni=?,fecha_de_nacimiento=?,bloqueado=?,activo=?,es_admin=?,nombre_usuario=? where id_usuario=?";
         try
@@ -176,7 +205,7 @@ public class UsuarioBD
             pr.executeUpdate();
             con.close();
         }
-         catch(Exception ex)
+        catch(Exception ex)
         {
             throw new AefilepException("Error al modificar datos del usuario", ex);
         }
@@ -184,12 +213,10 @@ public class UsuarioBD
     
     //Ver que estos metodos son practicamente iguales
     public void modificarUsuario(Usuario usu) throws AefilepException
-    {   
-        
-        
+    {          
         String sql = "update usuarios set nombre=? , apellido=? , direccion=? ,"
                 + " telefono=? , mail=?,dni=?,fecha_de_nacimiento=? where id_usuario=?";
-   
+ 
         try
         {
             Connection con = conec.getConexion();
@@ -205,11 +232,10 @@ public class UsuarioBD
             pr.executeUpdate();
             con.close();
         }
-         catch(Exception ex)
+        catch(Exception ex)
         {
             throw new AefilepException("Error al modificar datos del usuario", ex);
-        }
-        
+        }        
     }
     
     public boolean modificarContrasenia(int id,String contra) throws AefilepException
@@ -226,18 +252,17 @@ public class UsuarioBD
             pr.executeUpdate();
             con.close();
         }
-         catch(SQLException ex)
+        catch(SQLException ex)
         {     
-            throw new AefilepException("Error al modificar datos del usuario", ex);
-            
+            throw new AefilepException("Error al modificar datos del usuario", ex);          
         }
         res=true;
         return res;
     }
     
-public void agregarUsuario(Usuario usu) throws AefilepException
-{
-    PreparedStatement prpstmt;
+    public void agregarUsuario(Usuario usu) throws AefilepException
+    {
+        PreparedStatement prpstmt;
         
         String transac1 = "insert into aefilep.usuarios values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
         try
@@ -263,12 +288,11 @@ public void agregarUsuario(Usuario usu) throws AefilepException
         }
         catch(Exception ex)
         {
-             throw new AefilepException("Error al crear un nuevo usuario", ex);
-            
+             throw new AefilepException("Error al crear un nuevo usuario", ex);            
         }
-}
+    }
             
-public void registrarUsuario(Usuario usu) throws AefilepException
+    public void registrarUsuario(Usuario usu) throws AefilepException
     {
         PreparedStatement prpstmt;
         
@@ -297,8 +321,7 @@ public void registrarUsuario(Usuario usu) throws AefilepException
         //Otra vez metodos iguales
         catch(Exception ex)
         {
-             throw new AefilepException("Error al crear un nuevo usuario", ex);
-            
+             throw new AefilepException("Error al crear un nuevo usuario", ex);           
         }
     }
 }

@@ -1,9 +1,17 @@
-    <%@page import="aplicacion.modelo.entidades.Usuario" %>
-    <%
-        String nombreUsuario = request.getParameter("nombreUsuario");
-        String email = request.getParameter("email");
-        String contrasenia = request.getParameter("contra1");
-    %>
+<%@page import="aplicacion.modelo.entidades.Usuario"%>
+<%
+    Usuario usuPorRegistrar = new Usuario();
+    if(request.getAttribute("usuarioPorRegistrar")==null)
+    {          
+        usuPorRegistrar.setNombreUsuario(request.getParameter("nombreUsuario"));
+        usuPorRegistrar.setMail(request.getParameter("email"));
+        usuPorRegistrar.setContrasena(request.getParameter("contra1"));
+    }
+    else
+    {      
+        usuPorRegistrar = (Usuario)request.getAttribute("usuarioPorRegistrar");
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
     <jsp:include page="head.jsp"/>
@@ -22,48 +30,49 @@
                         <div class="row">
                             <div class="col-lg-5 col-lg-offset-1">
                                 <h2>información sobre ti</h2> 
-                                <input class="control form-control" type="text" placeholder="Nombre*" maxlength="15" name="Nombre" required >
-                                <input class="control form-control" type="text" placeholder="Apellido*" name="Apellido" maxlength="15" required>
-                                <input class="control form-control" type="text" placeholder="DNI*" name="Dni" pattern="^[0-9]*$" minlength="7" maxlength="9" required>
+                                <input class="control form-control" type="text" placeholder="Nombre*" maxlength="15" name="Nombre" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=usuPorRegistrar.getNombre()%>"<%}%>>
+                                <input class="control form-control" type="text" placeholder="Apellido*" name="Apellido" maxlength="15" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=usuPorRegistrar.getApellido()%>"<%}%>>
+                                <input class="control form-control" type="text" placeholder="DNI*" name="Dni" pattern="[0-9]{7,9}" maxlength="9" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=usuPorRegistrar.getDni()%>"<%}%>>
                                 <h5>Fecha de Nacimiento</h5>
                                 <div class="row">
                                     <div class="col-sm-12 col-sm-offset-0">
-                                        <input class="control form-control" type="date" name="fechaNacimiento" required>
+                                        <input class="control form-control" type="date" name="fechaNacimiento" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=usuPorRegistrar.getFechaNacimiento()%>"<%}%>>
                                     </div>                                   
                                 </div> 
                                 <div class="row">
                                     <div class="col-sm-12 col-sm-offset-0">
-                                        <input class="control form-control" type="text" placeholder="Calle*" maxlength="20" name="Calle" required>
+                                        <input class="control form-control" type="text" placeholder="Calle*" maxlength="20" name="Calle" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=request.getAttribute("calle")%>"<%}%>>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-4 col-sm-offset-0">
-                                        <input class="control form-control" type="text" placeholder="Número*"  maxlength="6" pattern="^[0-9]*$" name="Num" required>
+                                        <input class="control form-control" type="text" placeholder="Número*"  maxlength="6" pattern="^[0-9]*$" name="Num" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=request.getAttribute("numero")%>"<%}%>>
                                     </div>
                                     <div class="col-sm-4 col-sm-offset-0">
-                                        <input class="control form-control" type="text" placeholder="Piso"  maxlength="2" pattern="^[0-9]*$" name="Piso">
+                                        <input class="control form-control" type="text" placeholder="Piso"  maxlength="2" pattern="^[0-9]*$" name="Piso" <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=request.getAttribute("piso")%>"<%}%>>
                                     </div>
                                     <div class="col-sm-4 col-sm-offset-0">
-                                        <input class="control form-control" type="text" placeholder="Depto."  maxlength="1" pattern="[A-Z]" name="Depto">
+                                        <input class="control form-control" type="text" placeholder="Depto."  maxlength="1" pattern="[A-Z]" name="Depto" <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=request.getAttribute("depto")%>"<%}%>>
                                     </div>
                                 </div>
                                 
-                                <input class="control form-control" type="text" placeholder="Teléfono*" name="Tel" pattern="^[0-9]*$" maxlength="10" required>
-                                <input class="control form-control" type="text" placeholder="Email*" name="Email" maxlength="30" required value="<%=email %>">
+                                <input class="control form-control" type="text" placeholder="Teléfono*" name="Tel" pattern="^[0-9]*$" maxlength="10" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=usuPorRegistrar.getTelefono()%>"<%}%>>
+                                <input class="control form-control" type="text" placeholder="Email*" name="Email" maxlength="30" required value="<%=usuPorRegistrar.getMail()%>">
                             </div>
                             <div class="col-lg-5 col-lg-offset-0">
                                 <h2>información sobre tu cuenta</h2> 
-                                <input class="control form-control" type="text" placeholder="Nombre de Usuario*" name="Usu" maxlength="10" required value="<%=nombreUsuario %>">
-                                <input class="control form-control" type="password" placeholder="Contraseña*" name="Contra1" minlength="4" maxlength="10" required value="<%=contrasenia %>">
-                                <input class="control form-control" type="password" placeholder="Confirmar contraseña*" name="Contra2" minlength="4" maxlength="10" required>
-                                <%if(request.getAttribute("ex") != null)
-                                        {
-                                       %> 
-                                            
-                                            <div class="alert alert-danger">
-                                                <%=request.getAttribute("ex")%>
-                                            </div>
-                                        <%}%>
+                                <input class="control form-control" type="text" placeholder="Nombre de Usuario*" name="Usu" maxlength="10" required value="<%=usuPorRegistrar.getNombreUsuario() %>">
+                                <input class="control form-control" type="password" minlength="4" placeholder="Contraseña*" name="Contra1"  maxlength="10" required value="<%=usuPorRegistrar.getContrasena()%>">
+                                <input class="control form-control" type="password" placeholder="Confirmar contraseña*" name="Contra2" minlength="4" maxlength="10" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=usuPorRegistrar.getContrasena()%>"<%}%>>
+                                <%if(request.getAttribute("ex") != null){%>                                           
+                                    <div class="alert alert-danger">
+                                        <%=request.getAttribute("ex")%>
+                                    </div>
+                                <%}if(request.getAttribute("exitoRegistro") != null){%> 
+                                    <div class="alert alert-danger">
+                                        <%=request.getAttribute("exitoRegistro")%>
+                                    </div>
+                                <%}%>
                             </div>
                         </div><!--/row-->
                         

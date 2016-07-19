@@ -26,7 +26,7 @@ public class PeliculaDB
     PeliculasGenerosBD pelgenBD = new PeliculasGenerosBD();
     Connection con = null;
     
-    public void agregarPelicula(Pelicula p) throws Exception
+    public void agregarPelicula(Pelicula p) throws AefilepException
     {
         String transac = "insert into aefilep.peliculas values (?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         try
@@ -40,7 +40,6 @@ public class PeliculaDB
             pr.setInt(5, p.getStockAlquiler());
             pr.setInt(6, p.getStockVenta());
             pr.setBlob(7,p.getImagen());
-            pr.setBinaryStream(7, p.getImagen());
             pr.setString(8, p.getReparto());
             pr.setDate(9, new java.sql.Date(p.getFechaCarga().getTime()));
             pr.setBoolean(10,p.isActivo());
@@ -64,7 +63,7 @@ public class PeliculaDB
         }
     }
     
-    public void actualizarPelicula(Pelicula p) throws Exception
+    public void actualizarPelicula(Pelicula p) throws AefilepException
     {
         InputStream img = p.getImagen();
         
@@ -137,7 +136,7 @@ public class PeliculaDB
         
     }
      
-    public byte[] buscarImagen(int id) throws Exception
+    public byte[] buscarImagen(int id) throws AefilepException
     {
         String transac = "select imagen from peliculas where id_pelicula=?;";
         byte[] imgData=null;
@@ -161,10 +160,10 @@ public class PeliculaDB
         return imgData;
     }
      
-     public ArrayList<Pelicula> obtenerPeliculas() throws Exception
+     public ArrayList<Pelicula> obtenerPeliculas() throws AefilepException
     {
         ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
-        String transac = "select * from peliculas where activo=1;";
+        String transac = "select * from peliculas";
         try
         {
             con = conec.getConexion();
@@ -211,7 +210,7 @@ public class PeliculaDB
         return listaPeliculas;
     }
     
-    public ArrayList<Pelicula> obtenerPeliculas(String nombre, int inferior, int cantidad) throws Exception
+    public ArrayList<Pelicula> obtenerPeliculas(String nombre, int inferior, int cantidad) throws AefilepException
     {
         ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
         String transac = "select * from peliculas where nombre like '%"+nombre+"%'and activo=1 limit ?,?;";
@@ -263,7 +262,7 @@ public class PeliculaDB
         return listaPeliculas;
     }
      
-    public ArrayList<Pelicula> buscarPeliculas(int inferior,int cantidad) throws Exception
+    public ArrayList<Pelicula> buscarPeliculas(int inferior,int cantidad) throws AefilepException
     {
         ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
         String transac = "select * from peliculas where activo=1 limit ?,?;";
@@ -315,7 +314,7 @@ public class PeliculaDB
         return listaPeliculas;
     }
      
-    public Pelicula obtenerPelicula(int idPeli) throws Exception
+    public Pelicula obtenerPelicula(int idPeli) throws AefilepException
     {
         Pelicula p = null;
         String transac = "select * from peliculas where activo=1 and id_pelicula=?";
@@ -362,8 +361,33 @@ public class PeliculaDB
         
         return p;
     }
-     
-    public int cantidadPeliculas() throws Exception
+    
+    public boolean obtenerPelicula(String nombrePelicula) throws AefilepException
+    {      
+        String transac = "select count(*) from peliculas where nombre=?";
+        int cantidad=0;
+        try
+        {
+            con = conec.getConexion();
+            PreparedStatement pr = con.prepareStatement(transac);
+            pr.setString(1, nombrePelicula);
+            ResultSet res = pr.executeQuery();
+                   
+            if(res.next())
+            {   
+                cantidad = res.getInt(1);
+            }
+           
+            con.close();
+        }
+        catch(Exception ex)
+        {
+            throw new AefilepException("Error al recuperar los datos de la película",ex);
+        }
+        
+        return cantidad > 0;
+    }
+    public int cantidadPeliculas() throws AefilepException
     {
         int i=0;
         String transac = "select count(*) from peliculas;";
@@ -388,7 +412,7 @@ public class PeliculaDB
         return i;
      }
      
-    public int cantidadPeliculasActivas() throws Exception
+    public int cantidadPeliculasActivas() throws AefilepException
     {
         int i=0;
         String transac = "select count(*) from peliculas where activo=1;";
@@ -413,7 +437,7 @@ public class PeliculaDB
         return i;
     }
           
-     public int cantidadEstrenosActivos() throws Exception
+     public int cantidadEstrenosActivos() throws AefilepException
      {
         int i=0;
         String transac = "select count(*) from peliculas where activo=1 and (`fecha_carga` +7)>CURRENT_DATE();";
@@ -437,7 +461,7 @@ public class PeliculaDB
         return i;
      }
      
-    public int cantidadGenerosActivos(int id) throws Exception
+    public int cantidadGenerosActivos(int id) throws AefilepException
     {
         int i=0;
         String transac = "select count(*) from peliculas p inner join peliculas_generos pg on p.id_pelicula=pg.id_pelicula where id_genero=? and activo=1;";
@@ -463,7 +487,7 @@ public class PeliculaDB
         return i;
     }
     
-    public int cantidadBuscadorActivos(String nombre) throws Exception
+    public int cantidadBuscadorActivos(String nombre) throws AefilepException
      {
         int i=0;
         String transac = "select count(*) from peliculas where  nombre like '%"+nombre+"%'and activo=1 ;";
@@ -487,7 +511,7 @@ public class PeliculaDB
         return i;
     }
     
-    public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad) throws Exception
+    public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad) throws AefilepException
     {
         ArrayList<Pelicula> listaEstrenos = new ArrayList<>();
         String transac = "select * from peliculas where(`fecha_carga` +7)>CURRENT_DATE() and activo=1 limit ?,?;";
@@ -540,7 +564,7 @@ public class PeliculaDB
         return listaEstrenos;
     }
     
-    public ArrayList<Pelicula> obtenerEstrenos(int cant) throws Exception
+    public ArrayList<Pelicula> obtenerEstrenos(int cant) throws AefilepException
     {
         ArrayList<Pelicula> listaEstrenos = new ArrayList<>();
         String transac = "select * from peliculas where(`fecha_carga` +7)>CURRENT_DATE() and activo=1 order by `fecha_carga` desc limit 0,?;";
@@ -642,7 +666,7 @@ public class PeliculaDB
         return listaEstrenos;
     }
     
-    public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad) throws Exception
+    public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad) throws AefilepException
     {
         ArrayList<Pelicula> listaGenero = new ArrayList<>();
         String transac = "select id_pelicula from peliculas_generos where id_genero=? limit ?,?";
@@ -668,7 +692,7 @@ public class PeliculaDB
         }
         catch(Exception ex)
         {
-            throw new AefilepException("Erro al recuperar géneros",ex);
+            throw new AefilepException("Error al recuperar géneros",ex);
         }
             
         return listaGenero;

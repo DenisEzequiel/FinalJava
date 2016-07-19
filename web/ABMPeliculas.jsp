@@ -42,11 +42,11 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>Duración</th>
+                                    <th>DuraciÃ³n</th>
                                     <th>Stock Alqui.</th>
                                     <th>Stock Venta</th>
                                     <th>F. Alta</th>
-                                    <th>Año</th>
+                                    <th>AÃ±o</th>
                                     <th>Activa</th>
                                     <th>Estreno</th>
                                     <th></th>
@@ -107,7 +107,7 @@
                                         <h4 class="text-left">ID</h4>
                                     </div>
                                     <div class="col-lg-9">
-                                        <input class="control form-control"  type="text" placeholder="ID (Automático)" maxlength="15" name="ID" readonly="" value="<%if(peli!=null)%><%=peli.getIdPelicula()%>">
+                                        <input class="control form-control"  type="text" placeholder="ID (AutomÃ¡tico)" maxlength="15" name="ID" readonly="" value="<%if(peli!=null)%><%=peli.getIdPelicula()%>">
                                     </div>
                             </div>
                             <%if(peli!=null){%>
@@ -122,15 +122,15 @@
                             <%}%>
                             <div class="row">
                                     <div class="col-lg-3">
-                                        <h4 class="text-left">Año</h4>
+                                        <h4 class="text-left">Anio</h4>
                                     </div>
                                     <div class="col-lg-9">
-                                        <input type="text" class="control form-control" name="anioPel" placeholder="* (Año de lanzamiento)" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null)%><%= peli.getAnio() %>">
+                                        <input type="text" class="control form-control" name="anioPel" placeholder="* (AÃ±o de lanzamiento)" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null)%><%= peli.getAnio() %>">
                                     </div>
                             </div>
                             <div class="row">
                                     <div class="col-lg-3">
-                                        <h4 class="text-left">Título</h4>
+                                        <h4 class="text-left">Titulo</h4>
                                     </div>
                                     <div class="col-lg-9">
                                         <input type="text" class="control form-control" name="nomPel" placeholder="*"  required value="<%if(peli!=null)%><%=peli.getNombre()%>">
@@ -138,7 +138,7 @@
                             </div>
                             <div class="row">
                                     <div class="col-lg-6">
-                                        <h4 class="text-left">Duración</h4>
+                                        <h4 class="text-left">Duracion</h4>
                                     </div>
                                     <div class="col-lg-6">
                                         <h4 class="text-left">Formato</h4>
@@ -203,7 +203,7 @@
                                         <input type="text" class="control form-control" name="palqPel" placeholder="Precio Alquiler" pattern="^[0-9]*$" title="Numero" readonly required value="<%if(peli!=null){%><%= peli.getPrecioAlquiler()%><%}else if(peli==null){%><%= param.getPrecioAlquilerEstreno()%><%}%>">
                                     </div>
                                     <div class="col-lg-6">
-                                        <input type="text" class="control form-control" name="pvtaPel" placeholder="* (En $)" pattern="^[0-9]*(\.[0-9]+)?$" title="Numero" required value="<%if(peli!=null)%><%= peli.getPrecioVenta() %>">
+                                        <input type="text" class="control form-control" name="pvtaPel" placeholder="* (En $)" pattern="^(\d|,)*\.?\d*$" title="Numero" required value="<%if(peli!=null)%><%= peli.getPrecioVenta() %>">
                                     </div>
                             </div>
                             <div class="row">
@@ -232,7 +232,7 @@
                             </div>
                             <div class="row">
                                     <div class="col-lg-12">
-                                        <h4 class="text-left">Géneros</h4>
+                                        <h4 class="text-left">GÃ©neros</h4>
                                     </div>
                             </div>
                             <div class="table-responsive" style="height:90px;overflow:auto;">
@@ -257,9 +257,9 @@
                                 </div>
                             </div>
                             <%}%>
-                            <%if((session.getAttribute("ExitoPeli")!=null)&&(request.getAttribute("ex")==null)){%>
+                            <%if(session.getAttribute("ExitoPeli")!=null){%>
                             <div class="alert alert-success fade in">
-                                    Pelicula <%if(peli==null){ %>agregada<% }else{%>editada<%}%> con éxito.        
+                                    Pelicula <%if(peli==null){ %>agregada<% }else{%>editada<%}%> con Ã©xito.        
                             </div>
                             <%session.setAttribute("ExitoPeli", null);}%>
                     </div>

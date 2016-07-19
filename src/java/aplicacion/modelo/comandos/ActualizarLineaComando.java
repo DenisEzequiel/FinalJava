@@ -32,6 +32,7 @@ public class ActualizarLineaComando extends Comando
             if(lp.getPelicula().getIdPelicula()==idPelicula && (lp.isEsAlquiler()==tipoL))
             {
                 lp.setCantidad(cant);
+                
             }
         }
     }

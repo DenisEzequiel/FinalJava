@@ -11,7 +11,6 @@ import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -110,24 +109,24 @@ public class EditarPeliculaComando extends Comando
         Boolean esActivo = (request.getParameter("Activa")!=null);
         PeliEditada.setActivo(esActivo);
         
+        ArrayList<Pelicula> peliculas;
         try
         {
             CdeP.actualizarPelicula(PeliEditada);
-            ArrayList<Pelicula> peliculas = CdeP.obtenerPeliculas();
-            request.getSession().setAttribute("ListaPeliculas", peliculas);
-            request.getSession().setAttribute("PeliEdit", PeliEditada);
-            request.getSession().setAttribute("Scroll",true);
-            request.getSession().setAttribute("ExitoPeli", true);
-
-            return "/ABMPeliculas.jsp";
+            peliculas = CdeP.obtenerPeliculas();          
         }
         catch(Exception ex)
         {
-            request.getSession().setAttribute("ExitoPeli", false);
             request.setAttribute("ex",ex.getMessage());
             return "/ABMPeliculas.jsp";
         }
         
+        request.getSession().setAttribute("ListaPeliculas", peliculas);
+        request.getSession().setAttribute("PeliEdit", PeliEditada);
+        request.getSession().setAttribute("Scroll",true);
+        request.setAttribute("ExitoPeli", true);
+         
+        return "/ABMPeliculas.jsp";
     }
     
 }
