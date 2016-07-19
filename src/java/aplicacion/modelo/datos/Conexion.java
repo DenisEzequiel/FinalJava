@@ -25,7 +25,7 @@ public class Conexion
 	        	
 	         Class.forName("com.mysql.jdbc.Driver");
 	         String usuarioDB="root";
-	         String passwordDB="";
+	         String passwordDB="40987";
 	         
 	         String servidor = "jdbc:mysql://localhost:3306/aefilep";
 	         

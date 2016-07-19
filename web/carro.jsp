@@ -70,7 +70,7 @@
                                             %>
                                                     <tr>
                                                             <td class="cart_product">
-                                                                    <a href="#"><img src="imagenes/two.png" alt=""></a>
+                                                                   <img src="ProcesadorImagenes?id=<%=lp.getPelicula().getIdPelicula()%>" class="imagenCarro img-responsive" alt="">
                                                             </td>
                                                             <td class="cart_description">
                                                                     <h4><%=lp.getPelicula().getNombre()%></h4>                                                                                                                                                                          
@@ -131,7 +131,7 @@
                                                     { %>
                                                     <tr>
                                                             <td class="cart_product">
-                                                                    <a href="#"><img src="imagenes/two.png" alt=""></a>
+                                                                  <img src="ProcesadorImagenes?id=<%=lp.getPelicula().getIdPelicula()%>" class="imagenCarro img-responsive" alt="">
                                                             </td>
                                                             <td class="cart_description">
                                                                     <h4><%=lp.getPelicula().getNombre()%></h4>
