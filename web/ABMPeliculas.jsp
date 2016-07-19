@@ -186,7 +186,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <h4 class="text-left">Precio. Vta.</h4>
-                                <input type="text" class="control form-control" name="pvtaPel" placeholder="* (En $)" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null || request.getAttribute("peliculaPorAgregar")!=null)%><%= peli.getPrecioVenta() %>">
+                                <input type="text" class="control form-control" name="pvtaPel" placeholder="* (En $)" pattern="^[0-9]+(\.[0-9]+)?$" title="Numero" required value="<%if(peli!=null || request.getAttribute("peliculaPorAgregar")!=null)%><%= peli.getPrecioVenta() %>">
                             </div>
                         </div>                        
                         <div class="row">
