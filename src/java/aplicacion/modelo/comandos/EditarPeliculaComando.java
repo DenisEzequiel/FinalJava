@@ -9,6 +9,7 @@ import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
@@ -61,12 +63,21 @@ public class EditarPeliculaComando extends Comando
         Part imagen = null;
         try 
         {
-            imagen = request.getPart("imgPel");
-            InputStream inputStream = imagen.getInputStream();
-            if(inputStream!=null)
-            PeliEditada.setImagen(inputStream);
+           
+            if(request.getPart("imgPel").getSubmittedFileName().equals(""))
+            {
+                 PeliEditada.setImagen(null);
+            } 
+            else
+            {
+                imagen = request.getPart("imgPel");
+                InputStream inputStream = imagen.getInputStream();
+                if(inputStream!=null)
+                PeliEditada.setImagen(inputStream);
+            }
+            
         } 
-        catch (Exception ex)
+        catch (IOException | ServletException ex)
         {       
             request.setAttribute("ex",ex.getMessage());
             return ("/ABMPeliculas.jsp");

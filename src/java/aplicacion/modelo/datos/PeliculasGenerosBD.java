@@ -7,6 +7,7 @@ package aplicacion.modelo.datos;
 
 import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.entidades.Pelicula;
+import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -60,9 +61,9 @@ public class PeliculasGenerosBD
            con.close();
            this.agregarPeliculaGeneros(p);
         }
-        catch(SQLException ex)
+        catch(Exception ex)
         {
-            ex.printStackTrace();
+            throw new AefilepException("Error al actualizar datos de la película",ex);
         }
     }
      

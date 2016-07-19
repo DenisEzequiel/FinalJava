@@ -7,9 +7,11 @@ package aplicacion.modelo.datos;
 
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.utilidades.AefilepException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -64,9 +66,13 @@ public class PeliculaDB
     
     public void actualizarPelicula(Pelicula p) throws Exception
     {
+        InputStream img = p.getImagen();
+        
         if(p.getImagen()!=null)
-        {String sql = "update aefilep.peliculas set nombre=?, duracion=?, formato=?, stock_alquiler=?,"
-                + "stock_compra=?, reparto=?, activo=?,url_trailer=?, precio_venta=?, sinopsis=?, anio=?, imagen=? where id_pelicula=?;";
+        { String sql = "update peliculas set nombre=? , duracion=? , formato=? ,"
+                + " stock_alquiler=? ,stock_venta=?, reparto=?, activo=?,url_trailer=? ,"
+                + " precio_venta=?, sinopsis=?, anio=?, imagen=? where id_pelicula=?";
+            
         try
         {
             con = conec.getConexion();
@@ -97,8 +103,9 @@ public class PeliculaDB
          else
             
         {
-         String sql = "update aefilep.peliculas set nombre=?, duracion=?, formato=?, stock_alquiler=?,"
-                + "stock_compra=?, reparto=?, activo=?,url_trailer=?, precio_venta=?, sinopsis=?, anio=? where id_pelicula=?;";
+         String sql = "update peliculas set nombre=? , duracion=? , formato=? ,"
+                + " stock_alquiler=? ,stock_venta=?, reparto=?, activo=?,url_trailer=? ,"
+                + " precio_venta=?, sinopsis=?, anio=? where id_pelicula=?";
         try
         {
             con = conec.getConexion();
@@ -114,15 +121,16 @@ public class PeliculaDB
             pr.setFloat(9, p.getPrecioVenta());
             pr.setString(10, p.getSinopsis());
             pr.setInt(11, p.getAnio());           
-            pr.setInt(12, p.getIdPelicula());
+            pr.setInt(12, p.getIdPelicula());//LOS PROBLEMAS ESTAN POR ACA
+             pelgenBD.actualizarPeliculasGeneros(p);
             pr.executeUpdate();
-            pelgenBD.actualizarPeliculasGeneros(p);
+           
             con.close();
         }
         catch(Exception ex)
         {
             throw new AefilepException("Error al actualizar datos de la película",ex);
-        }   
+        }  
         }
             
          

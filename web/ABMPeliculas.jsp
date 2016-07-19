@@ -203,7 +203,7 @@
                                         <input type="text" class="control form-control" name="palqPel" placeholder="Precio Alquiler" pattern="^[0-9]*$" title="Numero" readonly required value="<%if(peli!=null){%><%= peli.getPrecioAlquiler()%><%}else if(peli==null){%><%= param.getPrecioAlquilerEstreno()%><%}%>">
                                     </div>
                                     <div class="col-lg-6">
-                                        <input type="text" class="control form-control" name="pvtaPel" placeholder="* (En $)" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null)%><%= peli.getPrecioVenta() %>">
+                                        <input type="text" class="control form-control" name="pvtaPel" placeholder="* (En $)" pattern="^[0-9]*(\.[0-9]+)?$" title="Numero" required value="<%if(peli!=null)%><%= peli.getPrecioVenta() %>">
                                     </div>
                             </div>
                             <div class="row">
@@ -257,7 +257,7 @@
                                 </div>
                             </div>
                             <%}%>
-                            <%if(session.getAttribute("ExitoPeli")!=null){%>
+                            <%if((session.getAttribute("ExitoPeli")!=null)&&(request.getAttribute("ex")==null)){%>
                             <div class="alert alert-success fade in">
                                     Pelicula <%if(peli==null){ %>agregada<% }else{%>editada<%}%> con éxito.        
                             </div>
