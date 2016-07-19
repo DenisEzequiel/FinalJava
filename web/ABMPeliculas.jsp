@@ -45,11 +45,11 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>Duraciï¿½n</th>
+                                    <th>Duración</th>
                                     <th>Stock Alqui.</th>
                                     <th>Stock Venta</th>
                                     <th>F. Alta</th>
-                                    <th>Aï¿½o</th>
+                                    <th>Año</th>
                                     <th>Activa</th>
                                     <th>Estreno</th>
                                     <th></th>
@@ -131,11 +131,12 @@
                                     <div class="col-lg-6">
                                         <h4 class="text-left">Formato</h4>
                                     </div>
+                            </div>
                         </div>
                         <%}%>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h4 class="text-left">Tï¿½tulo</h4>
+                                <h4 class="text-left">Título</h4>
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" class="control form-control" name="nomPel" placeholder="*"  required value="<%if(peli!=null || request.getAttribute("peliculaPorAgregar")!=null)%><%=peli.getNombre()%>">
@@ -143,7 +144,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h4 class="text-left">Aï¿½o</h4>
+                                <h4 class="text-left">Año</h4>
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" class="control form-control" name="anioPel" placeholder="* (Aï¿½o de lanzamiento)" pattern="^[0-9]*$" title="Numero" required value="<%if(peli!=null || request.getAttribute("peliculaPorAgregar")!=null)%><%= peli.getAnio() %>">
