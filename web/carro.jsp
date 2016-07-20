@@ -12,6 +12,7 @@
         <jsp:include page="header.jsp"/>
  
             <% Pedido ped = (Pedido)session.getAttribute("pedido");
+            
             Usuario usu = (Usuario)session.getAttribute("usuario");
             int contLAlquiler=0;
             int contLCompra=0;
@@ -38,7 +39,7 @@
                         
                         <%int cantD=(Integer)session.getAttribute("cantidadDias");
                         ped.setDias(cantD);
-                        ped.setTotal();%>
+                        %>
                         
                         <div class="col-lg-1">
                               <div class="signup-form">

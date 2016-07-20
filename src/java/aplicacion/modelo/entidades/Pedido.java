@@ -47,17 +47,18 @@ public class Pedido
         return subtotalCom;
     }
     
-    public void setTotal()
+    public float getTotal()
     { 
         total=0;
         for(LineaPedido lp: lineas)
         {
             total=total+lp.getSubtotal(dias);
         }
-    }
-    public float getTotal()
-    {
         return total;
+    }
+    public void setTotal(float t)
+    {
+        total=t;
     }
     
        public void setDias(Integer d)
