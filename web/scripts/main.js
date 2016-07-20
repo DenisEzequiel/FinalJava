@@ -40,4 +40,12 @@ $(document).ready(function(){
 		});
 	});
         
+        $(function(){
+            $("#formSalir").hover(function(){$(this).children("i").css("color","#3A5C83");
+                                             $(this).children("input").css("color","#3A5C83");
+                                             $(this).css("cursor","pointer");},
+                                  function(){$(this).children("i").css("color","#696763");
+                                             $(this).children("input").css("color","#696763");
+                                            });
+        });
 });
