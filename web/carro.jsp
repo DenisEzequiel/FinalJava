@@ -10,6 +10,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
+ 
             <% Pedido ped = (Pedido)session.getAttribute("pedido");
             Usuario usu = (Usuario)session.getAttribute("usuario");
             int contLAlquiler=0;
@@ -100,6 +101,7 @@
                                                                                 
                                                                                 <button class="cart_quantity_delete" type="submit"><i class="fa fa-times"></i></button>
                                                                 </form>
+                                         
                                                             </td>
                                                     </tr>
                                                 <% }} %>
@@ -175,32 +177,7 @@
                                  
                             </div>
                             <%} %>
-                    
-                   
-                    <div class="able-responsive cart_info">
-                                    <table class="table table-condensed">
-                                            <thead>
-                                                    <tr class="cart_menu colorTablaTotal">
-                                                      
-                                                            <td class="total">Total a abonar</td>
-                                                           
-                                                          
-                                                    </tr>
-                                            </thead>
-                                            <tbody>
-                                                
-                             
-                                                    <tr>
-                                                            <td class="cart_product">
-                                                                    <p class="cart_total_price">$ <%=String.format("%.2f",ped.getTotal())%>
-                                                            </td>
-                                                            
-                                                    </tr>
-                                                     
-                                            </tbody>
-                                    </table>
-                                 
-                            </div>
+
                     </div>                                                
             </section> <!--/#cart_items-->
 
@@ -221,7 +198,7 @@
                                                 <% session.setAttribute("errorStock", null);
                                     }
                                 else if(session.getAttribute("exitoPedido")!=null)
-                                { //Usuario usu=(Usuario)session.getAttribute("usuario");
+                                { 
                                 %> 
                                             <div class="alert alert-success">
                                                 Pedido realizado con éxito ! Un mail para confirmar el pago será enviado a <%=usu.getMail()%>
@@ -269,10 +246,30 @@
                               else{ %> 
                               
                             </div>
-                            <div class="col-sm-6">
-                                 <div class="signup-form">
+                             <div class="container">
+                            <div class="col-sm-6">      
+                                
+				<div class="total_area_alq">
+					<ul>
+                                         <% if(contLAlquiler>0){%>
+					<li>Subtotal debido a alquileres <span>$<%=String.format("%.2f",ped.getSubtotalAlq())%></span></li><%}%>
+                                        </ul>
+                                </div>
+                                <div class="total_area_com">
+                                    <ul>
+                                        <% if(contLCompra>0){%>      
+					<li>Subtotal debido a compras <span>$<%=String.format("%.2f",ped.getSubtotalCom())%></span></li><%}%>
+                                    </ul>
+                                </div>
+                                     <div class="total_area_tot">
+                                    <ul>
+					<li>Total a abonar <span>$<%=String.format("%.2f",ped.getTotal())%></span></li>
+				    </ul>
+                                     </div>
+				         <div class="signup-form">
                                  
                                      <form action="Controlador" method="post">
+                                         
                                          <input type="hidden" name="form" value="FinalizarPedidoComando">
                                         <button type="submit" <%if(usu!=null && usu.isEsAdmin()){%> disabled="" <%};%> class="btn btn-default">Finalizar pedido</button> 
                                     </form>
@@ -282,7 +279,13 @@
                                     </div>
                                     <%}%>   
                                
-                                </div>
+                                        </div>
+
+				</div>
+                        
+				</div>
+                             </div>
+                                
                               
                             </div>
                              <%}%>

@@ -1798,7 +1798,11 @@ h2.title {
   font-size: 16px;
   font-weight: 300;
 }
-
+.total_area {
+  border: 1px solid #E6E4DF;
+  color: #696763;
+  padding: 30px 25px 30px 0;
+  margin-bottom: 80px;}
 
 #do_action .total_area {
   padding-bottom: 18px !important;
@@ -1815,12 +1819,25 @@ h2.title {
   float: right;
 }
 
-.total_area ul li {
-  background:#E6E4DF;
-  color: #696763;
+.total_area_alq ul li{
+  background:#3A5C83;
+  color: #FFFFFF;
   margin-top: 10px;
   padding: 7px 20px;
 }
+.total_area_com ul li{
+  background:#3CB8C4;
+  color: #FFFFFF;
+  margin-top: 10px;
+  padding: 7px 20px;
+}
+.total_area_tot ul li{
+  background:#04B404;
+  color: #FFFFFF;
+  margin-top: 10px;
+  padding: 7px 20px;
+}
+
 
 
 .user_option label {

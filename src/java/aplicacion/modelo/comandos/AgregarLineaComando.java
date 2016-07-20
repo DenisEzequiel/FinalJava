@@ -29,7 +29,7 @@ public class AgregarLineaComando extends Comando
         {
             if(lp.getPelicula().getIdPelicula()==idPelicula && (lp.isEsAlquiler()==alquiler))
             {
-                if(alquiler==false)
+                if(alquiler==false)//Porque solo la compra admite un aumento de cantidad
                 {
                    lp.setCantidad(lp.getCantidad()+1);
                    request.getSession().setAttribute("exitoPeliculaAgregada", true);
