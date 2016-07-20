@@ -40,6 +40,8 @@ public class PeliculasComando extends Comando
         if(request.getParameter("paginacionActual")==null)
         {
             paginaActual = 1; 
+            if(request.getParameter("tipo").equals("buscador"))
+             request.getSession().setAttribute("nombrePelicula", request.getParameter("nombrePelicula"));
         }
         else
         {
@@ -62,8 +64,9 @@ public class PeliculasComando extends Comando
                 }
 
                 else if(request.getSession().getAttribute("tipo").equals("buscador"))
-                {
-                    listaPeliculas = cDp.obtenerPeliculas(request.getParameter("nombrePelicula"),(paginaActual-1)*9,9);
+                {   
+                    
+                    listaPeliculas = cDp.obtenerPeliculas(request.getSession().getAttribute("nombrePelicula").toString(),(paginaActual-1)*9,9);
                     cantidadDePeliculas=cDp.cantidadBuscadorActivos(request.getParameter("nombrePelicula"));
                     if(listaPeliculas.isEmpty())
                         request.getSession().setAttribute("errorNoEncontradas",true);
