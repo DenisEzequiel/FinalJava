@@ -302,16 +302,6 @@ mainmenu ul li:first-child{
 	color:#fdb45e;
 }
 
-//.mainmenu ul li label a input,.mainmenu ul li input,.mainmenu ul li a
-//{
- //   color: white;
- //   font-family: 'Roboto', sans-serif;
- //   font-size: 17px;
-  //  font-weight: 300; 
- //   padding:15px;
- //   padding-left: 10px;
-//    padding-top: 15px;      
-//}
       
 
 .mainmenu ul li a input:hover,.mainmenu ul li input:hover, .mainmenu ul li label a input.active,  .shop-menu ul li label a input.active, .shop-menu ul li input a.active

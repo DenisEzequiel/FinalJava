@@ -31,6 +31,7 @@ public class PeliculasComando extends Comando
         switch(request.getParameter("tipo"))
         {case "estreno": request.getSession().setAttribute("tipo","estreno"); break;
         case "buscador":request.getSession().setAttribute("tipo","buscador");break;
+        case "todas":request.getSession().setAttribute("tipo","todas");break;
         default:request.getSession().setAttribute("tipo",Integer.parseInt(request.getParameter("tipo")));break;
         }
         
@@ -68,6 +69,11 @@ public class PeliculasComando extends Comando
                         request.getSession().setAttribute("errorNoEncontradas",true);
                     request.getSession().setAttribute("generoObtenido",true);
                 }
+                else if(request.getSession().getAttribute("tipo").equals("todas"))
+                { 
+                listaPeliculas = cDp.buscarPeliculas((paginaActual-1)*9,9);
+                cantidadDePeliculas = cDp.cantidadPeliculasActivas();
+                }
 
                 else
                 {
@@ -76,11 +82,7 @@ public class PeliculasComando extends Comando
                     cantidadDePeliculas=cDp.cantidadGenerosActivos((Integer)request.getSession().getAttribute("tipo"));
                 }
             }
-            else
-            { 
-                listaPeliculas = cDp.buscarPeliculas((paginaActual-1)*9,9);
-                cantidadDePeliculas = cDp.cantidadPeliculasActivas();
-            }
+           
         }
         catch(Exception ex)
         {
