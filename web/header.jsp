@@ -115,6 +115,7 @@
                                 <a>
                                     <form action="Controlador" method="post">                                
                                         <input class="<%if(request.getRequestURI().equals("/FinalJava/cartelera.jsp")){%>active<%}%>" type="submit" name="pagina" value="Peliculas" >
+                                        <input type="hidden"  name="tipo" value="todas"/>
                                         <input type="hidden"  name="form" value="PeliculasComando"/>
                                     </form>
                                 </a>
