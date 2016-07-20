@@ -10,9 +10,6 @@ import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
 
 /**
  *
@@ -25,20 +22,18 @@ public class ParametroBD {
     
     public Parametro obtenerParametros() throws AefilepException
     { 
-         Parametro par= null;
-         
-        String sql = "select * from parametros where fecha_actualizacion like '2016-04-08' ;"; 
+        Parametro par= null;
+        String sql = "select * from parametros where fecha_actualizacion= "+
+                     "(select max(fecha_actualizacion) from parametros where fecha_actualizacion < CURRENT_DATE);"; 
                         
         try
         {
             Connection con = conec.getConexion();
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet res = ps.executeQuery();
-  
-  
+            
             if(res.next())
             {  
-                  
                 par = new Parametro();
                 par.setDireccion(res.getString(3));
                 par.setMail(res.getString(8));
@@ -48,17 +43,14 @@ public class ParametroBD {
                 par.setPrecioAlquiler(res.getFloat(6));
                 par.setPrecioAlquilerEstreno(res.getFloat(5));
                 par.setRecargoDiario(res.getFloat(7));
-         
-                
             }
             con.close();
-            
-        }catch(Exception ex)
+        }
+        catch(Exception ex)
         {
-         throw new AefilepException("Error al obtener los datos de Aefilep",ex);
+            throw new AefilepException("Error al obtener los datos de Aefilep",ex);
         }
         
-        System.out.print("direccion: "+par.getDireccion());
         return par;
     }
     

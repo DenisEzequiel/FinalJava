@@ -36,12 +36,12 @@ public class CuentaComando extends Comando
             try
             {
                 fecha = formato.parse(request.getParameter("fechaNacimiento"));
-               
                 usuarioModificado.setFechaNacimiento(new java.sql.Date(fecha.getTime()));
             }
             catch(ParseException e)
             {
                 request.setAttribute("ex", "Ha ocurrido un error");
+                return "/cuenta.jsp";
             }
             
             usuarioModificado.setIdUsuario(usu.getIdUsuario());
@@ -54,11 +54,12 @@ public class CuentaComando extends Comando
             
             try
             {
-            CdeU.modificarUsuario(usuarioModificado);
+                CdeU.modificarUsuario(usuarioModificado);
             }
             catch(AefilepException ex)
             {
-                request.getSession().setAttribute("ex",ex.getMessage());
+                request.setAttribute("ex",ex.getMessage());
+                return "/cuenta.jsp";
             }
             usu.setNombre(request.getParameter("nombre"));
             usu.setApellido(request.getParameter("apellido"));
@@ -69,17 +70,21 @@ public class CuentaComando extends Comando
             usu.setFechaNacimiento(new java.sql.Date(fecha.getTime()));
                      
             request.getSession().setAttribute("usuario", usu);
-            request.getSession().setAttribute("tabActual", "1");
-            
+            request.setAttribute("tabActual", "1");
         }
         else
         {
-            request.getSession().setAttribute("tabActual", "2");
+            request.setAttribute("tabActual", "2");
+            request.setAttribute("Scroll",true);
             Usuario usuario=null;
-            try {
+            try 
+            {
                 usuario = CdeU.buscarUsuario(usu.getNombreUsuario(), request.getParameter("contraAnterior"));
-            } catch (Exception ex) {
-               request.getSession().setAttribute("ex", ex.getMessage());
+            } 
+            catch (Exception ex) 
+            {
+               request.setAttribute("ex", ex.getMessage());
+               return "/cuenta.jsp";
             }
             if(usuario!=null)
             {
@@ -87,26 +92,21 @@ public class CuentaComando extends Comando
                 {
                     try
                     {
-                    boolean exito = CdeU.modificarContrasenia(usu.getIdUsuario(),request.getParameter("nuevaContra"));
-                    if(exito)
-                        request.getSession().setAttribute("contraCambiada","1");
-                    else
-                        request.getSession().setAttribute("contraCambiada","0");  
-                    
-                    return  "/cuenta.jsp";
-                    
+                        boolean exito = CdeU.modificarContrasenia(usu.getIdUsuario(),request.getParameter("nuevaContra"));
+                        if(exito)
+                            request.setAttribute("contraCambiada","1");
+                        else
+                            request.setAttribute("contraCambiada","0");  
+                        return  "/cuenta.jsp";
                     }
                     catch(Exception ex)
                     {
-                         request.setAttribute("ex",ex.getMessage());
-                         
+                        request.setAttribute("ex",ex.getMessage());
                         return  "/cuenta.jsp";
                     }
-
-                    
                 }
             }
-            request.getSession().setAttribute("contraCambiada","0");
+            request.setAttribute("contraCambiada","0");
         }
         return  "/cuenta.jsp";
     }

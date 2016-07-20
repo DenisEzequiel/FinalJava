@@ -9,6 +9,7 @@ $(document).ready(
         function()
         {
             setTimeout(function(){$(".popover").fadeOut(1000)},4000);
+            setTimeout(function(){$(".vanish").fadeOut(1000)},4000);
         });
 /*price range*/
 

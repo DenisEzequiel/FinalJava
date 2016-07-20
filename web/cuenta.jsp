@@ -3,19 +3,18 @@
 <html lang="en">
     <jsp:include page="head.jsp"/>
     <jsp:useBean id="usuario" scope="session" class="aplicacion.modelo.entidades.Usuario"/>
-<body>
-<jsp:include page="header.jsp"/>
-<%if(session.getAttribute("tabActual")==null)
-{
-    session.setAttribute("tabActual","0");
-    session.setAttribute("contraCambiada","2");
-}%>
+<body onload="scrollDiv();">
+    <jsp:include page="header.jsp"/>
+    <%if(request.getAttribute("tabActual")==null)
+    {
+        request.setAttribute("tabActual","0");
+        request.setAttribute("contraCambiada","2");
+    }%>
     <section class="seccion"><!--form-->
-        <h2 class="title text-center">Cuenta </h2>  
         <div class="container">           
                 <form action="Controlador" method="post">
                     <div class="row">
-                        <h2 class="title text-center">Informacion de tu cuenta</h2>
+                        <h2 class="title text-center">Informacion personal</h2>
                     </div>
                     <div class="row">
                         <div class="col-sm-5 col-sm-offset-1">                            
@@ -32,7 +31,15 @@
                                 Direccion <input type="text" class="control form-control" name="direccion" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="direccion" name="usuario"/><%}%>">
                                 Telefono <input type="text" class="control form-control" pattern="^[0-9]*$" title="Numero" name="telefono" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="telefono" name="usuario"/><%}%>">
                                 E-Mail <input type="email" class="control form-control" name="mail" value="<%if(session.getAttribute("usuario")!=null){%><jsp:getProperty property="mail" name="usuario"/><%}%>">
-                                <%if(session.getAttribute("tabActual").equals("1")){%> <div class="alert alert-success bajar"><p>Datos actualizados con exito!</p></div><%}%>
+                                <%if(request.getAttribute("ex")!=null && request.getAttribute("Scroll")==null){%> 
+                                    <div class="vanish alert alert-danger">
+                                        <%=request.getAttribute("ex")%>
+                                    </div>
+                                <%}else if(request.getAttribute("tabActual")!=null && request.getAttribute("tabActual").equals("1")){%> 
+                                    <div class="vanish alert alert-success bajar">
+                                        <p>Datos actualizados con exito!</p>
+                                    </div>
+                                <%}%>
                                 <br/><br/><br/><br/>
                                 <input type="hidden" name="form" value="CuentaComando"/>
                                 <button type="submit" class="btn btn-default right" name="actDatos" value="actualizarDatos">Actualizar Datos</button>
@@ -41,7 +48,7 @@
                     </div>
                 </form>
                                                 
-            <div class="row">
+            <div <%if(request.getAttribute("Scroll")!=null){%> id="Edit" <%}%> class="row">
                 <h2 class="title text-center">Cambio de contraseña</h2>
             </div>        
                 <div class="row">
@@ -57,20 +64,22 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-sm-3 col-sm-offset-0"> 
-                      
-                        <div id="mensajeError" class="alert <%if(session.getAttribute("contraCambiada").equals("1")){%>alert-success<%}
-                        else if(session.getAttribute("contraCambiada").equals("0")){%>alert-danger<%}%>">
+                    <div class="col-sm-3 col-sm-offset-0">
+                        <div id="mensajeError" class="vanish alert <%if(request.getAttribute("contraCambiada")!=null && request.getAttribute("contraCambiada").equals("1")){%>alert-success<%}
+                        else if(request.getAttribute("contraCambiada")!=null && request.getAttribute("contraCambiada").equals("0")){%>alert-danger
+                        <%}else if(request.getAttribute("ex")!=null){%>alert-danger<%}%>">
                                 
-                            <p id="parrafoError"><%if(session.getAttribute("contraCambiada").equals("1")){%>Contraseña cambiada con exito!<%
-                            }else if(session.getAttribute("contraCambiada").equals("0")){%><strong>Error! </strong>Su contraseña no pudo ser cambiada<%}%> 
+                            <p id="parrafoError">
+                                <%if(request.getAttribute("contraCambiada")!=null && request.getAttribute("contraCambiada").equals("1")){%>
+                                    Contraseña cambiada con exito!
+                                <%}else if(request.getAttribute("contraCambiada")!=null && request.getAttribute("contraCambiada").equals("0")){%>
+                                    <strong>Error! </strong>Su contraseña no pudo ser cambiada
+                                <%}else if(request.getAttribute("ex")!=null && request.getAttribute("Scroll")!=null){%>
+                                    <%=request.getAttribute("ex")%>
+                                <%}%>
                             </p>
                             
-                              <%if(request.getAttribute("excepcion")!=null){%>
-                                                        <div class="alert alert-danger">
-                                                              <%=request.getAttribute("excepcion")%>
-                                                           </div>
-                                                         <%}%>
+                              
                         </div>
                     </div>
                 </div>
