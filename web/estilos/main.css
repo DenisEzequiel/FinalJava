@@ -572,11 +572,14 @@ ul.sub-menu {
 	font-weight: 300;
 	padding: 5px 0;
 	padding-left: 10px;
+        margin-bottom: 0px;
+        transition: 300ms;
 }
-.single-widget form ul li label{
-    padding: 3px 0;
-    padding-left:10px;
+.single-widget form ul li label:hover
+{
+    cursor:pointer;
 }
+
 
 .single-widget ul li a i,.single-widget ul li form i input {
   margin-right: 18px;
@@ -2710,6 +2713,12 @@ h2.title {
         {
             margin:auto;
         }
+        
+        .productinfo img.imgChica
+        {
+            height: 350px !important;
+            width: 250px !important;
+        }
 }
 
 .logo{
@@ -3043,4 +3052,9 @@ img.imagenCarro
 .colFooter
 {
     padding-top: 55px;
+}
+
+#acercaDe
+{
+    margin-bottom: 16px;
 }

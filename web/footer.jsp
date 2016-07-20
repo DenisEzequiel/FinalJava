@@ -2,7 +2,7 @@
 <footer id="footer"><!--Footer-->
     <div class="footer-widget">
         <div class="container">
-            <div class="row">
+            <div class="row">               
                 <div class="col-sm-2">
                     <div class="single-widget">                         
                         <h2>Usuario</h2>
@@ -32,54 +32,57 @@
                 <div class="col-sm-2">
                     <div class="single-widget">
                         <h2>Películas</h2>                            
-                        <form action="Controlador" method="post" onclick="submit()">                                                             
+                        <form action="Controlador" method="post">                                                             
                             <input type="hidden" name="form" value="PeliculasComando" >
                             <ul class="nav nav-pills nav-stacked">                                                                  
-                                <li><label><input type="radio">Todas </label></li>
-                                <li><label><input type="radio" value="estreno" name="tipo">Estrenos</label></li>
-                                <li><label><input type="radio" value="2" name="tipo">Acción</label></li>
-                                <li><label><input type="radio" value="4" name="tipo">Aventura</label></li>
-                                <li><label><input type="radio" value="7" name="tipo">Ciencia Ficción</label></li>                                                                    
+                                <li><label><input onclick="submit()" type="radio" name="tipo" value="todas">Todas </label></li>
+                                <li><label><input onclick="submit()" type="radio" value="estreno" name="tipo">Estrenos</label></li>
+                                <li><label><input onclick="submit()" type="radio" value="2" name="tipo">Acción</label></li>
+                                <li><label><input onclick="submit()" type="radio" value="4" name="tipo">Aventura</label></li>
+                                <li><label><input onclick="submit()" type="radio" value="7" name="tipo">Ciencia Ficción</label></li>                                                                    
                             </ul>
                         </form>                                
                     </div>
                 </div>
                 <div class="col-sm-2 colFooter">
                     <div class="single-widget listaGenerosFooter">
-                        <form action="Controlador" method="post" onclick="submit()">                               
+                        <form action="Controlador" method="post">                               
                             <input type="hidden" name="form" value="PeliculasComando" >
                             <ul class="nav nav-pills nav-stacked">
-                                <li><label><input type="radio" value="6" name="tipo">Comedia</label></li>               
-                                <li><label><input type="radio" value="11" name="tipo">Crimen</label></li>
-                                <li><label><input type="radio" value="9" name="tipo">Documental</label></li>
-                                <li><label><input type="radio" value="3" name="tipo">Drama</label></li>
-                                <li><label><input type="radio" value="8" name="tipo">Romance</label></li>                               
+                                <li><label><input onclick="submit()" type="radio" value="6" name="tipo">Comedia</label></li>               
+                                <li><label><input onclick="submit()" type="radio" value="11" name="tipo">Crimen</label></li>
+                                <li><label><input onclick="submit()" type="radio" value="9" name="tipo">Documental</label></li>
+                                <li><label><input onclick="submit()" type="radio" value="3" name="tipo">Drama</label></li>
+                                <li><label><input onclick="submit()" type="radio" value="8" name="tipo">Romance</label></li>                               
                             </ul>
                         </form>
                     </div>
                 </div>
                 <div class="col-sm-2 colFooter">
                     <div class="single-widget listaGenerosFooter">
-                        <form action="Controlador" method="post" onclick="submit()">                               
+                        <form action="Controlador" method="post" >                               
                             <input type="hidden" name="form" value="PeliculasComando" >
                             <ul class="nav nav-pills nav-stacked">
-                                <li><label><input type="radio" value="10" name="tipo">Suspenso</label></li>
-                                <li><label><input type="radio" value="1" name="tipo">Terror</label></li>
-                                <li><label><input type="radio" value="5" name="tipo">Thriller</label></li>
-                                <li><label><input type="radio" value="12" name="tipo">Infantil</label></li>
+                                <li><label><input onclick="submit()" type="radio" value="10" name="tipo">Suspenso</label></li>
+                                <li><label><input onclick="submit()" type="radio" value="1" name="tipo">Terror</label></li>
+                                <li><label><input onclick="submit()" type="radio" value="5" name="tipo">Thriller</label></li>
+                                <li><label><input onclick="submit()" type="radio" value="12" name="tipo">Infantil</label></li>
                             </ul>
                         </form>
                     </div>
                 </div>
                 <div class="col-sm-2">
                     <div class="single-widget">
-                        <h2>Acerca de</h2>
+                        <h2 id="acercaDe">Acerca de</h2>
                         <ul class="nav nav-pills nav-stacked">
                             <li><a href="nosotros.jsp">Nosotros</a></li>
-                            <li><a href="contacto.jsp">Contacto</a></li>  
+                            <li><form action="Controlador" method="post">
+                                        <input type="hidden"  name="form" value="ContactoComando"/>
+                                        <input type="submit" name="pagina" value="Contacto" >
+                                </form></li>  
                         </ul>
                     </div>
-                </div>                                   
+                </div>                    
             </div>
         </div>
     </div>
