@@ -248,7 +248,7 @@
                             </div>
                              <div class="container">
                             <div class="col-sm-6">      
-                                
+                                <div class="total_area">
 				<div class="total_area_alq">
 					<ul>
                                          <% if(contLAlquiler>0){%>
@@ -256,6 +256,7 @@
                                         </ul>
                                 </div>
                                 <div class="total_area_com">
+                                    
                                     <ul>
                                         <% if(contLCompra>0){%>      
 					<li>Subtotal debido a compras <span>$<%=String.format("%.2f",ped.getSubtotalCom())%></span></li><%}%>
@@ -266,6 +267,7 @@
 					<li>Total a abonar <span>$<%=String.format("%.2f",ped.getTotal())%></span></li>
 				    </ul>
                                      </div>
+                                </div>
 				         <div class="signup-form">
                                  
                                      <form action="Controlador" method="post">
