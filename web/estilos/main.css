@@ -1706,8 +1706,30 @@ h2.title {
 
 
 #cart_items .cart_info .image {
-  padding-left: 30px;
+  padding-left: 50px;
+  width: 20%;
 }
+#cart_items .cart_info .description {
+  padding-left: 10px;
+  width: 20%;
+}
+#cart_items .cart_info .price {
+  padding-left: 10px;
+  width: 15%;
+}
+#cart_items .cart_info .quantity {
+  padding-left: 20px;
+  width: 5%;
+}
+ #cart_items .cart_info .quantityDays {
+  padding-left: 140px;
+  width: 90%;
+}
+#cart_items .cart_info .total {
+  padding-right: 34px;
+  width: 9%;
+}
+
 
 
 #cart_items .cart_info .cart_description h4 {
@@ -2950,6 +2972,8 @@ button.accordion.active:after {
 #cart_items .cart_info .cart_menu.colorTablaCompra
 {
     background:#3CB8C4;
+    
+    
 }
 #cart_items .cart_info .cart_menu.colorTablaTotal
 {

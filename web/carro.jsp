@@ -46,7 +46,8 @@
                                  
                                      <form action="Controlador" method="post">
                                          <input type="hidden" name="form" value="SetearFechaPedidoComando">
-                                       <input type="number" min="1" max="15" value="<%=cantD%>" class="control form-control" name="cantDias" onchange="submit()">
+                                       <input type="number" min="1" max="
+                                              15" value="<%=cantD%>" class="control form-control" name="cantDias" onchange="submit()">
                                     </form>              
                                 </div>
                             </div>
@@ -58,7 +59,7 @@
                                                             <td class="description">Descripción</td>
                                                             <td class="price">Precio</td>
                                                             <td class="quantity">Cantidad</td>
-                                                            <td>Cantidad de Días</td>
+                                                            <td class="quantityDays">Cantidad de Días</td>
                                                             <td class="total">Subtotal</td>
                                                             <td></td>
                                                     </tr>
@@ -122,6 +123,7 @@
                                                             <td class="description">Descripción</td>
                                                             <td class="price">Precio</td>
                                                             <td class="quantity">Cantidad</td>
+                                                            <td class="quantityDays"></td>
                                                             <td class="total">Subtotal</td>
                                                             <td></td>
                                                     </tr>
@@ -156,6 +158,7 @@
                                                                             </form>
                                                                     </div>
                                                             </td>
+                                                            <td class="cart_quantity"></td>
                                                             <td class="cart_total">
                                                                 <p class="cart_total_price">$ <%=String.format("%.2f",lp.getSubtotal((Integer)session.getAttribute("cantidadDias")))%></p>
                                                             </td>
