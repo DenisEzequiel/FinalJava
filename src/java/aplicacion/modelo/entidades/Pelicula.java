@@ -112,10 +112,11 @@ public class Pelicula
     public String getSinopsis() {
         return sinopsis;
     }
-     public String getSinopsis(int cant) {
-         
-        return sinopsis.substring(0, cant);
-        
+     public String getSinopsis(int cant)
+    {        
+        if(sinopsis.length()<150)
+            return sinopsis;         
+        return sinopsis.substring(0, cant);      
     }
 
     /**

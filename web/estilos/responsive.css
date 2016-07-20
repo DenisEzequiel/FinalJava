@@ -246,10 +246,11 @@ ul.sub-menu{
 .footer-widget .col-sm-2 {
 	width: 28%;
 	display: flex;
-	margin-bottom: 50px;
+	margin-bottom: 0px;
 	margin-top: 0;
 	float: left;
 	margin-left: 30px;
+        padding-top: 10px;
 }
 
 .companyinfo{
@@ -438,12 +439,13 @@ ul.sub-menu{
 .footer-widget .col-sm-2 {
 	width: 50%;
 	display: flex;
-	margin-bottom: 50px;
+	margin-bottom: 0px;
 	margin-top: 0;
 	float: left;
 	padding-right: 0;
 	padding-left: 30px;
 	margin-left: 0;
+        padding-top: 10px;
 }
 
 .single-widget {
