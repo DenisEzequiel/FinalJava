@@ -16,35 +16,32 @@ import java.sql.SQLException;
  */
 public class Conexion 
 {
-	public Connection getConexion() throws AefilepException
-	{
-            Connection conexion=null;
-	      try
-              {
-	     
-	        	
-	         Class.forName("com.mysql.jdbc.Driver");
-	         String usuarioDB="root";
-	         String passwordDB="40987";
+    public Connection getConexion() throws AefilepException
+    {
+        Connection conexion=null;
+	try
+        {	        	
+	    Class.forName("com.mysql.jdbc.Driver");
+	    String usuarioDB="root";
+	    String passwordDB="";
+            String servidor = "jdbc:mysql://localhost:3306/aefilep";
 	         
-	         String servidor = "jdbc:mysql://localhost:3306/aefilep";
-	         
-	         conexion = DriverManager.getConnection(servidor,usuarioDB,passwordDB);
-              }
-              catch(ClassNotFoundException ex)
-              {
-                  throw new AefilepException(ex);
-              }
-              catch(SQLException ex)
-              {
-               throw new AefilepException(ex);
-              }
-              catch(Exception ex)
-              {
-               throw new AefilepException(ex);
-              }
+	    conexion = DriverManager.getConnection(servidor,usuarioDB,passwordDB);
+        }
+        catch(ClassNotFoundException ex)
+        {
+            throw new AefilepException(ex);
+        }
+        catch(SQLException ex)
+        {
+            throw new AefilepException(ex);
+        }
+        catch(Exception ex)
+        {
+            throw new AefilepException(ex);
+        }
 	     
-	         return conexion;
-	     }
-	 }
+        return conexion;
+    }
+}
 

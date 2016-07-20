@@ -701,7 +701,7 @@ ul.sub-menu {
   color: #ADBAC8;
   font-family: abel;
   font-size: 48px;
-  margin-top: 115px;
+  margin-top: 50px;
 }
 
 .item h1 span {
@@ -733,6 +733,7 @@ ul.sub-menu {
   font-size: 16px;
   font-weight: 300;
   margin-top: 23px;
+  margin-bottom:20px;
 }
 
 
@@ -2709,6 +2710,11 @@ h2.title {
 		color:#fff;
                 
 	}
+        
+        .imagenCarrusel
+        {
+            margin:auto;
+        }
 }
 
 .logo{
@@ -2996,11 +3002,6 @@ h2 button:hover
     cursor: pointer;
 }
 
-.single-widget.listaGenerosFooter
-{
-    margin-top: -15px;
-}
-
 .single-widget ul li form input
 {
     border:0px;
@@ -3035,12 +3036,16 @@ h2 button:hover
 img.imagenCarrusel
 {
     height:400px;
-    width:250px;
-    
+    width: 270px;
 }
 img.imagenCarro
 {
     height:150px;
     width:100px;
     
+}
+
+.colFooter
+{
+    padding-top: 55px;
 }
