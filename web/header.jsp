@@ -1,6 +1,32 @@
+<%@page import="aplicacion.modelo.negocio.CatalogoDeUsuarios"%>
 <%@page import="aplicacion.modelo.entidades.Pedido"%>
 <%@page import="aplicacion.modelo.entidades.Usuario"%>
 
+    <%//Mantenerme conectado
+        String nomUsu = null;
+        String contra = null;
+        if( request.getCookies()!=null && session.getAttribute("usuario")==null )
+        {
+            Cookie[] cookies = request.getCookies();
+            for(Cookie c:cookies)
+            {
+                if(c.getName().equals("nomUsuarioAefilep"))
+                    nomUsu=c.getValue();
+                if(c.getName().equals("contraAefilep"))
+                    contra=c.getValue();
+            }
+            if(nomUsu!=null && contra!=null)
+            {
+                CatalogoDeUsuarios cDeUsus = new CatalogoDeUsuarios();
+                Usuario usu = cDeUsus.buscarUsuario(nomUsu, contra);
+                if(usu!=null)
+                {
+                    session.setAttribute("usuario", usu);
+                    session.setAttribute("exitoLogin", true);
+                }
+            }
+        }
+    %>
     <%  Pedido pedido=null; 
         if(session.getAttribute("pedido")==null)
         {
@@ -10,7 +36,7 @@
         }
         else
         {
-         pedido = (Pedido)session.getAttribute("pedido");
+            pedido = (Pedido)session.getAttribute("pedido");
         }
     %>
  <header id="header">
