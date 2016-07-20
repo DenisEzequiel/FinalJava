@@ -71,7 +71,7 @@ public class AgregarUsuarioComando extends Comando
         {   
             try
             {
-                cDeUsu.agregarUsuario(usNuevo);
+                cDeUsu.registrarUsuario(usNuevo);
                 usuarios = cDeUsu.obtenerUsuarios();         
             }
             catch(AefilepException ex)

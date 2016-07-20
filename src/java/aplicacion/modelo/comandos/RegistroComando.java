@@ -59,6 +59,9 @@ public class RegistroComando extends Comando
         us.setDni((String)request.getParameter("Dni")); 
         us.setMail((String)request.getParameter("Email"));
         us.setNombreUsuario((String)request.getParameter("Usu"));
+        us.setActivo(true);
+        us.setBloqueado(false);
+        us.setEsAdmin(false);
         
         if(!existeUsuario)
         {          

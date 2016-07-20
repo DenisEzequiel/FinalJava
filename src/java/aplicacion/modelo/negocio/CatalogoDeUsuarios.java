@@ -20,10 +20,12 @@ public class CatalogoDeUsuarios
     {        
         return usuarios.buscarUsuario(nombre, contra);
     }
+    
     public boolean buscarUsuario(String nombreUsuario) throws AefilepException
     {        
         return usuarios.buscarUsuario(nombreUsuario);
     }
+    
     public ArrayList<Usuario> buscarUsuarios(Usuario usu) throws AefilepException
     {
         return usuarios.buscarUsuarios(usu);
@@ -39,23 +41,8 @@ public class CatalogoDeUsuarios
         usuarios.registrarUsuario(usu);   
     }
     
-    public void agregarUsuario(Usuario usu) throws AefilepException
-    {
-        usuarios.agregarUsuario(usu);
-    }
-    
     public void editarUsuario(Usuario usu) throws AefilepException
     {
         usuarios.editarUsuario(usu);
-    }
-    
-    public void modificarUsuario(Usuario usu) throws AefilepException
-    {
-        usuarios.modificarUsuario(usu);
-    }
-    
-    public boolean modificarContrasenia(int id,String contrasenia) throws AefilepException
-    {
-        return usuarios.modificarContrasenia(id,contrasenia);
     }
 }
