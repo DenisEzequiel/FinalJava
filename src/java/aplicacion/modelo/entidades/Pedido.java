@@ -28,6 +28,25 @@ public class Pedido
     private Usuario usuario;
     private int dias;
     
+    public float getSubtotalAlq()
+    {
+        float subtotalAlq=0;
+        for(LineaPedido lp: lineas)
+        {   if(lp.isEsAlquiler())
+            subtotalAlq=subtotalAlq+lp.getSubtotal(dias);
+        }
+        return subtotalAlq;
+    }
+    public float getSubtotalCom()
+    {
+        float subtotalCom=0;
+        for(LineaPedido lp: lineas)
+        {   if(!lp.isEsAlquiler())
+            subtotalCom=subtotalCom+lp.getSubtotal(dias);
+        }
+        return subtotalCom;
+    }
+    
     public void setTotal()
     { 
         total=0;
