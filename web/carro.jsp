@@ -115,7 +115,8 @@
                                               <div class="col-sm-8">
                               <label class="alinear">Compra </label>
                             </div>
-                            <div class="able-responsive cart_info">
+                                              
+                            <div class="table-responsive cart_info">
                                     <table class="table table-condensed">
                                             <thead>
                                                     <tr class="cart_menu colorTablaCompra">
@@ -158,7 +159,9 @@
                                                                             </form>
                                                                     </div>
                                                             </td>
-                                                            <td class="cart_quantity"></td>
+                                                            <td>
+                                                                <h5 class="alinearCantidad"></h5>
+                                                            </td>
                                                             <td class="cart_total">
                                                                 <p class="cart_total_price">$ <%=String.format("%.2f",lp.getSubtotal((Integer)session.getAttribute("cantidadDias")))%></p>
                                                             </td>

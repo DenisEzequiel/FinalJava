@@ -165,6 +165,9 @@ a#scrollUp i{
 	padding-right:0;
 }
 
+
+
+
 .usa {
   border-radius: 0;
   color: #ADBAC8;
@@ -1718,19 +1721,19 @@ h2.title {
   width: 20%;
 }
 #cart_items .cart_info .description {
-  padding-left: 10px;
-  width: 20%;
+  padding-left: 32px;
+  width: 26%;
 }
 #cart_items .cart_info .price {
   padding-left: 10px;
   width: 15%;
 }
 #cart_items .cart_info .quantity {
-  padding-left: 20px;
+  padding-left: 26px;
   width: 5%;
 }
  #cart_items .cart_info .quantityDays {
-  padding-left: 140px;
+  padding-left: 100px;
   width: 90%;
 }
 #cart_items .cart_info .total {
@@ -1798,7 +1801,6 @@ h2.title {
 
 .cart_delete  {
   display: block;
-  margin-right: -12px;
   overflow: hidden;
 }
 
@@ -2973,8 +2975,14 @@ button.accordion.active:after {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-weight: 300;
-  margin-bottom: 30px;
+  margin-bottom: -30px;
   vertical-align: middle;
+ 
+}
+
+.col-sm-8 {
+    width: 66.66666666666666%;
+    padding-bottom: 34px;
 }
 
 #cart_items .cart_info .cart_menu.colorTablaCompra
@@ -2991,11 +2999,13 @@ button.accordion.active:after {
 .tamanio
 {
     width: 50px;   
+    padding-left: 7px;
+    margin-left: 28px;
 }
 
 .alinearCantidad
 {
-    margin-left: 50px;
+    margin-left: 144px;
 }
 
 .product-information span span.precios
