@@ -822,7 +822,7 @@ h2.title:before{
   padding: 5px 20px;
 }
 
-.category-products .panel-default .panel-heading .panel-title a {
+.category-products .panel-default .panel-heading .panel-title a,.etiquetaGenero{
   color: #696763;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -1345,7 +1345,7 @@ h2.title {
 .product-information span {
   display: inline-block;
   margin-bottom: 8px;
-  margin-top: 18px;
+  margin-top: 10px; 
 }
 
 .product-information span span {
@@ -2993,7 +2993,7 @@ button.accordion.active:after {
 .product-information span span.precios
 {
     font-size: 20px;
-    
+    width: 150px;
 }
 
 h2 button
@@ -3015,17 +3015,20 @@ h2 button:hover
 .product-information
 {
     padding: 20px;
+    margin-top: 25px;
 }
 
 .etiquetaGenero
 {
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: normal;
-    
+ font-weight: 500;
+ margin-left: 40px;
+ padding-bottom: 5px;
+ font-size: 15px;
+ transition:300ms;
 }
 .etiquetaGenero:hover
 {
+    color: #3A5C83;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -3081,4 +3084,39 @@ img.imagenCarro
 #acercaDe
 {
     margin-bottom: 16px;
+}
+
+.imagenPelicula
+{
+    margin-top: 50px;
+    
+    height: 440px;
+}
+
+.botonPelicula
+{
+    width: 100px;
+    text-align: left;
+}
+
+.botonPelicula:hover
+{
+    color:#333;
+    background-color:#ebebeb; 
+    border-color:#adadad;
+}
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+.embed-container iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 75%;
+    height: 75%;
+    margin: auto;
 }
