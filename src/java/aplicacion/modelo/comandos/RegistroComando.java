@@ -30,7 +30,7 @@ public class RegistroComando extends Comando
         boolean existeUsuario = true;
         try
         {
-            existeUsuario = CdeU.buscarUsuario((String)request.getParameter("Usu"));
+            existeUsuario = CdeU.existeUsuario((String)request.getParameter("Usu"));
         }
         catch(AefilepException ex)
         {

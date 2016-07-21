@@ -30,7 +30,7 @@ public class AgregarUsuarioComando extends Comando
         boolean existeUsuario = true;
         try
         {
-            existeUsuario = cDeUsu.buscarUsuario((String)request.getParameter("Usu"));
+            existeUsuario = cDeUsu.existeUsuario((String)request.getParameter("Usu"));
         }
         catch(AefilepException ex)
         {
@@ -88,7 +88,7 @@ public class AgregarUsuarioComando extends Comando
             request.setAttribute("ExitoUsu", false); 
            
         }
-         request.getSession().setAttribute("Scroll",true);
+        request.getSession().setAttribute("Scroll",true);
         return "/ABMUsuarios.jsp";
     }
     

@@ -21,9 +21,9 @@ public class CatalogoDeUsuarios
         return usuarios.buscarUsuario(nombre, contra);
     }
     
-    public boolean buscarUsuario(String nombreUsuario) throws AefilepException
+    public boolean existeUsuario(String nombreUsuario) throws AefilepException
     {        
-        return usuarios.buscarUsuario(nombreUsuario);
+        return usuarios.existeUsuario(nombreUsuario);
     }
     
     public ArrayList<Usuario> buscarUsuarios(Usuario usu) throws AefilepException

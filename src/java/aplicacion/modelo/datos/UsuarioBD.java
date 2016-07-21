@@ -60,10 +60,8 @@ public class UsuarioBD
                  
         return usu;
     }
-    
-    //ponerle otro nombre para que no confunda y se note que es bool.
-    //ExisteUsuario o algo así
-    public boolean buscarUsuario(String nombreUsuario) throws AefilepException
+
+    public boolean existeUsuario(String nombreUsuario) throws AefilepException
     {        
         String sql = "select count(*) from usuarios where nombre_usuario=? ;";
         Connection con =null; 

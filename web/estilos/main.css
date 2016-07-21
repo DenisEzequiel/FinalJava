@@ -1584,6 +1584,14 @@ h2.title {
   height: 15px;
   margin-right: 5px;
 }
+.login-form form span label
+{
+   font-weight: 100;
+}
+.login-form form span label:hover
+{
+   cursor:pointer;
+}
 
 .login-form form button .cuenta button{
   margin-top: 23px;

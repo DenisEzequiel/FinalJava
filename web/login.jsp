@@ -28,8 +28,8 @@
                                 <input type="text" class="control form-control" name="nomUsu" placeholder="Nombre de usuario" required>
                                 <input type="password" class="control form-control" name="contra" placeholder="Constraseña" required>
                                 <span>
-                                    <input type="checkbox" class="checkbox" value="true" name="recordarUsu"> 
-                                Mantenerme conectado
+                                    <label><input type="checkbox" class="checkbox" value="true" name="recordarUsu"> 
+                                        Mantenerme conectado</label>
                                 </span>
                                 <button type="submit" class="btn btn-default">Iniciar sesion</button>
                             </form>

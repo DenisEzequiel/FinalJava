@@ -38,9 +38,9 @@ public class CatalogoDePeliculas
         return peliculas.obtenerPelicula(idPel);
     }
     
-    public boolean obtenerPelicula(String nombrePelicula) throws AefilepException
+    public boolean existePelicula(String nombrePelicula) throws AefilepException
     {
-        return peliculas.obtenerPelicula(nombrePelicula);
+        return peliculas.existePelicula(nombrePelicula);
     }
     
     public ArrayList<Pelicula> obtenerPeliculas() throws AefilepException

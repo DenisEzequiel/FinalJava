@@ -363,7 +363,7 @@ public class PeliculaDB
         return p;
     }
     
-    public boolean obtenerPelicula(String nombrePelicula) throws AefilepException
+    public boolean existePelicula(String nombrePelicula) throws AefilepException
     {      
         String transac = "select count(*) from peliculas where nombre=?";
         int cantidad=0;

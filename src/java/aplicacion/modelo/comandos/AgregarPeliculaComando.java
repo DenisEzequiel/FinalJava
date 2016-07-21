@@ -32,7 +32,7 @@ public class AgregarPeliculaComando extends Comando
         boolean existePelicula = true;
         try
         {
-            existePelicula = cDp.obtenerPelicula((String)request.getParameter("nomPel"));
+            existePelicula = cDp.existePelicula((String)request.getParameter("nomPel"));
         }
         catch(AefilepException ex)
         {
