@@ -214,7 +214,7 @@
                             <div class="col-sm-6">
                                 <h4 class="text-left">Géneros</h4>
                        
-                                <div class="table-responsive" style="height:90px;overflow:auto;">
+                                <div class="table-responsive" style="height:120px; overflow:auto;">
                                     <table class="table-striped col-lg-12">
                                         <tbody>
                                         <% for(int i=0;i<generos.size();i++){%>
