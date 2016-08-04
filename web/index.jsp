@@ -70,7 +70,7 @@
                         <div class="left-sidebar">
                             <h2>Publicidad</h2>
                             <div class="shipping text-center"><!--shipping-->
-                                <img src="./imagenes/shipping.jpg" alt="">
+                                <img src="./imagenes/popcorn-time.png" alt="publicidad" class="publicidad">
                             </div><!--/shipping-->
                         </div>
                     </div>

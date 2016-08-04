@@ -888,7 +888,7 @@ h2.title:before{
 
 .shipping {
   background-color: #F2F2F2;
-  margin-top: 40px;
+  margin-top: 0px;
   overflow: hidden;
   padding-top: 20px;
   position: relative;
@@ -3137,4 +3137,9 @@ img.imagenCarro
     width: 75%;
     height: 75%;
     margin: auto;
+}
+
+.publicidad
+{
+    margin-bottom: 40px;
 }
