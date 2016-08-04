@@ -670,7 +670,7 @@ public class PeliculaDB
     public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad) throws AefilepException
     {
         ArrayList<Pelicula> listaGenero = new ArrayList<>();
-        String transac = "select id_pelicula from peliculas_generos where id_genero=? limit ?,?";
+        String transac = "select p.id_pelicula from peliculas_generos pg inner join peliculas p on pg.id_pelicula=p.id_pelicula where pg.id_genero=? and p.activo=1 limit ?,?";
         
         try
         {
