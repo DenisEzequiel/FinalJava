@@ -1,3 +1,5 @@
+/*Validacion checkBoxs*/
+//ESTAN TODOS SELECCIONADOS RETURN TRUE
 /*Socrolls ABMs*/
 function scrollDiv()
 {

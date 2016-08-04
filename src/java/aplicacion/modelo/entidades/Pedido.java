@@ -80,13 +80,16 @@ public class Pedido
         double totDiasExtra = 0;
         Date hoy = new Date();
         int difdias = (int)(hoy.getTime()-fechaHasta.getTime())/(24 * 60 * 60 * 1000);
-        for(LineaPedido lp:this.lineas)
+        double recargo = 0;
+        if(difdias>0)
         {
-            if(lp.isEsAlquiler())
-                totDiasExtra+=lp.getSubtotal(difdias);
+            for(LineaPedido lp:this.lineas)
+            {
+                if(lp.isEsAlquiler())
+                    totDiasExtra+=lp.getSubtotal(difdias);
+            }
+            recargo = 1.2*totDiasExtra;
         }
-        
-        double recargo = 1.2*totDiasExtra;
         
         return recargo;
     }

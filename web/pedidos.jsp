@@ -57,11 +57,11 @@
                                                <% for(LineaPedido lp: p.getLineas()) 
                                            {%>
                                             
-                                           <%=lp.getPelicula().getNombre()%><br>
+                                           <%if(lp.isEsAlquiler()){%>Alquiler<%}else{%>Compra<%}%> - <%=lp.getPelicula().getNombre()%><br>
                                            
                                             <%}%> 
                                             </td>
-                                            <td><%= p.getRecargo()%></td>
+                                            <td>$ <%= p.getRecargo()%></td>
                                             <td><%= p.getEstado()%></td>
                                            </tr>
                                             <%}%>

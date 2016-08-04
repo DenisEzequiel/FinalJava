@@ -67,7 +67,7 @@
                             <form action="signup.jsp" method="post">
                                 <input class="control form-control" type="text" name="nombreUsuario" placeholder="Nombre de Usuario" maxlenght="10"  required>
                                 <input class="control form-control" type="email" name="email" placeholder="Email" maxlenght="30" required>
-                                <input class="control form-control" type="password" name="contra1" placeholder="Contraseña" maxlenght="10" required>
+                                <input class="control form-control" type="password" name="contra1" placeholder="Contraseña" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})" title="La contraseña debe tener al menos una mayuscula, al menos una minuscula, al menos un numero y una longitud de 6 a 20 caracteres"required>
                                 <button type="submit" class="btn btn-default">Continuar</button>
                             </form>
                         </div>

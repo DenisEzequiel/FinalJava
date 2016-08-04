@@ -144,7 +144,7 @@ public class PedidoBD {
                 p.setFechaHasta(new java.sql.Date(res.getDate(4).getTime()));
                 p.setEstado(res.getString(5));
                 p.setFechaDevolucion(null);
-                p.setLineas(lineas.obtenerLineaAlq(p.getIdPedido()));
+                p.setLineas(lineas.obtenerLineas(p.getIdPedido()));
                                 
                 pedidosEncontrados.add(p);                     
             }                   
