@@ -24,17 +24,17 @@ public class VerPedidosComando extends Comando
     {
         cDePed = new CatalogoDePedidos();
         int idUsusario = Integer.parseInt(request.getParameter("idUsuPedidos"));
-        ArrayList<Pedido> pedidosPendientes = null;
+        ArrayList<Pedido> pedidosEnviados = null;
         try 
         {
-            pedidosPendientes = cDePed.obtenerPedidosPendientes(idUsusario);
+            pedidosEnviados = cDePed.obtenerPedidosEnviados(idUsusario);
         } 
         catch (Exception ex) 
         {
            request.setAttribute("ex", ex.getMessage());
            return "/Devoluciones.jsp";
         }
-        request.getSession().setAttribute("ListaPendientes", pedidosPendientes);
+        request.getSession().setAttribute("ListaEnviados", pedidosEnviados);
         request.getSession().setAttribute("Scroll",true);
         return "/Devoluciones.jsp";
     }

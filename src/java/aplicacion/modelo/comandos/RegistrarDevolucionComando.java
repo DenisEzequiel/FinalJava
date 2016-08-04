@@ -10,8 +10,6 @@ import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.negocio.CatalogoDePedidos;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,9 +26,9 @@ public class RegistrarDevolucionComando extends Comando
     {
         cDeP = new CatalogoDePedidos();
         int idPed = Integer.parseInt(request.getParameter("idPedido"));
-        ArrayList<Pedido> pendientes = (ArrayList)request.getSession().getAttribute("ListaPendientes");
+        ArrayList<Pedido> enviados = (ArrayList)request.getSession().getAttribute("ListaEnviados");
         Pedido pedACerrar = new Pedido();
-        for(Pedido p:pendientes)
+        for(Pedido p:enviados)
         {
             if(p.getIdPedido()==idPed)
             {
@@ -53,7 +51,7 @@ public class RegistrarDevolucionComando extends Comando
            return "/Devoluciones.jsp";
         }
         request.getSession().setAttribute("ExitoCierre", 1);
-        request.getSession().setAttribute("ListaPendientes", null);
+        request.getSession().setAttribute("ListaEnviados", null);
         
         return "/Devoluciones.jsp";
     }

@@ -15,8 +15,8 @@
     <body onload="scrollDiv();">
         <jsp:include page="header.jsp"/>
         <%!ArrayList<Usuario> usuarios;%>
-        <%!ArrayList<Pedido> pendientes;%>
-        <% pendientes = (ArrayList)session.getAttribute("ListaPendientes");%>
+        <%!ArrayList<Pedido> enviados;%>
+        <% enviados = (ArrayList)session.getAttribute("ListaEnviados");%>
         <% usuarios = (ArrayList)session.getAttribute("ListaEncontrados");%>
         <div class="cuenta">
             <div class="container"> 
@@ -97,10 +97,10 @@
                       
             <div <%if(session.getAttribute("Scroll")!=null){%> id="Edit" <%session.setAttribute("Scroll", null); };%> class="row">
                     <div class="col-lg-12">
-                    <% if(pendientes!=null){%>
+                    <% if(enviados!=null){%>
                     <h2 class="title text-center">Pedidos pendientes de devolucion</h2>
-                        <%if(pendientes.isEmpty()){%>
-                            <div class="alert alert-success fade<%if(pendientes.isEmpty()){ %> in <%session.setAttribute("ListaPendientes", null);} %>">
+                        <%if(enviados.isEmpty()){%>
+                            <div class="alert alert-success fade<%if(enviados.isEmpty()){ %> in <%session.setAttribute("ListaEnviados", null);} %>">
                                 El Cliente no tiene pedidos pendientes de devolución.       
                             </div>
                         <%}else{%>
@@ -118,7 +118,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%for(Pedido p:pendientes)
+                                        <%for(Pedido p:enviados)
                                           {%>
                                           <tr>
                                             <td><%= p.getIdPedido()%></td>

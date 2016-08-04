@@ -7,6 +7,7 @@ package aplicacion.modelo.negocio;
 
 import aplicacion.modelo.datos.PedidoBD;
 import aplicacion.modelo.entidades.Pedido;
+import aplicacion.utilidades.AefilepException;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  */
 public class CatalogoDePedidos {
     PedidoBD pedidos=new PedidoBD();
-    public void registrarPedido(Pedido p) throws Exception
+    public void registrarPedido(Pedido p) throws AefilepException
     {
         
         
@@ -23,13 +24,23 @@ public class CatalogoDePedidos {
         
     }
     
-    public void cerrarPedido(Pedido p) throws Exception
+    public void cerrarPedido(Pedido p) throws AefilepException
     {
         pedidos.cerrarPedido(p);
     }
     
-    public ArrayList<Pedido> obtenerPedidosPendientes(int idUsu) throws Exception
+    public ArrayList<Pedido> obtenerPedidosEnviados(int idUsu) throws AefilepException
     {
-        return pedidos.obtenerPedidosPendientes(idUsu);
+        return pedidos.obtenerPedidosEnviados(idUsu);
     }
+      public ArrayList<Pedido> obtenerPedidosPendientes() throws AefilepException
+    {
+        return pedidos.obtenerPedidosPendientes();
+    }
+     public void registrarEnvio(Pedido p) throws AefilepException
+    {
+        pedidos.registrarEnvio(p);
+    }
+      
+      
 }

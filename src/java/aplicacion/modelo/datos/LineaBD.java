@@ -60,6 +60,44 @@ public class LineaBD {
             }
         return lineas;         
       }
+      public ArrayList<LineaPedido> obtenerLineas (int idPedido) throws AefilepException 
+      {
+          String sql = "select * from aefilep.pedidos_peliculas where id_pedido =?;";
+          Connection con = null;
+          try {
+              con = conec.getConexion();
+          } catch (Exception ex)
+          {
+             throw new AefilepException("Error al recuperar las lineas",ex);
+          }
+          ArrayList<LineaPedido> lineas = new ArrayList<>();
+          
+          try
+          {
+              PreparedStatement pr = con.prepareStatement(sql);
+              pr.setInt(1, idPedido);
+              ResultSet res = pr.executeQuery();
+
+               while(res.next())
+            {
+                LineaPedido lp = new LineaPedido();
+                
+                lp.setPelicula(peliBd.obtenerPelicula(res.getInt(1)));
+                lp.setCantidad(res.getInt(3));
+                lp.setEsAlquiler(res.getBoolean(4));
+                lp.setSubtotal(res.getFloat(5));
+                
+                lineas.add(lp);
+            }
+              
+          }
+           
+            catch (Exception ex)
+            {
+             throw new AefilepException("Error al recuperar las lineas",ex);
+            }
+        return lineas;         
+      }
     
     public void registrarLineas(ArrayList<LineaPedido> lineas, int idPedido, int dias) throws AefilepException, SQLException 
     {

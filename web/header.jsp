@@ -178,6 +178,14 @@
                                             </form>
                                         </a>
                                     </li>
+                                      <li>
+                                        <a>
+                                            <form action="Controlador" method="post">
+                                                <input type="hidden"  name="form" value="EnviosComando"/>
+                                                <input type="submit" name="pagina" value="Envíos" class="<%if(request.getRequestURI().equals("/FinalJava/envios.jsp") ){%>active<%}%>">
+                                            </form>
+                                        </a>
+                                    </li>
                                     <li><a class="<%if(request.getRequestURI().equals("/FinalJava/Devoluciones.jsp") ){%>active<%}%>" href="Devoluciones.jsp">Devoluciones</a></li>
                                 </ul>
                             </li> 

@@ -11,8 +11,6 @@ import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDePedidos;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.utilidades.AefilepException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -79,9 +77,10 @@ public class FinalizarPedidoComando extends Comando{
                  {
                      CdPeli.actualizarPelicula(lp.getPelicula());
                  }
-                 catch(Exception ex)
+                 catch(AefilepException ex)
                  {
-                     //FALTA ERROR, NO ENTIENDO CÓDIGO.
+                   request.setAttribute("ex", ex.getMessage());
+                    return "/carro.jsp";
                  }
                  
              }
@@ -90,14 +89,13 @@ public class FinalizarPedidoComando extends Comando{
              p.setUsuario(u);
              p.setDias((Integer)request.getSession().getAttribute("cantidadDias"));
              if(contAlq>0)
-             p.setEstado("finalizado");
-             else p.setEstado("cerrado");
+             p.setEstado("Pendiente");
+             else p.setEstado("Cerrado");
             try {
                 CdP.registrarPedido(p);
                 
-            } catch (Exception ex) 
+            } catch (AefilepException ex) 
             {
-                String e = ex.getMessage();
                 request.setAttribute("ex", ex.getMessage());
                 return "/carro.jsp";
             }
