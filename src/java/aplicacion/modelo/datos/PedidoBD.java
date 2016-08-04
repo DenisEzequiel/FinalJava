@@ -100,7 +100,49 @@ public class PedidoBD {
         {
              throw new AefilepException("Error al recuperar el pedido",ex);
         }
-}
+    }
+     
+    public ArrayList<Pedido> obtenerPedidos(int idUsuario) throws AefilepException
+    {         
+        ArrayList<Pedido> pedidosEncontrados = new ArrayList<>();
+        Connection con;
+        try 
+        {
+            con = conec.getConexion();
+        } catch (AefilepException ex) 
+        {
+            throw new AefilepException("Error al recuperar los pedidos",ex);
+        }
+    
+        String sql = "SELECT * FROM aefilep.pedidos where id_usuario=?;";
+        try
+        {   
+            PreparedStatement pr = con.prepareStatement(sql);
+            pr.setInt(1,idUsuario);
+            ResultSet res =pr.executeQuery();
+             
+            while(res.next())
+            { 
+                Pedido p = new Pedido();
+                
+                p.setIdPedido(res.getInt(1));
+                p.setFechaRealizacion(new java.sql.Date(res.getDate(2).getTime()));
+                p.setFechaDesde(new java.sql.Date(res.getDate(3).getTime()));
+                p.setFechaHasta(new java.sql.Date(res.getDate(4).getTime()));
+                p.setEstado(res.getString(5));
+                p.setFechaDevolucion(null);
+                p.setLineas(lineas.obtenerLineaAlq(p.getIdPedido()));
+                                
+                pedidosEncontrados.add(p);                     
+            }                   
+            con.close();      
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        return pedidosEncontrados;
+    } 
      
     public ArrayList<Pedido> obtenerPedidosPendientes (int idPedido) throws AefilepException
     {         

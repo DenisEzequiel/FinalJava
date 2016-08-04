@@ -106,6 +106,14 @@
                             <%}
                             else
                             {%>
+                            <li>
+                                <a class="" href="#">
+                                    <form action="Controlador" method="post" class="formNav" id="formSalir">
+                                        <input type="hidden"  name="form" value="MisPedidosComando"/>
+                                        <i class="fa fa-lock"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/pedidos.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Mis Pedidos" >
+                                    </form>
+                                </a>
+                            </li>
                             <li><a href="cuenta.jsp" class="<%if(request.getRequestURI().equals("/FinalJava/cuenta.jsp")){%>active<%}%>"><i class="fa fa-user"></i> Cuenta</a></li>
                             <li>
                                 <form action="Controlador" method="post" class="formNav" id="formSalir">

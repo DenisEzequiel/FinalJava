@@ -32,4 +32,9 @@ public class CatalogoDePedidos {
     {
         return pedidos.obtenerPedidosPendientes(idUsu);
     }
+    
+    public ArrayList<Pedido> obtenerPedidos(int idUsu) throws Exception
+    {
+        return pedidos.obtenerPedidos(idUsu);
+    }
 }
