@@ -10,21 +10,14 @@
                         <%if(session.getAttribute("usuario")==null){%>
                             <li><a href="login.jsp">Iniciar sesión</a></li><%}else{%><li><a href="cuenta.jsp">Cuenta</a></li><%}%>
                             <li><a href="carro.jsp">Carrito</a></li>
-                            <%if(session.getAttribute("usuario")!=null && ((Usuario)session.getAttribute("usuario")).isEsAdmin()){%>
-                            <li>
-                                <form action="Controlador" method="post">
-                                    <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
-                                    <input type="hidden"  name="form" value="AdminPeliculasComando"/>
-                                    <input type="submit" name="pagina" value="Peliculas">
+                            <%if(session.getAttribute("usuario")!=null && !((Usuario)session.getAttribute("usuario")).isEsAdmin()){%>
+                            <li>                              
+                               <form action="Controlador" method="post" id="formSalir">
+                                    <input type="hidden"  name="form" value="MisPedidosComando"/>
+                                    <input type="submit" name="pagina" value="Mis Pedidos" >
                                 </form>
+                                
                             </li>
-                            <li>
-                                <form action="Controlador" method="post">
-                                    <input type="hidden"  name="form" value="AdminUsuariosComando"/>
-                                    <input type="submit" name="pagina" value="Usuarios" >
-                                </form>
-                            </li>
-                            <li><a href="Devoluciones.jsp">Devoluciones</a></li>
                             <%}%>
                         </ul>
                     </div>
@@ -82,7 +75,38 @@
                                 </form></li>  
                         </ul>
                     </div>
-                </div>                    
+                </div>
+                 <%if(session.getAttribute("usuario")!=null && ((Usuario)session.getAttribute("usuario")).isEsAdmin()){%>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2 id="acercaDe">Administrador</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                           
+                            <li>
+                                <form action="Controlador" method="post">
+                                    <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
+                                    <input type="hidden"  name="form" value="AdminPeliculasComando"/>
+                                    <input type="submit" name="pagina" value="Peliculas">
+                                </form>
+                            </li>
+                            <li>
+                                <form action="Controlador" method="post">
+                                    <input type="hidden"  name="form" value="AdminUsuariosComando"/>
+                                    <input type="submit" name="pagina" value="Usuarios" >
+                                </form>
+                            </li>
+                            <li><a href="Devoluciones.jsp">Devoluciones</a></li>
+                            <li>
+                                <form action="Controlador" method="post">
+                                    <input type="hidden"  name="form" value="EnviosComando"/>
+                                    <input type="submit" name="pagina" value="Envíos" class="<%if(request.getRequestURI().equals("/FinalJava/envios.jsp") ){%>active<%}%>">
+                                </form>                 
+                            </li>
+                              
+                        </ul>
+                    </div>
+                </div>
+                <%}%>
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@
 package aplicacion.modelo.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -28,10 +29,12 @@ public class Usuario implements Serializable
     private boolean activo; 
     private boolean bloqueado;
     private boolean esAdmin;
+    private ArrayList<Pedido> pedidos;
     
     public Usuario()
     {
-        
+     pedidos = new ArrayList<Pedido>();
+     
     }
     
     /**
@@ -39,6 +42,14 @@ public class Usuario implements Serializable
      */
     public int getIdUsuario() {
         return idUsuario;
+    }
+
+    public ArrayList<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(ArrayList<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     /**

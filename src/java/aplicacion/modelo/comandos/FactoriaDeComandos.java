@@ -41,6 +41,7 @@ public class FactoriaDeComandos
         mapa.put("VerPedidosComando", VerPedidosComando.class);
         mapa.put("RegistrarDevolucionComando",RegistrarDevolucionComando.class);
         mapa.put("EnviarMensajeComando", EnviarMensajeComando.class);
+        mapa.put("MisPedidosComando", MisPedidosComando.class);
         mapa.put("EnviosComando", EnviosComando.class);
         mapa.put("RegistrarEnvioComando", RegistrarEnvioComando.class);
     }

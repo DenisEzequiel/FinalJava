@@ -33,6 +33,11 @@ public class CatalogoDePedidos {
     {
         return pedidos.obtenerPedidosEnviados(idUsu);
     }
+    
+    public ArrayList<Pedido> obtenerPedidos(int idUsu) throws AefilepException
+    {
+        return pedidos.obtenerPedidos(idUsu);
+    }
       public ArrayList<Pedido> obtenerPedidosPendientes() throws AefilepException
     {
         return pedidos.obtenerPedidosPendientes();
