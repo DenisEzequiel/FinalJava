@@ -6,8 +6,10 @@
 package aplicacion.modelo.comandos;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Usuario;
+import aplicacion.modelo.negocio.CatalogoDePedidos;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
 import aplicacion.utilidades.AefilepException;
+import java.util.ArrayList;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,6 +55,22 @@ public class LogInComando extends Comando
                 recordarNombre.setPath("/");
                 response.addCookie(recordarNombre);
                 response.addCookie(recordarContra);
+            }
+            
+            if(usu.isEsAdmin())
+            {
+                ArrayList<Pedido> pendientes = null;
+                try
+                {
+                    pendientes = new CatalogoDePedidos().obtenerPedidosPendientes();
+                }
+                catch(AefilepException ex)
+                {
+                    request.setAttribute("ex",ex.getMessage());
+                    return "/login.jsp";
+                }
+                
+                request.getSession().setAttribute("pendientes", pendientes);
             }
             
             request.getSession().setAttribute("usuario", usu);

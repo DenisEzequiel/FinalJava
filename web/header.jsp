@@ -1,7 +1,9 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="aplicacion.modelo.negocio.CatalogoDeUsuarios"%>
 <%@page import="aplicacion.modelo.entidades.Pedido"%>
 <%@page import="aplicacion.modelo.entidades.Usuario"%>
 
+<%! int cantidadAEnviar = 0;%>
     <%//Mantenerme conectado
         String nomUsu = null;
         String contra = null;
@@ -37,6 +39,11 @@
         else
         {
             pedido = (Pedido)session.getAttribute("pedido");
+        }
+        
+        if(session.getAttribute("pendientes")!=null)
+        {
+          cantidadAEnviar = ((ArrayList)session.getAttribute("pendientes")).size();
         }
     %>
  <header id="header">
@@ -96,7 +103,7 @@
                                 </div> 
                                    
                             </li>
-
+                           
                             <li>
                                 <a class="<%if(request.getRequestURI().equals("/FinalJava/carro.jsp")){%>active<%}%>" href="carro.jsp"><i class="fa fa-shopping-cart"></i> Carrito (<%=pedido.getLineas().size()%>)</a>
                             </li>
@@ -110,12 +117,21 @@
                             if(!usu.isEsAdmin()){%>
                             <li>
                                 <a class="" href="#">
-                                    <form action="Controlador" method="post" class="formNav" id="formSalir">
+                                    <form action="Controlador" method="post" id="formSalir">
                                         <input type="hidden"  name="form" value="MisPedidosComando"/>
-                                        <i class="fa fa-lock"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/pedidos.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Mis Pedidos" >
+                                        <i class="fa fa-archive <%if(request.getRequestURI().equals("/FinalJava/pedidos.jsp")){%>active<%}%>"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/pedidos.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Mis Pedidos" >
                                     </form>
                                 </a>
-                            </li><%}%>
+                            </li><%} else{%>
+                             <li>
+                                <a>
+                                    <form action="Controlador" method="post" class="formNav" id="formSalir">
+                                        <input type="hidden"  name="form" value="EnviosComando"/>                                       
+                                        <i class="fa fa-truck <%if(request.getRequestURI().equals("/FinalJava/envios.jsp")){%>active<%}%>"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/envios.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Envíos pendientes (<%=cantidadAEnviar%>)" >
+                                    </form>
+                                </a>
+                            </li>
+                            <%}%>
                             <li><a href="cuenta.jsp" class="<%if(request.getRequestURI().equals("/FinalJava/cuenta.jsp")){%>active<%}%>"><i class="fa fa-user"></i> Cuenta</a></li>
                             <li>
                                 <form action="Controlador" method="post" class="formNav" id="formSalir">
@@ -188,14 +204,7 @@
                                             </form>
                                         </a>
                                     </li>
-                                      <li>
-                                        <a>
-                                            <form action="Controlador" method="post">
-                                                <input type="hidden"  name="form" value="EnviosComando"/>
-                                                <input type="submit" name="pagina" value="Envíos" class="<%if(request.getRequestURI().equals("/FinalJava/envios.jsp") ){%>active<%}%>">
-                                            </form>
-                                        </a>
-                                    </li>
+                                      
                                     <li><a class="<%if(request.getRequestURI().equals("/FinalJava/Devoluciones.jsp") ){%>active<%}%>" href="Devoluciones.jsp">Devoluciones</a></li>
                                 </ul>
                             </li> 
