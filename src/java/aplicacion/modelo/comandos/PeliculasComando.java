@@ -67,7 +67,7 @@ public class PeliculasComando extends Comando
                 {   
                     
                     listaPeliculas = cDp.obtenerPeliculas(request.getSession().getAttribute("nombrePelicula").toString(),(paginaActual-1)*9,9);
-                    cantidadDePeliculas=cDp.cantidadBuscadorActivos(request.getParameter("nombrePelicula"));
+                    cantidadDePeliculas=cDp.cantidadBuscadorActivos(request.getSession().getAttribute("nombrePelicula").toString());
                     if(listaPeliculas.isEmpty())
                         request.getSession().setAttribute("errorNoEncontradas",true);
                     request.getSession().setAttribute("generoObtenido",true);

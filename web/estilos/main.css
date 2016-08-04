@@ -1215,7 +1215,7 @@ h2.title {
   border-top-right-radius: 0;
 }
 
-.pagination .active  input, .pagination  .active  span, .pagination  .active  input:hover, .pagination  .active  span:hover, .pagination  .active  input:focus, .pagination  .active  span:focus {
+.pagination .active  input,.pagination li input.active, .pagination  .active  span, .pagination  .active  input:hover, .pagination  .active  span:hover, .pagination  .active  input:focus, .pagination  .active  span:focus {
   background-color: #3A5C83;
   border-color: #3A5C83;
   color: #FFFFFF;

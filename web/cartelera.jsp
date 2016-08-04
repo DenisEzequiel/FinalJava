@@ -124,7 +124,7 @@
                                                                         
                                                     <ul class="pagination">
                                                               <%for(int j=1;j<=cantPaginas;j++){%>                                                                                                
-                                                              <li><input type="submit" <%if((Integer)session.getAttribute("pActual")==j){%> disabled<%}%> name="paginacionActual" value="<%=j%>"> </li>
+                                                              <li><input type="submit" <%if((Integer)session.getAttribute("pActual")==j){%>class="active" disabled<%}%> name="paginacionActual" value="<%=j%>"> </li>
                                                              <%}%>  
                                                             <input type="hidden" name="form" value="PeliculasComando">   
                                               
