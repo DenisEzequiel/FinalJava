@@ -124,7 +124,14 @@
                                             <td><%= p.getIdPedido()%></td>
                                             <td><%= p.getFechaDesde() %></td>
                                             <td><%= p.getFechaHasta() %></td>
-                                            <td></td>
+                                            <td>
+                                               <% for(LineaPedido lp: p.getLineas()) 
+                                           {%>
+                                            
+                                           <%=lp.getPelicula().getNombre()%><br>
+                                           
+                                            <%}%> 
+                                            </td>
                                             <td><%= p.getRecargo()%></td>
                                             <td>
                                                 <form action="Controlador" method="post">
@@ -134,17 +141,7 @@
                                                 </form>
                                             </td>
                                            </tr>
-                                           <% for(LineaPedido lp: p.getLineas()) 
-                                           {%>
-                                            <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><%=lp.getPelicula().getNombre()%></td>
-                                            <td></td>
-                                            <td></td> 
-                                            </tr>
-                                            <%} }%>
+                                            <%}%>
                                     </tbody>
                                     </table>
                                 </div>
