@@ -29,9 +29,9 @@ public class ContactoComando extends Comando
             catch(AefilepException ex)
             {
                 request.setAttribute("ex", ex.getMessage());
-                return "contacto.jsp";
+                return "/contacto.jsp";
             }
-            return "contacto.jsp";
+            return "/contacto.jsp";
                            
     }
     

@@ -2,50 +2,14 @@
 <%@page import="aplicacion.modelo.negocio.CatalogoDeUsuarios"%>
 <%@page import="aplicacion.modelo.entidades.Pedido"%>
 <%@page import="aplicacion.modelo.entidades.Usuario"%>
-
-<%! int cantidadAEnviar = 0;%>
-    <%//Mantenerme conectado
-        String nomUsu = null;
-        String contra = null;
-        if( request.getCookies()!=null && session.getAttribute("usuario")==null )
-        {
-            Cookie[] cookies = request.getCookies();
-            for(Cookie c:cookies)
-            {
-                if(c.getName().equals("nomUsuarioAefilep"))
-                    nomUsu=c.getValue();
-                if(c.getName().equals("contraAefilep"))
-                    contra=c.getValue();
-            }
-            if(nomUsu!=null && contra!=null)
-            {
-                CatalogoDeUsuarios cDeUsus = new CatalogoDeUsuarios();
-                Usuario usu = cDeUsus.buscarUsuario(nomUsu, contra);
-                if(usu!=null)
-                {
-                    session.setAttribute("usuario", usu);
-                    session.setAttribute("exitoLogin", true);
-                }
-            }
-        }
-    %>
-    <%  Pedido pedido=null; 
-        if(session.getAttribute("pedido")==null)
-        {
-            pedido = new Pedido();
-            session.setAttribute("pedido", pedido);
-            session.setAttribute("cantidadDias", 1);
-        }
-        else
-        {
-            pedido = (Pedido)session.getAttribute("pedido");
-        }
-        
-        if(session.getAttribute("pendientes")!=null)
-        {
-          cantidadAEnviar = ((ArrayList)session.getAttribute("pendientes")).size();
-        }
-    %>
+<%!int cantidadAEnviar = 0;%>
+<%    
+    if(request.getSession().getAttribute("pendientes")!=null)
+    {
+        cantidadAEnviar = ((ArrayList)request.getSession().getAttribute("pendientes")).size();
+    }
+    Pedido pedido = (Pedido)session.getAttribute("pedido");
+%>
  <header id="header">
     <div class="header_top"><!--header_top-->
         <div class="container">
@@ -105,11 +69,28 @@
                             </li>
                            
                             <li>
-                                <a class="<%if(request.getRequestURI().equals("/FinalJava/carro.jsp")){%>active<%}%>" href="carro.jsp"><i class="fa fa-shopping-cart"></i> Carrito (<%=pedido.getLineas().size()%>)</a>
+                                <a class="" href="#">
+                                    <form action="Controlador" method="post" id="formSalir">
+                                        <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                        <input type="hidden"  name="destino" value="/carro.jsp"/>
+                                        <i class="fa fa-shopping-cart <%if(request.getRequestURI().equals("/FinalJava/WEB-INF/carro.jsp")){%>active<%}%>"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/carro.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Carrito (<%=pedido.getLineas().size()%>)" >
+                                    </form>
+                                </a>
+                                
                             </li>
                             <%if(session.getAttribute("usuario")==null)
                             {%>
-                            <li><a class="<%if(request.getRequestURI().equals("/FinalJava/login.jsp")){%>active<%}%>" href="login.jsp"><i class="fa fa-lock"></i> Ingresar</a></li>
+                            <li>
+                                 <a class="" href="#">
+                                    <form action="Controlador" method="post" id="formSalir">
+                                        <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                        <input type="hidden"  name="destino" value="/login.jsp"/>
+                                        <i class="fa fa-lock <%if(request.getRequestURI().equals("/FinalJava/WEB-INF/login.jsp")){%>active<%}%>"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/login.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Ingresar" >
+                                    </form>
+                                </a>
+                                
+                             
+                            
                             <%}
                             else
                             {
@@ -119,7 +100,7 @@
                                 <a class="" href="#">
                                     <form action="Controlador" method="post" id="formSalir">
                                         <input type="hidden"  name="form" value="MisPedidosComando"/>
-                                        <i class="fa fa-archive <%if(request.getRequestURI().equals("/FinalJava/pedidos.jsp")){%>active<%}%>"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/pedidos.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Mis Pedidos" >
+                                        <i class="fa fa-archive <%if(request.getRequestURI().equals("/FinalJava/WEB-INF/pedidos.jsp")){%>active<%}%>"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/pedidos.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Mis Pedidos" >
                                     </form>
                                 </a>
                             </li><%} else{%>
@@ -127,12 +108,19 @@
                                 <a>
                                     <form action="Controlador" method="post" class="formNav" id="formSalir">
                                         <input type="hidden"  name="form" value="EnviosComando"/>                                       
-                                        <i class="fa fa-truck <%if(request.getRequestURI().equals("/FinalJava/envios.jsp")){%>active<%}%>"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/envios.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Envíos pendientes (<%=cantidadAEnviar%>)" >
+                                        <i class="fa fa-truck <%if(request.getRequestURI().equals("/FinalJava/WEB-INF/envios.jsp")){%>active<%}%>"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/envios.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Envíos pendientes (<%=cantidadAEnviar%>)" >
                                     </form>
                                 </a>
                             </li>
                             <%}%>
-                            <li><a href="cuenta.jsp" class="<%if(request.getRequestURI().equals("/FinalJava/cuenta.jsp")){%>active<%}%>"><i class="fa fa-user"></i> Cuenta</a></li>
+                            <li>
+                                 <a class="" href="#">
+                                    <form action="Controlador" method="post" id="formSalir">
+                                        <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                        <input type="hidden"  name="destino" value="/cuenta.jsp"/>
+                                        <i class="fa fa-user <%if(request.getRequestURI().equals("/FinalJava/WEB-INF/cuenta.jsp")){%>active<%}%>"></i><input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/cuenta.jsp")){%>active<%}%>" type="submit" name="pagina" value=" Cuenta" >
+                                    </form>
+                                </a>
                             <li>
                                 <form action="Controlador" method="post" class="formNav" id="formSalir">
                                     <input type="hidden"  name="form" value="LogOutComando"/>
@@ -162,37 +150,51 @@
                     
                     <div class="mainmenu pull-left"> 
                         <ul class="nav navbar-nav collapse navbar-collapse">                                                                           
-                            <li><a class="<%if(request.getRequestURI().equals("/FinalJava/index.jsp")){%>active<%}%>" href="index.jsp">Inicio</a></li>
                             <li>
                                 <a>
                                     <form action="Controlador" method="post">                                
-                                        <input class="<%if(request.getRequestURI().equals("/FinalJava/cartelera.jsp")){%>active<%}%>" type="submit" name="pagina" value="Peliculas" >
+                                        <input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/home.jsp")){%>active<%}%>" type="submit" name="pagina" value="Inicio" >
+                                        <input type="hidden"  name="destino" value="/home.jsp"/>
+                                        <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                    </form>
+                                </a>                                
+                            <li>
+                                <a>
+                                    <form action="Controlador" method="post">                                
+                                        <input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/cartelera.jsp")){%>active<%}%>" type="submit" name="pagina" value="Peliculas" >
                                         <input type="hidden"  name="tipo" value="todas"/>
                                         <input type="hidden"  name="form" value="PeliculasComando"/>
                                     </form>
                                 </a>
                             </li>
-                            <li><a class="<%if(request.getRequestURI().equals("/FinalJava/nosotros.jsp")){%>active<%}%>" href="nosotros.jsp">Nosotros</a></li>
-                           
+                            <li>
+                                <a>
+                                    <form action="Controlador" method="post">
+                                        <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                        <input type="hidden"  name="destino" value="/nosotros.jsp"/>
+                                        <input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/nosotros.jsp")){%>active<%}%>" type="submit" name="pagina" value="Nosotros" >
+                                    </form>
+                                </a> 
+                            </li>
                             <li>
                                 <a>
                                     <form action="Controlador" method="post">
                                         <input type="hidden"  name="form" value="ContactoComando"/>
-                                        <input class="<%if(request.getRequestURI().equals("/FinalJava/contacto.jsp")){%>active<%}%>" type="submit" name="pagina" value="Contacto" >
+                                        <input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/contacto.jsp")){%>active<%}%>" type="submit" name="pagina" value="Contacto" >
                                     </form>
                                 </a>
                             </li>                                   
                             <%Usuario usu = (Usuario)session.getAttribute("usuario");
                             if(usu!=null && usu.isEsAdmin())
                             {%>
-                            <li class="dropdown"><a href="#" class="<%if(request.getRequestURI().equals("/FinalJava/ABMUsuarios.jsp") ||request.getRequestURI().equals("/FinalJava/ABMPeliculas.jsp") || request.getRequestURI().equals("/FinalJava/Devoluciones.jsp") ){%>active<%}%>" >Administrador<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="#" class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/ABMUsuarios.jsp") ||request.getRequestURI().equals("/FinalJava/WEB-INF/ABMPeliculas.jsp") || request.getRequestURI().equals("/FinalJava/WEB-INF/Devoluciones.jsp") ){%>active<%}%>" >Administrador<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li>
                                         <a>
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
                                                 <input type="hidden"  name="form" value="AdminPeliculasComando"/>
-                                                <input class="<%if(request.getRequestURI().equals("/FinalJava/ABMPeliculas.jsp") ){%>active<%}%>" type="submit" name="pagina" value="Peliculas">
+                                                <input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/ABMPeliculas.jsp") ){%>active<%}%>" type="submit" name="pagina" value="Peliculas">
                                             </form>
                                         </a>
                                     </li>
@@ -200,12 +202,20 @@
                                         <a>
                                             <form action="Controlador" method="post">
                                                 <input type="hidden"  name="form" value="AdminUsuariosComando"/>
-                                                <input type="submit" name="pagina" value="Usuarios" class="<%if(request.getRequestURI().equals("/FinalJava/ABMUsuarios.jsp") ){%>active<%}%>">
+                                                <input type="submit" name="pagina" value="Usuarios" class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/ABMUsuarios.jsp") ){%>active<%}%>">
                                             </form>
                                         </a>
                                     </li>
                                       
-                                    <li><a class="<%if(request.getRequestURI().equals("/FinalJava/Devoluciones.jsp") ){%>active<%}%>" href="Devoluciones.jsp">Devoluciones</a></li>
+                                    <li>
+                                        <a>
+                                            <form action="Controlador" method="post">                                
+                                                <input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/Devoluciones.jsp")){%>active<%}%>" type="submit" name="pagina" value="Devoluciones" >
+                                                <input type="hidden"  name="destino" value="/Devoluciones.jsp"/>
+                                                <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                            </form>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li> 
                             <%}%>                                                         

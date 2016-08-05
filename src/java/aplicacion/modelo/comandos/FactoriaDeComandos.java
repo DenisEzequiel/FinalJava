@@ -44,6 +44,10 @@ public class FactoriaDeComandos
         mapa.put("MisPedidosComando", MisPedidosComando.class);
         mapa.put("EnviosComando", EnviosComando.class);
         mapa.put("RegistrarEnvioComando", RegistrarEnvioComando.class);
+        mapa.put("InicioComando", InicioComando.class);
+        mapa.put("RedireccionarComando", RedireccionarComando.class);
+        
+        
     }
     /**
      * Metodo de clase devuelve la instancia de FactoriaDeComandos

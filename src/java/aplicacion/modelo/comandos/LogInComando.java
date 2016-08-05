@@ -80,7 +80,7 @@ public class LogInComando extends Comando
              request.getSession().setAttribute("usuarioNoLogueado", null);
               return("/carro.jsp");
              }
-             return "/index.jsp";
+             return "/home.jsp";
         }
         else{
               return "/login.jsp";

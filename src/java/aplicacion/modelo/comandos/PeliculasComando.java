@@ -108,7 +108,7 @@ public class PeliculasComando extends Comando
             return "/cartelera.jsp";
         }
         
-        return "cartelera.jsp";
+        return "/cartelera.jsp";
         
     }
 }

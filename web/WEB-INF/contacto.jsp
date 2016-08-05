@@ -2,9 +2,7 @@
     <head>
         <jsp:include page="head.jsp"/>
     </head>
-
-    <body>
-       
+    <body>       
         <jsp:include page="header.jsp"/>
         <%@page import="aplicacion.modelo.entidades.Parametro"%>        
         <section class ="seccion">

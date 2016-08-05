@@ -8,15 +8,34 @@
                         <h2>Usuario</h2>
                         <ul class="nav nav-pills nav-stacked">
                         <%if(session.getAttribute("usuario")==null){%>
-                            <li><a href="login.jsp">Iniciar sesión</a></li><%}else{%><li><a href="cuenta.jsp">Cuenta</a></li><%}%>
-                            <li><a href="carro.jsp">Carrito</a></li>
+                            <li>
+                                <form action="Controlador" method="post" id="formSalir">
+                                    <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                    <input type="hidden"  name="destino" value="/login.jsp"/>
+                                    <input type="submit" name="pagina" value="Iniciar sesión" >
+                                </form>
+                            </li>
+                        <%}else{%>
+                            <li>
+                                <form action="Controlador" method="post" id="formSalir">
+                                    <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                    <input type="hidden"  name="destino" value="/cuenta.jsp"/>
+                                    <input type="submit" name="pagina" value="Cuenta" >
+                                </form>                               
+                            </li>
+                        <%}%>
+                            <li>
+                                <form action="Controlador" method="post" id="formSalir">
+                                    <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                    <input type="hidden"  name="destino" value="/carro.jsp"/>
+                                    <input type="submit" name="pagina" value="Carrito" >
+                                </form>
                             <%if(session.getAttribute("usuario")!=null && !((Usuario)session.getAttribute("usuario")).isEsAdmin()){%>
                             <li>                              
                                <form action="Controlador" method="post" id="formSalir">
                                     <input type="hidden"  name="form" value="MisPedidosComando"/>
                                     <input type="submit" name="pagina" value="Mis Pedidos" >
-                                </form>
-                                
+                                </form>                                
                             </li>
                             <%}%>
                         </ul>
@@ -68,11 +87,18 @@
                     <div class="single-widget">
                         <h2 id="acercaDe">Acerca de</h2>
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="nosotros.jsp">Nosotros</a></li>
+                            <li>
+                                <form action="Controlador" method="post" id="formSalir">
+                                    <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                    <input type="hidden"  name="destino" value="/nosotros.jsp"/>
+                                    <input type="submit" name="pagina" value="Nosotros" >
+                                </form>                               
+                            </li>
                             <li><form action="Controlador" method="post">
                                         <input type="hidden"  name="form" value="ContactoComando"/>
                                         <input type="submit" name="pagina" value="Contacto" >
-                                </form></li>  
+                                </form>
+                            </li>  
                         </ul>
                     </div>
                 </div>
@@ -80,8 +106,7 @@
                 <div class="col-sm-2">
                     <div class="single-widget">
                         <h2 id="acercaDe">Administrador</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                           
+                        <ul class="nav nav-pills nav-stacked">                           
                             <li>
                                 <form action="Controlador" method="post">
                                     <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
@@ -95,14 +120,19 @@
                                     <input type="submit" name="pagina" value="Usuarios" >
                                 </form>
                             </li>
-                            <li><a href="Devoluciones.jsp">Devoluciones</a></li>
+                            <li>
+                                <form action="Controlador" method="post" id="formSalir">
+                                    <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                    <input type="hidden"  name="destino" value="/Devoluciones.jsp"/>
+                                    <input type="submit" name="pagina" value="Devoluciones" >
+                                </form>
+                            </li>
                             <li>
                                 <form action="Controlador" method="post">
                                     <input type="hidden"  name="form" value="EnviosComando"/>
-                                    <input type="submit" name="pagina" value="Envíos" class="<%if(request.getRequestURI().equals("/FinalJava/envios.jsp") ){%>active<%}%>">
+                                    <input type="submit" name="pagina" value="Envíos" />
                                 </form>                 
-                            </li>
-                              
+                            </li>                              
                         </ul>
                     </div>
                 </div>

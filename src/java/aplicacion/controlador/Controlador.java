@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author JP
  */
-@WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
+//@WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
 @MultipartConfig 
 public class Controlador extends HttpServlet {
 
@@ -36,10 +36,11 @@ public class Controlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
+        
         factoria = FactoriaDeComandos.getInstancia();
         String nombreComando = request.getParameter("form");
         String proxPag = factoria.buscarComando(nombreComando).ejecutar(request,response);
-        request.getRequestDispatcher(proxPag).forward(request, response);
+        request.getRequestDispatcher("/WEB-INF"+proxPag).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -54,7 +55,7 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**
