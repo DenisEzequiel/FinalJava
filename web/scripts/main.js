@@ -1,11 +1,48 @@
 /*Validacion checkBoxs*/
-//ESTAN TODOS SELECCIONADOS RETURN TRUE
+function validarChecks()
+{
+    cant = 0;
+    for(i=0; i<document.DatosPelicula.generos.length; i++)
+    {
+        if(document.DatosPelicula.generos[i].checked)
+        {
+            cant++;
+        }
+    }
+    
+    if(cant!==0)
+    {
+        return true;
+    }
+    else
+    {
+        alert("Seleccione algún género para la película");
+        return false;
+    }
+}
+/*Validación de que coinciden las password*/
+function validarPass()
+{
+    var contra1 = document.getElementById('pass1');
+    var contra2 = document.getElementById('pass2');
+    if(contra1.value === contra2.value)
+    {
+        return true;
+    }
+    else
+    {
+        alert("Las contraseñas deben coincidir");
+        return false;
+    }
+}
+
 /*Socrolls ABMs*/
 function scrollDiv()
 {
     var div = document.getElementById('Edit');
     div.scrollIntoView(true);
 }
+
 /*Desaparecer alertas y avisos*/
 $(document).ready(
         function()

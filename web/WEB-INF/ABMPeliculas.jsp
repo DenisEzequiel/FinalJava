@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <jsp:include page="head.jsp"/>
-    <body onload="scrollDiv();">
+    <body onload="scrollDiv()">
         <jsp:include page="header.jsp"/>
         <%!ArrayList<Pelicula> peliculas;%>
         <%!ArrayList<Genero> generos;%>
@@ -105,7 +105,7 @@
                 <br/>
                 <h2 class="title text-center"><%if(peli!=null && request.getAttribute("peliculaPorAgregar")==null){%>EDITAR<%} else{%>AGREGAR<%}%> PELICULA</h2>
                 <br/>
-                <form class="peliculas" action="Controlador" method="post" enctype="multipart/form-data" onsubmit="ValidarChecks()">  
+                <form name="DatosPelicula" class="peliculas" action="Controlador" method="post" enctype="multipart/form-data" onsubmit="return validarChecks()">  
                     <div class="col-sm-6 ">
                         <div class="row">
                             <div class="col-sm-3">

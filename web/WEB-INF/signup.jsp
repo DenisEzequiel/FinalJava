@@ -21,7 +21,7 @@
         <section id="form"><!--form-->
             <div class="container">
                 <div class="login-form"><!--login form-->
-                    <form action="Controlador" method="post">
+                    <form action="Controlador" method="post" onsubmit="return validarPass()">
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1">
                                 <h1>Ya casi terminamos, solo algunos datos mas...</h1>
@@ -62,8 +62,8 @@
                             <div class="col-lg-5 col-lg-offset-0">
                                 <h2>información sobre tu cuenta</h2> 
                                 <input class="control form-control" type="text" placeholder="Nombre de Usuario*" name="Usu" maxlength="10" required value="<%=usuPorRegistrar.getNombreUsuario() %>">
-                                <input class="control form-control" type="password" minlength="4" placeholder="Contraseña*" name="Contra1"  maxlength="10" required value="<%=usuPorRegistrar.getContrasena()%>">
-                                <input class="control form-control" type="password" placeholder="Confirmar contraseña*" name="Contra2" minlength="4" maxlength="10" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=usuPorRegistrar.getContrasena()%>"<%}%>>
+                                <input id="pass1" class="control form-control" type="password" minlength="4" placeholder="Contraseña*" name="Contra1"  maxlength="10" required value="<%=usuPorRegistrar.getContrasena()%>">
+                                <input id="pass2" class="control form-control" type="password" placeholder="Confirmar contraseña*" name="Contra2" minlength="4" maxlength="10" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=usuPorRegistrar.getContrasena()%>"<%}%>>
                                 <%if(request.getAttribute("ex") != null){%>                                           
                                     <div class="alert alert-danger">
                                         <%=request.getAttribute("ex")%>
