@@ -64,7 +64,9 @@
                     <div class="col-sm-4">
                         <div class="signup-form"><!--sign up form <div class="chose_area">-->
                             <h2>Sos nuevo? Registrate!</h2>
-                            <form action="signup.jsp" method="post">
+                            <form action="Controlador" method="post">
+                                <input type="hidden" name="form" value="RedireccionarComando" />
+                                <input type="hidden" name="destino" value="/signup.jsp" />
                                 <input class="control form-control" type="text" name="nombreUsuario" placeholder="Nombre de Usuario" maxlenght="10"  required>
                                 <input class="control form-control" type="email" name="email" placeholder="Email" maxlenght="30" required>
                                 <input class="control form-control" type="password" name="contra1" placeholder="Contraseña" maxlenght="10" required>

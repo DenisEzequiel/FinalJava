@@ -88,7 +88,7 @@ public class RegistroComando extends Comando
             request.setAttribute("exitoRegistro", "El nombre de usuario ya existe"); 
             return "/signup.jsp";
         }
-        return "/index.jsp";       
+        return "/home.jsp";       
     }
     
 }

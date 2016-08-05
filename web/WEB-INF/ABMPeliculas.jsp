@@ -105,7 +105,7 @@
                 <br/>
                 <h2 class="title text-center"><%if(peli!=null && request.getAttribute("peliculaPorAgregar")==null){%>EDITAR<%} else{%>AGREGAR<%}%> PELICULA</h2>
                 <br/>
-                <form action="Controlador" method="post" enctype="multipart/form-data" >  
+                <form class="peliculas" action="Controlador" method="post" enctype="multipart/form-data" onsubmit="ValidarChecks()">  
                     <div class="col-sm-6 ">
                         <div class="row">
                             <div class="col-sm-3">
@@ -220,7 +220,7 @@
                                         <% for(int i=0;i<generos.size();i++){%>
                                             <tr>
                                                 <td>
-                                                    <label class="puntero"><input type="checkbox" name="generos" value="<%=generos.get(i).getIdGenero()%>" <%if((peli!=null || request.getAttribute("peliculaPorAgregar")!=null) && peli.contieneGenero(generos.get(i)))%>checked<%;%>><%=generos.get(i).getDescripcion()%></label>
+                                                    <label class="puntero"><input class="check" type="checkbox" name="generos" value="<%=generos.get(i).getIdGenero()%>" <%if((peli!=null || request.getAttribute("peliculaPorAgregar")!=null) && peli.contieneGenero(generos.get(i)))%>checked<%;%>><%=generos.get(i).getDescripcion()%></label>
                                                 </td>
                                             </tr>
                                             <%}%>

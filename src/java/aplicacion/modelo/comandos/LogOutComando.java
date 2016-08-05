@@ -39,7 +39,7 @@ public class LogOutComando extends Comando
                 response.addCookie(c);
             }
         }
-        return "index.jsp";
+        return "/index.jsp";
     }
     
 }
