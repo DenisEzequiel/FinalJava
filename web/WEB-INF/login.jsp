@@ -26,7 +26,7 @@
                             <form action="Controlador" method="post" onsubmit="calcHash()">
                                 <input type="hidden" name="form" value="LogInComando">
                                 <input type="text" class="control form-control" name="nomUsu" placeholder="Nombre de usuario" required>
-                                <input id="pass1" type="password" class="control form-control" name="contra" placeholder="Constraseña" required>
+                                <input id="pass1" type="password" class="control form-control" name="contra" placeholder="Constraseña" pattern="(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15})" title="Al menos una minuscula, una mayuscula, un digito y longitud entre 8 y 15"  required>
                                 <span>
                                     <label><input type="checkbox" class="checkbox" value="true" name="recordarUsu"> 
                                         Mantenerme conectado</label>

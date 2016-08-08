@@ -93,7 +93,7 @@
                 <form action="Controlador" method="post" onsubmit="return validarPass()" >
                     <div <%if(session.getAttribute("Scroll")!=null){%> id="Edit" <%session.setAttribute("Scroll", null); };%>  class="row">
                     <br/>    
-                    <h2 class="title text-center"><%if(usu!=null && request.getAttribute("usuarioPorAgregar")==null) {%>EDITAR<%}else{%>AGREGAR<%}%> USUARIO</h2>
+                    <h2 class="title text-center"><%if(usu!=null) {%>EDITAR<%}else{%>AGREGAR<%}%> USUARIO</h2>
                     <div class="col-sm-6">
                         <h2>Información del Usuario</h2>
                             <div class="row">
@@ -171,12 +171,13 @@
                                     <input class="control form-control" type="text" placeholder="*" name="Usu" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getNombreUsuario() %>">
                                 </div>
                             </div>
+                            <% if(usu==null) {%>
                             <div class="row">
                                 <div class="col-sm-5">
                                     <h4 class="text-left">Contraseña</h4>
                                 </div>
                                 <div class="col-sm-7">
-                                    <input id="pass1" class="control form-control" type="password" placeholder="*" name="Contra1" minlength="4" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getContrasena() %>">
+                                    <input id="pass1" class="control form-control" type="password" placeholder="*" name="Contra1" pattern="(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15})" title="Al menos una minuscula, una mayuscula, un digito y longitud entre 8 y 15"  required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getContrasena() %>">
                                 </div>
                             </div>
                             <div class="row">
@@ -184,9 +185,10 @@
                                     <h4 class="text-left">Confirmar Contraseña</h4>
                                 </div>
                                 <div class="col-sm-7">
-                                    <input id="pass2" class="control form-control" type="password" placeholder="*" name="Contra2" minlength="4" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getContrasena() %>">
+                                    <input id="pass2" class="control form-control" type="password" placeholder="*" name="Contra2" pattern="(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15})" title="Al menos una minuscula, una mayuscula, un digito y longitud entre 8 y 15"  required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getContrasena() %>">
                                 </div>
                             </div>
+                            <%}%>
                             <h2>Estado de la cuenta</h2>
                             <div class="row">
                                 <div class="col-sm-12">

@@ -51,7 +51,7 @@
                                         <input class="control form-control" type="text" placeholder="Piso"  maxlength="2" pattern="^[0-9]*$" name="Piso" <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=request.getAttribute("piso")%>"<%}%>>
                                     </div>
                                     <div class="col-sm-4 col-sm-offset-0">
-                                        <input class="control form-control" type="text" placeholder="Depto."  maxlength="1" pattern="[A-Z]" name="Depto" <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=request.getAttribute("depto")%>"<%}%>>
+                                        <input class="control form-control" type="text" placeholder="Depto."  maxlength="1" pattern="[A-Za-z]" title="Una letra" name="Depto" <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=request.getAttribute("depto")%>"<%}%>>
                                     </div>
                                 </div>
                                 
@@ -60,9 +60,9 @@
                             </div>
                             <div class="col-lg-5 col-lg-offset-0">
                                 <h2>información sobre tu cuenta</h2> 
-                                <input class="control form-control" type="text" placeholder="Nombre de Usuario*" name="Usu" maxlength="10" required value="<%=usuPorRegistrar.getNombreUsuario() %>">
-                                <input id="pass1" class="control form-control" type="password" minlength="4" placeholder="Contraseña*" name="Contra1"  maxlength="10" required value="<%=usuPorRegistrar.getContrasena()%>">
-                                <input id="pass2" class="control form-control" type="password" placeholder="Confirmar contraseña*" name="Contra2" minlength="4" maxlength="10" required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=usuPorRegistrar.getContrasena()%>"<%}%>>
+                                <input class="control form-control" type="text" placeholder="Nombre de Usuario*" name="Usu" maxlength="10" required value="<%=usuPorRegistrar.getNombreUsuario() %>">  
+                                <input id="pass1" class="control form-control" type="password"  placeholder="Contraseña*" name="Contra1" pattern="(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15})" title="Al menos una minuscula, una mayuscula, un digito y longitud entre 8 y 15" required value="<%=usuPorRegistrar.getContrasena()%>">
+                                <input id="pass2" class="control form-control" type="password" placeholder="Confirmar contraseña*" name="Contra2" pattern="(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15})" title="Al menos una minuscula, una mayuscula, un digito y longitud entre 8 y 15"  required <%if(request.getAttribute("usuarioPorRegistrar")!=null){%>value="<%=usuPorRegistrar.getContrasena()%>"<%}%>>
                                 <%if(request.getAttribute("ex") != null){%>                                           
                                     <div class="alert alert-danger">
                                         <%=request.getAttribute("ex")%>
