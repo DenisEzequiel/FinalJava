@@ -90,7 +90,7 @@
                         </div>
                     </div> 
                 </div>
-                <form action="Controlador" method="post">
+                <form action="Controlador" method="post" onsubmit="return validarPass()" >
                     <div <%if(session.getAttribute("Scroll")!=null){%> id="Edit" <%session.setAttribute("Scroll", null); };%>  class="row">
                     <br/>    
                     <h2 class="title text-center"><%if(usu!=null && request.getAttribute("usuarioPorAgregar")==null) {%>EDITAR<%}else{%>AGREGAR<%}%> USUARIO</h2>
@@ -176,7 +176,7 @@
                                     <h4 class="text-left">Contraseña</h4>
                                 </div>
                                 <div class="col-sm-7">
-                                    <input class="control form-control" type="password" placeholder="*" name="Contra1" minlength="4" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getContrasena() %>">
+                                    <input id="pass1" class="control form-control" type="password" placeholder="*" name="Contra1" minlength="4" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getContrasena() %>">
                                 </div>
                             </div>
                             <div class="row">
@@ -184,7 +184,7 @@
                                     <h4 class="text-left">Confirmar Contraseña</h4>
                                 </div>
                                 <div class="col-sm-7">
-                                    <input class="control form-control" type="password" placeholder="*" name="Contra2" minlength="4" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getContrasena() %>">
+                                    <input id="pass2" class="control form-control" type="password" placeholder="*" name="Contra2" minlength="4" maxlength="10" required value="<%if(usu!=null || request.getAttribute("usuarioPorAgregar")!=null)%><%= usu.getContrasena() %>">
                                 </div>
                             </div>
                             <h2>Estado de la cuenta</h2>

@@ -19,7 +19,6 @@ public class RedireccionarComando extends Comando
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) 
     {
         return request.getParameter("destino");
-        
     }
     
 }
