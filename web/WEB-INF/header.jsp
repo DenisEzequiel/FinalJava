@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="logo pull-left">
-                        <a href="index.jsp"><img src="./imagenes/logo.jpg"></a>
+                        <a href="/home.jsp"><img src="./imagenes/logo.jpg"></a>
                     </div>               
                 </div>
                 <div class="col-sm-9">
@@ -179,8 +179,10 @@
                             <li>
                                 <a>
                                     <form action="Controlador" method="post">
-                                        <input type="hidden"  name="form" value="ContactoComando"/>
+                                        <input type="hidden"  name="form" value="RedireccionarComando"/>
                                         <input class="<%if(request.getRequestURI().equals("/FinalJava/WEB-INF/contacto.jsp")){%>active<%}%>" type="submit" name="pagina" value="Contacto" >
+                                        <input type="hidden"  name="destino" value="/contacto.jsp"/>
+
                                     </form>
                                 </a>
                             </li>                                   

@@ -32,6 +32,10 @@ public class CatalogoDePeliculas
     {
         peliculas.actualizarPelicula(p);
     }
+    public void actualizarStock(Pelicula p) throws AefilepException
+    {
+        peliculas.actualizarStock(p);
+    }
     
     public Pelicula obtenerPelicula(int idPel) throws AefilepException
     {

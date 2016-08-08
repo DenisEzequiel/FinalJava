@@ -237,12 +237,12 @@
                                                No se permiten alquileres que excedan los 15 días.
                                             </div>
                                                 <%session.setAttribute("errorDias", null);}  
-                                   else if(session.getAttribute("ex") != null)
+                                   else if(request.getAttribute("ex") != null)
                                         {
                                        %> 
                                             
                                             <div class="alert alert-danger">
-                                                <%=session.getAttribute("ex")%>
+                                                <%=request.getAttribute("ex")%>
                                             </div>
                                         <%
                                         }
