@@ -15,13 +15,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <jsp:include page="head.jsp"/>
-    
 <body>
     <jsp:include page="header.jsp"/>
         <section id="form"><!--form-->
             <div class="container">
                 <div class="login-form"><!--login form-->
-                    <form action="Controlador" method="post" onsubmit="return validarPass()">
+                    <form action="Controlador" method="post" onsubmit="return validarPass();">
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1">
                                 <h1>Ya casi terminamos, solo algunos datos mas...</h1>
