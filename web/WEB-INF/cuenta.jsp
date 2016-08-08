@@ -57,9 +57,9 @@
                         <form action="Controlador" method="post" onsubmit="validarCambioPass()">
                             <input type="hidden" name="form" value="CuentaComando">                       
                             <div class="cuenta"><!--login form-->                             
-                                Contraseña anterior <input id="passAnt" type="password" class="control form-control" name="contraAnterior" required>
-                                Nueva contraseña <input id="pass1" type="password" class="control form-control" name="nuevaContra" required>
-                                Repita la contraseña <input id="pass2" type="password" class="control form-control" name="repiteContra" required onkeyup="validarContrasenia()">
+                                Contraseña anterior <input id="passAnt" type="password" class="control form-control" name="contraAnterior" pattern="(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15})" title="Al menos una minuscula, una mayuscula, un digito y longitud entre 8 y 15"  required>
+                                Nueva contraseña <input id="pass1" type="password" class="control form-control" name="nuevaContra" pattern="(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15})" title="Al menos una minuscula, una mayuscula, un digito y longitud entre 8 y 15"  required>
+                                Repita la contraseña <input id="pass2" type="password" class="control form-control" name="repiteContra" pattern="(^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8,15})" title="Al menos una minuscula, una mayuscula, un digito y longitud entre 8 y 15"  required onkeyup="validarContrasenia()">
                                 <button type="submit" class="btn btn-default right ">Actualizar Contraseña</button>       
                             </div>
                         </form>

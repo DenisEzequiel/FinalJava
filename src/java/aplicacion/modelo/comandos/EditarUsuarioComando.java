@@ -26,7 +26,7 @@ public class EditarUsuarioComando extends Comando
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
         cDeUsu = new CatalogoDeUsuarios();
-        Usuario usEditado = new Usuario();
+        Usuario usEditado = (Usuario)request.getSession().getAttribute("UsuarioEdit");
         SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = null;
             try
@@ -41,7 +41,6 @@ public class EditarUsuarioComando extends Comando
         usEditado.setIdUsuario( Integer.parseInt(request.getParameter("ID")));
         usEditado.setNombre((String)request.getParameter("Nombre"));
         usEditado.setApellido((String)request.getParameter("Apellido"));
-        usEditado.setContrasena((String)request.getParameter("Contra1"));
         usEditado.setDireccion((String)request.getParameter("Calle"));
         usEditado.setTelefono((String)request.getParameter("Tel"));
         usEditado.setDni((String)request.getParameter("Dni")); 
