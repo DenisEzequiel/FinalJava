@@ -7,6 +7,7 @@ package aplicacion.modelo.comandos;
 
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import aplicacion.utilidades.AefilepException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,15 +26,15 @@ public class ObtenerPeliculaComando extends Comando{
             Pelicula peliActual= CdP.obtenerPelicula(Integer.parseInt(request.getParameter("idPelicula")));
             request.getSession().setAttribute("peliActual", peliActual);
         }
-        catch(Exception ex)
+        catch(AefilepException ex)
         {
             request.getSession().setAttribute("peliActual", null);
-            request.getSession().setAttribute("Excepcion", "Error al recuperar la película");
+            request.setAttribute("ex", ex.getMessage());
         }
-        finally
-        {
-            return "pelicula.jsp";
-        }           
+        
+        
+        return "/pelicula.jsp";
+                  
     }
     
 }

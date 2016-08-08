@@ -22,7 +22,7 @@ public class PeliculasGenerosBD
 {
     Conexion conec = new Conexion();
     
-     public void agregarPeliculaGeneros(Pelicula p) throws Exception
+     public void agregarPeliculaGeneros(Pelicula p) throws AefilepException
      {
         Connection con = conec.getConexion();
         String transac = "insert into aefilep.peliculas_generos values ";
@@ -45,11 +45,11 @@ public class PeliculasGenerosBD
         }
         catch(SQLException ex)
         {
-            ex.printStackTrace();
+            throw(new AefilepException ("Error al insertar género en la película",ex));
         }  
      }
     
-    public void actualizarPeliculasGeneros(Pelicula p) throws Exception
+    public void actualizarPeliculasGeneros(Pelicula p) throws AefilepException
     {
         Connection con = conec.getConexion();
         String transac = "delete from aefilep.peliculas_generos where id_pelicula=?;";
@@ -67,7 +67,7 @@ public class PeliculasGenerosBD
         }
     }
      
-    public ArrayList<Genero> obtenerGenerosPelicula(int id) throws Exception
+    public ArrayList<Genero> obtenerGenerosPelicula(int id) throws AefilepException
     {
         ArrayList<Genero> generos = new ArrayList<Genero>();
         Connection con = conec.getConexion();
@@ -91,7 +91,7 @@ public class PeliculasGenerosBD
         }
         catch(SQLException ex)
         {
-            ex.printStackTrace();
+              throw(new AefilepException ("Error al obtener géneros de la película",ex));
         }
         
         return generos;

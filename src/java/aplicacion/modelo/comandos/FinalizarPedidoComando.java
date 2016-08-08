@@ -33,7 +33,7 @@ public class FinalizarPedidoComando extends Comando{
         if(request.getSession().getAttribute("usuario")==null)
     { 
             request.getSession().setAttribute("usuarioNoLogueado", true);
-        return("login.jsp");
+        return("/login.jsp");
     }
         
         else 
@@ -75,7 +75,7 @@ public class FinalizarPedidoComando extends Comando{
                  CatalogoDePeliculas CdPeli=new CatalogoDePeliculas();
                  try
                  {
-                     CdPeli.actualizarPelicula(lp.getPelicula());
+                     CdPeli.actualizarStock(lp.getPelicula());
                  }
                  catch(AefilepException ex)
                  {
@@ -106,7 +106,7 @@ public class FinalizarPedidoComando extends Comando{
    }else {
         request.getSession().setAttribute("pedidoVacio", true);
             }
-            return "carro.jsp";
+            return "/carro.jsp";
         }
     }
     

@@ -63,6 +63,29 @@ public class PeliculaDB
         }
     }
     
+    public void actualizarStock(Pelicula p) throws AefilepException
+    {
+             
+         String sql = "update peliculas set stock_alquiler=?, stock_compra=? where id_pelicula=?;";
+            
+        try
+        {
+            con = conec.getConexion();
+            PreparedStatement pr = con.prepareStatement(sql);
+            pr.setInt(1, p.getStockAlquiler());
+            pr.setInt(2, p.getStockVenta());            
+            pr.setInt(3, p.getIdPelicula());
+            pr.executeUpdate();
+            con.close();
+        }
+        catch(Exception ex)
+        {
+            throw new AefilepException("Error al actualizar stock de la película",ex);
+        }
+        
+        }
+    
+    
     public void actualizarPelicula(Pelicula p) throws AefilepException
     {
         InputStream img = p.getImagen();
