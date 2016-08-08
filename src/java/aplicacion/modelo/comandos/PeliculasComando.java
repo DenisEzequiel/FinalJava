@@ -5,8 +5,6 @@
  */
 package aplicacion.modelo.comandos;
 
-import aplicacion.modelo.datos.ParametroBD;
-import aplicacion.modelo.entidades.Parametro;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import java.util.ArrayList;
@@ -93,20 +91,9 @@ public class PeliculasComando extends Comando
             return "/cartelera.jsp";
         }
      
-        ParametroBD pbd = new ParametroBD();
-        try
-        {
-            Parametro par = pbd.obtenerParametros();
-            request.getSession().setAttribute("parametro", par);
-            request.getSession().setAttribute("listaCartelera", listaPeliculas);
-            request.getSession().setAttribute("cantidadPeliculas",cantidadDePeliculas);
-            request.getSession().setAttribute("generoObtenido", null);
-        }
-        catch(Exception ex)
-        {
-            request.setAttribute("ex",ex.getMessage());
-            return "/cartelera.jsp";
-        }
+        request.getSession().setAttribute("listaCartelera", listaPeliculas);
+        request.getSession().setAttribute("cantidadPeliculas",cantidadDePeliculas);
+        request.getSession().setAttribute("generoObtenido", null);
         
         return "/cartelera.jsp";
         

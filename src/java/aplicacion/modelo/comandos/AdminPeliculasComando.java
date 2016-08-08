@@ -23,28 +23,23 @@ public class AdminPeliculasComando extends Comando
 {
     CatalogoDePeliculas CdeP;
     CatalogoDeGeneros CdeG;
-    CatalogoDeParametros CdePar;
     
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) 
     {
         CdeP = new CatalogoDePeliculas();
         CdeG = new CatalogoDeGeneros();
-        CdePar = new CatalogoDeParametros();
         ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
         ArrayList<Genero> generos = new ArrayList<Genero>();
         Pelicula peliEdit = null;
-        Parametro param = null;
         try
         {
             peliculas = CdeP.obtenerPeliculas();
             generos = CdeG.obtenerGeneros();
-            param = CdePar.obtenerParametros();
             peliEdit = peliculas.get(0);
             request.getSession().setAttribute("ListaPeliculas", peliculas);
             request.getSession().setAttribute("ListaGeneros", generos);
             request.getSession().setAttribute("PeliEdit", peliEdit);
-            request.getSession().setAttribute("Parametro", param);
         }
         catch(Exception ex)
         {

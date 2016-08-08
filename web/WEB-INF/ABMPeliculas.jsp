@@ -16,7 +16,7 @@
         <%!ArrayList<Genero> generos;%>
         <%!Parametro param;%>
         <%!Pelicula peli;%>
-        <% if(session.getAttribute("Parametro")!=null){ param = (Parametro) session.getAttribute("Parametro"); }%>
+        <% if(session.getAttribute("parametros")!=null){ param = (Parametro) session.getAttribute("parametros"); }%>
         <% if(session.getAttribute("ListaPeliculas")!=null) { peliculas = (ArrayList)session.getAttribute("ListaPeliculas");}%>
         <% if(session.getAttribute("ListaGeneros")!=null) { generos = (ArrayList)session.getAttribute("ListaGeneros");}%>
         <% peli = (Pelicula)session.getAttribute("PeliEdit"); 

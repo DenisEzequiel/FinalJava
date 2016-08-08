@@ -7,8 +7,6 @@ package aplicacion.modelo.negocio;
 import aplicacion.modelo.datos.ParametroBD;
 import aplicacion.modelo.entidades.Parametro;
 import aplicacion.utilidades.AefilepException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +16,7 @@ public class CatalogoDeParametros
 {
     ParametroBD parametros = new ParametroBD();
     
-    public Parametro obtenerParametros() throws Exception
+    public Parametro obtenerParametros() throws AefilepException
     {
         return parametros.obtenerParametros();
     }
