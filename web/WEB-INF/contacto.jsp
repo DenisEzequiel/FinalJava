@@ -49,9 +49,9 @@
                                         <div class="contact-info">
                                                 <h2 class="title text-center">Información Nuestra</h2>
                                                 <address>
-                                                    <%if(session.getAttribute("parametro")!=null)
+                                                    <%if(session.getAttribute("parametros")!=null)
                                                     {
-                                                     Parametro par =(Parametro)session.getAttribute("parametro");
+                                                     Parametro par =(Parametro)session.getAttribute("parametros");
                                                         %>
 
                                                         <p><%= par.getRazonSocial()%> </p>

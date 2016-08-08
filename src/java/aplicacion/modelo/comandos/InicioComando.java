@@ -5,9 +5,11 @@
  */
 package aplicacion.modelo.comandos;
 
+import aplicacion.modelo.entidades.Parametro;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.entidades.Usuario;
+import aplicacion.modelo.negocio.CatalogoDeParametros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
 import aplicacion.utilidades.AefilepException;
@@ -49,7 +51,6 @@ public class InicioComando extends Comando{
         request.getSession().setAttribute("pelisCarrusel", pelisCarrusel);
                
         //mantenerme conectado
-        
         String nomUsu = null;
         String contra = null;
         if( request.getCookies()!=null && request.getSession().getAttribute("usuario")==null )
@@ -83,6 +84,20 @@ public class InicioComando extends Comando{
                 }
             }
         }
+        
+        //carga de parámetros desde la BD
+        CatalogoDeParametros cDePar = new CatalogoDeParametros();
+        Parametro parametros = new Parametro();
+        try
+        {
+            parametros = cDePar.obtenerParametros();
+        } 
+        catch (AefilepException ex) 
+        {
+            request.setAttribute("ex", ex.getMessage());
+            return "/home.jsp";
+        }
+        request.getSession().setAttribute("parametros", parametros);
         
         //crea pedido inicial
         Pedido pedido= new Pedido(); 
