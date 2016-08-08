@@ -11,10 +11,26 @@
     <body>
         <jsp:include page="header.jsp"/>
         <% String [] listaNombres = {"comedia","drama","terror","accion","thriller"};
-           ArrayList<Pelicula> pelisCarrusel = (ArrayList)session.getAttribute("pelisCarrusel");
-           ArrayList<ArrayList<Pelicula>> listaPeliculas = (ArrayList)session.getAttribute("listaPeliculas"); %>
-        <section id="slider"><!--slider-->
+        if(session.getAttribute("ex")!=null){   %>
+         <div class="container">
+            <div class="row">
+                <div class="col-sm-4">            
+                    <div class="alert alert-danger fade in">
+                        <%= session.getAttribute("ex")%>
+                    </div>                    
+                </div>
+            </div>
+         </div>
+        <%}else{
+         session.setAttribute("ex", null);
+         ArrayList<Pelicula> pelisCarrusel = (ArrayList)session.getAttribute("pelisCarrusel");
+         ArrayList<ArrayList<Pelicula>> listaPeliculas = (ArrayList)session.getAttribute("listaPeliculas"); %>
+        
+               
+           <section id="slider"><!--slider-->
             <div class="container">
+                
+                                            
                 <div class="row">
                     <div class="col-sm-12">
                         <div id="slider-carousel" class="carousel slide" data-ride="carousel">
@@ -22,7 +38,7 @@
                                 <li data-target="#slider-carousel" data-slide-to="0" class=""></li>
                                 <li data-target="#slider-carousel" data-slide-to="1" class="active"></li>
                                 <li data-target="#slider-carousel" data-slide-to="2" class=""></li>
-                            </ol>		
+                            </ol>	                      
                             <div class="carousel-inner">
                             <% int indice=0;
                             for(Pelicula pc: pelisCarrusel)
@@ -104,6 +120,7 @@
                         </div><!--/category-tab-->	
                     </div>
                 </div>
+              <%}%>
             </div>
         </section>    
         <jsp:include page="footer.jsp"/>

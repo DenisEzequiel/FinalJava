@@ -24,7 +24,7 @@ public class FactoriaDeComandos
         mapa.put("SeleccionarPeliculaComando", SeleccionarPeliculaComando.class);
         mapa.put("EditarPeliculaComando", EditarPeliculaComando.class);
         mapa.put("AgregarPeliculaComando", AgregarPeliculaComando.class);
-        mapa.put("ContactoComando",ContactoComando.class);
+    
         mapa.put("LogOutComando", LogOutComando.class);
         mapa.put("AgregarLineaComando", AgregarLineaComando.class);
         mapa.put("ActualizarLineaComando",ActualizarLineaComando.class);

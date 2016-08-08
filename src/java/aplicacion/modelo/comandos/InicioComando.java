@@ -27,7 +27,12 @@ public class InicioComando extends Comando{
 
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        
+                
+         //crea pedido inicial
+        Pedido pedido= new Pedido(); 
+        request.getSession().setAttribute("pedido", pedido);
+        request.getSession().setAttribute("cantidadDias", 1);
+                
         // carga de peliculas del home, carrusel y tablita de abajo
         CatalogoDePeliculas CdP= new CatalogoDePeliculas();
         ArrayList<ArrayList<Pelicula>> listaPeliculas=new ArrayList<ArrayList<Pelicula>>();
@@ -44,7 +49,7 @@ public class InicioComando extends Comando{
         }
         catch(AefilepException ex)
         {
-            request.setAttribute("ex", ex.getMessage());
+            request.getSession().setAttribute("ex", ex.getMessage());
             return "/home.jsp";
         }
         request.getSession().setAttribute("listaPeliculas", listaPeliculas);
@@ -73,7 +78,7 @@ public class InicioComando extends Comando{
                 }
                 catch(AefilepException ex)
                 {
-                    request.setAttribute("ex", ex.getMessage());
+                    request.getSession().setAttribute("ex", ex.getMessage());
                     return "/home.jsp";
                 }
                 
@@ -94,16 +99,11 @@ public class InicioComando extends Comando{
         } 
         catch (AefilepException ex) 
         {
-            request.setAttribute("ex", ex.getMessage());
+            request.getSession().setAttribute("ex", ex.getMessage());
             return "/home.jsp";
         }
         request.getSession().setAttribute("parametros", parametros);
         
-        //crea pedido inicial
-        Pedido pedido= new Pedido(); 
-        request.getSession().setAttribute("pedido", pedido);
-        request.getSession().setAttribute("cantidadDias", 1);
-                           
         return "/home.jsp";
     }
     
