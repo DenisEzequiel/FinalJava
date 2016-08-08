@@ -39,6 +39,15 @@
         
                 <section>
                         <div class="container">
+                              <% if(request.getAttribute("ex")!=null){%>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                <div class="alert alert-danger fade in">
+                                                    <%= request.getAttribute("ex")%>
+                                                </div>
+                                            </div>
+                                            </div>                                        
+                                            <%} else {%>
                                 <div class="row">
                                         <div class="col-sm-3">
                                                 <div class="left-sidebar">
@@ -58,13 +67,7 @@
                                         </div>
                                         <div class="col-sm-9 padding-right">
                                             <h2 class="title text-center">Películas</h2>
-                                            <% if(request.getAttribute("ex")!=null){%>
-                                            <div class="row">
-                                                <div class="alert alert-danger fade in">
-                                                    <%= request.getAttribute("ex")%>
-                                                </div>
-                                            </div>                                        
-                                            <%} else {%>
+                                          
                                             <div class="features_items">
                                                 <% if(session.getAttribute("errorNoEncontradas")!=null){%>
                                                 <div class="alert alert-danger">
@@ -118,9 +121,10 @@
                                               
                                                      </ul>
                                                 </form> 
-                                        <%}%>
+                                       
                                         </div>
                                 </div>
+                            <%}%>
                         </div>
                 </section>
                 <jsp:include page="footer.jsp"/>

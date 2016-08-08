@@ -34,7 +34,15 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="logo pull-left">
-                        <a href="/home.jsp"><img src="./imagenes/logo.jpg"></a>
+                         <a class="" href="#">
+                                    <form action="Controlador" method="post" id="formSalir">
+                                        <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                        <input type="hidden"  name="destino" value="/home.jsp"/>
+                                        <img src="./imagenes/logo.jpg" onclick="submit()">
+                                    </form>
+                                </a>
+                                
+                      
                     </div>               
                 </div>
                 <div class="col-sm-9">
