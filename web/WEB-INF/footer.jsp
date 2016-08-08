@@ -150,6 +150,8 @@
     </div>
 </footer><!--/Footer-->
         
+        
+        <script type="text/javascript" src="scripts/sha.js"></script>
         <script src="scripts/jquery.js"></script>
         <script src="scripts/bootstrap.min.js"></script>
         <script src="scripts/jquery.scrollUp.min.js"></script>

@@ -54,12 +54,12 @@
                 <div class="row">
                     <div class="col-sm-5 col-sm-offset-1">
                         <br/>
-                        <form action="Controlador" method="post">
+                        <form action="Controlador" method="post" onsubmit="validarCambioPass()">
                             <input type="hidden" name="form" value="CuentaComando">                       
                             <div class="cuenta"><!--login form-->                             
-                                Contraseña anterior <input type="password" class="control form-control" name="contraAnterior" required>
-                                Nueva contraseña <input id="nuevaContra" type="password" class="control form-control" name="nuevaContra" required>
-                                Repita la contraseña <input id="repiteContra" type="password" class="control form-control" name="repiteContra" required onkeyup="validarContrasenia()">
+                                Contraseña anterior <input id="passAnt" type="password" class="control form-control" name="contraAnterior" required>
+                                Nueva contraseña <input id="pass1" type="password" class="control form-control" name="nuevaContra" required>
+                                Repita la contraseña <input id="pass2" type="password" class="control form-control" name="repiteContra" required onkeyup="validarContrasenia()">
                                 <button type="submit" class="btn btn-default right ">Actualizar Contraseña</button>       
                             </div>
                         </form>

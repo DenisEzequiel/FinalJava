@@ -1,3 +1,32 @@
+/*Encriptar Contraseñas*/
+function calcHash()
+{
+    try 
+    {
+            var hashInput1 = document.getElementById("pass1");
+            var hashInput2 = document.getElementById("pass2");
+            var hashObj = new jsSHA("SHA-256","TEXT",1);
+            hashObj.update(hashInput1.value);
+            hashInput1.value = hashObj.getHash("HEX");
+            hashObj.update(hashInput2.value);
+            hashInput2.value = hashObj.getHash("HEX");
+    } 
+    catch(e) 
+    {
+        
+    }
+}
+/*Validación para el cambio de contraseña*/
+function validarCambioPass()
+{
+    var hashInput1 = document.getElementById("passAnt");
+    var hashObj = new jsSHA("SHA-256","TEXT",1);
+    hashObj.update(hashInput1.value);
+    hashInput1.value = hashObj.getHash("HEX");
+    return validarPass();
+}
+
+
 /*Validacion checkBoxs*/
 function validarChecks()
 {
@@ -27,6 +56,7 @@ function validarPass()
     var contra2 = document.getElementById('pass2');
     if(contra1.value === contra2.value)
     {
+        calcHash();
         return true;
     }
     else

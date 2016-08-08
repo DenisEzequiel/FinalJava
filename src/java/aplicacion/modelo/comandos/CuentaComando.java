@@ -69,7 +69,7 @@ public class CuentaComando extends Comando
             try 
             {
                 usuario = CdeU.buscarUsuario(usu.getNombreUsuario(), request.getParameter("contraAnterior"));
-                if(usuario!=null && request.getParameter("nuevaContra").equals(request.getParameter("repiteContra")))
+                if(usuario!=null)
                 {
                     usuario.setContrasena(request.getParameter("nuevaContra"));
                     CdeU.editarUsuario(usuario);
