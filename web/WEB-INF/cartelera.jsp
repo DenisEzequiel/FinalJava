@@ -1,3 +1,4 @@
+<%@page import="aplicacion.modelo.entidades.Genero"%>
 <%@page import="aplicacion.modelo.entidades.Parametro"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -9,6 +10,8 @@
         <jsp:include page="header.jsp"/>
         <%@page import="aplicacion.modelo.entidades.Pelicula"%>
         <%!ArrayList<Pelicula> listaCartelera = null;%>
+        <%!ArrayList<Genero> listaGeneros = null;%>
+        <%listaGeneros = (ArrayList)session.getAttribute("generos");%>
         <%int cantPaginas = 0;%>
         <%if(session.getAttribute("generoObtenido")!=null)
             {
@@ -42,28 +45,13 @@
                                                       <h2>Géneros</h2>
                                                             <div class="brands-name">
                                                                 <form action="Controlador" method="post" >
-                                                               
                                                                     <input type="hidden" name="form" value="PeliculasComando" >
                                                                     <ul class="nav nav-pills nav-stacked">
-                                                                    
-                                                                    
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="estreno" name="tipo">Estrenos</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="2" name="tipo">Acción</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="4" name="tipo">Aventura</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="7" name="tipo">Ciencia Ficción</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="6" name="tipo">Comedia</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="11" name="tipo">Crimen</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="9" name="tipo">Documental</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="3" name="tipo">Drama</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="8" name="tipo">Romance</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="10" name="tipo">Suspenso</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="1" name="tipo">Terror</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="5" name="tipo">Thriller</label></li>
-                                                                    <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="12" name="tipo">Infantil</label></li>
-                                                         
-                                                                    
-                                                              
-                                                                </ul>
+                                                                        <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="estreno" name="tipo">Estrenos</label></li>
+                                                                        <% for(Genero g : listaGeneros){%>
+                                                                        <li><label class="etiquetaGenero"><input onclick="submit()" type="radio" value="<%=g.getIdGenero()%>" name="tipo"><%=g.getDescripcion()%></label></li>
+                                                                        <%}%>                                                                                        
+                                                                    </ul>
                                                                 </form>
                                                             </div>
                                                 </div>

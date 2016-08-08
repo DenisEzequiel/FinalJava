@@ -9,7 +9,7 @@
     <body>
         <jsp:include page="header.jsp"/>
         <%Pelicula peliActual=(Pelicula)session.getAttribute("peliActual"); 
-          ArrayList<Genero> listaGeneros = new CatalogoDeGeneros().obtenerGeneros();%>
+          ArrayList<Genero> listaGeneros = (ArrayList)session.getAttribute("generos");%>
             <section>
                 <div class="container">
                     <div class="row">

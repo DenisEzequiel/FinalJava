@@ -5,10 +5,12 @@
  */
 package aplicacion.modelo.comandos;
 
+import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.entidades.Parametro;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.entidades.Usuario;
+import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import aplicacion.modelo.negocio.CatalogoDeParametros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.modelo.negocio.CatalogoDeUsuarios;
@@ -49,6 +51,19 @@ public class InicioComando extends Comando{
         }
         request.getSession().setAttribute("listaPeliculas", listaPeliculas);
         request.getSession().setAttribute("pelisCarrusel", pelisCarrusel);
+        
+        //carga de géneros
+        CatalogoDeGeneros cDeGen = new CatalogoDeGeneros();
+        try
+        {
+            ArrayList<Genero> generos = cDeGen.obtenerGeneros();
+            request.getSession().setAttribute("generos", generos);
+        }
+        catch(AefilepException ex)
+        {
+            request.setAttribute("ex", ex.getMessage());
+            return "/home.jsp";
+        }
                
         //mantenerme conectado
         String nomUsu = null;

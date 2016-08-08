@@ -5,8 +5,11 @@
  */
 package aplicacion.modelo.comandos;
 
+import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.entidades.Pelicula;
+import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,7 +26,7 @@ public class ObtenerPeliculaComando extends Comando{
         try
         {
             Pelicula peliActual= CdP.obtenerPelicula(Integer.parseInt(request.getParameter("idPelicula")));
-            request.getSession().setAttribute("peliActual", peliActual);
+            request.getSession().setAttribute("peliActual", peliActual);  
         }
         catch(Exception ex)
         {
@@ -32,7 +35,7 @@ public class ObtenerPeliculaComando extends Comando{
         }
         finally
         {
-            return "pelicula.jsp";
+            return "/pelicula.jsp";
         }           
     }
     
