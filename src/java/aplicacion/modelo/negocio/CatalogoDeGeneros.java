@@ -18,9 +18,9 @@ import java.util.ArrayList;
 public class CatalogoDeGeneros 
 {
     GeneroBD generosBD = new GeneroBD();
+    
     public ArrayList<Genero> obtenerGeneros() throws AefilepException
     {
         return generosBD.obtenerGeneros();
-    }
-    
+    }    
 }

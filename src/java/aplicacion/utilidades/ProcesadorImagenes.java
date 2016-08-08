@@ -57,21 +57,22 @@ public class ProcesadorImagenes extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-         CatalogoDePeliculas cdp= new CatalogoDePeliculas();
-         try
-         {
-          byte[]imgData= cdp.buscarImagen(Integer.parseInt(request.getParameter("id")));
-          OutputStream os = response.getOutputStream(); 
-          os.write(imgData);
-          os.flush();
-          os.close();
-         }
-         catch(Exception ex)
-         {
-             //ERROR IMAGENES ?????
-         }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
+        CatalogoDePeliculas cdp= new CatalogoDePeliculas();
+        
+        try
+        {
+            byte[]imgData= cdp.buscarImagen(Integer.parseInt(request.getParameter("id")));
+            OutputStream os = response.getOutputStream(); 
+            os.write(imgData);
+            os.flush();
+            os.close();
+        }
+        catch(Exception ex)
+        {
+            request.setAttribute("ex", ex.getMessage());
+        }
 
 
     }

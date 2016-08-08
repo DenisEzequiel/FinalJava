@@ -46,14 +46,12 @@ public class GeneroBD
                 con.close();
                 
         }
-           catch(Exception ex)
+        catch(Exception ex)
         {
             throw new AefilepException("Error al recuperar el genero",ex);
         }
-        
-            
-            return listaGeneros;
-        }
-        
+                   
+        return listaGeneros;
+    }        
 }
 

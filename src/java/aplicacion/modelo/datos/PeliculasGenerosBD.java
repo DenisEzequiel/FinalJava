@@ -21,45 +21,57 @@ import java.util.ArrayList;
 public class PeliculasGenerosBD
 {
     Conexion conec = new Conexion();
-    
-     public void agregarPeliculaGeneros(Pelicula p) throws AefilepException
-     {
+
+    /**
+     * agrega los generos a una pelicula
+     * @param p
+     * @throws AefilepException 
+     */
+    public void agregarPeliculaGeneros(Pelicula p) throws AefilepException
+    {
         Connection con = conec.getConexion();
         String transac = "insert into aefilep.peliculas_generos values ";
         for(int i=0; i<p.getGeneros().size(); i++)
         {
             transac = transac +"("+p.getIdPelicula()+","+p.getGeneros().get(i).getIdGenero()+")";
-            if(i==p.getGeneros().size()-1)
-            {
+            
+            if(i==p.getGeneros().size()-1)            
                 transac = transac+";";
-            }else
-            {
-                transac = transac+",";
-            }
+            else            
+                transac = transac+",";            
         }
+        
         try
         {   
-           PreparedStatement pr = con.prepareStatement(transac);
-           pr.executeUpdate();
-           con.close(); 
+            PreparedStatement pr = con.prepareStatement(transac);
+            pr.executeUpdate();
+            con.close(); 
         }
         catch(SQLException ex)
         {
             throw(new AefilepException ("Error al insertar género en la película",ex));
         }  
-     }
+    }
     
+    /**
+     * elimina y agrega los generos de una pelicula
+     * @param p pelicula a editar
+     * @throws AefilepException 
+     */ 
     public void actualizarPeliculasGeneros(Pelicula p) throws AefilepException
     {
         Connection con = conec.getConexion();
         String transac = "delete from aefilep.peliculas_generos where id_pelicula=?;";
+        
         try
         {   
-           PreparedStatement pr = con.prepareStatement(transac);
-           pr.setInt(1, p.getIdPelicula());
-           pr.executeUpdate();
-           con.close();
-           this.agregarPeliculaGeneros(p);
+            PreparedStatement pr = con.prepareStatement(transac);
+            pr.setInt(1, p.getIdPelicula());
+            pr.executeUpdate();
+            
+            con.close();
+            
+            this.agregarPeliculaGeneros(p);
         }
         catch(Exception ex)
         {

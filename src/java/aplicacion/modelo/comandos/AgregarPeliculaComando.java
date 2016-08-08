@@ -26,10 +26,13 @@ public class AgregarPeliculaComando extends Comando
     Pelicula pelicula;
     CatalogoDePeliculas cDp= new CatalogoDePeliculas();
     CatalogoDeGeneros cdG = new CatalogoDeGeneros();
+    
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
         boolean existePelicula = true;
+        
+        //si fija si la pelicula es unica
         try
         {
             existePelicula = cDp.existePelicula((String)request.getParameter("nomPel"));
@@ -40,7 +43,7 @@ public class AgregarPeliculaComando extends Comando
             return"/ABMUsuarios.jsp";
         }
         
-        pelicula=new Pelicula();
+        pelicula = new Pelicula();
         pelicula.setActivo(true);
         pelicula.setFormato(request.getParameter("formPel"));
         pelicula.setNombre(request.getParameter("nomPel"));
@@ -69,7 +72,7 @@ public class AgregarPeliculaComando extends Comando
                 }
             }
         }    
-        //agregamos imagen a la película si
+        //agregamos imagen a la película 
         Part imagen = null;
         try
         {
@@ -78,13 +81,11 @@ public class AgregarPeliculaComando extends Comando
                 imagen = request.getPart("imgPel");
                 InputStream inputStream = imagen.getInputStream();
                 if(inputStream!=null)
-                pelicula.setImagen(inputStream);
+                    pelicula.setImagen(inputStream);
             }
         }
         catch (Exception ex)
         {
-            //estas excepciones no son del servidor, por eso está puesto
-            //a mano el mensaje de error.
             request.setAttribute("ex","Error al cargar imagen");
             return ("/ABMPeliculas.jsp");
         }
@@ -105,7 +106,6 @@ public class AgregarPeliculaComando extends Comando
                 return "/ABMPeliculas.jsp";
             }         
             request.getSession().setAttribute("ListaPeliculas", peliculas);
-            //request.getSession().setAttribute("PeliEdit", pelicula);
             request.setAttribute("ExitoPeli", true);
             request.setAttribute("peliculaPorAgregar", null);
         }
@@ -117,7 +117,5 @@ public class AgregarPeliculaComando extends Comando
         
         request.getSession().setAttribute("Scroll",true);
         return "/ABMPeliculas.jsp";
-    }
-    
-    
+    }    
 }

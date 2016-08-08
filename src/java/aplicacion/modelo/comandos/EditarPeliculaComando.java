@@ -14,8 +14,6 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -61,20 +59,19 @@ public class EditarPeliculaComando extends Comando
         
         Part imagen = null;
         try 
-        {
-           
+        {           
             if(request.getPart("imgPel").getSubmittedFileName().equals(""))
             {
-                 PeliEditada.setImagen(null);
+                PeliEditada.setImagen(null);
             } 
             else
             {
                 imagen = request.getPart("imgPel");
                 InputStream inputStream = imagen.getInputStream();
+                
                 if(inputStream!=null)
-                PeliEditada.setImagen(inputStream);
-            }
-            
+                    PeliEditada.setImagen(inputStream);
+            }            
         } 
         catch (IOException | ServletException ex)
         {       
@@ -98,14 +95,13 @@ public class EditarPeliculaComando extends Comando
         String selecc[] = request.getParameterValues("generos");
         for(Genero g: generos)
         {
-            for(int i=0; i<selecc.length;i++)  
-                {
-                    if(g.getIdGenero()==Integer.parseInt(selecc[i]))
-                    {
-                        PeliEditada.agregarGenero(g);
-                    }
-                }
+            for(int i=0; i<selecc.length;i++)                  
+            {
+                if(g.getIdGenero()==Integer.parseInt(selecc[i]))               
+                    PeliEditada.agregarGenero(g);
+            }
         }
+        
         Boolean esActivo = (request.getParameter("Activa")!=null);
         PeliEditada.setActivo(esActivo);
         
@@ -127,6 +123,5 @@ public class EditarPeliculaComando extends Comando
         request.setAttribute("ExitoPeli", true);
          
         return "/ABMPeliculas.jsp";
-    }
-    
+    }    
 }

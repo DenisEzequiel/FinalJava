@@ -6,7 +6,6 @@
 package aplicacion.modelo.comandos;
 
 import aplicacion.modelo.entidades.Pelicula;
-import aplicacion.modelo.entidades.Usuario;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +21,7 @@ public class SeleccionarPeliculaComando extends Comando
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
         int idPeliEdit = Integer.parseInt( request.getParameter("idPeliEdit"));
+        
         if(idPeliEdit!=0)
         {
             ArrayList<Pelicula> peliculas = (ArrayList<Pelicula>)request.getSession().getAttribute("ListaPeliculas");
@@ -29,9 +29,7 @@ public class SeleccionarPeliculaComando extends Comando
             for(Pelicula pel:peliculas)
             {
                 if(idPeliEdit==pel.getIdPelicula())
-                {
-                    peliEdit=pel;
-                }
+                    peliEdit=pel;         
             }
             request.getSession().setAttribute("PeliEdit", peliEdit);
         }
@@ -39,9 +37,9 @@ public class SeleccionarPeliculaComando extends Comando
         {
             request.getSession().setAttribute("PeliEdit", null);
         }
+        
         request.getSession().setAttribute("Scroll",true);
         
         return "/ABMPeliculas.jsp";
-    }
-    
+    }    
 }

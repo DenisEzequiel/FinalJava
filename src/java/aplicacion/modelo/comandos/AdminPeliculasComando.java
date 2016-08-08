@@ -6,18 +6,17 @@
 package aplicacion.modelo.comandos;
 
 import aplicacion.modelo.entidades.Genero;
-import aplicacion.modelo.entidades.Parametro;
 import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.negocio.CatalogoDeGeneros;
-import aplicacion.modelo.negocio.CatalogoDeParametros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author JP
+ * guarda en la sesion las peliculas y los generos
+ * y se guarda la primer pelicula para editarla
+ * 
  */
 public class AdminPeliculasComando extends Comando
 {

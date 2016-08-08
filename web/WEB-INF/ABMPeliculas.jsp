@@ -20,10 +20,10 @@
         <% if(session.getAttribute("ListaPeliculas")!=null) { peliculas = (ArrayList)session.getAttribute("ListaPeliculas");}%>
         <% if(session.getAttribute("ListaGeneros")!=null) { generos = (ArrayList)session.getAttribute("ListaGeneros");}%>
         <% peli = (Pelicula)session.getAttribute("PeliEdit"); 
-           if(request.getAttribute("peliculaPorAgregar")!=null)
-           {          
+            if(request.getAttribute("peliculaPorAgregar")!=null)
+            {          
                 peli = (Pelicula)request.getAttribute("peliculaPorAgregar");
-           }     
+            }     
         %>
         <div class="cuenta">
             <div class="container"> 
@@ -68,9 +68,9 @@
                                     <td> - </td>
                                     <td>
                                         <form action="Controlador" method="post">
-                                        <input type="hidden"  name="form" value="SeleccionarPeliculaComando"/>
-                                        <input type="hidden" name="idPeliEdit" value="0">
-                                        <input type="submit" value="+ Nuevo">
+                                            <input type="hidden"  name="form" value="SeleccionarPeliculaComando"/>
+                                            <input type="hidden" name="idPeliEdit" value="0">
+                                            <input type="submit" value="+ Nuevo">
                                         </form>
                                     </td>
                                   </tr>
