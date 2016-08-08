@@ -716,7 +716,7 @@ public class PeliculaDB
         }
         catch(Exception ex)
         {
-            throw new AefilepException("Error al recuperar géneros",ex);
+            throw new AefilepException("Error al recuperar películas",ex);
         }
             
         return listaGenero;

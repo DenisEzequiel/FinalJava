@@ -36,14 +36,19 @@ public class Controlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
-        
-        
-        factoria = FactoriaDeComandos.getInstancia();
-        String nombreComando = request.getParameter("form");
-        String proxPag = factoria.buscarComando(nombreComando).ejecutar(request,response);
-        if(!proxPag.equals("/index.jsp"))
-            proxPag = "/WEB-INF"+proxPag;       
-        request.getRequestDispatcher(proxPag).forward(request, response);
+        if(request.getParameter("form")!=null)
+        {
+            factoria = FactoriaDeComandos.getInstancia();
+            String nombreComando = request.getParameter("form");
+            String proxPag = factoria.buscarComando(nombreComando).ejecutar(request,response);
+            if(!proxPag.equals("/index.jsp"))
+                proxPag = "/WEB-INF"+proxPag;       
+            request.getRequestDispatcher(proxPag).forward(request, response);
+        }
+        else
+        {
+            request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
