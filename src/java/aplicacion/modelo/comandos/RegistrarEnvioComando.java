@@ -9,8 +9,6 @@ import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.negocio.CatalogoDePedidos;
 import aplicacion.utilidades.AefilepException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,34 +16,34 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ligia
  */
-public class RegistrarEnvioComando extends Comando {
-
+public class RegistrarEnvioComando extends Comando 
+{
     @Override
-    public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-        
-    CatalogoDePedidos cdp= new CatalogoDePedidos();
-   
-    
-     int idPed = Integer.parseInt(request.getParameter("idPedido"));
+    public String ejecutar(HttpServletRequest request, HttpServletResponse response)
+    {        
+        CatalogoDePedidos cdp= new CatalogoDePedidos();
+        int idPed = Integer.parseInt(request.getParameter("idPedido"));
         ArrayList<Pedido> pendientes = (ArrayList)request.getSession().getAttribute("pendientes");
         Pedido pedAEnviar = new Pedido();
+        
         for(Pedido p:pendientes)
         {
             if(p.getIdPedido()==idPed)
-            {
-                pedAEnviar=p;
-            }
+                pedAEnviar=p;      
         } 
+           
         pedAEnviar.setEstado("Enviado");
-        try{
-        cdp.registrarEnvio(pedAEnviar);
-        }
-    catch(AefilepException ex)
-    {
-        request.setAttribute("ex", ex.getMessage());
-        return "/envios.jsp";     
-    }
         
+        try
+        {
+            cdp.registrarEnvio(pedAEnviar);
+        }
+        catch(AefilepException ex)
+        {
+            request.setAttribute("ex", ex.getMessage());
+            return "/envios.jsp";     
+        }
+
         try
         {
             pendientes=cdp.obtenerPedidosPendientes();
@@ -53,11 +51,12 @@ public class RegistrarEnvioComando extends Comando {
         catch(AefilepException ex)
         {
             request.setAttribute("ex", ex.getMessage());
-             return "/envios.jsp";    
+            return "/envios.jsp";    
         }
+        
         request.getSession().setAttribute("pendientes",pendientes);
         request.setAttribute("ExitoEnvio", true);
+        
         return "/envios.jsp";
-    }
-    
+    }   
 }

@@ -14,12 +14,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class EnviarMensajeComando extends Comando
 {
-
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
         request.getSession().setAttribute("ExitoMensajeEnviado", 1);
         return "/contacto.jsp";
-    }
-    
+    }   
 }

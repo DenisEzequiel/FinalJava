@@ -22,8 +22,6 @@ import java.util.ArrayList;
 public class PeliculaDB
 {
     Conexion conec = new Conexion();
-    ParametroBD parBD = new ParametroBD();
-    PeliculasGenerosBD pelgenBD = new PeliculasGenerosBD();
     Connection con = null;
     
     /**
@@ -55,24 +53,25 @@ public class PeliculaDB
             pr.setInt(14, p.getAnio());
             pr.executeUpdate();
             ResultSet rs = pr.getGeneratedKeys();
+            
             if(rs.next())
             {
                 int id = rs.getInt(1);
                 p.setIdPelicula(id);
             }
-            pelgenBD.agregarPeliculaGeneros(p);
+            
+            new PeliculasGenerosBD().agregarPeliculaGeneros(p);
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al registrar película.",ex);
         }
     }
     
     public void actualizarStock(Pelicula p) throws AefilepException
-    {
-             
-         String sql = "update peliculas set stock_alquiler=?, stock_compra=? where id_pelicula=?;";
+    {         
+        String sql = "update peliculas set stock_alquiler=?, stock_compra=? where id_pelicula=?;";
             
         try
         {
@@ -84,11 +83,10 @@ public class PeliculaDB
             pr.executeUpdate();
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al actualizar stock de la película",ex);
-        }
-        
+        }    
     }
     
     /**
@@ -121,12 +119,12 @@ public class PeliculaDB
                 pr.setBlob(12, p.getImagen());            
                 pr.setInt(13, p.getIdPelicula());
                 
-                pelgenBD.actualizarPeliculasGeneros(p);
+                new PeliculasGenerosBD().actualizarPeliculasGeneros(p);
                 pr.executeUpdate();
 
                 con.close();
             }
-            catch(Exception ex)
+            catch(SQLException ex)
             {
                 throw new AefilepException("Error al actualizar datos de la película",ex);
             }        
@@ -153,12 +151,12 @@ public class PeliculaDB
                 pr.setInt(11, p.getAnio());           
                 pr.setInt(12, p.getIdPelicula());
                 
-                pelgenBD.actualizarPeliculasGeneros(p);
+                new PeliculasGenerosBD().actualizarPeliculasGeneros(p);
                 pr.executeUpdate();
            
                 con.close();
             }
-            catch(Exception ex)
+            catch(SQLException ex)
             {
                 throw new AefilepException("Error al actualizar datos de la película",ex);
             }  
@@ -182,7 +180,7 @@ public class PeliculaDB
             }
             con.close();
         } 
-        catch (Exception ex)
+        catch (SQLException ex)
         {
             throw new AefilepException("Error al recuperar imagen.", ex);
         }
@@ -219,19 +217,19 @@ public class PeliculaDB
 
                 if(p.isEstreno())
                 {
-                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquilerEstreno());
                 }
                 else
                 {
-                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
                 }
 
-                p.setGeneros(pelgenBD.obtenerGenerosPelicula(p.getIdPelicula()));
+                p.setGeneros(new PeliculasGenerosBD().obtenerGenerosPelicula(p.getIdPelicula()));
                 listaPeliculas.add(p);
             }
             con.close();
         }
-        catch(Exception Ex)
+        catch(SQLException Ex)
         {
             throw new AefilepException("Error el recuperar datos de las películas",Ex);
         }
@@ -271,19 +269,19 @@ public class PeliculaDB
 
                 if(p.isEstreno())
                 {
-                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquilerEstreno());
                 }
                 else
                 {
-                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
                 }
-                p.setGeneros(pelgenBD.obtenerGenerosPelicula(p.getIdPelicula()));
+                p.setGeneros(new PeliculasGenerosBD().obtenerGenerosPelicula(p.getIdPelicula()));
 
                 listaPeliculas.add(p);
             }
             con.close();
         }
-        catch(Exception Ex)
+        catch(SQLException Ex)
         {
             throw new AefilepException("Error el recuperar datos de las películas",Ex);
         }
@@ -295,10 +293,11 @@ public class PeliculaDB
     {
         ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
         String transac = "select * from peliculas where activo=1 limit ?,?;";
+        
         try
         {
             con = conec.getConexion();
-        PreparedStatement pr = con.prepareStatement(transac);
+            PreparedStatement pr = con.prepareStatement(transac);
             
             pr.setInt(1, inferior);
             pr.setInt(2, cantidad);
@@ -324,19 +323,15 @@ public class PeliculaDB
                 p.setAnio(res.getInt(14));
                 
                 if(p.isEstreno())
-                {
-                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
-                }
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquilerEstreno());
                 else
-                {
-                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
-                }
-                
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
+          
                 listaPeliculas.add(p);
             }
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al recuperar películas",ex);
         }
@@ -371,19 +366,15 @@ public class PeliculaDB
                 p.setPrecioVenta(res.getFloat(12));
                 p.setSinopsis(res.getString(13));
                 p.setAnio(res.getInt(14));  
-            if(p.isEstreno())
-            {
-                p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
+            
+                if(p.isEstreno())
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquilerEstreno());
+                else
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
             }
-            else
-            {
-                p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
-            }
-            }
-           
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al recuperar los datos de la película",ex);
         }
@@ -415,7 +406,7 @@ public class PeliculaDB
                        
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al recuperar los datos de la película",ex);
         }
@@ -440,13 +431,13 @@ public class PeliculaDB
                 con.close();   
             }
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al contar películas",ex);
         }
         
         return i;
-     }
+    }
      
     public int cantidadPeliculasActivas() throws AefilepException
     {
@@ -465,7 +456,7 @@ public class PeliculaDB
                 con.close();   
             }
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al contar películas",ex);
         }
@@ -490,12 +481,13 @@ public class PeliculaDB
                 con.close();
             }
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al contar estrenos",ex);
         }
+        
         return i;
-     }
+    }
      
     public int cantidadGenerosActivos(int id) throws AefilepException
     {
@@ -515,7 +507,7 @@ public class PeliculaDB
                 con.close();
             }
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al contar géneros.", ex);
         }
@@ -524,7 +516,7 @@ public class PeliculaDB
     }
     
     public int cantidadBuscadorActivos(String nombre) throws AefilepException
-     {
+    {
         int i=0;
         String transac = "select count(*) from peliculas where  nombre like '%"+nombre+"%'and activo=1 ;";
         
@@ -539,7 +531,7 @@ public class PeliculaDB
                 con.close();
             }
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error con los datos de las películas",ex);
         }
@@ -578,21 +570,18 @@ public class PeliculaDB
                 p.setAnio(res.getInt(14));
                 
                 if(p.isEstreno())
-                {
-                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
-                }
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquilerEstreno());
                 else
-                {
-                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
-                }
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
+
                 
-                p.setGeneros(pelgenBD.obtenerGenerosPelicula(p.getIdPelicula()));
+                p.setGeneros(new PeliculasGenerosBD().obtenerGenerosPelicula(p.getIdPelicula()));
                 
                 listaEstrenos.add(p);
             }
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al recuperar datos de las películas",ex);
         }
@@ -631,25 +620,20 @@ public class PeliculaDB
                 p.setAnio(res.getInt(14));
                 
                 if(p.isEstreno())
-                {
-                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
-                }
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquilerEstreno());
                 else
-                {
-                    p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
-                }
+                    p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
                 
-                p.setGeneros(pelgenBD.obtenerGenerosPelicula(p.getIdPelicula()));
+                p.setGeneros(new PeliculasGenerosBD().obtenerGenerosPelicula(p.getIdPelicula()));
                 
                 listaEstrenos.add(p);
             }
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al obtener estrenos",ex);
-        }
-        
+        }  
         
         if (listaEstrenos.size()<3)
         {    
@@ -664,36 +648,33 @@ public class PeliculaDB
 
                 while(res2.next())
                 {
-                            Pelicula p = new Pelicula();
+                    Pelicula p = new Pelicula();
 
-                            p.setIdPelicula(res2.getInt(1));
-                            p.setNombre(res2.getString(2));
-                            p.setDuracion(res2.getInt(3));
-                            p.setFormato(res2.getString(4));
-                            p.setStockAlquiler(res2.getInt(5));
-                            p.setStockVenta(res2.getInt(6));
-                            p.setReparto(res2.getString(8));
-                            p.setFechaCarga(new java.sql.Date(res2.getDate(9).getTime()));
-                            p.setActivo(res2.getBoolean(10));
-                            p.setUrlTrailer(res2.getString(11));
-                            p.setPrecioVenta(res2.getFloat(12));
-                            p.setSinopsis(res2.getString(13));
-                            p.setAnio(res2.getInt(14));
-                             if(p.isEstreno())
-                    {
-                        p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquilerEstreno());
-                    }
+                    p.setIdPelicula(res2.getInt(1));
+                    p.setNombre(res2.getString(2));
+                    p.setDuracion(res2.getInt(3));
+                    p.setFormato(res2.getString(4));
+                    p.setStockAlquiler(res2.getInt(5));
+                    p.setStockVenta(res2.getInt(6));
+                    p.setReparto(res2.getString(8));
+                    p.setFechaCarga(new java.sql.Date(res2.getDate(9).getTime()));
+                    p.setActivo(res2.getBoolean(10));
+                    p.setUrlTrailer(res2.getString(11));
+                    p.setPrecioVenta(res2.getFloat(12));
+                    p.setSinopsis(res2.getString(13));
+                    p.setAnio(res2.getInt(14));
+                     
+                    if(p.isEstreno())
+                        p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquilerEstreno());
                     else
-                    {
-                        p.setPrecioAlquiler(parBD.obtenerParametros().getPrecioAlquiler());
-                    }
+                        p.setPrecioAlquiler(new ParametroBD().obtenerParametros().getPrecioAlquiler());
 
-                    p.setGeneros(pelgenBD.obtenerGenerosPelicula(p.getIdPelicula()));
-                    listaEstrenos.add(p);
-                    }
+                    p.setGeneros(new PeliculasGenerosBD().obtenerGenerosPelicula(p.getIdPelicula()));
+                    listaEstrenos.add(p);                  
+                }
                 con.close();
             }
-            catch(Exception ex)
+            catch(SQLException ex)
             {
                 throw new AefilepException("Error al recuperar estrenos",ex);
             }
@@ -726,11 +707,10 @@ public class PeliculaDB
             }
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al recuperar películas",ex);
-        }
-            
+        }         
         return listaGenero;
     }
 }

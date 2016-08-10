@@ -17,28 +17,32 @@ public class Genero
     /**
      * @return the idGenero
      */
-    public int getIdGenero() {
+    public int getIdGenero()
+    {
         return idGenero;
     }
 
     /**
      * @param idGenero the idGenero to set
      */
-    public void setIdGenero(int idGenero) {
+    public void setIdGenero(int idGenero)
+    {
         this.idGenero = idGenero;
     }
 
     /**
      * @return the descripcion
      */
-    public String getDescripcion() {
+    public String getDescripcion()
+    {
         return descripcion;
     }
 
     /**
      * @param descripcion the descripcion to set
      */
-    public void setDescripcion(String descripcion) {
+    public void setDescripcion(String descripcion) 
+    {
         this.descripcion = descripcion;
     }
 }

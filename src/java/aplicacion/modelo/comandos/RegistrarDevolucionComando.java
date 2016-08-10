@@ -35,6 +35,7 @@ public class RegistrarDevolucionComando extends Comando
                 pedACerrar=p;
             }
         }
+        
         pedACerrar.setFechaDevolucion(new Date());
         pedACerrar.setEstado("Cerrado");
         for(LineaPedido lp:pedACerrar.getLineas())
@@ -44,12 +45,17 @@ public class RegistrarDevolucionComando extends Comando
                 lp.getPelicula().setStockAlquiler((lp.getPelicula().getStockAlquiler()+1));
             }
         }
-        try {
+        
+        try 
+        {
             cDeP.cerrarPedido(pedACerrar);
-        } catch (Exception ex) {
-           request.setAttribute("ex",ex.getMessage());
-           return "/Devoluciones.jsp";
+        } 
+        catch (Exception ex) 
+        {
+            request.setAttribute("ex",ex.getMessage());
+            return "/Devoluciones.jsp";
         }
+        
         request.getSession().setAttribute("ExitoCierre", 1);
         request.getSession().setAttribute("ListaEnviados", null);
         

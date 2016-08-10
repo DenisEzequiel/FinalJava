@@ -25,6 +25,7 @@ public class VerPedidosComando extends Comando
         cDePed = new CatalogoDePedidos();
         int idUsusario = Integer.parseInt(request.getParameter("idUsuPedidos"));
         ArrayList<Pedido> pedidosEnviados = null;
+        
         try 
         {
             pedidosEnviados = cDePed.obtenerPedidosEnviados(idUsusario);
@@ -34,9 +35,10 @@ public class VerPedidosComando extends Comando
            request.setAttribute("ex", ex.getMessage());
            return "/Devoluciones.jsp";
         }
+        
         request.getSession().setAttribute("ListaEnviados", pedidosEnviados);
         request.getSession().setAttribute("Scroll",true);
+        
         return "/Devoluciones.jsp";
     }
-    
 }

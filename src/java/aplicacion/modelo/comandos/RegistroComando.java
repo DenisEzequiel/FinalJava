@@ -71,8 +71,8 @@ public class RegistroComando extends Comando
             }
             catch(AefilepException ex)
             {
-                 request.setAttribute("ex",ex.getMessage());
-                 return "/signup.jsp";
+                request.setAttribute("ex",ex.getMessage());
+                return "/signup.jsp";
             }
             request.getSession().setAttribute("usuario", us);
             request.getSession().setAttribute("exitoLogin", true);
@@ -88,7 +88,7 @@ public class RegistroComando extends Comando
             request.setAttribute("exitoRegistro", "El nombre de usuario ya existe"); 
             return "/signup.jsp";
         }
+        
         return "/home.jsp";       
     }
-    
 }

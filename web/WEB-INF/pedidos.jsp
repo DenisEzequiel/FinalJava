@@ -21,21 +21,21 @@
                         <%if(request.getAttribute("ex")!=null){%>
                         <div class="row">
                             <div class="col-lg-12">
-                                 <div class="alert alert-danger">
-                                   <%=request.getAttribute("ex")%>
-                                 </div>
+                                <div class="alert alert-danger">
+                                    <%=request.getAttribute("ex")%>
+                                </div>
                             </div>
                         </div>
                         <%} else if(pedidos!=null){%>
                         <h2 class="title text-center">Historial de Pedidos</h2>
                         <%if(pedidos.isEmpty()){%>
-                            <div class="alert alert-danger">
-                                Usted nunca ha realizado pedidos.       
-                            </div>
+                        <div class="alert alert-danger">
+                            Usted nunca ha realizado pedidos.       
+                        </div>
                         <%}else{%>
-                            <div class="table-responsive">
-                                <div class="table-striped">
-                                    <table class="table table-striped">
+                        <div class="table-responsive">
+                            <div class="table-striped">
+                                <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>ID Pedido</th>
@@ -47,29 +47,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <%for(Pedido p:pedidos)
-                                          {%>
-                                          <tr>
+                                    <%for(Pedido p:pedidos){%>
+                                        <tr>
                                             <td><%= p.getIdPedido()%></td>
                                             <td><%= p.getFechaDesde() %></td>
                                             <td><%= p.getFechaHasta() %></td>
                                             <td>
-                                               <% for(LineaPedido lp: p.getLineas()) 
-                                           {%>
-                                            
-                                           <%if(lp.isEsAlquiler()){%>Alquiler<%}else{%>Compra<%}%> - <%=lp.getPelicula().getNombre()%><br>
-                                           
+                                            <% for(LineaPedido lp: p.getLineas()){
+                                            if(lp.isEsAlquiler()){%>Alquiler<%}else{%>Compra<%}%> - <%=lp.getPelicula().getNombre()%><br>                                          
                                             <%}%> 
                                             </td>
                                             <td>$ <%= p.getRecargo()%></td>
                                             <td><%= p.getEstado()%></td>
-                                           </tr>
-                                            <%}%>
+                                        </tr>
+                                        <%}%>
                                     </tbody>
-                                    </table>
-                                </div>
+                                </table>
                             </div>
-                    <%} }%>
+                        </div>
+                        <%}}%>
                     </div>
                 </div>
             </div>

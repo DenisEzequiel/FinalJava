@@ -19,30 +19,29 @@ public class LineaPedido
     /**
      * @return the cantidad
      */
-    public int getCantidad() {
+    public int getCantidad()
+    {
         return cantidad;
     }
 
     /**
      * @param cantidad the cantidad to set
      */
-    public void setCantidad(int cantidad) {
+    public void setCantidad(int cantidad)
+    {
         this.cantidad = cantidad;
     }
 
     /**
+     * @param cantidadDias
      * @return the subtotal
      */
     public float getSubtotal(int cantidadDias)
     {
         if(esAlquiler)
-        {
             subtotal = cantidad*pelicula.getPrecioAlquiler()*cantidadDias;
-        }
         else
-        {
             subtotal = cantidad*pelicula.getPrecioVenta();
-        }
         
         return subtotal;
     }
@@ -50,35 +49,40 @@ public class LineaPedido
     /**
      * @param subtotal the subtotal to set
      */
-    public void setSubtotal(float subtotal) {
+    public void setSubtotal(float subtotal)
+    {
         this.subtotal = subtotal;
     }
 
     /**
      * @return the esAlquiler
      */
-    public boolean isEsAlquiler() {
+    public boolean isEsAlquiler()
+    {
         return esAlquiler;
     }
 
     /**
      * @param esAlquiler the esAlquiler to set
      */
-    public void setEsAlquiler(boolean esAlquiler) {
+    public void setEsAlquiler(boolean esAlquiler)
+    {
         this.esAlquiler = esAlquiler;
     }
 
     /**
      * @return the pelicula
      */
-    public Pelicula getPelicula() {
+    public Pelicula getPelicula() 
+    {
         return pelicula;
     }
 
     /**
      * @param pelicula the pelicula to set
      */
-    public void setPelicula(Pelicula pelicula) {
+    public void setPelicula(Pelicula pelicula)
+    {
         this.pelicula = pelicula;
     }
 }

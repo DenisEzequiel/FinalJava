@@ -28,16 +28,18 @@ public class EditarUsuarioComando extends Comando
         cDeUsu = new CatalogoDeUsuarios();
         Usuario usEditado = (Usuario)request.getSession().getAttribute("UsuarioEdit");
         SimpleDateFormat formato =  new SimpleDateFormat("yyyy-MM-dd");
-            Date fecha = null;
-            try
-            {
-                fecha = formato.parse(request.getParameter("fechaNacimiento"));              
-                usEditado.setFechaNacimiento(new java.sql.Date(fecha.getTime()));
-            }
-            catch(ParseException e)
-            {
-                request.setAttribute("ex", "Ha ocurrido un error");
-            }
+        Date fecha = null;
+        
+        try
+        {
+            fecha = formato.parse(request.getParameter("fechaNacimiento"));              
+            usEditado.setFechaNacimiento(new java.sql.Date(fecha.getTime()));
+        }
+        catch(ParseException e)
+        {
+            request.setAttribute("ex", "Ha ocurrido un error");
+        }
+        
         usEditado.setIdUsuario( Integer.parseInt(request.getParameter("ID")));
         usEditado.setNombre((String)request.getParameter("Nombre"));
         usEditado.setApellido((String)request.getParameter("Apellido"));
@@ -53,6 +55,7 @@ public class EditarUsuarioComando extends Comando
         usEditado.setEsAdmin(esAdmin);
         usEditado.setBloqueado(esBloq);
         ArrayList<Usuario> usuarios=null;
+        
         try
         {
             cDeUsu.editarUsuario(usEditado);
@@ -63,13 +66,12 @@ public class EditarUsuarioComando extends Comando
             request.setAttribute("ex",ex.getMessage());
             return"/ABMUsuarios.jsp";
         }
+        
         request.getSession().setAttribute("ListaUsuarios", usuarios);
         request.getSession().setAttribute("UsuarioEdit", usEditado);
         request.getSession().setAttribute("Scroll",true);
         request.setAttribute("ExitoUsu", true);
         
-        
         return"/ABMUsuarios.jsp";
-    }
-    
+    }  
 }

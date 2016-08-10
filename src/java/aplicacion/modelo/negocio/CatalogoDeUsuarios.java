@@ -16,11 +16,12 @@ import aplicacion.utilidades.AefilepException;
 public class CatalogoDeUsuarios
 {
     UsuarioBD usuarios = new UsuarioBD();
+    
     public Usuario buscarUsuario(String nombre, String contra) throws AefilepException
     {        
         return usuarios.buscarUsuario(nombre, contra);
     }
-    
+           
     public boolean existeUsuario(String nombreUsuario) throws AefilepException
     {        
         return usuarios.existeUsuario(nombreUsuario);

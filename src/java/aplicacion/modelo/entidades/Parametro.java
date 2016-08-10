@@ -11,9 +11,8 @@ import java.util.Date;
  *
  * @author marti_000
  */
-public class Parametro {
-
-     
+public class Parametro 
+{
     private Date fechaActualizacion;
     private String razonSocial;
     private float precioAlquiler;
@@ -22,73 +21,84 @@ public class Parametro {
     private String telefono;
     private String mail;
     private float recargoDiario;
-    
-    
-    
-    
-    public Date getFechaActualizacion() {
+
+    public Date getFechaActualizacion()
+    {
         return fechaActualizacion;
     }
 
-    public void setFechaActualizacion(Date fechaActualizacion) {
+    public void setFechaActualizacion(Date fechaActualizacion)
+    {
         this.fechaActualizacion = fechaActualizacion;
     }
 
-    public String getRazonSocial() {
+    public String getRazonSocial()
+    {
         return razonSocial;
     }
 
-    public void setRazonSocial(String razonSocial) {
+    public void setRazonSocial(String razonSocial)
+    {
         this.razonSocial = razonSocial;
     }
 
-    public float getPrecioAlquiler() {
+    public float getPrecioAlquiler()
+    {
         return precioAlquiler;
     }
 
-    public void setPrecioAlquiler(float precioAlquiler) {
+    public void setPrecioAlquiler(float precioAlquiler)
+    {
         this.precioAlquiler = precioAlquiler;
     }
 
-    public float getPrecioAlquilerEstreno() {
+    public float getPrecioAlquilerEstreno() 
+    {
         return precioAlquilerEstreno;
     }
 
-    public void setPrecioAlquilerEstreno(float precioAlquilerEstreno) {
+    public void setPrecioAlquilerEstreno(float precioAlquilerEstreno)
+    {
         this.precioAlquilerEstreno = precioAlquilerEstreno;
     }
 
-    public String getDireccion() {
+    public String getDireccion()
+    {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setDireccion(String direccion) 
+    {
         this.direccion = direccion;
     }
 
-    public String getTelefono() {
+    public String getTelefono()
+    {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(String telefono)
+    {
         this.telefono = telefono;
     }
 
-    public String getMail() {
+    public String getMail()
+    {
         return mail;
     }
 
-    public void setMail(String mail) {
+    public void setMail(String mail) 
+    {
         this.mail = mail;
     }
 
-    public float getRecargoDiario() {
+    public float getRecargoDiario()
+    {
         return recargoDiario;
     }
 
-    public void setRecargoDiario(float recargoDiario) {
+    public void setRecargoDiario(float recargoDiario)
+    {
         this.recargoDiario = recargoDiario;
-    }
-    
-   
+    }  
 }

@@ -3,13 +3,12 @@ function calcHash()
 {
     try 
     {
-            var hashInput1 = document.getElementById("pass1");
-            var hashInput2 = document.getElementById("pass2");
-            var hashObj = new jsSHA("SHA-256","TEXT",1);
-            hashObj.update(hashInput1.value);
-            hashInput1.value = hashObj.getHash("HEX");
-            hashObj.update(hashInput2.value);
-            hashInput2.value = hashObj.getHash("HEX");
+        var hashObj = new jsSHA("SHA-256","TEXT",1);
+        
+        var hashInput1 = document.getElementById("passA");
+        hashObj.update(hashInput1.value);
+        document.getElementById("pass1").value = hashObj.getHash("HEX");
+               
     } 
     catch(e) 
     {
@@ -19,10 +18,10 @@ function calcHash()
 /*Validación para el cambio de contraseña*/
 function validarCambioPass()
 {
-    var hashInput1 = document.getElementById("passAnt");
+    var hashInput1 = document.getElementById("passAnterior");
     var hashObj = new jsSHA("SHA-256","TEXT",1);
     hashObj.update(hashInput1.value);
-    hashInput1.value = hashObj.getHash("HEX");
+    document.getElementById("passAnt").value = hashObj.getHash("HEX");
     return validarPass();
 }
 
@@ -52,8 +51,8 @@ function validarChecks()
 /*Validación de que coinciden las password*/
 function validarPass()
 {
-    var contra1 = document.getElementById('pass1');
-    var contra2 = document.getElementById('pass2');
+    var contra1 = document.getElementById('passA');
+    var contra2 = document.getElementById('passB');
     if(contra1.value === contra2.value)
     {
         calcHash();

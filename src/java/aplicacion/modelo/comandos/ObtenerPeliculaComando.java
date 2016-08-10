@@ -5,12 +5,9 @@
  */
 package aplicacion.modelo.comandos;
 
-import aplicacion.modelo.entidades.Genero;
 import aplicacion.modelo.entidades.Pelicula;
-import aplicacion.modelo.negocio.CatalogoDeGeneros;
 import aplicacion.modelo.negocio.CatalogoDePeliculas;
 import aplicacion.utilidades.AefilepException;
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-public class ObtenerPeliculaComando extends Comando{
-
+public class ObtenerPeliculaComando extends Comando
+{
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
@@ -35,9 +32,6 @@ public class ObtenerPeliculaComando extends Comando{
             request.setAttribute("ex", ex.getMessage());
         }
         
-        
-        return "/pelicula.jsp";
-                  
-    }
-    
+        return "/pelicula.jsp";            
+    }    
 }

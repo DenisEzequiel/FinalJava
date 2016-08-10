@@ -15,13 +15,12 @@ import javax.servlet.http.Cookie;
  */
 public class LogOutComando extends Comando
 {
-
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
-        
         request.getSession().invalidate();
         Cookie[] cookies = request.getCookies();
+        
         for(Cookie c:cookies)
         {
             if(c.getName().equals("nomUsuarioAefilep"))
@@ -39,7 +38,7 @@ public class LogOutComando extends Comando
                 response.addCookie(c);
             }
         }
+        
         return "/index.jsp";
     }
-    
 }

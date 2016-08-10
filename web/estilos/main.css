@@ -222,6 +222,7 @@ a#scrollUp i{
   padding-right: 0;
   outline:none;
   border:none;
+  transition:300ms;
 }
 
 .shop-menu ul li a {
@@ -305,14 +306,14 @@ mainmenu ul li:first-child{
 
 
 
-.mainmenu ul li a:hover, .mainmenu ul li a.active,.shop-menu ul li a.active,.mainmenu ul li a form input.active,.shop-menu ul li a form input.active,.shop-menu ul li a form i.active{
+.mainmenu ul li a:hover, .mainmenu ul li a.active,.shop-menu ul li a.active,.mainmenu ul li a form input.active,.shop-menu ul li a form input.active,.shop-menu ul li form i.active{
 	background:none;
 	color:#fdb45e !important;
 }
 
       
 
-.mainmenu ul li a input:hover,.mainmenu ul li input:hover, .mainmenu ul li label a input.active,  .shop-menu ul li label a input.active, .shop-menu ul li input a.active
+.mainmenu ul li a input:hover,.mainmenu ul li input:hover, .mainmenu ul li label a input.active,  .shop-menu ul li label a input.active, .shop-menu ul li input.active
 {
 	background:none;
 	color:#fdb45e;
@@ -1773,7 +1774,8 @@ h2.title {
 
 .cart_product {
   display: block;
-  margin: 15px -70px 10px 25px;
+  margin-left:25px; 
+  margin-top:5px;
 }
 
 .cart_quantity_button a {
@@ -1800,7 +1802,7 @@ h2.title {
 
 
 .cart_delete  {
-  display: block;
+    
   overflow: hidden;
 }
 
@@ -1851,7 +1853,7 @@ h2.title {
   border: 1px solid #E6E4DF;
   color: #696763;
   padding: 30px 25px 30px 0;
-  margin-bottom: 80px;}
+  margin-bottom: 40px;}
 
 #do_action .total_area {
   padding-bottom: 18px !important;
@@ -2751,6 +2753,8 @@ h2.title {
             height: 350px !important;
             width: 250px !important;
         }
+        
+       
 }
 
 .logo{
@@ -2830,8 +2834,6 @@ button.accordion.active:after {
 .seccion
 {
   display: block;
-  /*margin-top: 50px;*/
-  overflow: hidden;
   margin-bottom: 20px;
 }
 
@@ -2859,7 +2861,7 @@ button.accordion.active:after {
     margin-left: auto;
 }
 
-#mensajeError
+.mensajeError
 {
     margin-top: 190px;
 }
@@ -2935,6 +2937,7 @@ button.accordion.active:after {
 {
     margin:0;
     margin-top:10px;
+    transition: 300ms;
 }
 
 .listaGeneros
@@ -3142,4 +3145,14 @@ img.imagenCarro
 .publicidad
 {
     margin-bottom: 40px;
+}
+
+.formFooter
+{
+    margin: 0px;
+}
+
+.formLogo
+{
+    margin:  0px;
 }

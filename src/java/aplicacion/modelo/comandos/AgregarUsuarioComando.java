@@ -50,6 +50,7 @@ public class AgregarUsuarioComando extends Comando
         {
             request.setAttribute("ex", "Ha ocurrido un error");
         }
+        
         usNuevo.setNombre((String)request.getParameter("Nombre"));
         usNuevo.setApellido((String)request.getParameter("Apellido"));
         usNuevo.setContrasena((String)request.getParameter("Contra1"));
@@ -65,8 +66,7 @@ public class AgregarUsuarioComando extends Comando
         usNuevo.setEsAdmin(esAdmin);
         usNuevo.setBloqueado(esBloq);
         ArrayList<Usuario> usuarios;
-        
-        
+             
         if(!existeUsuario)
         {   
             try
@@ -79,17 +79,16 @@ public class AgregarUsuarioComando extends Comando
                 request.setAttribute("ex", ex.getMessage());
                 return"/ABMUsuarios.jsp";
             }
+            
             request.getSession().setAttribute("ListaUsuarios", usuarios);
             request.setAttribute("ExitoUsu", true); 
         }
         else
         {
             request.setAttribute("usuarioPorAgregar", usNuevo);
-            request.setAttribute("ExitoUsu", false); 
-           
+            request.setAttribute("ExitoUsu", false);    
         }
         request.getSession().setAttribute("Scroll",true);
         return "/ABMUsuarios.jsp";
-    }
-    
+    }  
 }

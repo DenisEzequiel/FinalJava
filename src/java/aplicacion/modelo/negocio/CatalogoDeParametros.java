@@ -19,6 +19,5 @@ public class CatalogoDeParametros
     public Parametro obtenerParametros() throws AefilepException
     {
         return parametros.obtenerParametros();
-    }
-        
+    }       
 }

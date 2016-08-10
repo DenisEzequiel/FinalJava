@@ -9,7 +9,7 @@
                         <ul class="nav nav-pills nav-stacked">
                         <%if(session.getAttribute("usuario")==null){%>
                             <li>
-                                <form action="Controlador" method="post" id="formSalir">
+                                <form action="Controlador" method="post" class="formFooter">
                                     <input type="hidden"  name="form" value="RedireccionarComando"/>
                                     <input type="hidden"  name="destino" value="/login.jsp"/>
                                     <input type="submit" name="pagina" value="Iniciar sesión" >
@@ -17,7 +17,7 @@
                             </li>
                         <%}else{%>
                             <li>
-                                <form action="Controlador" method="post" id="formSalir">
+                                <form action="Controlador" method="post"  class="formFooter">
                                     <input type="hidden"  name="form" value="RedireccionarComando"/>
                                     <input type="hidden"  name="destino" value="/cuenta.jsp"/>
                                     <input type="submit" name="pagina" value="Cuenta" >
@@ -25,14 +25,14 @@
                             </li>
                         <%}%>
                             <li>
-                                <form action="Controlador" method="post" id="formSalir">
+                                <form action="Controlador" method="post"  class="formFooter">
                                     <input type="hidden"  name="form" value="RedireccionarComando"/>
                                     <input type="hidden"  name="destino" value="/carro.jsp"/>
                                     <input type="submit" name="pagina" value="Carrito" >
                                 </form>
                             <%if(session.getAttribute("usuario")!=null && !((Usuario)session.getAttribute("usuario")).isEsAdmin()){%>
                             <li>                              
-                               <form action="Controlador" method="post" id="formSalir">
+                               <form action="Controlador" method="post"  class="formFooter">
                                     <input type="hidden"  name="form" value="MisPedidosComando"/>
                                     <input type="submit" name="pagina" value="Mis Pedidos" >
                                 </form>                                
@@ -88,13 +88,13 @@
                         <h2 id="acercaDe">Acerca de</h2>
                         <ul class="nav nav-pills nav-stacked">
                             <li>
-                                <form action="Controlador" method="post" id="formSalir">
+                                <form action="Controlador" method="post" class="formFooter">
                                     <input type="hidden"  name="form" value="RedireccionarComando"/>
                                     <input type="hidden"  name="destino" value="/nosotros.jsp"/>
                                     <input type="submit" name="pagina" value="Nosotros" >
                                 </form>                               
                             </li>
-                            <li><form action="Controlador" method="post">
+                            <li><form action="Controlador" method="post"  class="formFooter">
                                         <input type="hidden"  name="form" value="ContactoComando"/>
                                         <input type="submit" name="pagina" value="Contacto" >
                                 </form>
@@ -108,27 +108,27 @@
                         <h2 id="acercaDe">Administrador</h2>
                         <ul class="nav nav-pills nav-stacked">                           
                             <li>
-                                <form action="Controlador" method="post">
+                                <form action="Controlador" method="post" class="formFooter">
                                     <input type="hidden"  name="desdeIndex" value="desdeIndex"/>
                                     <input type="hidden"  name="form" value="AdminPeliculasComando"/>
                                     <input type="submit" name="pagina" value="Peliculas">
                                 </form>
                             </li>
                             <li>
-                                <form action="Controlador" method="post">
+                                <form action="Controlador" method="post" class="formFooter">
                                     <input type="hidden"  name="form" value="AdminUsuariosComando"/>
                                     <input type="submit" name="pagina" value="Usuarios" >
                                 </form>
                             </li>
                             <li>
-                                <form action="Controlador" method="post" id="formSalir">
+                                <form action="Controlador" method="post" class="formFooter">
                                     <input type="hidden"  name="form" value="RedireccionarComando"/>
                                     <input type="hidden"  name="destino" value="/Devoluciones.jsp"/>
                                     <input type="submit" name="pagina" value="Devoluciones" >
                                 </form>
                             </li>
                             <li>
-                                <form action="Controlador" method="post">
+                                <form action="Controlador" method="post" class="formFooter">
                                     <input type="hidden"  name="form" value="EnviosComando"/>
                                     <input type="submit" name="pagina" value="Envíos" />
                                 </form>                 
@@ -149,14 +149,13 @@
         </div>
     </div>
 </footer><!--/Footer-->
-        
-        
-        <script type="text/javascript" src="scripts/sha.js"></script>
-        <script src="scripts/jquery.js"></script>
-        <script src="scripts/bootstrap.min.js"></script>
-        <script src="scripts/jquery.scrollUp.min.js"></script>
-        <script src="scripts/price-range.js"></script>
-        <script src="scripts/jquery.prettyPhoto.js"></script>
-        <script src="scripts/main.js"></script>
 
-        <a id="scrollUp" href="index.jsp/#top" style="position: fixed; z-index: 2147483647; display: none;"><i class="fa fa-angle-up"></i></a>
+<script type="text/javascript" src="scripts/sha.js"></script>
+<script src="scripts/jquery.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/jquery.scrollUp.min.js"></script>
+<script src="scripts/price-range.js"></script>
+<script src="scripts/jquery.prettyPhoto.js"></script>
+<script src="scripts/main.js"></script>
+
+<a id="scrollUp" href="index.jsp/#top" style="position: fixed; z-index: 2147483647; display: none;"><i class="fa fa-angle-up"></i></a>

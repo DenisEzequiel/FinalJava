@@ -24,7 +24,6 @@ public class FactoriaDeComandos
         mapa.put("SeleccionarPeliculaComando", SeleccionarPeliculaComando.class);
         mapa.put("EditarPeliculaComando", EditarPeliculaComando.class);
         mapa.put("AgregarPeliculaComando", AgregarPeliculaComando.class);
-    
         mapa.put("LogOutComando", LogOutComando.class);
         mapa.put("AgregarLineaComando", AgregarLineaComando.class);
         mapa.put("ActualizarLineaComando",ActualizarLineaComando.class);
@@ -35,8 +34,7 @@ public class FactoriaDeComandos
         mapa.put("AgregarUsuarioComando", AgregarUsuarioComando.class);
         mapa.put("SetearFechaPedidoComando", SetearFechaPedidoComando.class);
         mapa.put("EliminarLineaComando", EliminarLineaComando.class);
-        mapa.put("ObtenerPeliculaComando", ObtenerPeliculaComando.class);
-    
+        mapa.put("ObtenerPeliculaComando", ObtenerPeliculaComando.class);   
         mapa.put("BuscarUsuarioComando", BuscarUsuarioComando.class);
         mapa.put("VerPedidosComando", VerPedidosComando.class);
         mapa.put("RegistrarDevolucionComando",RegistrarDevolucionComando.class);
@@ -45,9 +43,7 @@ public class FactoriaDeComandos
         mapa.put("EnviosComando", EnviosComando.class);
         mapa.put("RegistrarEnvioComando", RegistrarEnvioComando.class);
         mapa.put("InicioComando", InicioComando.class);
-        mapa.put("RedireccionarComando", RedireccionarComando.class);
-        
-        
+        mapa.put("RedireccionarComando", RedireccionarComando.class);      
     }
     /**
      * Metodo de clase devuelve la instancia de FactoriaDeComandos
@@ -56,8 +52,7 @@ public class FactoriaDeComandos
     public static FactoriaDeComandos getInstancia()
     {
         if( instancia ==null)
-            instancia=new FactoriaDeComandos();
-        
+            instancia=new FactoriaDeComandos();     
         return instancia;
     }
     

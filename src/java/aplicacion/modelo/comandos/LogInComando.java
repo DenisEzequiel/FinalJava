@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 public class LogInComando extends Comando
 {
     CatalogoDeUsuarios CdeU = new CatalogoDeUsuarios();
-    
     /**
      *
      * @param request
@@ -35,14 +34,19 @@ public class LogInComando extends Comando
         String contra = request.getParameter("contra");
         Boolean recordar = (request.getParameter("recordarUsu")!=null);
         Usuario usu=null;
-        try {
+        
+        try 
+        {
             usu = CdeU.buscarUsuario(nomUsu, contra);
-        } catch (AefilepException ex) 
+        }
+        catch (AefilepException ex) 
         {
             request.setAttribute("ex", ex.getMessage());
             return "/login.jsp";
         }
+        
         Pedido p=(Pedido)request.getSession().getAttribute("pedido");
+        
         if(usu!=null)
         {
             if(recordar)
@@ -74,17 +78,19 @@ public class LogInComando extends Comando
             }
             
             request.getSession().setAttribute("usuario", usu);
-             request.getSession().setAttribute("exitoLogin", true);
-             if( request.getSession().getAttribute("usuarioNoLogueado")!=null)
-             {
-             request.getSession().setAttribute("usuarioNoLogueado", null);
-              return("/carro.jsp");
-             }
-             return "/home.jsp";
+            request.getSession().setAttribute("exitoLogin", true);
+            
+            if( request.getSession().getAttribute("usuarioNoLogueado")!=null)
+            {
+                request.getSession().setAttribute("usuarioNoLogueado", null);
+                return("/carro.jsp");
+            }
+            
+            return "/home.jsp";
         }
-        else{
-              return "/login.jsp";
-             }
-        
+        else
+        {
+            return "/login.jsp";
+        }    
     }
 }

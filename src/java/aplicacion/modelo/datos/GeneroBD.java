@@ -5,7 +5,6 @@
  */
 package aplicacion.modelo.datos;
 
-import aplicacion.modelo.entidades.Pelicula;
 import aplicacion.modelo.entidades.Genero;
 import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
@@ -13,8 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -46,7 +43,7 @@ public class GeneroBD
                 con.close();
                 
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al recuperar el genero",ex);
         }

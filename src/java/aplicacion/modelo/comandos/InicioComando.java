@@ -28,8 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 public class InicioComando extends Comando{
 
     @Override
-    public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
-                
+    public String ejecutar(HttpServletRequest request, HttpServletResponse response)
+    {        
          //crea pedido inicial
         Pedido pedido= new Pedido(); 
         request.getSession().setAttribute("pedido", pedido);

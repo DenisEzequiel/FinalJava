@@ -9,8 +9,6 @@ import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.entidades.Usuario;
 import aplicacion.modelo.negocio.CatalogoDePedidos;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,13 +18,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MisPedidosComando extends Comando
 {
-
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
     {
         CatalogoDePedidos cdp = new CatalogoDePedidos();
         Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
         ArrayList<Pedido> pedidos ;
+        
         try 
         {
             pedidos= cdp.obtenerPedidos(usuario.getIdUsuario());
@@ -36,8 +34,9 @@ public class MisPedidosComando extends Comando
             request.setAttribute("ex",ex.getMessage());
             return ("/pedidos.jsp");
         }
+        
         request.setAttribute("pedidos", pedidos);
+        
         return "/pedidos.jsp";
-    }
-    
+    }   
 }

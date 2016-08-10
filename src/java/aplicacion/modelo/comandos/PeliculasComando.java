@@ -24,22 +24,25 @@ public class PeliculasComando extends Comando
         int paginaActual = 1;
         
         if(request.getParameter("tipo")!=null)
-        {
-            
-        switch(request.getParameter("tipo"))
-        {case "estreno": request.getSession().setAttribute("tipo","estreno"); break;
-        case "buscador":request.getSession().setAttribute("tipo","buscador");break;
-        case "todas":request.getSession().setAttribute("tipo","todas");break;
-        default:request.getSession().setAttribute("tipo",Integer.parseInt(request.getParameter("tipo")));break;
-        }
-        
+        {  
+            switch(request.getParameter("tipo"))
+            {
+                case "estreno": request.getSession().setAttribute("tipo","estreno");
+                    break;
+                case "buscador":request.getSession().setAttribute("tipo","buscador");
+                    break;
+                case "todas":request.getSession().setAttribute("tipo","todas");
+                    break;
+                default:request.getSession().setAttribute("tipo",Integer.parseInt(request.getParameter("tipo")));
+                    break;
+            }
         }
         
         if(request.getParameter("paginacionActual")==null)
         {
             paginaActual = 1; 
             if(request.getParameter("tipo").equals("buscador"))
-             request.getSession().setAttribute("nombrePelicula", request.getParameter("nombrePelicula"));
+                request.getSession().setAttribute("nombrePelicula", request.getParameter("nombrePelicula"));
         }
         else
         {
@@ -60,22 +63,20 @@ public class PeliculasComando extends Comando
                     listaPeliculas = cDp.obtenerEstrenos((paginaActual-1)*9,9);
                     cantidadDePeliculas=cDp.cantidadEstrenosActivos();
                 }
-
                 else if(request.getSession().getAttribute("tipo").equals("buscador"))
-                {   
-                    
+                {                     
                     listaPeliculas = cDp.obtenerPeliculas(request.getSession().getAttribute("nombrePelicula").toString(),(paginaActual-1)*9,9);
                     cantidadDePeliculas=cDp.cantidadBuscadorActivos(request.getSession().getAttribute("nombrePelicula").toString());
+                    
                     if(listaPeliculas.isEmpty())
                         request.getSession().setAttribute("errorNoEncontradas",true);
                     request.getSession().setAttribute("generoObtenido",true);
                 }
                 else if(request.getSession().getAttribute("tipo").equals("todas"))
                 { 
-                listaPeliculas = cDp.buscarPeliculas((paginaActual-1)*9,9);
-                cantidadDePeliculas = cDp.cantidadPeliculasActivas();
+                    listaPeliculas = cDp.buscarPeliculas((paginaActual-1)*9,9);
+                    cantidadDePeliculas = cDp.cantidadPeliculasActivas();
                 }
-
                 else
                 {
                     listaPeliculas = cDp.obtenerGenero((Integer)request.getSession().getAttribute("tipo"),(paginaActual-1)*9,9);
@@ -83,7 +84,6 @@ public class PeliculasComando extends Comando
                     cantidadDePeliculas=cDp.cantidadGenerosActivos((Integer)request.getSession().getAttribute("tipo"));
                 }
             }
-           
         }
         catch(Exception ex)
         {
@@ -95,7 +95,6 @@ public class PeliculasComando extends Comando
         request.getSession().setAttribute("cantidadPeliculas",cantidadDePeliculas);
         request.getSession().setAttribute("generoObtenido", null);
         
-        return "/cartelera.jsp";
-        
+        return "/cartelera.jsp";       
     }
 }

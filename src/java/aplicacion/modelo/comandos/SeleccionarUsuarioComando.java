@@ -44,5 +44,4 @@ public class SeleccionarUsuarioComando extends Comando
         
         return "/ABMUsuarios.jsp";
     }
-    
 }

@@ -35,16 +35,18 @@ public class AdminPeliculasComando extends Comando
         {
             peliculas = CdeP.obtenerPeliculas();
             generos = CdeG.obtenerGeneros();
-            peliEdit = peliculas.get(0);
-            request.getSession().setAttribute("ListaPeliculas", peliculas);
-            request.getSession().setAttribute("ListaGeneros", generos);
-            request.getSession().setAttribute("PeliEdit", peliEdit);
         }
         catch(Exception ex)
         {
             request.setAttribute("ex",ex.getMessage());
             return "/ABMPeliculas.jsp";
         }
+      
+        peliEdit = peliculas.get(0);
+        request.getSession().setAttribute("ListaPeliculas", peliculas);
+        request.getSession().setAttribute("ListaGeneros", generos);
+        request.getSession().setAttribute("PeliEdit", peliEdit);
+        
         return "/ABMPeliculas.jsp";
     } 
 }

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import aplicacion.utilidades.AefilepException;
+import java.sql.SQLException;
 
 /**
  *
@@ -53,14 +54,14 @@ public class UsuarioBD
             }
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al recuperar usuario",ex);
         }
-                 
+               
         return usu;
     }
-
+       
     public boolean existeUsuario(String nombreUsuario) throws AefilepException
     {        
         String sql = "select count(*) from usuarios where nombre_usuario=? ;";
@@ -83,7 +84,7 @@ public class UsuarioBD
             
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al recuperar usuario",ex);
         }
@@ -107,6 +108,7 @@ public class UsuarioBD
         if(!dni.equals(""))
             sql = sql + " and dni like '%"+dni+"%'";
         sql = sql+";";
+        
         try
         {
             Connection con = conec.getConexion();
@@ -134,7 +136,7 @@ public class UsuarioBD
             con.close();
             
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al recuperar usuarios", ex);
         }
@@ -206,7 +208,7 @@ public class UsuarioBD
             pr.executeUpdate();
             con.close();
         }
-        catch(Exception ex)
+        catch(AefilepException | SQLException ex)
         {
             throw new AefilepException("Error al modificar datos del usuario", ex);
         }
@@ -239,7 +241,7 @@ public class UsuarioBD
         }
         catch(Exception ex)
         {
-             throw new AefilepException("Error al crear un nuevo usuario", ex);           
+            throw new AefilepException("Error al crear un nuevo usuario", ex);           
         }
     }
     

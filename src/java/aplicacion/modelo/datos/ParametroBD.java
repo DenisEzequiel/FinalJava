@@ -10,15 +10,15 @@ import aplicacion.utilidades.AefilepException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
  * @author marti_000
  */
-public class ParametroBD {
-    
-    
-     Conexion conec = new Conexion();
+public class ParametroBD 
+{ 
+    Conexion conec = new Conexion();
     
     public Parametro obtenerParametros() throws AefilepException
     { 
@@ -44,15 +44,14 @@ public class ParametroBD {
                 par.setPrecioAlquilerEstreno(res.getFloat(5));
                 par.setRecargoDiario(res.getFloat(7));
             }
+            
             con.close();
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al obtener los datos de Aefilep",ex);
         }
         
         return par;
-    }
-    
-    
+    } 
 }

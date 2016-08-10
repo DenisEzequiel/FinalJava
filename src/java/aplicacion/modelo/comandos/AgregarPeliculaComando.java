@@ -40,7 +40,7 @@ public class AgregarPeliculaComando extends Comando
         catch(AefilepException ex)
         {
             request.setAttribute("ex", ex.getMessage());
-            return"/ABMUsuarios.jsp";
+            return"/ABMPeliculas.jsp";
         }
         
         pelicula = new Pelicula();

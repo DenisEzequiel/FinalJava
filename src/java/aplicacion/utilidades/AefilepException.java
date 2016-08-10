@@ -11,18 +11,18 @@ package aplicacion.utilidades;
  */
 public class AefilepException extends Exception
 {
-  public AefilepException ()
-   {
+    public AefilepException ()
+    {
        super ();
-   }
-   public AefilepException (String msj, Throwable cau)
-   {
+    }
+   
+    public AefilepException (String msj, Throwable cau)
+    {
        super (msj,cau);
-   }
-   public AefilepException (Throwable cau)
-   {
+    }
+    
+    public AefilepException (Throwable cau)
+    {
        super (cau);
-   }
-  
-  
+    }
 }

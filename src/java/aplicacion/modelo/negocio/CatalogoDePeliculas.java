@@ -32,6 +32,7 @@ public class CatalogoDePeliculas
     {
         peliculas.actualizarPelicula(p);
     }
+    
     public void actualizarStock(Pelicula p) throws AefilepException
     {
         peliculas.actualizarStock(p);
@@ -59,7 +60,7 @@ public class CatalogoDePeliculas
     
     public ArrayList<Pelicula> buscarPeliculas(int inferior, int cantidad) throws AefilepException
     {
-       return peliculas.buscarPeliculas(inferior,cantidad);
+        return peliculas.buscarPeliculas(inferior,cantidad);
     }
     
     public int cantidadPeliculasActivas() throws AefilepException
@@ -84,16 +85,16 @@ public class CatalogoDePeliculas
     
     public ArrayList<Pelicula> obtenerEstrenos(int inferior,int cantidad) throws AefilepException
     {
-       return peliculas.obtenerEstrenos(inferior,cantidad);
+        return peliculas.obtenerEstrenos(inferior,cantidad);
     }
     
     public ArrayList<Pelicula> obtenerEstrenos(int cant) throws AefilepException
     {
-       return peliculas.obtenerEstrenos(cant);
+        return peliculas.obtenerEstrenos(cant);
     }
     
     public ArrayList<Pelicula> obtenerGenero(int idGenero, int inferior, int cantidad) throws AefilepException
     {
-       return peliculas.obtenerGenero(idGenero,inferior,cantidad);
+        return peliculas.obtenerGenero(idGenero,inferior,cantidad);
     }
 }

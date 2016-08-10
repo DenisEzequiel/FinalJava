@@ -31,29 +31,36 @@ public class Pedido
     public float getSubtotalAlq()
     {
         float subtotalAlq=0;
+        
         for(LineaPedido lp: lineas)
-        {   if(lp.isEsAlquiler())
-            subtotalAlq=subtotalAlq+lp.getSubtotal(dias);
+        {   
+            if(lp.isEsAlquiler())
+                subtotalAlq=subtotalAlq+lp.getSubtotal(dias);
         }
+        
         return subtotalAlq;
     }
+    
     public float getSubtotalCom()
     {
         float subtotalCom=0;
+        
         for(LineaPedido lp: lineas)
-        {   if(!lp.isEsAlquiler())
-            subtotalCom=subtotalCom+lp.getSubtotal(dias);
+        {   
+            if(!lp.isEsAlquiler())
+                subtotalCom=subtotalCom+lp.getSubtotal(dias);
         }
+        
         return subtotalCom;
     }
     
     public float getTotal()
     { 
         total=0;
+        
         for(LineaPedido lp: lineas)
-        {
             total=total+lp.getSubtotal(dias);
-        }
+        
         return total;
     }
     public void setTotal(float t)
@@ -61,11 +68,12 @@ public class Pedido
         total=t;
     }
     
-       public void setDias(Integer d)
+    public void setDias(Integer d)
     {
         dias=d;
     }
-         public Integer getDias()
+   
+    public Integer getDias()
     {
         return dias;
     }
@@ -111,105 +119,121 @@ public class Pedido
     /**
      * @return the idPedido
      */
-    public int getIdPedido() {
+    public int getIdPedido() 
+    {
         return idPedido;
     }
 
     /**
      * @param idPedido the idPedido to set
      */
-    public void setIdPedido(int idPedido) {
+    public void setIdPedido(int idPedido)
+    {
         this.idPedido = idPedido;
         
     }
-    public Usuario getUsuario() {
+    public Usuario getUsuario()
+    {
         return usuario;
     }
-    public void setUsuario(Usuario u) {
+    public void setUsuario(Usuario u)
+    {
         this.usuario = u;
     }
 
     /**
      * @return the fechaRealizacion
      */
-    public Date getFechaRealizacion() {
+    public Date getFechaRealizacion()
+    {
         return fechaRealizacion;
     }
 
     /**
      * @param fechaRealizacion the fechaRealizacion to set
      */
-    public void setFechaRealizacion(Date fechaRealizacion) {
+    public void setFechaRealizacion(Date fechaRealizacion)
+    {
         this.fechaRealizacion = fechaRealizacion;
     }
 
     /**
      * @return the fechaDesde
      */
-    public Date getFechaDesde() {
+    public Date getFechaDesde()
+    {
         return fechaDesde;
     }
 
     /**
      * @param fechaDesde the fechaDesde to set
      */
-    public void setFechaDesde(Date fechaDesde) {
+    public void setFechaDesde(Date fechaDesde)
+    {
         this.fechaDesde = fechaDesde;
     }
 
     /**
      * @return the fechaHasta
      */
-    public Date getFechaHasta() {
+    public Date getFechaHasta()
+    {
         return fechaHasta;
     }
 
     /**
      * @param fechaHasta the fechaHasta to set
      */
-    public void setFechaHasta(Date fechaHasta) {
+    public void setFechaHasta(Date fechaHasta)
+    {
         this.fechaHasta = fechaHasta;
     }
 
     /**
      * @return the estado
      */
-    public String getEstado() {
+    public String getEstado() 
+    {
         return estado;
     }
 
     /**
      * @param estado the estado to set
      */
-    public void setEstado(String estado) {
+    public void setEstado(String estado)
+    {
         this.estado = estado;
     }
 
     /**
      * @return the fechaDevolucion
      */
-    public Date getFechaDevolucion() {
+    public Date getFechaDevolucion()
+    {
         return fechaDevolucion;
     }
 
     /**
      * @param fechaDevolucion the fechaDevolucion to set
      */
-    public void setFechaDevolucion(Date fechaDevolucion) {
+    public void setFechaDevolucion(Date fechaDevolucion)
+    {
         this.fechaDevolucion = fechaDevolucion;
     }
 
     /**
      * @return the lineas
      */
-    public ArrayList<LineaPedido> getLineas() {
+    public ArrayList<LineaPedido> getLineas()
+    {
         return lineas;
     }
 
     /**
      * @param lineas the lineas to set
      */
-    public void setLineas(ArrayList<LineaPedido> lineas) {
+    public void setLineas(ArrayList<LineaPedido> lineas)
+    {
         this.lineas = lineas;
     }
 }

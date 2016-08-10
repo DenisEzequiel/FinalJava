@@ -26,23 +26,26 @@ public class BuscarUsuarioComando extends Comando
         Usuario buscado = new Usuario();
         cDeU = new CatalogoDeUsuarios();
         int id;
+        
         if( !request.getParameter("ID").equals("") )
         {
             id = Integer.parseInt(request.getParameter("ID"));
-        }else
+        }
+        else
         {
             id=0;
         }
+        
         buscado.setIdUsuario(id);
         buscado.setNombre(request.getParameter("Nombre"));
         buscado.setApellido(request.getParameter("Apellido"));
         buscado.setDni(request.getParameter("Dni"));
+        
         try
         {
-        ArrayList<Usuario> encontrados = cDeU.buscarUsuarios(buscado);
-        request.getSession().setAttribute("ListaEncontrados", encontrados);
-        request.getSession().setAttribute("ListaPendientes", null);
-        
+            ArrayList<Usuario> encontrados = cDeU.buscarUsuarios(buscado);
+            request.getSession().setAttribute("ListaEncontrados", encontrados);
+            request.getSession().setAttribute("ListaPendientes", null);      
         }
         catch(AefilepException ex)
         {
@@ -51,6 +54,5 @@ public class BuscarUsuarioComando extends Comando
         }
        
         return "/Devoluciones.jsp";
-    }
-    
+    }   
 }

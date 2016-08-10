@@ -14,14 +14,13 @@ import java.util.ArrayList;
  *
  * @author User
  */
-public class CatalogoDePedidos {
+public class CatalogoDePedidos 
+{
     PedidoBD pedidos=new PedidoBD();
+    
     public void registrarPedido(Pedido p) throws AefilepException
     {
-        
-        
-        pedidos.registrarPedido(p);
-        
+        pedidos.registrarPedido(p);    
     }
     
     public void cerrarPedido(Pedido p) throws AefilepException
@@ -45,7 +44,5 @@ public class CatalogoDePedidos {
      public void registrarEnvio(Pedido p) throws AefilepException
     {
         pedidos.registrarEnvio(p);
-    }
-      
-      
+    }     
 }

@@ -31,6 +31,7 @@ public class PeliculasGenerosBD
     {
         Connection con = conec.getConexion();
         String transac = "insert into aefilep.peliculas_generos values ";
+        
         for(int i=0; i<p.getGeneros().size(); i++)
         {
             transac = transac +"("+p.getIdPelicula()+","+p.getGeneros().get(i).getIdGenero()+")";
@@ -73,7 +74,7 @@ public class PeliculasGenerosBD
             
             this.agregarPeliculaGeneros(p);
         }
-        catch(Exception ex)
+        catch(SQLException ex)
         {
             throw new AefilepException("Error al actualizar datos de la película",ex);
         }
@@ -89,21 +90,21 @@ public class PeliculasGenerosBD
         try
         {   
            
-           PreparedStatement pr = con.prepareStatement(transac);
-           pr.setInt(1, id);
-           ResultSet res = pr.executeQuery();
-           while(res.next())
-           {
-               Genero gen = new Genero();
-               gen.setIdGenero(res.getInt(1));
-               gen.setDescripcion(res.getString(2));
-               generos.add(gen);
-           }
-           con.close(); 
+            PreparedStatement pr = con.prepareStatement(transac);
+            pr.setInt(1, id);
+            ResultSet res = pr.executeQuery();
+            while(res.next())
+            {
+                Genero gen = new Genero();
+                gen.setIdGenero(res.getInt(1));
+                gen.setDescripcion(res.getString(2));
+                generos.add(gen);
+            }
+            con.close(); 
         }
         catch(SQLException ex)
         {
-              throw(new AefilepException ("Error al obtener géneros de la película",ex));
+            throw(new AefilepException ("Error al obtener géneros de la película",ex));
         }
         
         return generos;

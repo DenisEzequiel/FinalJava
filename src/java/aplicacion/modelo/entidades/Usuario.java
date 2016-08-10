@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-
 /**
  *
  * @author JP
@@ -33,197 +32,224 @@ public class Usuario implements Serializable
     
     public Usuario()
     {
-     pedidos = new ArrayList<Pedido>();
-     
+        pedidos = new ArrayList<Pedido>();
     }
     
     /**
      * @return the idUsuario
      */
-    public int getIdUsuario() {
+    public int getIdUsuario()
+    {
         return idUsuario;
     }
 
-    public ArrayList<Pedido> getPedidos() {
+    public ArrayList<Pedido> getPedidos() 
+    {
         return pedidos;
     }
 
-    public void setPedidos(ArrayList<Pedido> pedidos) {
+    public void setPedidos(ArrayList<Pedido> pedidos)
+    {
         this.pedidos = pedidos;
     }
 
     /**
      * @param idUsuario the idUsuario to set
      */
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(int idUsuario)
+    {
         this.idUsuario = idUsuario;
     }
 
     /**
      * @return the nombreUsuario
      */
-    public String getNombreUsuario() {
+    public String getNombreUsuario() 
+    {
         return nombreUsuario;
     }
 
     /**
      * @param nombreUsuario the nombreUsuario to set
      */
-    public void setNombreUsuario(String nombreUsuario) {
+    public void setNombreUsuario(String nombreUsuario) 
+    {
         this.nombreUsuario = nombreUsuario;
     }
 
     /**
      * @return the nombre
      */
-    public String getNombre() {
+    public String getNombre() 
+    {
         return nombre;
     }
 
     /**
      * @param nombre the nombre to set
      */
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre)
+    {
         this.nombre = nombre;
     }
 
     /**
      * @return the apellido
      */
-    public String getApellido() {
+    public String getApellido()
+    {
         return apellido;
     }
 
     /**
      * @param apellido the apellido to set
      */
-    public void setApellido(String apellido) {
+    public void setApellido(String apellido)
+    {
         this.apellido = apellido;
     }
 
     /**
      * @return the direccion
      */
-    public String getDireccion() {
+    public String getDireccion()
+    {
         return direccion;
     }
 
     /**
      * @param direccion the direccion to set
      */
-    public void setDireccion(String direccion) {
+    public void setDireccion(String direccion)
+    {
         this.direccion = direccion;
     }
 
     /**
      * @return the telefono
      */
-    public String getTelefono() {
+    public String getTelefono() 
+    {
         return telefono;
     }
 
     /**
      * @param telefono the telefono to set
      */
-    public void setTelefono(String telefono) {
+    public void setTelefono(String telefono) 
+    {
         this.telefono = telefono;
     }
 
     /**
      * @return the contrasena
      */
-    public String getContrasena() {
+    public String getContrasena()
+    {
         return contrasena;
     }
 
     /**
      * @param contrasena the contrasena to set
      */
-    public void setContrasena(String contrasena) {
+    public void setContrasena(String contrasena)
+    {
         this.contrasena = contrasena;
     }
 
     /**
      * @return the fechaNacimiento
      */
-    public Date getFechaNacimiento() {
+    public Date getFechaNacimiento()
+    {
         return fechaNacimiento;
     }
 
     /**
      * @param fechaNacimiento the fechaNacimiento to set
      */
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento)
+    {
         this.fechaNacimiento = fechaNacimiento;
     }
 
     /**
      * @return the mail
      */
-    public String getMail() {
+    public String getMail() 
+    {
         return mail;
     }
 
     /**
      * @param mail the mail to set
      */
-    public void setMail(String mail) {
+    public void setMail(String mail) 
+    {
         this.mail = mail;
     }
 
     /**
      * @return the dni
      */
-    public String getDni() {
+    public String getDni() 
+    {
         return dni;
     }
 
     /**
      * @param dni the dni to set
      */
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setDni(String dni)
+    {
+        this.dni = dni;       
     }
 
     /**
      * @return the activo
      */
-    public boolean isActivo() {
+    public boolean isActivo()
+    {
         return activo;
     }
 
     /**
      * @param activo the activo to set
      */
-    public void setActivo(boolean activo) {
+    public void setActivo(boolean activo)
+    {
         this.activo = activo;
     }
 
     /**
      * @return the bloqueado
      */
-    public boolean isBloqueado() {
+    public boolean isBloqueado()
+    {
         return bloqueado;
     }
 
     /**
      * @param bloqueado the bloqueado to set
      */
-    public void setBloqueado(boolean bloqueado) {
+    public void setBloqueado(boolean bloqueado)
+    {
         this.bloqueado = bloqueado;
     }
 
     /**
      * @return the esAdmin
      */
-    public boolean isEsAdmin() {
+    public boolean isEsAdmin()
+    {
         return esAdmin;
     }
 
     /**
      * @param esAdmin the esAdmin to set
      */
-    public void setEsAdmin(boolean esAdmin) {
+    public void setEsAdmin(boolean esAdmin) 
+    {
         this.esAdmin = esAdmin;
     }
 }

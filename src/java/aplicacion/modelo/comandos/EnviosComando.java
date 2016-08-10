@@ -16,24 +16,27 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ligia
  */
-public class EnviosComando extends Comando{
-
+public class EnviosComando extends Comando
+{
     @Override
-    public String ejecutar(HttpServletRequest request, HttpServletResponse response) {
+    public String ejecutar(HttpServletRequest request, HttpServletResponse response) 
+    {
         CatalogoDePedidos cdp= new CatalogoDePedidos();
-    ArrayList<Pedido> pendientes= null;
-        try{
-       pendientes= cdp.obtenerPedidosPendientes();
-      }
-   catch(AefilepException ex)
-   {
-       request.setAttribute("ex",ex.getMessage());
-       return("/envios.jsp");
-   }
-    request.getSession().setAttribute("pendientes", pendientes);
+        
+        ArrayList<Pedido> pendientes= null;
+        
+        try
+        {
+            pendientes= cdp.obtenerPedidosPendientes();
+        }
+        catch(AefilepException ex)
+        {
+            request.setAttribute("ex",ex.getMessage());
+            return("/envios.jsp");
+        }
+        
+        request.getSession().setAttribute("pendientes", pendientes);
 
         return "/envios.jsp" ;
     }
-    
-    
 }

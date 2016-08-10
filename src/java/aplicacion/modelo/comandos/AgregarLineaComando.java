@@ -25,6 +25,7 @@ public class AgregarLineaComando extends Comando
         boolean alquiler = request.getParameter("tipoLinea").equals("Alquilar");
         Pedido pedido = (Pedido)request.getSession().getAttribute("pedido");
         int lineaExiste=0;
+        
         for(LineaPedido lp: pedido.getLineas())
         {
             if(lp.getPelicula().getIdPelicula()==idPelicula && (lp.isEsAlquiler()==alquiler))
@@ -34,12 +35,11 @@ public class AgregarLineaComando extends Comando
                    lp.setCantidad(lp.getCantidad()+1);
                    request.getSession().setAttribute("exitoPeliculaAgregada", true);
                 }
-                    
-               
+                
                 lineaExiste=1;
-            }
-          
+            }        
         }
+        
         if(lineaExiste==0)
         {
             CatalogoDePeliculas cdp = new CatalogoDePeliculas();
@@ -58,6 +58,7 @@ public class AgregarLineaComando extends Comando
                 request.getSession().setAttribute("exitoPeliculaAgregada", false);
             }   
         }
+        
         request.getSession().setAttribute("pedido",pedido);
         
         if(request.getParameter("provieneDePelicula")!=null)

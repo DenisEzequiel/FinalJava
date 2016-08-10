@@ -21,7 +21,9 @@ public class AdminUsuariosComando extends Comando
     
     @Override
     public String ejecutar(HttpServletRequest request, HttpServletResponse response)
-    {   ArrayList<Usuario> usuarios =null;
+    {   
+        ArrayList<Usuario> usuarios =null;
+        
         try
         {
             usuarios = CdeUs.obtenerUsuarios();
@@ -31,9 +33,11 @@ public class AdminUsuariosComando extends Comando
             request.setAttribute("ex", ex.getMessage());
             return "/ABMUsuarios.jsp";
         }
+        
         Usuario usuarioEdit = usuarios.get(0);
         request.getSession().setAttribute("ListaUsuarios", usuarios);
         request.getSession().setAttribute("UsuarioEdit", usuarioEdit);
+        
         return "/ABMUsuarios.jsp";
     }
     
