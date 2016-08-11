@@ -32,7 +32,7 @@ public class AgregarPeliculaComando extends Comando
     {
         boolean existePelicula = true;
         
-        //si fija si la pelicula es unica
+        //valida que la pelicula sea única
         try
         {
             existePelicula = cDp.existePelicula((String)request.getParameter("nomPel"));

@@ -64,16 +64,16 @@ public class FactoriaDeComandos
      * @return Si la clase es instanciada devuelve un {@code Comando} si ocurre 
      * una excepcion devuelve {@code "null"}
      */
-    public Comando buscarComando(String nom) 
+    public Comando buscarComando(String nom) throws IllegalAccessException, InstantiationException
     { 
         Comando c=null;
         try
         {
             c =(Comando)mapa.get(nom).newInstance();
         }
-        catch(InstantiationException | IllegalAccessException e)
+        catch(InstantiationException | IllegalAccessException ex)
         {
-            
+            throw ex;
         }     
         return c;       
     }   

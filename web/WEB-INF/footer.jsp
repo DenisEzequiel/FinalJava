@@ -95,7 +95,8 @@
                                 </form>                               
                             </li>
                             <li><form action="Controlador" method="post"  class="formFooter">
-                                        <input type="hidden"  name="form" value="ContactoComando"/>
+                                        <input type="hidden"  name="form" value="RedireccionarComando"/>
+                                         <input type="hidden"  name="destino" value="/contacto.jsp"/>
                                         <input type="submit" name="pagina" value="Contacto" >
                                 </form>
                             </li>  
