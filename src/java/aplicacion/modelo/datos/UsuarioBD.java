@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import aplicacion.utilidades.AefilepException;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -221,7 +222,7 @@ public class UsuarioBD
         try
         {
             Connection con = conec.getConexion();
-            prpstmt = con.prepareStatement(transac1);
+            prpstmt = con.prepareStatement(transac1,Statement.RETURN_GENERATED_KEYS);
             prpstmt.setNull(1,0);
             prpstmt.setString(2, usu.getNombre());
             prpstmt.setString(3, usu.getApellido());
@@ -236,6 +237,14 @@ public class UsuarioBD
             prpstmt.setString(12, usu.getMail());
             prpstmt.setString(13, usu.getNombreUsuario());
             prpstmt.executeUpdate();
+            
+            ResultSet rs = prpstmt.getGeneratedKeys();
+            
+            if(rs.next())
+            {
+                int id = rs.getInt(1);
+                usu.setIdUsuario(id);
+            }
             
             con.close();
         }

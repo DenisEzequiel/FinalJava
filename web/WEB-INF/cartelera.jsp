@@ -73,11 +73,21 @@
                                     <div class="single-products">
                                         <div class="productinfo text-center">
                                             <img class="imagen" src="ProcesadorImagenes?id=<%=p.getIdPelicula()%>" alt="">
-                                            <h2><%=p.getNombre()%></h2>
+                                            <form action="Controlador" method="post">
+                                                <h2>
+                                                    <button class="tituloAbajo"><%=p.getNombre()%></button>
+                                                </h2>
+                                                <input type="hidden"  name="form" value="ObtenerPeliculaComando"/>
+                                                <input type="hidden"  name="idPelicula" value="<%=p.getIdPelicula()%>"/>
+                                            </form>
                                             <p><%=p.getAnio()%></p>
                                             <p>$ <%=String.format("%.2f",p.getPrecioAlquiler())%> - $ <%=String.format("%.2f",p.getPrecioVenta())%></p>
-                                            <a href="" class="btn btn-default add-to-cart">Alquilar</a>
-                                            <a href="" class="btn btn-default add-to-cart">Comprar</a>
+                                            <form action="Controlador" method="post">
+                                                <input type="hidden"  name="form" value="AgregarLineaComando"/>
+                                                <input type="hidden" name="idPelicula" value="<%=p.getIdPelicula()%>"/>
+                                                <input class="btn btn-default add-to-cart linea" type="submit" name="tipoLinea" value="Alquilar">
+                                                <input class="btn btn-default add-to-cart linea" type="submit" name="tipoLinea" value="Comprar">
+                                            </form>
                                         </div>
                                         <div class="product-overlay text-center">
                                             <div class="overlay-content">
