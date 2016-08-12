@@ -316,7 +316,7 @@ mainmenu ul li:first-child{
 .mainmenu ul li a input:hover,.mainmenu ul li input:hover, .mainmenu ul li label a input.active,  .shop-menu ul li label a input.active, .shop-menu ul li input.active
 {
 	background:none;
-	color:#fdb45e;
+	color:#fdb45e !important;
 }
 
 .mainmenu ul li form
@@ -3160,4 +3160,8 @@ img.imagenCarro
 .tituloAbajo
 {
     color:#3A5C83;
+}
+
+#f:hover{
+    cursor:pointer;
 }
