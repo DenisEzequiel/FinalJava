@@ -5,6 +5,7 @@
  */
 package aplicacion.modelo.comandos;
 
+import aplicacion.modelo.entidades.LineaPedido;
 import aplicacion.modelo.entidades.Pedido;
 import aplicacion.modelo.negocio.CatalogoDePedidos;
 import aplicacion.utilidades.AefilepException;
@@ -25,14 +26,24 @@ public class RegistrarEnvioComando extends Comando
         int idPed = Integer.parseInt(request.getParameter("idPedido"));
         ArrayList<Pedido> pendientes = (ArrayList)request.getSession().getAttribute("pendientes");
         Pedido pedAEnviar = new Pedido();
+        int contAlq=0;
         
         for(Pedido p:pendientes)
         {
             if(p.getIdPedido()==idPed)
                 pedAEnviar=p;      
         } 
-           
-        pedAEnviar.setEstado("Enviado");
+        
+        for(LineaPedido lp: pedAEnviar.getLineas())
+        {
+            if(lp.isEsAlquiler())
+                contAlq++;
+        }
+        
+        if(contAlq>0)
+            pedAEnviar.setEstado("Enviado");
+        else
+            pedAEnviar.setEstado("Cerrado");
         
         try
         {

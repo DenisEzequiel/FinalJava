@@ -59,7 +59,7 @@
                                             <td><%= p.getUsuario().getApellido()%>, <%= p.getUsuario().getNombre()%></td>
                                             <td>
                                             <% for(LineaPedido lp: p.getLineas()){%>                                           
-                                               <%=lp.getPelicula().getNombre()%><br>
+                                            <%=lp.getPelicula().getNombre()%> (<%if(lp.isEsAlquiler()){%>Alquiler<%}else{%>Compra<%}%>)<br>
                                             <%}%> 
                                             </td>
                                             <td><%= p.getUsuario().getDireccion()%></td>
